@@ -804,13 +804,26 @@ body.view-mode-active .preview-links {
 }
 
 /* Media Query to expand full screen on actual mobile viewports */
-@media (max-width: 500px) {
+@media (max-width: 768px) {
     body.view-mode-active {
-        background: transparent !important;
+        background: var(--bio-bg, #ffffff) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        height: auto !important;
+        min-height: 100vh !important;
     }
     
+    body.view-mode-active .site-main,
+    body.view-mode-active .container,
+    body.view-mode-active .tool-container,
     body.view-mode-active .preview-panel {
+        display: block !important;
+        height: auto !important;
+        min-height: 100vh !important;
         padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
     }
 
     body.view-mode-active .phone-notch {
@@ -822,13 +835,19 @@ body.view-mode-active .preview-links {
         box-shadow: none !important;
         border-radius: 0 !important;
         width: 100% !important;
-        height: 100vh !important;
+        height: auto !important;
+        min-height: 100vh !important;
         margin: 0 !important;
+        background: transparent !important;
+        overflow: visible !important;
     }
 
     body.view-mode-active .bio-preview {
-        height: 100vh !important;
+        height: auto !important;
+        min-height: 100vh !important;
         padding: 40px 20px !important;
+        background: transparent !important;
+        overflow: visible !important;
     }
 }
 

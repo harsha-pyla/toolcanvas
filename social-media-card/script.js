@@ -352,6 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 socialsBar.style.display = 'none';
             }
         }
+        adjustCardScale();
     }
 
     // === Render added links in editor ===
@@ -559,6 +560,23 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // Add social link click action
+        const addBtn = document.getElementById('btn-add-link');
+        if (addBtn) {
+            addBtn.addEventListener('click', addLink);
+        }
+
+        // Add social link on Enter keypress
+        const inputLinkUrl = document.getElementById('input-link-url');
+        if (inputLinkUrl) {
+            inputLinkUrl.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addLink();
+                }
+            });
+        }
+
 
 
         // Copy Shareable Link Action
@@ -654,4 +672,34 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!str) return '';
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
+
+    function adjustCardScale() {
+        const mockup = document.getElementById('social-card-mockup');
+        const wrapper = document.getElementById('card-presentation-wrapper');
+        if (!mockup || !wrapper) return;
+
+        // Reset transform first to measure natural clientWidth
+        mockup.style.transform = 'none';
+        mockup.style.margin = '0 auto';
+        wrapper.style.height = 'auto';
+
+        const containerWidth = wrapper.clientWidth;
+        const isVertical = mockup.classList.contains('layout-vertical');
+        const targetWidth = isVertical ? 320 : 480;
+        const targetHeight = isVertical ? 480 : 270;
+
+        if (containerWidth < targetWidth) {
+            // Subtract a bit of padding to avoid touching edges
+            const availableWidth = containerWidth - 20;
+            const scale = Math.max(0.4, availableWidth / targetWidth);
+            mockup.style.transform = `scale(${scale})`;
+            mockup.style.transformOrigin = 'center center';
+            wrapper.style.height = (targetHeight * scale) + 'px';
+        } else {
+            wrapper.style.height = targetHeight + 'px';
+        }
+    }
+
+    // Add event listener for window resizing to scale mockup card
+    window.addEventListener('resize', adjustCardScale);
 });

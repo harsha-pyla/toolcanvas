@@ -64,7 +64,7 @@ function createControlBar() {
     const bar = document.createElement("div");
     bar.className = "floating-control-bar";
     bar.innerHTML = `
-        <div class="control-logo">Tool<span>Canvas</span> — Print Preview</div>
+        <div class="control-logo">Tool<span>Canvas</span><span class="hide-mobile"> — Print Preview</span></div>
         <div class="control-actions">
             <a href="../index.html" class="btn-control-back">← Back to Templates</a>
             <button type="button" class="btn-control-download" id="print-pdf-btn">Download PDF</button>

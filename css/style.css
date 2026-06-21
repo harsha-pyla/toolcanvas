@@ -22,7 +22,7 @@
   --color-bg-alt: #f9fafb;
   --color-text: #1a1a1a;
   --color-text-secondary: #555555;
-  --color-text-muted: #888888;
+  --color-text-muted: #595959;
   --color-accent: #2563eb;
   --color-accent-hover: #1d4ed8;
   --color-border: #e5e5e5;
@@ -163,7 +163,7 @@ a:hover {
 /* Separator between top-level items */
 .site-nav .nav-item::after {
   content: "|";
-  color: #888888;
+  color: var(--color-text-muted);
   margin: 0 8px;
   font-weight: normal;
 }
@@ -328,9 +328,40 @@ a:hover {
   font-weight: bold;
 }
 
-/* Mobile Toggle - not used on homepage but kept for backwards compat */
+/* Mobile Toggle Styling */
 .nav-toggle {
   display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1010;
+  outline: none;
+}
+
+.nav-toggle .hamburger-bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #224499;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle.active .hamburger-bar:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+
+.nav-toggle.active .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active .hamburger-bar:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
 }
 
 /* ---------- Main ---------- */
@@ -462,13 +493,13 @@ a:hover {
 
 .place-widget__footer {
   font-size: 10px;
-  color: #777777;
+  color: #374151;
   text-align: right;
   margin-top: 5px;
 }
 
 .place-widget__footer a {
-  color: #777777;
+  color: #1e40af;
   text-decoration: underline;
 }
 
@@ -494,14 +525,14 @@ a:hover {
 
 .service-badge--free {
   background-color: #e5ffe5;
-  border-color: #55aa55;
-  color: #008800;
+  border-color: #15803d;
+  color: #166534;
 }
 
 .service-badge--soon {
   background-color: #fffae6;
-  border-color: #ddaa00;
-  color: #997700;
+  border-color: #a16207;
+  color: #854d0e;
 }
 
 /* ---------- Category Block & Lists ---------- */
@@ -730,6 +761,11 @@ a:hover {
     display: flex;
   }
 
+  .logo-search-container {
+    align-items: center;
+    width: 100%;
+  }
+
   .site-nav {
     display: none;
     position: absolute;
@@ -741,6 +777,7 @@ a:hover {
     flex-direction: column;
     padding: var(--space-md) var(--container-padding);
     gap: 0;
+    z-index: 1000;
   }
 
   .site-nav.open {
@@ -771,7 +808,7 @@ a:hover {
 
   /* Display dropdown menu inline/nested on mobile */
   .dropdown-menu {
-    display: flex;
+    display: none;
     flex-direction: column;
     padding-left: 15px;
     border-left: 2px solid #cbd5e1;
@@ -780,6 +817,10 @@ a:hover {
     box-shadow: none;
     border: none;
     border-radius: 0;
+  }
+
+  .nav-item.dropdown.open-mobile .dropdown-menu {
+    display: flex;
   }
 
   .dropdown-menu a {

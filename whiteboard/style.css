@@ -958,8 +958,19 @@ body.whiteboard-maximized-active {
 
     .drawing-dock {
         bottom: 70px; /* Shift dock up to clear links and about icons on small devices */
-        padding: 6px 12px;
-        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 16px;
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 8px 12px;
+        width: max-content;
+        max-width: 95vw;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dock-separator {
+        display: none;
     }
 
     .btn-tool {
@@ -969,10 +980,6 @@ body.whiteboard-maximized-active {
 
     .btn-color {
         width: 20px;
-        height: 20px;
-    }
-
-    .dock-separator {
         height: 20px;
     }
 

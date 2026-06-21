@@ -65,34 +65,94 @@
     const copyUrlBtn = document.getElementById('copy-url-btn');
     const toast = document.getElementById('toast');
 
+    // ---- Unicode Base64 Helpers ----
+    function toUrlSafeBase64(str) {
+        try {
+            return btoa(unescape(encodeURIComponent(str)))
+                .replace(/\+/g, '-')
+                .replace(/\//g, '_')
+                .replace(/=+$/, '');
+        } catch (e) {
+            console.error("Error encoding to base64", e);
+            return "";
+        }
+    }
+
+    function fromUrlSafeBase64(str) {
+        try {
+            let base64 = str.replace(/-/g, '+').replace(/_/g, '/');
+            while (base64.length % 4) {
+                base64 += '=';
+            }
+            return decodeURIComponent(escape(atob(base64)));
+        } catch (e) {
+            console.error("Error decoding from base64", e);
+            return "";
+        }
+    }
+
     // ---- Initialize ----
     function init() {
         const urlParams = new URLSearchParams(window.location.search);
-        const hasParams = urlParams.has('username') || urlParams.has('bio') || urlParams.has('links');
+        const compressedParam = urlParams.get('p');
+        const hasParams = compressedParam || urlParams.has('username') || urlParams.has('bio') || urlParams.has('links');
 
         if (hasParams) {
             // View Mode
             document.body.classList.add('view-mode-active');
-            state.displayName = urlParams.get('username') || '';
-            state.bio = urlParams.get('bio') || '';
-            state.theme = urlParams.get('theme') || 'sunshine';
-            state.profileImage = urlParams.get('image') || '';
             
-            // Set custom colors if theme is custom
-            if (state.theme === 'custom') {
-                customBgInput.value = urlParams.get('bg') || '#ffffff';
-                customTextInput.value = urlParams.get('text') || '#1a1a1a';
-                customBtnBgInput.value = urlParams.get('btnBg') || '#2563eb';
-                customBtnTextColorInput.value = urlParams.get('btnText') || '#ffffff';
-            }
+            if (compressedParam) {
+                // Decode from short URL safe base64
+                const jsonStr = fromUrlSafeBase64(compressedParam);
+                if (jsonStr) {
+                    try {
+                        const payload = JSON.parse(jsonStr);
+                        state.displayName = payload.u || '';
+                        state.bio = payload.b || '';
+                        state.theme = payload.t || 'sunshine';
+                        state.profileImage = payload.i || '';
+                        
+                        if (state.theme === 'custom') {
+                            customBgInput.value = payload.bg || '#ffffff';
+                            customTextInput.value = payload.tx || '#1a1a1a';
+                            customBtnBgInput.value = payload.bb || '#2563eb';
+                            customBtnTextColorInput.value = payload.bt || '#ffffff';
+                        }
+                        
+                        if (payload.l && Array.isArray(payload.l)) {
+                            state.links = payload.l.map(arr => ({
+                                title: arr[0] || '',
+                                url: arr[1] || ''
+                            }));
+                        } else {
+                            state.links = [];
+                        }
+                    } catch (e) {
+                        console.error("Error parsing compressed param", e);
+                    }
+                }
+            } else {
+                // Backwards compatibility with verbose parameters
+                state.displayName = urlParams.get('username') || '';
+                state.bio = urlParams.get('bio') || '';
+                state.theme = urlParams.get('theme') || 'sunshine';
+                state.profileImage = urlParams.get('image') || '';
+                
+                if (state.theme === 'custom') {
+                    customBgInput.value = urlParams.get('bg') || '#ffffff';
+                    customTextInput.value = urlParams.get('text') || '#1a1a1a';
+                    customBtnBgInput.value = urlParams.get('btnBg') || '#2563eb';
+                    customBtnTextColorInput.value = urlParams.get('btnText') || '#ffffff';
+                }
 
-            const linksParam = urlParams.get('links');
-            if (linksParam) {
-                try {
-                    state.links = JSON.parse(linksParam);
-                } catch (e) {
-                    console.error("Error parsing links parameter", e);
-                    state.links = [];
+                const linksParam = urlParams.get('links');
+                if (linksParam) {
+                    try {
+                        state.links = JSON.parse(linksParam);
+                    } catch (e) {
+                        console.error("Error parsing links parameter", e);
+                        state.links = [];
+                    }
                 }
             }
             updatePreview();
@@ -482,6 +542,31 @@
 
         // Apply theme class (forces preset CSS variables mapping from themes.css)
         bioPreview.className = 'bio-preview theme-' + theme;
+
+        if (document.body.classList.contains('view-mode-active')) {
+            document.body.className = 'view-mode-active theme-' + theme;
+            if (theme === 'custom') {
+                document.body.style.setProperty('--bio-bg', customBgInput.value);
+                document.body.style.setProperty('--bio-text', customTextInput.value);
+                document.body.style.setProperty('--bio-btn-bg', customBtnBgInput.value);
+                document.body.style.setProperty('--bio-btn-text', customBtnTextColorInput.value);
+                document.body.style.setProperty('--bio-btn-border', 'none');
+                document.body.style.setProperty('--bio-btn-radius', '30px');
+                document.body.style.setProperty('--bio-btn-shadow', 'none');
+                document.body.style.setProperty('--bio-avatar-bg', customBtnBgInput.value);
+                document.body.style.setProperty('--bio-avatar-text', customBtnTextColorInput.value);
+            } else {
+                document.body.style.removeProperty('--bio-bg');
+                document.body.style.removeProperty('--bio-text');
+                document.body.style.removeProperty('--bio-btn-bg');
+                document.body.style.removeProperty('--bio-btn-text');
+                document.body.style.removeProperty('--bio-btn-border');
+                document.body.style.removeProperty('--bio-btn-radius');
+                document.body.style.removeProperty('--bio-btn-shadow');
+                document.body.style.removeProperty('--bio-avatar-bg');
+                document.body.style.removeProperty('--bio-avatar-text');
+            }
+        }
     }
 
     // ---- Get Theme Data ----
@@ -601,22 +686,24 @@
 
     // ---- Preview Live Link Compilation ----
     function compileQueryUrl() {
-        const username = encodeURIComponent(state.displayName);
-        const bio = encodeURIComponent(state.bio);
-        const theme = encodeURIComponent(state.theme);
-        const image = encodeURIComponent(state.profileImage);
-        const links = encodeURIComponent(JSON.stringify(state.links));
-        
-        let url = `?username=${username}&bio=${bio}&theme=${theme}&image=${image}&links=${links}`;
-        
+        const payload = {
+            u: state.displayName,
+            b: state.bio,
+            t: state.theme,
+            i: state.profileImage,
+            l: state.links.map(link => [link.title || '', link.url || ''])
+        };
+
         if (state.theme === 'custom') {
-            url += `&bg=${encodeURIComponent(customBgInput.value)}`;
-            url += `&text=${encodeURIComponent(customTextInput.value)}`;
-            url += `&btnBg=${encodeURIComponent(customBtnBgInput.value)}`;
-            url += `&btnText=${encodeURIComponent(customBtnTextColorInput.value)}`;
+            payload.bg = customBgInput.value;
+            payload.tx = customTextInput.value;
+            payload.bb = customBtnBgInput.value;
+            payload.bt = customBtnTextColorInput.value;
         }
-        
-        return url;
+
+        const serialized = JSON.stringify(payload);
+        const compressed = toUrlSafeBase64(serialized);
+        return `?p=${compressed}`;
     }
 
     function openLivePreview() {

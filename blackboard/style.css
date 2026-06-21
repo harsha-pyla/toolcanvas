@@ -963,8 +963,15 @@ body.blackboard-maximized-active {
 
     .drawing-dock {
         bottom: 70px;
-        padding: 6px 12px;
-        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 16px;
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 8px 12px;
+        width: max-content;
+        max-width: 95vw;
+        justify-content: center;
+        align-items: center;
     }
 
     .btn-tool {
@@ -986,7 +993,7 @@ body.blackboard-maximized-active {
     }
 
     .dock-separator {
-        height: 20px;
+        display: none;
     }
 
     .bottom-left-links {

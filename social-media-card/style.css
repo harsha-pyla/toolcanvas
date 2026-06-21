@@ -1021,6 +1021,7 @@ html.public-view-active body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 html.public-view-active .site-main,
@@ -1056,88 +1057,25 @@ html.public-view-active .preview-sticky-container {
   .preview-sticky-container {
     position: static;
   }
+
+  .preview-column {
+    order: -1;
+  }
 }
 
-@media (max-width: 540px) {
-  .social-card-box.layout-horizontal {
-    width: 320px;
-    height: 480px;
-  }
-
-  /* Force landscape layout to render like portrait on small mobile screens to prevent overflow */
-  .social-card-box.layout-horizontal .card-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    padding: 24px;
-  }
-
-  .social-card-box.layout-horizontal .card-front-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .social-card-box.layout-horizontal .card-avatar-wrapper {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-
-  .social-card-box.layout-horizontal .card-identity h3 {
-    font-size: 19px;
-  }
-
-  .social-card-box.layout-horizontal .card-title-company {
-    font-size: 12px;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .social-card-box.layout-horizontal .company-separator {
-    display: inline;
-  }
-
-  .social-card-box.layout-horizontal .card-divider {
-    width: 100%;
-    height: 1px;
-    margin: 12px 0;
-  }
-
-  .social-card-box.layout-horizontal .card-contacts-section {
-    width: 100%;
-    align-items: flex-start;
+@media (max-width: 480px) {
+  .links-add-row {
+    flex-wrap: wrap;
     gap: 8px;
   }
-
-  .social-card-box.layout-horizontal .card-socials-bar {
-    margin: 10px 0;
-    gap: 12px;
+  .links-add-row select {
+    flex: 1 1 100px;
+    width: auto;
   }
-
-  .social-card-box.layout-horizontal .card-qr-section {
-    flex-direction: column;
-    gap: 6px;
-    align-self: center;
-    justify-self: center;
+  .links-add-row input[type="url"] {
+    flex: 2 1 150px;
   }
-
-  .social-card-box.layout-horizontal .qr-canvas-container {
-    width: 64px;
-    height: 64px;
-    padding: 4px;
-  }
-
-  .social-card-box.layout-horizontal .qr-canvas-container canvas {
-    width: 56px !important;
-    height: 56px !important;
-  }
-
-  .social-card-box.layout-horizontal .qr-label {
-    font-size: 8.5px;
-    writing-mode: horizontal-tb;
+  .links-add-row button {
+    width: 100%;
   }
 }

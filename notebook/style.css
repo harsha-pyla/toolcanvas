@@ -1130,8 +1130,18 @@ textarea.notepad-editor::placeholder {
     }
 }
 
+.notepad-mobile-title {
+    display: none;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 16px;
+}
+
 /* ---------- Responsive Layout Adjustments ---------- */
 @media (max-width: 768px) {
+    .notepad-mobile-title {
+        display: block;
+    }
     .notepad-menubar {
         display: none; /* Hide menubar options on small viewports */
     }
@@ -1141,15 +1151,44 @@ textarea.notepad-editor::placeholder {
     .notepad-app-card {
         height: 480px; /* shorter on mobile viewports */
     }
+    .notepad-app-card.maximized {
+        position: fixed !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 0 !important;
+    }
+    .notepad-editor-overlay {
+        display: none !important;
+    }
+    textarea.notepad-editor {
+        color: var(--notepad-text-color, #1e293b) !important;
+        -webkit-text-fill-color: var(--notepad-text-color, #1e293b) !important;
+    }
+    .quick-toolbar > * {
+        flex-shrink: 0;
+    }
+    .notepad-statusbar .status-right {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {
-    textarea.notepad-editor {
-        padding: 24px 16px;
-        font-size: 16px;
-    }
     .quick-toolbar select {
         padding: 4px;
+        font-size: 11px;
+    }
+    .fr-actions {
+        justify-content: space-between;
+        width: 100%;
+    }
+    .btn-fr-action {
+        flex: 1;
+        text-align: center;
+        padding: 6px 4px;
         font-size: 11px;
     }
 }

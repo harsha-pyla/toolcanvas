@@ -153,22 +153,31 @@ document.addEventListener('DOMContentLoaded', () => {
         const ratio = fontFamily === 'handwriting' ? 1.75 : 1.6;
         const lineHeight = Math.round(fontSize * ratio);
         textarea.style.lineHeight = lineHeight + 'px';
+
+        // Calculate dynamic padding sizes based on mobile viewport width
+        const isSmallMobile = window.innerWidth <= 480;
+        const paddingTop = isSmallMobile ? 24 : 40;
+        const paddingRight = isSmallMobile ? 16 : 24;
+        const paddingBottom = isSmallMobile ? 24 : 40;
         
         if (overlay) {
             overlay.style.fontFamily = cssFontFamily;
             overlay.style.fontSize = fontSize + 'px';
             overlay.style.lineHeight = lineHeight + 'px';
-            overlay.style.paddingTop = '40px';
-            overlay.style.paddingRight = '24px';
-            overlay.style.paddingBottom = '40px';
+            overlay.style.paddingTop = paddingTop + 'px';
+            overlay.style.paddingRight = paddingRight + 'px';
+            overlay.style.paddingBottom = paddingBottom + 'px';
         }
 
         // Reset defaults
         textarea.style.backgroundImage = 'none';
         textarea.style.backgroundSize = 'auto';
-        textarea.style.paddingLeft = '24px';
+        textarea.style.paddingTop = paddingTop + 'px';
+        textarea.style.paddingRight = paddingRight + 'px';
+        textarea.style.paddingBottom = paddingBottom + 'px';
+        textarea.style.paddingLeft = paddingRight + 'px'; // matches right padding
         textarea.style.backgroundColor = 'transparent';
-        if (overlay) overlay.style.paddingLeft = '24px';
+        if (overlay) overlay.style.paddingLeft = paddingRight + 'px';
         
         let caretColor = '#1e293b';
         let overlayColor = '#1e293b';
@@ -186,15 +195,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             textarea.style.backgroundColor = bgColor;
+
+            // Reduce left margin line on small screens to save valuable viewport space
+            const isSmallScreen = window.innerWidth <= 480;
+            const marginLinePos = isSmallScreen ? 49 : 79;
+            const paddingLeftVal = isSmallScreen ? 64 : 96;
+
             // Draw margin vertical line + horizontal ruled lines
             textarea.style.backgroundImage = `
-                linear-gradient(90deg, transparent 79px, ${marginColor} 79px, ${marginColor} 81px, transparent 81px),
+                linear-gradient(90deg, transparent ${marginLinePos}px, ${marginColor} ${marginLinePos}px, ${marginColor} ${marginLinePos + 2}px, transparent ${marginLinePos + 2}px),
                 linear-gradient(transparent, transparent ${lineHeight - 1}px, ${lineColor} ${lineHeight - 1}px)
             `;
             textarea.style.backgroundSize = `100% 100%, 100% ${lineHeight}px`;
-            textarea.style.backgroundPosition = '0 0, 0 40px'; // align ruled lines past padding-top (40px)
-            textarea.style.paddingLeft = '96px';
-            if (overlay) overlay.style.paddingLeft = '96px';
+            textarea.style.backgroundPosition = `0 0, 0 ${paddingTop}px`; // align ruled lines past dynamic padding-top
+            textarea.style.paddingLeft = paddingLeftVal + 'px';
+            if (overlay) overlay.style.paddingLeft = paddingLeftVal + 'px';
             
         } else if (paper === 'graph') {
             textarea.style.backgroundColor = '#ffffff';
@@ -204,9 +219,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 linear-gradient(${gridColor} 1px, transparent 1px)
             `;
             textarea.style.backgroundSize = `${lineHeight}px ${lineHeight}px`;
-            textarea.style.backgroundPosition = '0 40px, 0 40px';
-            textarea.style.paddingLeft = '24px';
-            if (overlay) overlay.style.paddingLeft = '24px';
+            textarea.style.backgroundPosition = `0 ${paddingTop}px, 0 ${paddingTop}px`;
+            textarea.style.paddingLeft = paddingRight + 'px';
+            if (overlay) overlay.style.paddingLeft = paddingRight + 'px';
             
         } else if (paper === 'plain') {
             textarea.style.backgroundColor = '#ffffff';
@@ -218,12 +233,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 linear-gradient(transparent ${lineHeight - 1}px, ${lineColor} ${lineHeight - 1}px)
             `;
             textarea.style.backgroundSize = `100% ${lineHeight}px`;
-            textarea.style.backgroundPosition = '0 40px';
-            textarea.style.paddingLeft = '24px';
-            if (overlay) overlay.style.paddingLeft = '24px';
+            textarea.style.backgroundPosition = `0 ${paddingTop}px`;
+            textarea.style.paddingLeft = paddingRight + 'px';
+            if (overlay) overlay.style.paddingLeft = paddingRight + 'px';
             caretColor = '#f8fafc';
             overlayColor = '#f8fafc';
         }
+
+        // Set the text color CSS variable for high accessibility contrast in mobile view
+        const textColor = paper === 'dark' ? '#f8fafc' : '#1e293b';
+        textarea.style.setProperty('--notepad-text-color', textColor);
 
         textarea.style.caretColor = caretColor;
         if (overlay) overlay.style.color = overlayColor;
@@ -1295,6 +1314,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------
     // Application Initializer
     // -------------------------------------------------------------
+    window.addEventListener('resize', updatePaperStyle);
+
     initDictionary();
     initSpecialCharGrid();
     initNotepadSession();

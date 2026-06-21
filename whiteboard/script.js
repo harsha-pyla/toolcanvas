@@ -75,6 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let panStartY = 0;
     let spacePressed = false;
     let activePointers = {}; // Track touch pointers for pinch zoom
+    let initialTouchDist = 0;
+    let initialZoom = 1.0;
+    let initialWorldCenter = { x: 0, y: 0 };
 
     // Settings
     let bgType = 'plain'; // plain, grid, dots
@@ -850,6 +853,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     canvas.addEventListener('touchstart', (e) => {
+        e.preventDefault();
         // Capture touch pointer IDs
         for (let i = 0; i < e.changedTouches.length; i++) {
             const touch = e.changedTouches[i];
@@ -893,17 +897,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const t1 = activePointers[pointerKeys[0]];
             const t2 = activePointers[pointerKeys[1]];
             
-            this.initialTouchDist = getTouchDistance(t1, t2);
-            this.initialZoom = zoom;
+            initialTouchDist = getTouchDistance(t1, t2);
+            initialZoom = zoom;
 
             const center = getTouchCenter(t1, t2);
             panStartX = center.x - panX;
             panStartY = center.y - panY;
-            this.initialWorldCenter = screenToWorld(center.x, center.y);
+            initialWorldCenter = screenToWorld(center.x, center.y);
         }
-    });
+    }, { passive: false });
 
     canvas.addEventListener('touchmove', (e) => {
+        e.preventDefault();
         // Update active touches
         for (let i = 0; i < e.changedTouches.length; i++) {
             const touch = e.changedTouches[i];
@@ -949,19 +954,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const center = getTouchCenter(t1, t2);
 
             // Calculate zoom scale
-            if (this.initialTouchDist > 0) {
-                const scale = currentDist / this.initialTouchDist;
-                zoom = Math.max(minZoom, Math.min(this.initialZoom * scale, maxZoom));
+            if (initialTouchDist > 0) {
+                const scale = currentDist / initialTouchDist;
+                zoom = Math.max(minZoom, Math.min(initialZoom * scale, maxZoom));
                 updateZoomPercent();
             }
 
             // Sync translation offset relative to the zoom center
-            panX = center.x - this.initialWorldCenter.x * zoom;
-            panY = center.y - this.initialWorldCenter.y * zoom;
+            panX = center.x - initialWorldCenter.x * zoom;
+            panY = center.y - initialWorldCenter.y * zoom;
 
             requestAnimationFrame(render);
         }
-    });
+    }, { passive: false });
 
     canvas.addEventListener('touchend', (e) => {
         // Clear finished touches
@@ -991,6 +996,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 currentStroke = null;
                 requestAnimationFrame(render);
+            }
+        } else {
+            // Recalculate pan start for remaining finger to prevent coordinate jump
+            const pointerKeys = Object.keys(activePointers);
+            if (pointerKeys.length === 1 && isPanning) {
+                const touch = activePointers[pointerKeys[0]];
+                panStartX = touch.clientX - panX;
+                panStartY = touch.clientY - panY;
             }
         }
     });
