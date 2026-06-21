@@ -1,0 +1,88 @@
+/* ===================================================
+   ToolCanvas — Template 5: Creative Narrative Styles
+   =================================================== */
+
+.resume-sheet {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1e293b;
+    line-height: 1.45;
+    border-left: 6px solid #4f46e5; /* Side accent bar for creative touch */
+}
+
+/* Header layout */
+.header-narrative {
+    margin-bottom: 12px;
+}
+
+.header-narrative h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    color: #1e1b4b;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+
+.narrative-header-title {
+    font-size: 11.5pt;
+    font-weight: 600;
+    color: #4f46e5;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.narrative-contact-details {
+    font-size: 8.8pt;
+    color: #475569;
+    margin-top: 6px;
+    font-weight: 400;
+}
+
+/* Left Accent block section titles */
+.resume-section-title {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #1e1b4b;
+    border-bottom: none;
+    border-left: 3.5px solid #4f46e5;
+    padding-left: 8px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 14px;
+}
+
+/* Summary paragraph */
+.summary-paragraph {
+    font-size: 9pt;
+    color: #334155;
+    text-align: justify;
+}
+
+/* Job & Education details */
+.item-header-row {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.item-subheader-row {
+    font-size: 9.2pt;
+    color: #475569;
+    margin-bottom: 3px;
+}
+
+.item-bullets {
+    margin-left: 14px;
+}
+
+.item-bullets li {
+    font-size: 8.8pt;
+    color: #334155;
+    margin-bottom: 2px;
+}
+
+.skills-paragraph {
+    font-size: 9pt;
+    color: #334155;
+}

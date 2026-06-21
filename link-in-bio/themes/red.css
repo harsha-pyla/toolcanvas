@@ -1,0 +1,15 @@
+/* =========================================
+   ToolCanvas — Salsa Red Theme
+   ========================================= */
+
+.theme-red {
+    --bio-bg: #dc2626;
+    --bio-text: #ffffff;
+    --bio-btn-bg: #ffffff;
+    --bio-btn-text: #dc2626;
+    --bio-btn-border: none;
+    --bio-btn-radius: 30px;
+    --bio-btn-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    --bio-avatar-bg: #ffffff;
+    --bio-avatar-text: #dc2626;
+}

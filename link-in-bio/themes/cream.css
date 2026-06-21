@@ -1,0 +1,15 @@
+/* =========================================
+   ToolCanvas — Editorial Cream Theme
+   ========================================= */
+
+.theme-cream {
+    --bio-bg: #fdfbf7;
+    --bio-text: #1a1a1a;
+    --bio-btn-bg: #2b2b2b;
+    --bio-btn-text: #fdfbf7;
+    --bio-btn-border: none;
+    --bio-btn-radius: 30px;
+    --bio-btn-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    --bio-avatar-bg: #2b2b2b;
+    --bio-avatar-text: #fdfbf7;
+}

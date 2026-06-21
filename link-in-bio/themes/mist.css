@@ -1,0 +1,15 @@
+/* =========================================
+   ToolCanvas — Soft Mist Theme
+   ========================================= */
+
+.theme-mist {
+    --bio-bg: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+    --bio-text: #1e293b;
+    --bio-btn-bg: #ffffff;
+    --bio-btn-text: #1e293b;
+    --bio-btn-border: 1px solid #cbd5e1;
+    --bio-btn-radius: 30px;
+    --bio-btn-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    --bio-avatar-bg: #ffffff;
+    --bio-avatar-text: #1e293b;
+}

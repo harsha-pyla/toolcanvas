@@ -1,0 +1,15 @@
+/* =========================================
+   ToolCanvas — Sunshine Pop Theme
+   ========================================= */
+
+.theme-sunshine {
+    --bio-bg: linear-gradient(180deg, #ffbe5b 0%, #ff719a 50%, #a180f4 100%);
+    --bio-text: #351401;
+    --bio-btn-bg: #ffffff;
+    --bio-btn-text: #351401;
+    --bio-btn-border: 2px solid rgba(224, 242, 254, 0.8);
+    --bio-btn-radius: 30px;
+    --bio-btn-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    --bio-avatar-bg: #ff719a;
+    --bio-avatar-text: #ffffff;
+}

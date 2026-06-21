@@ -1,0 +1,539 @@
+/* =========================================
+   ToolCanvas — Image to JPG specific styles
+   ========================================= */
+
+/* Converter Card */
+.converter-card {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+/* Drag and Drop Zone */
+.drop-zone {
+    border: 2px dashed #a5b4fc;
+    background-color: #f8fafc;
+    border-radius: 4px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.drop-zone:hover,
+.drop-zone.dragover {
+    background-color: #eef2f6;
+    border-color: #4f46e5;
+}
+
+.drop-zone__inner {
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.drop-zone__icon {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.drop-zone__text {
+    font-size: 14px;
+    color: #334155;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.drop-zone__link {
+    color: #4f46e5;
+    text-decoration: underline;
+}
+
+.drop-zone__formats {
+    font-size: 11px;
+    color: #64748b;
+    font-style: italic;
+}
+
+/* Workspace Grid */
+.workspace-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .workspace-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Workspace Preview Panel */
+.workspace-preview-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.image-preview-container {
+    max-width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.image-preview-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.file-details {
+    margin-top: 12px;
+    width: 100%;
+    font-size: 12px;
+    color: #475569;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 8px;
+}
+
+.file-name {
+    font-weight: bold;
+    color: #1e293b;
+    word-break: break-all;
+}
+
+/* Workspace Controls Panel */
+.workspace-controls-panel h3 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #1e293b;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.option-group {
+    margin-bottom: 20px;
+}
+
+.option-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.option-label-row label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #334155;
+}
+
+.option-value {
+    font-size: 13px;
+    font-weight: bold;
+    color: #4f46e5;
+}
+
+/* Quality Range Slider */
+.option-group input[type="range"] {
+    width: 100%;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+.option-hint {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+/* Custom Checkbox */
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    color: #334155;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: #ffffff;
+    border: 1px solid #999999;
+    border-radius: 2px;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #f1f5f9;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #4f46e5;
+    border-color: #4f46e5;
+}
+
+.checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark::after {
+    display: block;
+}
+
+.checkbox-container .checkmark::after {
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.inline-checkbox {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-weight: normal;
+    color: #475569;
+}
+
+/* Resize Fields Input */
+.resize-fields {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    border-radius: 4px;
+    margin-top: 8px;
+}
+
+.field-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.field-item {
+    flex: 1;
+}
+
+.field-item label {
+    display: block;
+    font-size: 11px;
+    color: #475569;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.field-item input {
+    width: 100%;
+    border: 1px solid #999999;
+    padding: 5px 8px;
+    font-size: 12px;
+    outline: none;
+    border-radius: 2px;
+    background: #ffffff;
+}
+
+.field-item input:focus {
+    border-color: #4f46e5;
+}
+
+.dimension-separator {
+    font-size: 14px;
+    color: #94a3b8;
+    padding-bottom: 6px;
+}
+
+/* Action Buttons */
+.controls-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-primary,
+.btn-secondary {
+    font-family: inherit;
+    font-size: 13px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.btn-primary {
+    background-color: #224499;
+    border: 1px solid #224499;
+    color: #ffffff;
+    flex: 2;
+}
+
+.btn-primary:hover {
+    background-color: #173070;
+    border-color: #173070;
+    text-decoration: none !important;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    border: 1px solid #999999;
+    color: #333333;
+    flex: 1;
+}
+
+.btn-secondary:hover {
+    background-color: #f1f5f9;
+    border-color: #666666;
+}
+
+/* Result Panel */
+.result-panel {
+    margin-top: 15px;
+    border-top: 1px dashed #cbd5e1;
+    padding-top: 20px;
+}
+
+.result-card {
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+}
+
+.result-success-icon {
+    font-size: 32px;
+    color: #16a34a;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.result-card h3 {
+    font-size: 15px;
+    color: #15803d;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.result-comparison {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.comparison-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.comparison-label {
+    font-size: 11px;
+    color: #65a30d;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Multiple File List Styles */
+.files-list-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 480px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.file-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    transition: border-color 0.2s;
+    width: 100%;
+}
+
+.file-card:hover {
+    border-color: #cbd5e1;
+}
+
+.file-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.file-card-thumb {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    flex-shrink: 0;
+}
+
+.file-card-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* allows text truncation */
+    flex: 1;
+}
+
+.file-card-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e293b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.file-card-meta {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+.file-card-status-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.file-card-status {
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.status-ready {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+.status-success {
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+.status-converting {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.file-card-savings {
+    font-size: 11px;
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.file-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.btn-remove-file {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+    line-height: 1;
+}
+
+.btn-remove-file:hover {
+    background: #f1f5f9;
+    color: #ef4444;
+}
+
+.btn-download-file {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff !important;
+    background: #2563eb;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.btn-download-file:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+
+/* Adjustments for multiple files view */
+.workspace-preview-panel {
+    align-items: stretch !important;
+    width: 100%;
+}
+

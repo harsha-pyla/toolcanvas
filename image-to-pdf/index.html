@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Image to PDF Converter — Convert Images to PDF Locally | ToolCanvas</title>
+    <meta name="description" content="Convert your PNG, WebP, and JPG images into a single PDF document locally in your browser. Configurable page layouts, margins, orientations, secure private conversion.">
+    <meta name="keywords" content="image to pdf, convert photos to pdf, merge images to pdf, local pdf converter, private image to pdf, offline pdf generator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolcanvas.online/image-to-pdf/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Free Image to PDF Converter — Convert Online Locally | ToolCanvas">
+    <meta property="og:description" content="Merge multiple PNG, WebP, and JPG files into a single, high-quality PDF document privately in your browser.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolcanvas.online/image-to-pdf/">
+    <meta property="og:site_name" content="ToolCanvas">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- jsPDF Library (Loaded securely via CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Image to PDF Converter",
+        "description": "Convert and merge multiple images into a single PDF document locally. Configurable margins, layouts, and page sizing without server uploads.",
+        "url": "https://toolcanvas.online/image-to-pdf/",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "ToolCanvas",
+            "url": "https://toolcanvas.online"
+        }
+    }
+    </script>
+    <link rel="icon" type="image/png" href="../logo/logo.png">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <nav class="site-nav">
+                <div class="nav-item">
+                    <a href="../index.html">Home</a>
+                </div>
+                <div class="nav-item">
+                    <a href="../link-in-bio/">Link in Bio</a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="../index.html#random-tools">Random</a>
+                    <div class="dropdown-menu">
+                        <a href="../place-name-generator/">Place Name Generator</a>
+                        <a href="../password-generator/">Password Generator</a>
+                        <a href="../string-randomizer/">String Randomizer</a>
+                        <a href="../random-business-name-generator/">Business Name Generator</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="../index.html#image-tools" class="active">Image Tools</a>
+                    <div class="dropdown-menu">
+                        <a href="../image-to-jpg/">Image to JPG</a>
+                        <a href="../image-to-png/">Image to PNG</a>
+                        <a href="index.html">Image to PDF</a>
+                        <a href="../image-to-webp/">Image to WebP</a>
+                        <a href="../image-to-text/">Image to Text (OCR)</a>
+                        <a href="../image-resizer/">Image Resizer</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="../index.html#social-media-tools">Social Media</a>
+                    <div class="dropdown-menu">
+                        <a href="../instagram-profile-preview/">Instagram Preview</a>
+                        <a href="../linkedin-profile-preview/">LinkedIn Preview</a>
+                        <a href="../social-media-card/">Social Media Card</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="../index.html#resume-tools">Resume Builder</a>
+                    <div class="dropdown-menu">
+                        <a href="../experience-templates/">Experience Templates</a>
+                        <a href="../fresher-templates/">Fresher Templates</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="../index.html#canva-workspace">Canva Workspace</a>
+                    <div class="dropdown-menu">
+                        <a href="../whiteboard/">Whiteboard</a>
+                        <a href="../blackboard/">Blackboard</a>
+                        <a href="../notebook/">Notebook</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="../index.html#video-tools">Video</a>
+                    <div class="dropdown-menu">
+                        <a href="../video-metadata-viewer/">Video Metadata Viewer</a>
+                        <a href="../thumbnail-generator/">Thumbnail Generator</a>
+                        <a href="../video-screenshot-tool/">Video Screenshot Tool</a>
+                        <a href="../video-to-audio-converter/">Video to Audio Converter</a>
+                        <a href="../video-trimmer/">Video Trimmer</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="../about.html">About</a>
+                </div>
+                <div class="nav-item">
+                    <a href="../contact.html">Contact</a>
+                </div>
+            </nav>
+            <div class="logo-search-container">
+                <a href="../index.html" class="site-logo">Tool<span>Canvas</span></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <div class="container">
+                <a href="../index.html">Home</a>
+                <span class="separator">›</span>
+                <span class="current">Image to PDF</span>
+            </div>
+        </nav>
+
+        <!-- Tool Section -->
+        <section class="tool-section">
+            <div class="container">
+                <div class="tool-header">
+                    <h1>Free Image to PDF Converter</h1>
+                    <p class="tool-intro">Merge multiple images (JPG, PNG, WebP, BMP) into a single, high-quality PDF document. Reorder your files, select page layout formats, configure margins, and generate your PDF privately.</p>
+                </div>
+
+                <div class="converter-card">
+                    <!-- Drop Zone -->
+                    <div class="drop-zone" id="drop-zone">
+                        <div class="drop-zone__inner">
+                            <span class="drop-zone__icon">📄</span>
+                            <p class="drop-zone__text">Drag & drop your images here, or <span class="drop-zone__link">browse files</span></p>
+                            <p class="drop-zone__formats">Supports multiple JPG, PNG, WebP, BMP, and GIF files</p>
+                        </div>
+                        <input type="file" id="file-input" accept="image/*" multiple style="display: none;">
+                    </div>
+
+                    <!-- Editor Workspace (hidden by default) -->
+                    <div class="converter-workspace" id="converter-workspace" style="display: none;">
+                        <div class="workspace-grid">
+                            
+                            <!-- Left: Image List & Ordering -->
+                            <div class="workspace-preview-panel">
+                                <h3>Selected Images (<span id="image-count">0</span>)</h3>
+                                <div class="image-list-container" id="image-list-container">
+                                    <!-- Image item cards injected dynamically -->
+                                </div>
+                                <button type="button" class="add-more-btn" id="add-more-btn">
+                                    <span>+</span> Add More Images
+                                </button>
+                            </div>
+
+                            <!-- Right: Configuration & Conversion Controls -->
+                            <div class="workspace-controls-panel">
+                                <h3>PDF settings</h3>
+                                
+                                <!-- Page Format -->
+                                <div class="option-group">
+                                    <label for="page-size">Page Sizing</label>
+                                    <select id="page-size">
+                                        <option value="fit">Fit Image (Auto page sizing)</option>
+                                        <option value="a4" selected>A4 (Standard Document)</option>
+                                        <option value="letter">US Letter (American Standard)</option>
+                                    </select>
+                                    <p class="option-hint">"Fit Image" creates custom page dimensions to match each photo perfectly, avoiding blank spaces.</p>
+                                </div>
+
+                                <!-- Orientation -->
+                                <div class="option-group" id="orientation-group">
+                                    <label for="page-orientation">Orientation</label>
+                                    <select id="page-orientation">
+                                        <option value="auto" selected>Auto (Based on image shapes)</option>
+                                        <option value="portrait">Portrait (Vertical)</option>
+                                        <option value="landscape">Landscape (Horizontal)</option>
+                                    </select>
+                                </div>
+
+                                <!-- Margin Sizing -->
+                                <div class="option-group">
+                                    <label for="page-margin">Page Margins</label>
+                                    <select id="page-margin">
+                                        <option value="none" selected>No Margins (Full-bleed)</option>
+                                        <option value="small">Small Margin (15px border)</option>
+                                        <option value="medium">Medium Margin (30px border)</option>
+                                    </select>
+                                </div>
+
+                                <!-- Progress indicator (hidden by default) -->
+                                <div class="conversion-progress" id="conversion-progress" style="display: none;">
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar" id="progress-bar"></div>
+                                    </div>
+                                    <span class="progress-text" id="progress-text">Processing pages...</span>
+                                </div>
+
+                                <!-- Action Buttons -->
+                                <div class="controls-actions">
+                                    <button type="button" class="btn-primary" id="convert-btn">Generate PDF</button>
+                                    <button type="button" class="btn-secondary" id="reset-btn">Clear All</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Result Panel (hidden by default) -->
+                    <div class="result-panel" id="result-panel" style="display: none;">
+                        <div class="result-card">
+                            <span class="result-success-icon">✓</span>
+                            <h3>PDF Generated Successfully!</h3>
+                            <p class="result-details">Your document is ready. Click the download button below to save it.</p>
+                            <div class="result-actions">
+                                <button type="button" id="download-btn" class="btn-primary btn-download">Download PDF</button>
+                                <button type="button" class="btn-secondary" id="convert-another-btn">Convert Another</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Content Section -->
+        <section class="seo-content">
+            <div class="container">
+                <div class="seo-block">
+                    <h2>How Does the Secure Image to PDF Converter Work?</h2>
+                    <p>Unlike third-party conversion portals that force you to upload image documents to their remote backend systems (raising immediate privacy and security concerns), our tool operates with absolute privacy. Your files are processed securely on your device, compiling your images into a single PDF document instantly and safely.</p>
+                    <p>This serverless architecture ensures that your personal documents, IDs, photos, and scanner pages are 100% private. It protects against data leaks, guarantees instant page compilations, and runs completely offline.</p>
+                </div>
+
+                <div class="seo-block">
+                    <h2>The Key Settings for Compiling Image PDFs</h2>
+                    <p>Creating a structured PDF from miscellaneous images is simple when using our options:</p>
+                    <ul>
+                        <li><strong>Fit Image (Auto Page Sizing):</strong> Each page in the PDF matches the exact aspect ratio and dimensions of its corresponding image. This avoids white borders around horizontal images when compiling them together with vertical documents.</li>
+                        <li><strong>Standard Sized Pages (A4 & US Letter):</strong> Standardizes every page to international document boundaries. This is ideal if you plan to print the compiled PDF.</li>
+                        <li><strong>Auto Orientation:</strong> Intelligently rotates individual pages to portrait or landscape depending on whether the source photo is tall or wide.</li>
+                        <li><strong>Margining:</strong> Controls border spacings. "No Margins" is best for pictures and slides, while "Small" or "Medium" margins create a clean document envelope suited for scans and receipts.</li>
+                    </ul>
+                </div>
+
+                <div class="seo-block faq-section">
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">How do I reorder the pages?</h3>
+                        <p class="faq-answer">Once your images are uploaded, they appear in a preview list. Use the "Move Up" (▲) and "Move Down" (▼) buttons on each image card to arrange them in the exact order you want them to appear in the PDF document.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Is there a limit on the number of images I can compile?</h3>
+                        <p class="faq-answer">No. Since the processing runs entirely inside your browser's execution engine, there are no software limits. The capability only depends on your device's memory. For merging very large batches (e.g. 50+ high-res scanner pages), desktop browsers are recommended over mobile devices.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Can I compile transparent PNG or WebP images?</h3>
+                        <p class="faq-answer">Yes. Transparent pixels are flattened onto a white background to ensure elements like transparent vector logos remain fully visible and readable when rendered in standard PDF viewers.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Can I use this tool offline?</h3>
+                        <p class="faq-answer">Yes. Once this page is loaded, the entire script library is cached in your browser. You can disconnect from the internet and continue selecting images and compiling PDFs safely offline.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 ToolCanvas. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+                <a href="../privacy-policy.html">Privacy Policy</a>
+                <a href="../terms.html">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

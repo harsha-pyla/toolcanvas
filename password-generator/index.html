@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Random Password Generator — Secure Passphrase Creator | ToolCanvas</title>
+    <meta name="description" content="Create strong, cryptographically secure random passwords or memorable passphrases locally in your browser. Customize length, word separators, and character rules. 100% secure and private.">
+    <meta name="keywords" content="password generator, random password, secure password, passphrase creator, password strength, hash generator, random string, offline password creator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolcanvas.online/password-generator/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Free Secure Password Generator & Passphrase Creator | ToolCanvas">
+    <meta property="og:description" content="Generate highly secure random passwords or memorably strong passphrases locally in your browser. Custom character sets, word sizes, and real-time entropy calculation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolcanvas.online/password-generator/">
+    <meta property="og:site_name" content="ToolCanvas">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Secure Password Generator",
+        "description": "Generate cryptographically secure passwords and memorable passphrases locally. Calculate entropy, estimate crack times, and maintain password history safely in the browser.",
+        "url": "https://toolcanvas.online/password-generator/",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "ToolCanvas",
+            "url": "https://toolcanvas.online"
+        }
+    }
+    </script>
+    <link rel="icon" type="image/png" href="../logo/logo.png">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <nav class="site-nav">
+                <div class="nav-item">
+                    <a href="../index.html">Home</a>
+                </div>
+                <div class="nav-item">
+                    <a href="../link-in-bio/">Link in Bio</a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="../index.html#random-tools" class="active">Random</a>
+                    <div class="dropdown-menu">
+                        <a href="../place-name-generator/">Place Name Generator</a>
+                        <a href="index.html" class="active">Password Generator</a>
+                        <a href="../string-randomizer/">String Randomizer</a>
+                        <a href="../random-business-name-generator/">Business Name Generator</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="../index.html#image-tools">Image Tools</a>
+                    <div class="dropdown-menu">
+                        <a href="../image-to-jpg/">Image to JPG</a>
+                        <a href="../image-to-png/">Image to PNG</a>
+                        <a href="../image-to-pdf/">Image to PDF</a>
+                        <a href="../image-to-webp/">Image to WebP</a>
+                        <a href="../image-to-text/">Image to Text (OCR)</a>
+                        <a href="../image-resizer/">Image Resizer</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="../index.html#social-media-tools">Social Media</a>
+                    <div class="dropdown-menu">
+                        <a href="../instagram-profile-preview/">Instagram Preview</a>
+                        <a href="../linkedin-profile-preview/">LinkedIn Preview</a>
+                        <a href="../social-media-card/">Social Media Card</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="../index.html#resume-tools">Resume Builder</a>
+                    <div class="dropdown-menu">
+                        <a href="../experience-templates/">Experience Templates</a>
+                        <a href="../fresher-templates/">Fresher Templates</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="../index.html#canva-workspace">Canva Workspace</a>
+                    <div class="dropdown-menu">
+                        <a href="../whiteboard/">Whiteboard</a>
+                        <a href="../blackboard/">Blackboard</a>
+                        <a href="../notebook/">Notebook</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="../index.html#video-tools">Video</a>
+                    <div class="dropdown-menu">
+                        <a href="../video-metadata-viewer/">Video Metadata Viewer</a>
+                        <a href="../thumbnail-generator/">Thumbnail Generator</a>
+                        <a href="../video-screenshot-tool/">Video Screenshot Tool</a>
+                        <a href="../video-to-audio-converter/">Video to Audio Converter</a>
+                        <a href="../video-trimmer/">Video Trimmer</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="../about.html">About</a>
+                </div>
+                <div class="nav-item">
+                    <a href="../contact.html">Contact</a>
+                </div>
+            </nav>
+            <div class="logo-search-container">
+                <a href="../index.html" class="site-logo">Tool<span>Canvas</span></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <div class="container">
+                <a href="../index.html">Home</a>
+                <span class="separator">›</span>
+                <span class="current">Password Generator</span>
+            </div>
+        </nav>
+
+        <!-- Tool Section -->
+        <section class="tool-section">
+            <div class="container">
+                <div class="tool-header">
+                    <h1>Free Secure Password Generator</h1>
+                    <p class="tool-intro">Create strong, customized passwords and memorable passphrases securely in your browser. All generation is done securely on your device using secure random number generators—no passwords are ever sent to a server.</p>
+                </div>
+
+                <div class="generator-card">
+                    <!-- Password Result Area -->
+                    <div class="result-display-wrapper">
+                        <div class="result-box">
+                            <input type="text" id="password-display" readonly value="Loading..." aria-label="Generated Password">
+                            <div class="result-box-actions">
+                                <button type="button" class="btn-icon" id="toggle-visibility-btn" title="Toggle visibility">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" class="eye-open-icon"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/></svg>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" class="eye-closed-icon" style="display: none;"><path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.82l2.92 2.92c1.51-1.2 2.7-2.78 3.44-4.74-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.17c0-1.66-1.34-3-3-3l-.17.02z" fill="currentColor"/></svg>
+                                </button>
+                                <button type="button" class="btn-icon" id="copy-password-btn" title="Copy password">
+                                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" fill="currentColor"/></svg>
+                                    <span class="tooltip" id="copy-tooltip">Copied!</span>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-primary" id="generate-btn">
+                            Generate New
+                        </button>
+                    </div>
+
+                    <!-- Strength Indicator -->
+                    <div class="strength-indicator-wrapper">
+                        <div class="strength-bar-container">
+                            <div class="strength-bar" id="strength-bar"></div>
+                        </div>
+                        <div class="strength-meta">
+                            <span class="strength-text" id="strength-text">Checking...</span>
+                            <span class="entropy-text" id="entropy-text">0 bits of entropy</span>
+                        </div>
+                    </div>
+
+                    <!-- Configuration Panels -->
+                    <div class="config-tabs">
+                        <button type="button" class="tab-btn active" id="tab-standard">Standard Password</button>
+                        <button type="button" class="tab-btn" id="tab-passphrase">Memorable Passphrase</button>
+                    </div>
+
+                    <div class="config-content">
+                        <!-- Standard Password Options -->
+                        <div class="tab-panel" id="panel-standard">
+                            <div class="option-grid">
+                                <div class="option-slider-group">
+                                    <div class="slider-header">
+                                        <label for="password-length">Password Length</label>
+                                        <span class="slider-value" id="length-val">16</span>
+                                    </div>
+                                    <input type="range" id="password-length" min="4" max="64" value="16" step="1">
+                                </div>
+
+                                <div class="option-checkbox-group">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="chk-uppercase" checked>
+                                        <span class="checkmark"></span>
+                                        Uppercase Letters (A-Z)
+                                    </label>
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="chk-lowercase" checked>
+                                        <span class="checkmark"></span>
+                                        Lowercase Letters (a-z)
+                                    </label>
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="chk-numbers" checked>
+                                        <span class="checkmark"></span>
+                                        Numbers (0-9)
+                                    </label>
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="chk-symbols" checked>
+                                        <span class="checkmark"></span>
+                                        Symbols (!@#$%^&*)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Memorable Passphrase Options -->
+                        <div class="tab-panel" id="panel-passphrase" style="display: none;">
+                            <div class="option-grid">
+                                <div class="option-slider-group">
+                                    <div class="slider-header">
+                                        <label for="passphrase-words">Number of Words</label>
+                                        <span class="slider-value" id="words-val">4</span>
+                                    </div>
+                                    <input type="range" id="passphrase-words" min="2" max="10" value="4" step="1">
+                                </div>
+
+                                <div class="option-select-group">
+                                    <div class="field-item">
+                                        <label for="passphrase-separator">Word Separator</label>
+                                        <select id="passphrase-separator">
+                                            <option value="-">Hyphen (-)</option>
+                                            <option value="_">Underscore (_)</option>
+                                            <option value=" ">Space ( )</option>
+                                            <option value=".">Dot (.)</option>
+                                            <option value="">None</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="field-item">
+                                        <label for="passphrase-case">Word Casing</label>
+                                        <select id="passphrase-case">
+                                            <option value="lowercase" selected>lowercase</option>
+                                            <option value="uppercase">UPPERCASE</option>
+                                            <option value="capitalize">Capitalize</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Shared Advanced Exclusions -->
+                        <div class="advanced-section">
+                            <h4>Advanced Exclusions</h4>
+                            <div class="option-checkbox-group inline-checkboxes">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="chk-exclude-ambiguous">
+                                    <span class="checkmark"></span>
+                                    Exclude Ambiguous Characters (e.g. <code>I, l, 1, O, 0</code>)
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="chk-easy-say">
+                                    <span class="checkmark"></span>
+                                    Easy to Say (Avoid numbers and symbols)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Session History -->
+                    <div class="history-section">
+                        <div class="history-header">
+                            <h3>Session History</h3>
+                            <button type="button" class="btn-text-danger" id="clear-history-btn">Clear History</button>
+                        </div>
+                        <ul class="history-list" id="history-list">
+                            <li class="history-empty">No passwords generated in this session yet.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Content Section -->
+        <section class="seo-content">
+            <div class="container">
+                <div class="seo-block">
+                    <h2>How Does the Secure Password Generator Work?</h2>
+                    <p>Unlike traditional online password generators that transmit data to web servers, our generator operates with complete privacy. When you click "Generate New," the tool uses a secure random number generation method directly on your device.</p>
+                    <p>By leveraging secure entropy sources on your device, we obtain unpredictable seed values that ensure the produced strings are mathematically unguessable. Since zero data is transmitted over the internet, your credentials remain secure and invisible to any third parties.</p>
+                </div>
+
+                <div class="seo-block">
+                    <h2>Password vs. Memorable Passphrase: Which is Better?</h2>
+                    <p>There are two primary paradigms for creating credentials today:</p>
+                    <ul>
+                        <li><strong>Standard Passwords:</strong> Made of randomized strings of upper and lowercase letters, numbers, and symbols. They provide high security in fewer characters (e.g., 16 characters) and are ideal for software integrations, database keys, and configuration vaults. However, they are highly difficult for humans to memorize.</li>
+                        <li><strong>Memorable Passphrases:</strong> Formed by chaining together random dictionary words (e.g., <code>correct-horse-battery-staple</code>). They are extremely long, which gives them massive cryptographic resistance to dictionary attacks, yet they are simple for a human to visualize and remember. They are highly recommended for master passwords, main computer lock screens, and email accounts.</li>
+                    </ul>
+                </div>
+
+                <div class="seo-block">
+                    <h2>Understanding Password Entropy (Bits of Security)</h2>
+                    <p>Password entropy measures the cryptographic strength of a password based on its length and the size of the character pool it is selected from. It is measured in bits:</p>
+                    <ul>
+                        <li><strong>Under 50 bits:</strong> Weak. Can be cracked via quick brute force.</li>
+                        <li><strong>50 to 79 bits:</strong> Medium. Reasonable security for temporary accounts.</li>
+                        <li><strong>80 to 119 bits:</strong> Strong. Extremely difficult to crack with modern supercomputers.</li>
+                        <li><strong>120+ bits:</strong> Very Strong. Safe from any brute force or dictionary attack for centuries.</li>
+                    </ul>
+                    <p>The math formula for entropy is: \(E = L \times \log_2(R)\) where \(L\) is the length of the password, and \(R\) is the size of the pool of possible characters (for example, a standard English lowercase + uppercase + number + symbol pool size is 94 characters).</p>
+                </div>
+
+                <div class="seo-block faq-section">
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Are my passwords sent to any server?</h3>
+                        <p class="faq-answer">No. All calculations are executed on your device's browser sandbox. The generator can run entirely offline without internet connections. We do not store, view, or log any credentials you generate.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">How does passphrase generation work?</h3>
+                        <p class="faq-answer">We maintain a static dictionary of over 1,000 highly recognizable, distinct English nouns and adjectives. The generator randomly draws words from this array using secure indexes, concatenating them using your selected divider (like a hyphen or dot).</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">What makes a password "cryptographically secure"?</h3>
+                        <p class="faq-answer">Standard computer programs generate numbers using algorithms that repeat eventually. A cryptographically secure generator (CSPRNG) uses hardware entropy sources (like electrical thermal noise on your processor) to ensure that the outputs cannot be modeled or guessed by analyzing previous outputs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 ToolCanvas. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+                <a href="../privacy-policy.html">Privacy Policy</a>
+                <a href="../terms.html">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

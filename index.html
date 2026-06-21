@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolCanvas — Free Online Tools for Everyday Tasks</title>
+  <meta name="description" content="ToolCanvas offers a growing collection of free online tools — from link-in-bio generators to image converters and resume builders. Simple, fast, and no signup required.">
+  <meta name="keywords" content="free online tools, link in bio, image converter, resume builder, social media tools, place name generator">
+  <meta name="author" content="ToolCanvas">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://toolcanvas.online/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ToolCanvas — Free Online Tools for Everyday Tasks">
+  <meta property="og:description" content="Simple, free secure tools for everyday digital tasks. No downloads, no signups. Just open and use.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolcanvas.online/">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ToolCanvas",
+    "url": "https://toolcanvas.online",
+    "description": "A collection of free online tools for everyday digital tasks.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://toolcanvas.online/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+    <link rel="icon" type="image/png" href="logo/logo.png">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="site-nav">
+        <div class="nav-item">
+          <a href="index.html" class="active">Home</a>
+        </div>
+        <div class="nav-item">
+          <a href="link-in-bio/">Link in Bio</a>
+        </div>
+        <div class="nav-item dropdown">
+          <a href="#random-tools">Random</a>
+          <div class="dropdown-menu">
+            <a href="place-name-generator/">Place Name Generator</a>
+            <a href="password-generator/">Password Generator</a>
+            <a href="string-randomizer/">String Randomizer</a>
+            <a href="random-business-name-generator/">Business Name Generator</a>
+          </div>
+        </div>
+        <div class="nav-item dropdown">
+          <a href="#image-tools">Image Tools</a>
+          <div class="dropdown-menu">
+            <a href="image-to-jpg/">Image to JPG</a>
+            <a href="image-to-png/">Image to PNG</a>
+            <a href="image-to-pdf/">Image to PDF</a>
+            <a href="image-to-webp/">Image to WebP</a>
+            <a href="image-to-text/">Image to Text (OCR)</a>
+            <a href="image-resizer/">Image Resizer</a>
+          </div>
+        </div>
+        <div class="nav-item dropdown">
+          <a href="#social-media-tools">Social Media</a>
+          <div class="dropdown-menu">
+            <a href="instagram-profile-preview/">Instagram Preview</a>
+            <a href="linkedin-profile-preview/">LinkedIn Preview</a>
+            <a href="social-media-card/">Social Media Card</a>
+          </div>
+        </div>
+        <div class="nav-item dropdown">
+          <a href="#resume-tools">Resume Builder</a>
+          <div class="dropdown-menu">
+            <a href="experience-templates/">Experience Templates</a>
+            <a href="fresher-templates/">Fresher Templates</a>
+          </div>
+        </div>
+        <div class="nav-item dropdown">
+          <a href="#canva-workspace">Canva Workspace</a>
+          <div class="dropdown-menu">
+            <a href="whiteboard/">Whiteboard</a>
+            <a href="blackboard/">Blackboard</a>
+            <a href="notebook/">Notebook</a>
+          </div>
+        </div>
+        <div class="nav-item dropdown">
+          <a href="index.html#video-tools">Video</a>
+          <div class="dropdown-menu">
+            <a href="video-metadata-viewer/">Video Metadata Viewer</a>
+            <a href="thumbnail-generator/">Thumbnail Generator</a>
+            <a href="video-screenshot-tool/">Video Screenshot Tool</a>
+            <a href="video-to-audio-converter/">Video to Audio Converter</a>
+            <a href="video-trimmer/">Video Trimmer</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="about.html">About</a>
+        </div>
+        <div class="nav-item">
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+      <div class="logo-search-container">
+        <a href="index.html" class="site-logo">Tool<span>Canvas</span></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="site-main">
+    <div class="container">
+
+      <!-- Intro & Widget Section -->
+      <section class="intro-section">
+        <div class="intro-text">
+          <h2>What is ToolCanvas?</h2>
+          <p>ToolCanvas is a comprehensive suite of free, secure, and private online utility tools designed to simplify your daily digital tasks without any signups or registration. It features a wide range of web tools, converters, and creative generators built with clean, premium designs for an optimal user experience.</p>
+          <h2>Why are our tools secure and private?</h2>
+          <p>Perhaps you have wondered how web utilities can process your files, generate pages, and formats without sending them to a third-party server. On ToolCanvas, your data is processed directly on your device. This means your personal information, links, and documents never leave your device or get sent to remote servers.</p>
+          <p>ToolCanvas offers a collection of free, secure, and private tools. We aim to provide simple, fast services with clean designs and no signup requirements. The service has been operational since 2026 and is built to remain fast and accessible for all users.</p>
+        </div>
+        
+        <!-- Right Column Generator Widget -->
+        <div class="widget-container">
+          <div class="place-widget">
+            <div class="place-widget__header">Random Place Name Generator</div>
+            <div class="place-widget__body">
+              <div class="place-widget__row">
+                <label for="place-category">Category:</label>
+                <select id="place-category">
+                  <option value="cities">Cities</option>
+                  <option value="countries">Countries</option>
+                  <option value="landmarks">Landmarks</option>
+                  <option value="nature">Nature Places</option>
+                  <option value="fantasy">Fantasy Names</option>
+                </select>
+              </div>
+              <div class="place-widget__row">
+                <label for="place-count">Count:</label>
+                <input type="number" id="place-count" min="1" max="10" value="1">
+              </div>
+              <div class="place-widget__button-row">
+                <button id="generate-btn">Generate</button>
+              </div>
+              <div class="place-widget__result-box">
+                <div id="generator-result">Generating...</div>
+              </div>
+              <div class="place-widget__footer">
+                Powered by <a href="index.html">ToolCanvas</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr class="ruler">
+
+      <!-- Web & List Tools -->
+      <div class="category-block" id="web-tools">
+        <span class="service-badge service-badge--free">Free tools</span>
+        <h3 class="category-heading">Web & List Tools</h3>
+        <ul class="newspaper-list">
+          <li>
+            <a href="link-in-bio/">Link in Bio Generator</a> is a secure builder that lets you create a clean, shareable landing page for your social profiles in seconds.
+          </li>
+        </ul>
+      </div>
+
+      <hr class="ruler">
+
+      <!-- Random Tools -->
+      <div class="category-block" id="random-tools">
+        <span class="service-badge service-badge--free">Free tools</span>
+        <h3 class="category-heading">Random Tools</h3>
+        <ul class="newspaper-list">
+          <li>
+            <a href="place-name-generator/">Random Place Name Generator</a> will instantly generate random city, country, landmark, nature, or fantasy names for creative writing, planning, or brainstorming.
+          </li>
+          <li>
+            <a href="password-generator/">Password Generator</a> will create strong, secure random passwords of customizable length.
+          </li>
+          <li>
+            <a href="string-randomizer/">String Randomizer</a> will take a list of items and randomly shuffle, sort, or select from them.
+          </li>
+          <li>
+            <a href="random-business-name-generator/">Business Name Generator</a> will instantly generate professional, unique business name ideas and slogans for your company or startup.
+          </li>
+        </ul>
+      </div>
+      <hr class="ruler">
+
+      <!-- Image & File Tools -->
+      <div class="category-block" id="image-tools">
+        <span class="service-badge service-badge--free">Free tools</span>
+        <h3 class="category-heading">Image & File Tools</h3>
+        <ul class="newspaper-list">
+          <li>
+            <a href="image-to-jpg/">Image to JPG</a> will convert PNG, WebP, or other formats to JPG images without server upload.
+          </li>
+          <li>
+            <a href="image-to-png/">Image to PNG</a> will convert files to PNG with full transparency support.
+          </li>
+          <li>
+            <a href="image-to-pdf/">Image to PDF</a> will compile images into a single, downloadable PDF document.
+          </li>
+          <li>
+            <a href="image-to-webp/">Image to WebP</a> will compress and convert images to WebP format for fast web delivery.
+          </li>
+          <li>
+            <a href="image-to-text/">Image to Text (OCR)</a> will run optical character recognition to extract readable text from images.
+          </li>
+          <li>
+            <a href="image-resizer/">Image Resizer</a> will resize and crop images to exact aspect ratios or dimensions.
+          </li>
+        </ul>
+      </div>
+      <hr class="ruler">
+
+      <!-- Social Media Tools -->
+      <div class="category-block" id="social-media-tools">
+        <span class="service-badge service-badge--free">Free tools</span>
+        <h3 class="category-heading">Social Media Tools</h3>
+        <ul class="newspaper-list">
+          <li>
+            <a href="instagram-profile-preview/">Instagram Profile Preview</a> lets you lay out, arrange, and preview your grid feed, avatar, story highlights, bio, and stats in light and dark modes.
+          </li>
+          <li>
+            <a href="linkedin-profile-preview/">LinkedIn Profile Preview</a> lets you draft, organize, and preview your professional cover banner, avatar, premium badge, summary, experience lists, and education records in light and dark modes.
+          </li>
+          <li>
+            <a href="social-media-card/">Social Media Card</a> lets you design custom digital business cards with profile photos, Silver/Gold/Custom themes, links, and scan-to-connect QR codes.
+          </li>
+        </ul>
+      </div>
+      <hr class="ruler">
+
+      <!-- Resume Tools -->
+      <div class="category-block" id="resume-tools">
+        <span class="service-badge service-badge--free">Free tools</span>
+        <h3 class="category-heading">Resume Tools</h3>
+        <ul class="newspaper-list">
+          <li>
+            <a href="experience-templates/">Experience Templates</a> lets you choose from chronological & functional layouts designed for candidates with work experience.
+          </li>
+          <li>
+            <a href="fresher-templates/">Fresher Templates</a> features clean resume layouts tailored for fresh graduates and entry-level candidates.
+          </li>
+        </ul>
+      </div>
+      <hr class="ruler">
+
+      <!-- Canva Workspace -->
+      <div class="category-block" id="canva-workspace">
+        <span class="service-badge service-badge--free">Free tools</span>
+        <h3 class="category-heading">Canva Workspace</h3>
+        <ul class="newspaper-list">
+          <li>
+            <a href="whiteboard/">Whiteboard</a> features a private, zoomable canvas for sketching, brainstorming, and planning layouts.
+          </li>
+          <li>
+            <a href="blackboard/">Blackboard</a> provides a dark chalkboard canvas ideal for sketching with pastel chalk colors and drafting designs.
+          </li>
+          <li>
+            <a href="notebook/">Notebook</a> provides ruled and grid layout pages for typing notes, formatting text documents, and organizing thoughts.
+          </li>
+        </ul>
+      </div>
+      <hr class="ruler">
+
+      <!-- Video Tools -->
+      <div class="category-block" id="video-tools">
+        <span class="service-badge service-badge--free">Free tools</span>
+        <h3 class="category-heading">Video Tools</h3>
+        <ul class="newspaper-list">
+          <li>
+            <a href="video-metadata-viewer/">Video Metadata Viewer</a> extracts and displays detailed resolution, aspect ratio, duration, and file metadata from your video files.
+          </li>
+          <li>
+            <a href="thumbnail-generator/">Thumbnail Generator</a> lets you capture video frames, upload custom cover images, add text overlays, and generate high-quality thumbnails.
+          </li>
+          <li>
+            <a href="video-screenshot-tool/">Video Screenshot Tool</a> captures high-resolution snapshot frames from any timestamp in your video.
+          </li>
+          <li>
+            <a href="video-to-audio-converter/">Video to Audio Converter</a> extracts audio tracks from video files and saves them in WAV format.
+          </li>
+          <li>
+            <a href="video-trimmer/">Video Trimmer</a> cuts and trims video files secure-side to keep only the sections you need.
+          </li>
+        </ul>
+      </div>
+      <hr class="ruler">
+
+<!-- Learn Section -->
+      <div class="category-block">
+        <h3 class="category-heading" style="color: #000000;">Learn about ToolCanvas</h3>
+        <ul class="newspaper-list">
+          <li>
+            <a href="about.html">About ToolCanvas</a> explains our mission and how browser-side tools protect your data.
+          </li>
+          <li>
+            <a href="privacy-policy.html">Privacy Policy</a> details our strict stance on user privacy and data collection.
+          </li>
+          <li>
+            <a href="terms.html">Terms of Use</a> outlines the general rules and terms for using our website.
+          </li>
+        </ul>
+      </div>
+      <hr class="ruler">
+
+      <!-- Help / Contact Section -->
+      <div class="category-block">
+        <h3 class="category-heading" style="color: #000000;">Contact and Help</h3>
+        <ul class="newspaper-list">
+          <li>
+            <a href="contact.html">Contact Details</a> lets you get in touch with us for support or tool suggestions.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Ad Placeholder (hidden until AdSense active) -->
+      <div class="ad-space" aria-hidden="true">
+        <!-- AdSense ad unit will go here -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 ToolCanvas. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/place-generator.js"></script>
+</body>
+</html>

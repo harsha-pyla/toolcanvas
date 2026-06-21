@@ -1,0 +1,118 @@
+/* ===================================================
+   ToolCanvas — Template 3: Slate Tech Styles
+   =================================================== */
+
+.resume-sheet {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #0f172a;
+    line-height: 1.4;
+}
+
+.font-mono {
+    font-family: 'JetBrains Mono', Consolas, Monaco, monospace;
+}
+
+/* Tech Header Layout */
+.header-tech {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #334155;
+    padding-bottom: 6px;
+}
+
+.tech-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+@media (max-width: 600px) {
+    .tech-header-top {
+        flex-direction: column;
+    }
+}
+
+.header-tech h1 {
+    font-size: 22pt;
+    font-weight: 700;
+    color: #1e293b;
+    letter-spacing: -0.01em;
+}
+
+.tech-header-title {
+    font-size: 11pt;
+    font-weight: 500;
+    color: #475569;
+}
+
+.tech-contact-details {
+    font-size: 8.5pt;
+    color: #475569;
+    margin-top: 4px;
+}
+
+/* Section Title styling */
+.resume-section-title {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #334155;
+    border-bottom: 2.5px solid #334155;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* Summary paragraph */
+.summary-paragraph {
+    font-size: 9pt;
+    color: #334155;
+    text-align: justify;
+}
+
+/* Job & Education List items */
+.item-header-row {
+    font-size: 9.5pt;
+    font-weight: 700;
+}
+
+.item-subheader-row {
+    font-size: 9.2pt;
+    color: #475569;
+    margin-bottom: 2px;
+}
+
+.item-dates, .item-location {
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 8.5pt;
+    font-weight: 500;
+}
+
+.item-bullets {
+    margin-left: 14px;
+}
+
+.item-bullets li {
+    font-size: 8.8pt;
+    color: #1e293b;
+    margin-bottom: 2px;
+}
+
+/* Monospace skill tag badges */
+.tech-skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 8pt;
+    color: #0f172a;
+}
+
+.tech-skills-tags span {
+    display: inline-block;
+    padding: 2px 6px;
+    border: 1px solid #cbd5e1;
+    border-radius: 3px;
+    background-color: #f8fafc;
+    margin-right: 2px;
+    margin-bottom: 2px;
+}

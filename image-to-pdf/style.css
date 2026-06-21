@@ -1,0 +1,425 @@
+/* =========================================
+   ToolCanvas — Image to PDF specific styles
+   ========================================= */
+
+/* Converter Card */
+.converter-card {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+/* Drag and Drop Zone */
+.drop-zone {
+    border: 2px dashed #a5b4fc;
+    background-color: #f8fafc;
+    border-radius: 4px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.drop-zone:hover,
+.drop-zone.dragover {
+    background-color: #eef2f6;
+    border-color: #4f46e5;
+}
+
+.drop-zone__inner {
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.drop-zone__icon {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.drop-zone__text {
+    font-size: 14px;
+    color: #334155;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.drop-zone__link {
+    color: #4f46e5;
+    text-decoration: underline;
+}
+
+.drop-zone__formats {
+    font-size: 11px;
+    color: #64748b;
+    font-style: italic;
+}
+
+/* Workspace Grid */
+.workspace-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 30px;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .workspace-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Workspace Left: Image list panel */
+.workspace-preview-panel {
+    display: flex;
+    flex-direction: column;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.workspace-preview-panel h3 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #1e293b;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.image-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 380px;
+    overflow-y: auto;
+    padding-right: 4px;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+/* Scrollbars for list */
+.image-list-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.image-list-container::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 2px;
+}
+
+/* Image List Card */
+.image-card {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    padding: 8px 12px;
+    gap: 12px;
+    transition: border-color 0.15s;
+}
+
+.image-card:hover {
+    border-color: #94a3b8;
+}
+
+.image-card__index {
+    font-size: 11px;
+    font-weight: bold;
+    color: #94a3b8;
+    width: 18px;
+    text-align: center;
+}
+
+.image-card__thumb {
+    width: 50px;
+    height: 50px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.image-card__thumb img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.image-card__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* Ensures text truncation works */
+}
+
+.image-card__name {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #1e293b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.image-card__meta {
+    font-size: 11px;
+    color: #64748b;
+}
+
+/* Image Card actions (ordering & delete) */
+.image-card__actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.action-btn {
+    background: #ffffff;
+    border: 1px solid #999999;
+    font-size: 11px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    font-family: inherit;
+    transition: background-color 0.15s, border-color 0.15s;
+    color: #333333;
+}
+
+.action-btn:hover:not(:disabled) {
+    background-color: #f1f5f9;
+    border-color: #666666;
+}
+
+.action-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.action-btn--delete {
+    color: #ef4444;
+    border-color: #fecaca;
+    background-color: #fef2f2;
+}
+
+.action-btn--delete:hover {
+    background-color: #fee2e2 !important;
+    border-color: #fca5a5 !important;
+}
+
+/* Add more images button */
+.add-more-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 8px;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: bold;
+    color: #4f46e5;
+    background: none;
+    border: 1px dashed #c7d2fe;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.15s, background-color 0.15s;
+}
+
+.add-more-btn:hover {
+    border-color: #4f46e5;
+    background-color: #eef2f6;
+}
+
+.add-more-btn span {
+    font-size: 14px;
+}
+
+/* Workspace Right: Controls Panel */
+.workspace-controls-panel h3 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #1e293b;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.option-group {
+    margin-bottom: 20px;
+}
+
+.option-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.option-group select {
+    width: 100%;
+    border: 1px solid #999999;
+    padding: 6px 8px;
+    font-size: 12.5px;
+    outline: none;
+    border-radius: 2px;
+    background-color: #ffffff;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.option-group select:focus {
+    border-color: #4f46e5;
+}
+
+.option-hint {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+/* Action Buttons */
+.controls-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-primary,
+.btn-secondary {
+    font-family: inherit;
+    font-size: 13px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.btn-primary {
+    background-color: #224499;
+    border: 1px solid #224499;
+    color: #ffffff;
+    flex: 2;
+}
+
+.btn-primary:hover {
+    background-color: #173070;
+    border-color: #173070;
+    text-decoration: none !important;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    border: 1px solid #999999;
+    color: #333333;
+    flex: 1;
+}
+
+.btn-secondary:hover {
+    background-color: #f1f5f9;
+    border-color: #666666;
+}
+
+/* Progress Indicator */
+.conversion-progress {
+    margin-bottom: 15px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background-color: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #224499;
+    border-radius: 3px;
+    transition: width 0.15s ease;
+}
+
+.progress-text {
+    font-size: 11px;
+    color: #475569;
+    display: block;
+    text-align: center;
+}
+
+/* Result Panel */
+.result-panel {
+    margin-top: 15px;
+    border-top: 1px dashed #cbd5e1;
+    padding-top: 20px;
+}
+
+.result-card {
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+}
+
+.result-success-icon {
+    font-size: 32px;
+    color: #16a34a;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.result-card h3 {
+    font-size: 15px;
+    color: #15803d;
+    margin-bottom: 8px;
+    margin-top: 0;
+}
+
+.result-details {
+    font-size: 13px;
+    color: #475569;
+    margin-bottom: 15px;
+}
+
+.result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-download {
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+}

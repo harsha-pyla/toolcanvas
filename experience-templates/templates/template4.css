@@ -1,0 +1,98 @@
+/* ===================================================
+   ToolCanvas — Template 4: Simple Elegant Styles
+   =================================================== */
+
+.resume-sheet {
+    font-family: "Garamond", "EB Garamond", Georgia, serif;
+    color: #1a1a1a;
+    line-height: 1.45;
+}
+
+/* Elegant Centered Header */
+.header-elegant {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.header-elegant h1 {
+    font-size: 24pt;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 2px;
+}
+
+.elegant-header-title {
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #555555;
+    margin-bottom: 4px;
+}
+
+.elegant-contact-details {
+    font-size: 9pt;
+    color: #555555;
+    letter-spacing: 0.02em;
+}
+
+.header-rule {
+    border: 0;
+    border-top: 1px solid #444444;
+    margin-top: 8px;
+    margin-bottom: 2px;
+}
+
+/* Section Title styling: top and bottom borders, centered uppercase */
+.resume-section-title {
+    font-family: "Garamond", "EB Garamond", Georgia, serif;
+    font-size: 10pt;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #222222;
+    border: none;
+    border-top: 1px solid #aaaaaa;
+    border-bottom: 1px solid #aaaaaa;
+    padding: 3px 0;
+    margin-bottom: 10px;
+    margin-top: 16px;
+}
+
+/* Summary paragraph */
+.summary-paragraph {
+    font-size: 9.5pt;
+    text-align: justify;
+    color: #222222;
+}
+
+/* Job & Education details */
+.item-header-row {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.item-subheader-row {
+    font-size: 9.5pt;
+    color: #444444;
+    margin-bottom: 3px;
+}
+
+.item-bullets {
+    margin-left: 18px;
+}
+
+.item-bullets li {
+    font-size: 9pt;
+    color: #222222;
+    margin-bottom: 2px;
+    text-align: justify;
+}
+
+.skills-paragraph {
+    font-size: 9pt;
+    text-align: center;
+    line-height: 1.4;
+}

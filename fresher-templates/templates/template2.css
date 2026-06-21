@@ -1,0 +1,86 @@
+/* ===================================================
+   ToolCanvas — Template 2: Modern Professional Styles
+   =================================================== */
+
+.resume-sheet {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1f2937;
+    line-height: 1.4;
+}
+
+/* Left-aligned Header Layout */
+.header-modern {
+    border-bottom: 2.5px solid #1d4ed8;
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+}
+
+.header-modern h1 {
+    font-size: 22pt;
+    font-weight: 700;
+    color: #1e3a8a;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+
+.modern-header-title {
+    font-size: 11pt;
+    font-weight: 500;
+    color: #4b5563;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.modern-contact-details {
+    font-size: 8.5pt;
+    color: #4b5563;
+    margin-top: 4px;
+    font-weight: 400;
+}
+
+/* Section Title styling */
+.resume-section-title {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #1e3a8a;
+    border-bottom: 1.5px solid #1d4ed8;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* Summary text */
+.summary-paragraph {
+    font-size: 9pt;
+    color: #374151;
+    text-align: justify;
+}
+
+/* Job, Project, Activities & Education list */
+.item-header-row {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: #111827;
+}
+
+.item-subheader-row {
+    font-size: 9pt;
+    color: #4b5563;
+    margin-bottom: 2px;
+}
+
+.item-bullets {
+    margin-left: 14px;
+}
+
+.item-bullets li {
+    font-size: 8.5pt;
+    color: #374151;
+    margin-bottom: 1.5px;
+}
+
+.skills-paragraph {
+    font-size: 9pt;
+    color: #374151;
+}

@@ -1,0 +1,224 @@
+/* =========================================
+   ToolCanvas — Fresher Resume Showcase Styles
+   ========================================= */
+
+/* 2-Column Templates Showcase Grid */
+.template-showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+    .template-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    /* Make the 5th template stack naturally on small screens */
+    .template-showcase-grid > div:last-child {
+        grid-column: span 1 !important;
+        grid-template-columns: 1fr !important;
+    }
+}
+
+.template-selector-card {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    padding: 16px;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.template-selector-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+    transform: translateY(-2px);
+}
+
+.template-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.template-info h4 {
+    font-size: var(--font-size-base);
+    margin-top: 0;
+    margin-bottom: 6px;
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.template-info p {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-accent);
+    color: #ffffff;
+    font-weight: 500;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    transition: background-color var(--transition-fast);
+    text-decoration: none;
+    white-space: nowrap;
+    align-self: flex-start;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-hover);
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/* CSS-based High-Fidelity Miniature Resume Previews */
+.template-thumbnail-placeholder {
+    height: 150px;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 3px;
+    padding: 6px;
+    overflow: hidden;
+    position: relative;
+    user-select: none;
+    pointer-events: none;
+}
+
+.mini-resume {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 100%;
+    height: 100%;
+}
+
+.mini-name {
+    font-size: 7px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1;
+}
+
+.mini-title {
+    font-size: 4.5px;
+    font-weight: 600;
+    color: #4b5563;
+    line-height: 1;
+}
+
+.mini-contact {
+    font-size: 3.5px;
+    color: #64748b;
+    margin-bottom: 2px;
+}
+
+.mini-section {
+    font-size: 4.5px;
+    font-weight: 700;
+    color: #1e293b;
+    text-transform: uppercase;
+    margin-top: 3px;
+    margin-bottom: 1px;
+}
+
+.mini-line {
+    height: 1.5px;
+    background-color: #e2e8f0;
+    border-radius: 1px;
+    margin-bottom: 1.5px;
+}
+
+.mini-line.w100 { width: 100%; }
+.mini-line.w90 { width: 90%; }
+.mini-line.w80 { width: 80%; }
+.mini-line.w70 { width: 70%; }
+
+.font-mono {
+    font-family: 'JetBrains Mono', Consolas, monospace;
+}
+
+/* Design 1: Minimalist Executive */
+.design-1 .mini-resume {
+    font-family: Georgia, serif;
+    text-align: center;
+}
+.design-1 .mini-section {
+    text-align: left;
+    border-bottom: 0.5px double #222222;
+}
+
+/* Design 2: Modern Professional */
+.design-2 .mini-resume {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    text-align: left;
+}
+.design-2 .mini-name {
+    color: #1e3a8a;
+}
+.design-2 .mini-section {
+    color: #1e3a8a;
+    border-bottom: 0.5px solid #1d4ed8;
+}
+
+/* Design 3: Slate Tech */
+.design-3 .mini-resume {
+    font-family: Arial, sans-serif;
+    text-align: left;
+}
+.design-3 .mini-section {
+    color: #334155;
+    border-bottom: 0.5px solid #334155;
+}
+.design-3 .mini-skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+.design-3 .mini-skills-tags span {
+    font-size: 3px;
+    border: 0.5px solid #cbd5e1;
+    border-radius: 1px;
+    padding: 0px 2px;
+    background-color: #f8fafc;
+}
+
+/* Design 4: Simple Elegant */
+.design-4 .mini-resume {
+    font-family: Georgia, serif;
+    text-align: center;
+}
+.design-4 .mini-section {
+    text-align: center;
+    border-top: 0.5px solid #aaaaaa;
+    border-bottom: 0.5px solid #aaaaaa;
+    padding: 1px 0;
+}
+
+/* Design 5: Creative Narrative */
+.design-5.template-thumbnail-placeholder {
+    border-left: 4px solid #4f46e5;
+}
+.design-5 .mini-resume {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    text-align: left;
+}
+.design-5 .mini-section {
+    border-left: 1.5px solid #4f46e5;
+    padding-left: 3px;
+}

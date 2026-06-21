@@ -1,0 +1,82 @@
+/* ===================================================
+   ToolCanvas — Template 1: Minimalist Executive Styles
+   =================================================== */
+
+.resume-sheet {
+    font-family: "Georgia", "Times New Roman", Times, serif;
+    color: #111111;
+    line-height: 1.45;
+}
+
+/* Centered Header Layout */
+.header-centered {
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.header-centered h1 {
+    font-size: 22pt;
+    font-weight: normal;
+    letter-spacing: 0.02em;
+    margin-bottom: 2px;
+}
+
+.sub-header-title {
+    font-size: 10.5pt;
+    font-style: italic;
+    color: #444444;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+.contact-details-row {
+    font-size: 8.5pt;
+    color: #555555;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; /* Cleaner readability for contacts */
+}
+
+/* Section specific styling */
+.resume-section-title {
+    font-family: "Georgia", "Times New Roman", Times, serif;
+    font-size: 10pt;
+    font-weight: bold;
+    color: #222222;
+    border-bottom: 1px double #222222;
+    margin-bottom: 4px;
+}
+
+/* Summary paragraph */
+.summary-paragraph {
+    font-size: 9pt;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+/* Job, Project, Activities & Education details */
+.item-header-row {
+    font-family: "Georgia", "Times New Roman", Times, serif;
+    font-size: 9.5pt;
+}
+
+.item-subheader-row {
+    font-family: "Georgia", "Times New Roman", Times, serif;
+    font-size: 9pt;
+    color: #333333;
+    margin-bottom: 2px;
+}
+
+.item-bullets {
+    margin-left: 16px;
+}
+
+.item-bullets li {
+    font-size: 8.5pt;
+    margin-bottom: 2px;
+    text-align: justify;
+}
+
+.skills-paragraph {
+    font-size: 8.5pt;
+    line-height: 1.35;
+}

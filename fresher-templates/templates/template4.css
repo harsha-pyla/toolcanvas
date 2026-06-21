@@ -1,0 +1,100 @@
+/* ===================================================
+   ToolCanvas — Template 4: Simple Elegant Styles
+   =================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+.resume-sheet {
+    font-family: "Garamond", "EB Garamond", Georgia, serif;
+    color: #1a1a1a;
+    line-height: 1.4;
+}
+
+/* Elegant Centered Header */
+.header-elegant {
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.header-elegant h1 {
+    font-size: 22pt;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 2px;
+}
+
+.elegant-header-title {
+    font-size: 9.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #555555;
+    margin-bottom: 2px;
+}
+
+.elegant-contact-details {
+    font-size: 8.5pt;
+    color: #555555;
+    letter-spacing: 0.02em;
+}
+
+.header-rule {
+    border: 0;
+    border-top: 1px solid #444444;
+    margin-top: 6px;
+    margin-bottom: 2px;
+}
+
+/* Section Title: top and bottom borders, centered uppercase */
+.resume-section-title {
+    font-family: "Garamond", "EB Garamond", Georgia, serif;
+    font-size: 9.5pt;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #222222;
+    border: none;
+    border-top: 1px solid #aaaaaa;
+    border-bottom: 1px solid #aaaaaa;
+    padding: 2px 0;
+    margin-bottom: 6px;
+    margin-top: 10px;
+}
+
+/* Summary paragraph */
+.summary-paragraph {
+    font-size: 9pt;
+    text-align: justify;
+    color: #222222;
+}
+
+/* Job, Project, Activities & Education details */
+.item-header-row {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.item-subheader-row {
+    font-size: 9pt;
+    color: #444444;
+    margin-bottom: 2px;
+}
+
+.item-bullets {
+    margin-left: 16px;
+}
+
+.item-bullets li {
+    font-size: 8.5pt;
+    color: #222222;
+    margin-bottom: 1.5px;
+    text-align: justify;
+}
+
+.skills-paragraph {
+    font-size: 8.5pt;
+    text-align: center;
+    line-height: 1.35;
+}

@@ -1,0 +1,212 @@
+/* ===================================================
+   ToolCanvas — Fresher Resume Templates Shared Styles
+   =================================================== */
+
+/* ---------- CSS Reset & Base ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f1f5f9;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1a1a1a;
+    padding-top: 60px; /* Space for the floating control bar */
+}
+
+/* ---------- Floating Controls Toolbar ---------- */
+.floating-control-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #0f172a;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.control-logo {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.control-logo span {
+    color: #3b82f6;
+}
+
+.control-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-control-back {
+    background-color: transparent;
+    border: 1px solid #475569;
+    color: #cbd5e1;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-control-back:hover {
+    background-color: #1e293b;
+    color: #ffffff;
+}
+
+.btn-control-download {
+    background-color: #2563eb;
+    border: none;
+    color: #ffffff;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.btn-control-download:hover {
+    background-color: #1d4ed8;
+}
+
+/* ---------- Printable Resume Sheet Layout ---------- */
+.resume-paper-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 30px 15px;
+}
+
+/* Standard US Letter Page size: 8.5 x 11 inches */
+.resume-sheet {
+    background-color: #ffffff;
+    width: 8.5in;
+    height: 11in;
+    min-height: 11in;
+    padding: 0.4in 0.5in; /* Slightly tighter margins for fresher resumes to ensure one-page fit with large mock data */
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Standard structure segments */
+.resume-section {
+    margin-top: 10px; /* Slightly tighter top margin for freshers */
+}
+
+.resume-section-title {
+    font-size: 10.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 2px;
+    margin-bottom: 6px;
+}
+
+/* Item cards (Job, Projects, Edu, Activities) */
+.job-item, .edu-item, .project-item, .activity-item {
+    margin-bottom: 6px;
+}
+
+.job-item:last-child, .edu-item:last-child, .project-item:last-child, .activity-item:last-child {
+    margin-bottom: 0;
+}
+
+.item-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-weight: 700;
+    font-size: 9.5pt;
+}
+
+.item-subheader-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 9pt;
+    font-style: italic;
+    color: #4b5563;
+    margin-bottom: 2px;
+}
+
+.item-dates, .item-location {
+    font-weight: 500;
+    font-size: 9pt;
+    font-style: normal;
+    color: #1a1a1a;
+}
+
+.item-bullets {
+    list-style-type: disc;
+    margin-left: 14px;
+    font-size: 8.5pt;
+    line-height: 1.35;
+    color: #2d3748;
+}
+
+.item-bullets li {
+    margin-bottom: 1.5px;
+}
+
+/* ---------- PRINT STYLING ---------- */
+@media print {
+    /* Hide floating tools */
+    body {
+        background-color: #ffffff;
+        padding-top: 0;
+    }
+    
+    .floating-control-bar {
+        display: none !important;
+    }
+    
+    .resume-paper-wrapper {
+        padding: 0;
+    }
+    
+    .resume-sheet {
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+    
+    /* Document page configuration */
+    @page {
+        size: letter;
+        margin: 0.4in 0.5in;
+    }
+    
+    /* Prevent page breakdown errors */
+    .resume-section {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    
+    .job-item, .edu-item, .project-item, .activity-item {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+}

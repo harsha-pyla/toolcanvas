@@ -1,0 +1,330 @@
+/* =========================================
+   ToolCanvas — Image to Text specific styles
+   ========================================= */
+
+/* Converter Card */
+.converter-card {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+/* Drag and Drop Zone */
+.drop-zone {
+    border: 2px dashed #a5b4fc;
+    background-color: #f8fafc;
+    border-radius: 4px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.drop-zone:hover,
+.drop-zone.dragover {
+    background-color: #eef2f6;
+    border-color: #4f46e5;
+}
+
+.drop-zone__inner {
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.drop-zone__icon {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.drop-zone__text {
+    font-size: 14px;
+    color: #334155;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.drop-zone__link {
+    color: #4f46e5;
+    text-decoration: underline;
+}
+
+.drop-zone__formats {
+    font-size: 11px;
+    color: #64748b;
+    font-style: italic;
+}
+
+/* Workspace Grid */
+.workspace-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 30px;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .workspace-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Workspace Preview Panel */
+.workspace-preview-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.image-preview-container {
+    max-width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.image-preview-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.file-details {
+    margin-top: 12px;
+    width: 100%;
+    font-size: 12px;
+    color: #475569;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 8px;
+}
+
+.file-name {
+    font-weight: bold;
+    color: #1e293b;
+    word-break: break-all;
+}
+
+.file-size, .file-dimensions {
+    color: #64748b;
+}
+
+/* Workspace Right: Controls Panel */
+.workspace-controls-panel h3 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #1e293b;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.option-group {
+    margin-bottom: 20px;
+}
+
+.option-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.option-group select {
+    width: 100%;
+    border: 1px solid #999999;
+    padding: 6px 8px;
+    font-size: 12.5px;
+    outline: none;
+    border-radius: 2px;
+    background-color: #ffffff;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.option-group select:focus {
+    border-color: #224499;
+}
+
+.option-hint {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+/* OCR Progress */
+.ocr-progress {
+    margin-bottom: 15px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background-color: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #224499;
+    border-radius: 3px;
+    transition: width 0.15s ease;
+}
+
+.progress-text {
+    font-size: 11px;
+    color: #475569;
+    display: block;
+    text-align: center;
+}
+
+/* Action Buttons */
+.controls-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-primary,
+.btn-secondary {
+    font-family: inherit;
+    font-size: 13px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.btn-primary {
+    background-color: #224499;
+    border: 1px solid #224499;
+    color: #ffffff;
+    flex: 2;
+}
+
+.btn-primary:hover {
+    background-color: #173070;
+    border-color: #173070;
+    text-decoration: none !important;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    border: 1px solid #999999;
+    color: #333333;
+    flex: 1;
+}
+
+.btn-secondary:hover {
+    background-color: #f1f5f9;
+    border-color: #666666;
+}
+
+/* Result Panel */
+.result-panel {
+    margin-top: 15px;
+    border-top: 1px dashed #cbd5e1;
+    padding-top: 20px;
+}
+
+.result-card {
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+}
+
+.result-success-icon {
+    font-size: 32px;
+    color: #16a34a;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.result-card h3 {
+    font-size: 15px;
+    color: #15803d;
+    margin-bottom: 12px;
+    margin-top: 0;
+}
+
+/* Extracted text block */
+.extracted-text-wrapper {
+    margin-bottom: 20px;
+    text-align: left;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.extracted-text-wrapper label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: bold;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.extracted-text-wrapper textarea {
+    width: 100%;
+    border: 1px solid #94a3b8;
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #1e293b;
+    outline: none;
+    resize: vertical;
+}
+
+.extracted-text-wrapper textarea:focus {
+    border-color: #224499;
+    box-shadow: 0 0 0 2px rgba(34, 68, 153, 0.1);
+}
+
+.result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-download {
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+}

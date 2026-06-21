@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Infinite Online Blackboard — Workspace | ToolCanvas</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Limelight&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="../logo/logo.png">
+</head>
+<body class="blackboard-maximized-active">
+
+    <!-- Embedded Blackboard Card Container (Maximized to Fullscreen) -->
+    <div class="blackboard-app-card maximized theme-chalkboard" id="blackboard-app-card">
+        <!-- Main Infinite Canvas -->
+        <canvas id="blackboard-canvas"></canvas>
+
+        <!-- Edge Arrow to Recenter View when panned away -->
+        <div id="pan-indicator-arrow" class="pan-indicator-arrow hidden" title="Point back to your drawings">
+            <span>Drawings</span>
+            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2L4.5 9.5H9v11h6v-11h4.5L12 2z" fill="currentColor"/></svg>
+        </div>
+
+        <!-- Header Overlay Panel inside Card -->
+        <header class="blackboard-header">
+            <div class="header-left">
+                <button class="hamburger-btn" id="drawer-toggle" aria-label="Toggle Side Menu">
+                    <svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/></svg>
+                </button>
+                <a href="index.html" class="site-logo">Tool<span>Canvas</span></a>
+            </div>
+            
+            <div class="header-right">
+                <!-- Zoom controls -->
+                <div class="zoom-panel">
+                    <button class="btn-zoom" id="zoom-out-btn" title="Zoom Out">
+                        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M19 13H5v-2h14v2z" fill="currentColor"/></svg>
+                    </button>
+                    <span class="zoom-percent" id="zoom-percent">100%</span>
+                    <button class="btn-zoom" id="zoom-in-btn" title="Zoom In">
+                        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"/></svg>
+                    </button>
+                </div>
+
+                <!-- Share and Settings buttons (Fullscreen button omitted) -->
+                <button class="btn-action" id="share-btn" title="Share drawing via link">
+                    <svg viewBox="0 0 24 24" width="16" height="16"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" fill="currentColor"/></svg>
+                    <span>Share</span>
+                </button>
+
+                <button class="btn-action" id="settings-btn" title="Settings">
+                    <svg viewBox="0 0 24 24" width="16" height="16"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38.1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" fill="currentColor"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Drawer Overlay Menu -->
+        <div class="drawer-overlay" id="drawer-overlay"></div>
+        <aside class="drawer" id="side-drawer">
+            <div class="drawer-header">
+                <h4>Canva Workspace</h4>
+                <button class="btn-close-drawer" id="drawer-close" aria-label="Close Side Menu">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" fill="currentColor"/></svg>
+                </button>
+            </div>
+            <div class="drawer-body">
+                <ul class="drawer-menu">
+                    <li>
+                        <button class="drawer-item" id="new-board-btn">
+                            <svg viewBox="0 0 24 24" width="18" height="18"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"/></svg>
+                            <span>New Blackboard</span>
+                        </button>
+                    </li>
+                </ul>
+                <div class="drawer-section-title">Recent Drawings</div>
+                <ul class="drawer-menu" id="recent-drawings-list">
+                    <li class="empty-recent-msg">No recent sketches yet.</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Settings Dialog Dropdown Panel -->
+        <div class="settings-popover hidden" id="settings-popover">
+            <div class="settings-popover-header">
+                <h4>Settings</h4>
+            </div>
+            <div class="settings-popover-body">
+                <!-- Board Color Theme -->
+                <div class="setting-item">
+                    <label>Board Theme</label>
+                    <div class="toggle-group" id="theme-toggle-group">
+                        <button class="btn-toggle active" data-theme="chalkboard">Green</button>
+                        <button class="btn-toggle" data-theme="charcoal">Charcoal</button>
+                        <button class="btn-toggle" data-theme="navy">Navy</button>
+                    </div>
+                </div>
+
+                <!-- Background Style -->
+                <div class="setting-item">
+                    <label>Background Style</label>
+                    <div class="toggle-group" id="bg-toggle-group">
+                        <button class="btn-toggle active" data-bg="plain">Plain</button>
+                        <button class="btn-toggle" data-bg="grid">Grid</button>
+                        <button class="btn-toggle" data-bg="dots">Dots</button>
+                    </div>
+                </div>
+
+                <!-- Data Sharing Policy -->
+                <div class="setting-item">
+                    <label class="setting-label-row">
+                        <span>Local Data Preserving</span>
+                        <input type="checkbox" id="setting-preserve-data" checked>
+                    </label>
+                    <p class="setting-desc">Preserves drawing state locally on your device between browser sessions.</p>
+                </div>
+
+                <!-- Keyboard Shortcuts list link -->
+                <div class="setting-item">
+                    <button class="btn-text-action" id="show-shortcuts-btn">
+                        <span>Keyboard Shortcuts</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" fill="currentColor"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shortcuts Dialog Modal -->
+        <div class="modal-overlay hidden" id="shortcuts-modal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>Keyboard Shortcuts</h3>
+                    <button class="btn-close-modal" id="close-shortcuts-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <ul class="shortcuts-list">
+                        <li><span class="key">P</span> <span>Pen Tool</span></li>
+                        <li><span class="key">L</span> <span>Pencil Tool</span></li>
+                        <li><span class="key">E</span> <span>Eraser Tool</span></li>
+                        <li><span class="key">H</span> / <span class="key">Space + Drag</span> <span>Pan Viewport</span></li>
+                        <li><span class="key">Ctrl + Z</span> <span>Undo Drawing</span></li>
+                        <li><span class="key">Ctrl + Y</span> <span>Redo Drawing</span></li>
+                        <li><span class="key">Ctrl + +</span> / <span class="key">-</span> <span>Zoom In / Out</span></li>
+                        <li><span class="key">Esc</span> <span>Close Dialogs</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Center Drawing Dock -->
+        <div class="drawing-dock">
+            <!-- Main Tool Selectors -->
+            <div class="dock-section tool-selectors">
+                <button class="btn-tool" id="tool-hand" data-tool="hand" title="Hand (Key: H)">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M21 11c0-1.66-1.34-3-3-3-.22 0-.42.03-.62.08A2.993 2.993 0 0 0 13 6c-.26 0-.51.04-.76.11A3.001 3.001 0 0 0 7 8v5.06c-.66-.46-1.44-.75-2.29-.75-1.93 0-3.5 1.57-3.5 3.5 0 2.88 2.38 5.64 5.34 7.74.87.62 2 .95 3.08.95h5.45c2.31 0 4.29-1.68 4.7-3.95l1.04-5.74c.12-.64.18-1.29.18-1.94V11zm-2 5.07l-1.04 5.73C17.75 22.95 16.26 24 14.58 24H9.13c-.76 0-1.57-.23-2.18-.66-2.58-1.84-4.45-4.22-4.45-6.84 0-.83.67-1.5 1.5-1.5.83 0 1.5.67 1.5 1.5V17h2V8c0-.55.45-1 1-1s1 .45 1 1v5h2V6c0-.55.45-1 1-1s1 .45 1 1v7h2c0-.55.45-1 1-1s1 .45 1 1v1h2c0-.55.45-1 1-1s1 .45 1 1v5.07z" fill="currentColor"/></svg>
+                </button>
+                <button class="btn-tool active" id="tool-pen" data-tool="pen" title="Pen (Key: P)">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="currentColor"/></svg>
+                </button>
+                <button class="btn-tool" id="tool-pencil" data-tool="pencil" title="Pencil (Key: L)">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.36 0-.72.13-1 .4l-1.83 1.83 3.75 3.75L20.4 7.15c.53-.53.53-1.39 0-1.92l-2.33-2.33c-.27-.27-.63-.4-1-.4zM14.06 6.18L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" fill="currentColor"/></svg>
+                </button>
+                <button class="btn-tool" id="tool-eraser" data-tool="eraser" title="Stroke Eraser (Key: E)">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M16.24 7.56l4.95 4.95c.78.78.78 2.05 0 2.83L15 21.5H8v-5.66l8.24-8.28M6 19.5h12v2H6v-2z" fill="currentColor"/></svg>
+                </button>
+            </div>
+
+            <div class="dock-separator"></div>
+
+            <!-- Brush Size Controller -->
+            <div class="dock-section size-controller" id="size-dock-section">
+                <span class="size-preview-dot" id="size-preview-dot"></span>
+                <input type="range" id="size-slider" min="1" max="40" value="4" title="Brush Size">
+                <span class="size-value" id="size-value">4px</span>
+            </div>
+
+            <div class="dock-separator"></div>
+
+            <!-- Chalk Colors Selectors -->
+            <div class="dock-section color-selectors" id="color-dock-section">
+                <button class="btn-color active" data-color="#ffffff" style="background-color: #ffffff;" title="Chalk White"></button>
+                <button class="btn-color" data-color="#fef08a" style="background-color: #fef08a;" title="Chalk Yellow"></button>
+                <button class="btn-color" data-color="#93c5fd" style="background-color: #93c5fd;" title="Chalk Blue"></button>
+                <button class="btn-color" data-color="#fbcfe8" style="background-color: #fbcfe8;" title="Chalk Pink"></button>
+                <button class="btn-color" data-color="#a7f3d0" style="background-color: #a7f3d0;" title="Chalk Green"></button>
+                <!-- Custom picker capsule -->
+                <label class="btn-color custom-picker-label" title="Custom Chalk" id="custom-color-label">
+                    <input type="color" id="custom-color-picker" value="#c084fc">
+                </label>
+            </div>
+
+            <div class="dock-separator"></div>
+
+            <!-- Undo/Redo Controls -->
+            <div class="dock-section history-controls">
+                <button class="btn-dock-action" id="undo-btn" title="Undo (Ctrl + Z)" disabled>
+                    <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z" fill="currentColor"/></svg>
+                </button>
+                <button class="btn-dock-action" id="redo-btn" title="Redo (Ctrl + Y)" disabled>
+                    <svg viewBox="0 0 24 24" width="18" height="18"><path d="M18.4 10.6C16.55 8.99 14.15 8 11.5 8c-4.65 0-8.58 3.03-9.96 7.22L3.9 16c1.05-3.19 4.05-5.5 7.6-5.5 1.95 0 3.73.72 5.12 1.88L13 16h9V7l-3.6 3.6z" fill="currentColor"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Bottom Left: Light Policies Links inside Card -->
+        <div class="bottom-left-links">
+            <a href="../privacy-policy.html">Privacy Policy</a>
+            <span class="sep">•</span>
+            <a href="../terms.html">Terms</a>
+        </div>
+
+        <!-- Bottom Right: About Information Button inside Card -->
+        <button class="btn-about-trigger" id="about-trigger-btn" aria-label="Learn about this Blackboard">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="currentColor"/></svg>
+        </button>
+
+        <!-- About Dialog Modal inside Card -->
+        <div class="modal-overlay hidden" id="about-modal">
+            <div class="modal max-about-modal">
+                <div class="modal-header">
+                    <h3>About ToolCanvas Blackboard</h3>
+                    <button class="btn-close-modal" id="close-about-modal">&times;</button>
+                </div>
+                <div class="modal-body about-modal-body">
+                    <div class="about-section">
+                        <h4>What is the Infinite Blackboard?</h4>
+                        <p>The Infinite Blackboard is a premium dark theme canvas designed to emulate a traditional classroom chalkboard. Ideal for complex educational mockups, technical explanations, slide layouts, and drafting, it offers an unrestricted work area with fluid zooming and panning. Write notes, sketch flowcharts, and compile math drafts with zero page boundaries.</p>
+                    </div>
+                    
+                    <div class="about-section">
+                        <h4>Why is it Completely Secure?</h4>
+                        <p>Every coordinate path, chalk color, line thickness, and zoom offset is calculated and stored strictly inside your browser environment. Your diagrams never leave your device, ensuring complete confidentiality for corporate roadmaps, academic research, and layout drafts.</p>
+                    </div>
+
+                    <div class="about-section">
+                        <h4>How to Share Your Sketches</h4>
+                        <p>Click "Share" to compress the entire canvas vector paths into a secure, URL-safe data string. This string is appended to the browser address hash. Copying and sending the link lets anyone rebuild your drawing locally in their browser instantly, removing the need for cloud databases!</p>
+                    </div>
+
+                    <div class="about-section">
+                        <h4>Visual Planning & Educational Sketching Tips</h4>
+                        <ul>
+                            <li><strong>Chalk Contrast:</strong> Use soft pastel colors (like yellow, pink, and cyan) on the dark slate to highlight different nodes or terms.</li>
+                            <li><strong>Technical Drafts:</strong> Toggle the "Grid" or "Dots" backgrounds in settings for aligned coding tags, wireframes, or grid math diagrams.</li>
+                            <li><strong>Recenter instantly:</strong> If you pan away, a green arrow appears at the window edge pointing to your content. Tapping it centers the view back instantly.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

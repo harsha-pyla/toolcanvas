@@ -1,0 +1,15 @@
+/* =========================================
+   ToolCanvas — Cyber Magenta Theme
+   ========================================= */
+
+.theme-magenta {
+    --bio-bg: #ff007f;
+    --bio-text: #ffffff;
+    --bio-btn-bg: #000000;
+    --bio-btn-text: #ff007f;
+    --bio-btn-border: 2.5px solid #000000;
+    --bio-btn-radius: 30px;
+    --bio-btn-shadow: 4px 4px 0 #000000;
+    --bio-avatar-bg: #000000;
+    --bio-avatar-text: #ff007f;
+}
