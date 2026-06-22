@@ -321,24 +321,34 @@ function renderResumeData() {
     }
 }
 
-// Scale the resume sheet dynamically to fit the viewport width on mobile/tablet devices
+// Scale the resume sheet dynamically to fit the viewport width and height on mobile/tablet devices
 function adjustResumeScale() {
     const sheet = document.querySelector(".resume-sheet");
     const wrapper = document.querySelector(".resume-paper-wrapper");
     if (!sheet || !wrapper) return;
 
     if (window.innerWidth <= 820) {
-        // Calculate exact scale factor based on screen width (leaving 30px total padding)
-        const scale = (window.innerWidth - 30) / 816;
+        // Calculate scale factor based on screen width (leaving 24px total padding)
+        const scaleX = (window.innerWidth - 24) / 816;
+        
+        // Calculate scale factor based on screen height (leaving space for 60px header + padding)
+        const availableHeight = window.innerHeight - 60 - 24;
+        const scaleY = availableHeight / 1056;
+        
+        // Use the minimum scale to fit BOTH width and height completely
+        const scale = Math.min(scaleX, scaleY);
+        
         sheet.style.transform = `scale(${scale})`;
         sheet.style.transformOrigin = "top center";
         
-        // 11 inches = 1056px original height. Set wrapper height to contain the visually scaled sheet.
-        wrapper.style.height = `calc(${1056 * scale}px + 40px)`;
+        // Set wrapper height to contain the visually scaled sheet exactly
+        wrapper.style.height = (1056 * scale) + "px";
+        wrapper.style.padding = "10px 0";
     } else {
         // Reset scale and height for desktop viewports
         sheet.style.transform = "";
         sheet.style.transformOrigin = "";
         wrapper.style.height = "";
+        wrapper.style.padding = "";
     }
 }

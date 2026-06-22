@@ -217,15 +217,23 @@ body {
 
 @media (max-width: 820px) {
     .resume-sheet {
-        transform: scale(calc((100vw - 30px) / 816));
+        transform: scale(calc((100vw - 24px) / 816));
         transform-origin: top center;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05) !important;
+        max-height: 999999px;
+    }
+    
+    .resume-sheet * {
+        max-height: 999999px;
     }
     
     .resume-paper-wrapper {
-        padding: 20px 15px;
-        height: calc(1056px * ((100vw - 30px) / 816) + 40px);
+        padding: 10px 0;
+        height: calc(1056px * ((100vw - 24px) / 816));
         overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
     }
 
     .floating-control-bar {
