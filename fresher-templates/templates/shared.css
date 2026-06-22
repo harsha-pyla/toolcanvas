@@ -27,24 +27,79 @@ body {
     left: 0;
     right: 0;
     height: 60px;
-    background-color: #0f172a;
-    color: #ffffff;
+    background-color: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 24px;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #dadce0;
 }
 
 .control-logo {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
-    color: #ffffff;
+    color: #1e293b;
 }
 
 .control-logo span {
-    color: #3b82f6;
+    color: #2563eb;
+}
+
+/* Zoom Controls */
+.control-zoom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f1f3f4;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.btn-zoom {
+    background: none;
+    border: none;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #5f6368;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.15s;
+}
+
+.btn-zoom:hover {
+    background-color: #e8eaed;
+}
+
+.zoom-level {
+    font-size: 13px;
+    font-weight: 500;
+    color: #3c4043;
+    min-width: 65px;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.btn-zoom-text {
+    background: none;
+    border: none;
+    padding: 4px 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #5f6368;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.15s;
+}
+
+.btn-zoom-text:hover {
+    background-color: #e8eaed;
 }
 
 .control-actions {
@@ -54,8 +109,8 @@ body {
 
 .btn-control-back {
     background-color: transparent;
-    border: 1px solid #475569;
-    color: #cbd5e1;
+    border: 1px solid #dadce0;
+    color: #5f6368;
     padding: 8px 16px;
     font-size: 14px;
     font-weight: 500;
@@ -64,16 +119,16 @@ body {
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    transition: background-color 0.2s, color 0.2s;
+    transition: background-color 0.15s, color 0.15s;
 }
 
 .btn-control-back:hover {
-    background-color: #1e293b;
-    color: #ffffff;
+    background-color: #f1f3f4;
+    color: #3c4043;
 }
 
 .btn-control-download {
-    background-color: #2563eb;
+    background-color: #1a73e8;
     border: none;
     color: #ffffff;
     padding: 8px 20px;
@@ -83,18 +138,21 @@ body {
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    transition: background-color 0.2s;
+    transition: background-color 0.15s;
 }
 
 .btn-control-download:hover {
-    background-color: #1d4ed8;
+    background-color: #1557b0;
 }
 
 /* ---------- Printable Resume Sheet Layout ---------- */
 .resume-paper-wrapper {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     padding: 30px 15px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Standard US Letter Page size: 8.5 x 11 inches */
@@ -189,18 +247,18 @@ body {
     }
     
     .resume-sheet {
-        width: 100% !important;
-        height: auto !important;
-        min-height: auto !important;
-        padding: 0 !important;
+        width: 8.5in !important;
+        height: 11in !important;
+        min-height: 11in !important;
+        padding: 0.5in 0.6in !important;
         box-shadow: none !important;
         overflow: visible !important;
     }
     
-    /* Document page configuration */
+    /* Document page configuration - margin 0 removes default browser URL headers/footers */
     @page {
         size: letter;
-        margin: 0.4in 0.5in;
+        margin: 0 !important;
     }
     
     /* Prevent page breakdown errors */
@@ -216,10 +274,13 @@ body {
 }
 
 @media (max-width: 820px) {
+    body {
+        padding-top: 52px;
+    }
+
     .resume-sheet {
-        transform: scale(calc((100vw - 24px) / 816));
-        transform-origin: top center;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05) !important;
+        border-radius: 8px;
         max-height: 999999px;
     }
     
@@ -228,24 +289,37 @@ body {
     }
     
     .resume-paper-wrapper {
-        padding: 10px 0;
-        height: calc(1056px * ((100vw - 24px) / 816));
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
+        padding: 12px 6px;
     }
 
     .floating-control-bar {
-        padding: 0 12px;
+        padding: 0 8px;
+        height: 52px;
     }
 
     .control-logo {
-        font-size: 14px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        max-width: 140px;
+        display: none !important;
+    }
+
+    .control-zoom {
+        gap: 2px;
+        padding: 2px 4px;
+    }
+
+    .btn-zoom {
+        width: 24px;
+        height: 24px;
+        font-size: 16px;
+    }
+
+    .zoom-level {
+        font-size: 11px;
+        min-width: 50px;
+    }
+
+    .btn-zoom-text {
+        padding: 2px 4px;
+        font-size: 11px;
     }
 
     .hide-mobile {
@@ -253,7 +327,7 @@ body {
     }
 
     .btn-control-back, .btn-control-download {
-        padding: 6px 12px;
-        font-size: 12px;
+        padding: 6px 10px;
+        font-size: 11px;
     }
 }

@@ -2,6 +2,10 @@
 // ToolCanvas — Fresher Resume Templates Loader Script
 // ==========================================
 
+let currentZoomMode = 'fit'; // 'fit' or 'fixed'
+let currentZoomScale = 1.0;
+const ZOOM_PRESETS = [0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5];
+
 const MOCK_DATA = {
     name: "Jane Vance",
     title: "Computer Science Graduate",
@@ -74,29 +78,136 @@ window.addEventListener("DOMContentLoaded", () => {
     // 2. Load and render data
     renderResumeData();
 
-    // 3. Scale calculation
+    // 3. Bind Zoom controls
+    bindZoomEvents();
+
+    // 4. Scale calculation
     adjustResumeScale();
 });
 
 window.addEventListener("resize", adjustResumeScale);
+
+function downloadDirectPDF() {
+    const btn = document.getElementById("print-pdf-btn");
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "Downloading...";
+
+    const element = document.querySelector(".resume-sheet");
+    const opt = {
+        margin: 0,
+        filename: (document.getElementById("doc-name")?.textContent || "resume").trim().replace(/\s+/g, "_") + "_resume.pdf",
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+            scale: 2, 
+            useCORS: true,
+            logging: false
+        },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    // Temporarily reset scale transforms so html2pdf renders the sheet at its full 100% native size
+    const originalTransform = element.style.transform;
+    const originalTransformOrigin = element.style.transformOrigin;
+    element.style.transform = "none";
+    element.style.transformOrigin = "";
+
+    function executeSave() {
+        html2pdf().set(opt).from(element).save().then(() => {
+            element.style.transform = originalTransform;
+            element.style.transformOrigin = originalTransformOrigin;
+            btn.disabled = false;
+            btn.textContent = originalText;
+        }).catch(err => {
+            console.error("html2pdf failed:", err);
+            element.style.transform = originalTransform;
+            element.style.transformOrigin = originalTransformOrigin;
+            window.print();
+            btn.disabled = false;
+            btn.textContent = originalText;
+        });
+    }
+
+    if (typeof html2pdf === "undefined") {
+        const script = document.createElement("script");
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js";
+        script.onload = executeSave;
+        script.onerror = () => {
+            element.style.transform = originalTransform;
+            element.style.transformOrigin = originalTransformOrigin;
+            window.print();
+            btn.disabled = false;
+            btn.textContent = originalText;
+        };
+        document.head.appendChild(script);
+    } else {
+        executeSave();
+    }
+}
 
 // Create top floating bar
 function createControlBar() {
     const bar = document.createElement("div");
     bar.className = "floating-control-bar";
     bar.innerHTML = `
-        <div class="control-logo">Tool<span>Canvas</span><span class="hide-mobile"> — Print Preview</span></div>
+        <div class="control-logo">Tool<span>Canvas</span><span class="hide-mobile"> — Viewer</span></div>
+        <div class="control-zoom">
+            <button type="button" class="btn-zoom" id="zoom-out-btn" title="Zoom Out">−</button>
+            <span class="zoom-level" id="zoom-level-val">Fit</span>
+            <button type="button" class="btn-zoom" id="zoom-in-btn" title="Zoom In">+</button>
+            <button type="button" class="btn-zoom-text" id="zoom-fit-btn">Fit</button>
+            <button type="button" class="btn-zoom-text" id="zoom-reset-btn">100%</button>
+        </div>
         <div class="control-actions">
-            <a href="../index.html" class="btn-control-back">← Back to Templates</a>
+            <a href="../index.html" class="btn-control-back">← Templates</a>
             <button type="button" class="btn-control-download" id="print-pdf-btn">Download PDF</button>
         </div>
     `;
 
     document.body.insertBefore(bar, document.body.firstChild);
     
-    // Bind print command
-    document.getElementById("print-pdf-btn").addEventListener("click", () => {
-        window.print();
+    // Bind direct download command
+    document.getElementById("print-pdf-btn").addEventListener("click", downloadDirectPDF);
+}
+
+function bindZoomEvents() {
+    document.getElementById("zoom-out-btn").addEventListener("click", () => {
+        currentZoomMode = 'fixed';
+        // Find the closest preset smaller than currentZoomScale
+        let nextZoom = ZOOM_PRESETS[0];
+        for (let i = ZOOM_PRESETS.length - 1; i >= 0; i--) {
+            if (ZOOM_PRESETS[i] < currentZoomScale - 0.02) {
+                nextZoom = ZOOM_PRESETS[i];
+                break;
+            }
+        }
+        currentZoomScale = nextZoom;
+        adjustResumeScale();
+    });
+
+    document.getElementById("zoom-in-btn").addEventListener("click", () => {
+        currentZoomMode = 'fixed';
+        // Find the closest preset larger than currentZoomScale
+        let nextZoom = ZOOM_PRESETS[ZOOM_PRESETS.length - 1];
+        for (let i = 0; i < ZOOM_PRESETS.length; i++) {
+            if (ZOOM_PRESETS[i] > currentZoomScale + 0.02) {
+                nextZoom = ZOOM_PRESETS[i];
+                break;
+            }
+        }
+        currentZoomScale = nextZoom;
+        adjustResumeScale();
+    });
+
+    document.getElementById("zoom-fit-btn").addEventListener("click", () => {
+        currentZoomMode = 'fit';
+        adjustResumeScale();
+    });
+
+    document.getElementById("zoom-reset-btn").addEventListener("click", () => {
+        currentZoomMode = 'fixed';
+        currentZoomScale = 1.0;
+        adjustResumeScale();
     });
 }
 
@@ -321,34 +432,38 @@ function renderResumeData() {
     }
 }
 
-// Scale the resume sheet dynamically to fit the viewport width and height on mobile/tablet devices
 function adjustResumeScale() {
     const sheet = document.querySelector(".resume-sheet");
     const wrapper = document.querySelector(".resume-paper-wrapper");
     if (!sheet || !wrapper) return;
 
-    if (window.innerWidth <= 820) {
-        // Calculate scale factor based on screen width (leaving 24px total padding)
-        const scaleX = (window.innerWidth - 24) / 816;
-        
-        // Calculate scale factor based on screen height (leaving space for 60px header + padding)
-        const availableHeight = window.innerHeight - 60 - 24;
-        const scaleY = availableHeight / 1056;
-        
-        // Use the minimum scale to fit BOTH width and height completely
-        const scale = Math.min(scaleX, scaleY);
-        
-        sheet.style.transform = `scale(${scale})`;
-        sheet.style.transformOrigin = "top center";
-        
-        // Set wrapper height to contain the visually scaled sheet exactly
-        wrapper.style.height = (1056 * scale) + "px";
-        wrapper.style.padding = "10px 0";
+    // Calculate scale factor based on screen width (leaving 24px total padding)
+    const scaleX = (window.innerWidth - 24) / 816;
+    
+    // Calculate scale factor based on screen height (leaving space for 60px header + padding)
+    const availableHeight = window.innerHeight - 60 - 24;
+    const scaleY = availableHeight / 1056;
+
+    if (currentZoomMode === 'fit') {
+        // Fit viewport width but do not scale excessively
+        currentZoomScale = Math.max(0.3, Math.min(scaleX, 1.5));
+        document.getElementById("zoom-level-val").textContent = "Fit (" + Math.round(currentZoomScale * 100) + "%)";
     } else {
-        // Reset scale and height for desktop viewports
-        sheet.style.transform = "";
-        sheet.style.transformOrigin = "";
-        wrapper.style.height = "";
-        wrapper.style.padding = "";
+        document.getElementById("zoom-level-val").textContent = Math.round(currentZoomScale * 100) + "%";
+    }
+
+    sheet.style.transform = `scale(${currentZoomScale})`;
+    sheet.style.transformOrigin = "top center";
+
+    // Set wrapper height to contain the visually scaled sheet exactly
+    wrapper.style.height = (1056 * currentZoomScale + 40) + "px";
+    
+    // Center alignment or horizontal panning scrollbars depending on width
+    if (816 * currentZoomScale > window.innerWidth - 24) {
+        wrapper.style.justifyContent = "flex-start";
+        wrapper.style.padding = "24px 12px";
+    } else {
+        wrapper.style.justifyContent = "center";
+        wrapper.style.padding = "24px 0";
     }
 }
