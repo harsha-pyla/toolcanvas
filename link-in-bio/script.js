@@ -377,8 +377,8 @@
 
     function applyCrop() {
         const canvas = document.createElement('canvas');
-        canvas.width = 120;
-        canvas.height = 120;
+        canvas.width = 90;
+        canvas.height = 90;
         const ctx = canvas.getContext('2d');
 
         const scale = parseFloat(cropZoom.value);
@@ -392,13 +392,13 @@
 
         // Fill background with white
         ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, 120, 120);
+        ctx.fillRect(0, 0, 90, 90);
 
-        // Draw image onto 120x120 canvas (scaling by 0.8 to fit 120px down from 150px)
-        ctx.drawImage(cropImg, xOffset * 0.8, yOffset * 0.8, renderedWidth * 0.8, renderedHeight * 0.8);
+        // Draw image onto 90x90 canvas (scaling by 0.6 to fit 90px down from 150px)
+        ctx.drawImage(cropImg, xOffset * 0.6, yOffset * 0.6, renderedWidth * 0.6, renderedHeight * 0.6);
 
-        // Export as optimized low-size JPEG Base64 (~3-4KB)
-        state.profileImage = canvas.toDataURL('image/jpeg', 0.8);
+        // Export as optimized low-size JPEG Base64 (~1-2KB)
+        state.profileImage = canvas.toDataURL('image/jpeg', 0.5);
 
         // Update preview in UI
         uploadZone.style.display = 'none';
@@ -712,13 +712,66 @@
     }
 
     // ---- Generate URL and show Success panel ----
+    function shortenUrl(longUrl) {
+        return new Promise(function (resolve) {
+            // Set a timeout of 3.5 seconds
+            var timeout = setTimeout(function () {
+                resolve(longUrl);
+            }, 3500);
+
+            var callbackName = 'isgd_callback_' + Math.floor(Math.random() * 1000000);
+            
+            var script = document.createElement('script');
+            script.src = 'https://is.gd/create.php?format=json&callback=' + callbackName + '&url=' + encodeURIComponent(longUrl);
+            
+            window[callbackName] = function (data) {
+                clearTimeout(timeout);
+                delete window[callbackName];
+                try {
+                    document.body.removeChild(script);
+                } catch (e) {}
+                
+                if (data && data.shorturl) {
+                    resolve(data.shorturl);
+                } else {
+                    resolve(longUrl);
+                }
+            };
+
+            script.onerror = function () {
+                clearTimeout(timeout);
+                delete window[callbackName];
+                try {
+                    document.body.removeChild(script);
+                } catch (e) {}
+                resolve(longUrl);
+            };
+
+            document.body.appendChild(script);
+        });
+    }
+
+    // ---- Generate URL and show Success panel ----
     function generateLinkUrl() {
         const queryUrl = compileQueryUrl();
         const fullUrl = window.location.origin + window.location.pathname + queryUrl;
         
-        shareableUrlInput.value = fullUrl;
-        successPanel.style.display = 'block';
-        successPanel.scrollIntoView({ behavior: 'smooth' });
+        // Show loading state on button
+        const originalText = generateBtn.innerHTML;
+        generateBtn.disabled = true;
+        generateBtn.innerHTML = '<span class="btn-icon">⏳</span> Generating...';
+        
+        shortenUrl(fullUrl).then(function (shortUrl) {
+            shareableUrlInput.value = shortUrl;
+            
+            // Restore button state
+            generateBtn.disabled = false;
+            generateBtn.innerHTML = originalText;
+            
+            // Show success panel
+            successPanel.style.display = 'block';
+            successPanel.scrollIntoView({ behavior: 'smooth' });
+        });
     }
 
     function copyShareableUrl() {

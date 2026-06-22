@@ -3,14 +3,41 @@
    Mobile navigation + utility functions
    ========================================= */
 
-document.addEventListener('DOMContentLoaded', function () {
+// ---- Toast notification ----
+window.showToast = function (message, duration) {
+  duration = duration || 2500;
+  var existing = document.querySelector('.toast');
+  if (existing) existing.remove();
 
+  var toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  document.body.appendChild(toast);
+
+  requestAnimationFrame(function () {
+    toast.classList.add('show');
+  });
+
+  setTimeout(function () {
+    toast.classList.remove('show');
+    setTimeout(function () {
+      toast.remove();
+    }, 300);
+  }, duration);
+};
+
+function initMain() {
   // ---- Mobile Navigation Toggle ----
   const navToggle = document.querySelector('.nav-toggle');
   const siteNav = document.querySelector('.site-nav');
 
   if (navToggle && siteNav) {
-    navToggle.addEventListener('click', function () {
+    // Prevent duplicate event listener binding
+    if (navToggle.dataset.menuBound) return;
+    navToggle.dataset.menuBound = "true";
+
+    navToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
       navToggle.classList.toggle('active');
       siteNav.classList.toggle('open');
     });
@@ -20,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
       dropdownLink.addEventListener('click', function (e) {
         if (window.innerWidth <= 768) {
           e.preventDefault(); // Prevent navigating
+          e.stopPropagation();
           const parent = dropdownLink.parentElement;
           
           // Close other dropdowns
@@ -57,29 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // ---- Toast notification ----
-  window.showToast = function (message, duration) {
-    duration = duration || 2500;
-    var existing = document.querySelector('.toast');
-    if (existing) existing.remove();
-
-    var toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.textContent = message;
-    document.body.appendChild(toast);
-
-    requestAnimationFrame(function () {
-      toast.classList.add('show');
-    });
-
-    setTimeout(function () {
-      toast.classList.remove('show');
-      setTimeout(function () {
-        toast.remove();
-      }, 300);
-    }, duration);
-  };
-
   // ---- Set active nav link ----
   var currentPath = window.location.pathname;
   document.querySelectorAll('.site-nav a').forEach(function (link) {
@@ -88,4 +93,11 @@ document.addEventListener('DOMContentLoaded', function () {
       link.classList.add('active');
     }
   });
-});
+}
+
+// Robust ready-state initialization
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMain);
+} else {
+  initMain();
+}
