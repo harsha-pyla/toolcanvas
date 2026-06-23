@@ -223,6 +223,9 @@ function initToolRating() {
   const ratingValueEl = ratingWrapper.querySelector('.rating-value');
   const ratingCountEl = ratingWrapper.querySelector('.rating-count');
 
+  if (ratingValueEl) ratingValueEl.textContent = '...';
+  if (ratingCountEl) ratingCountEl.textContent = '...';
+
   let totalPoints = 0;
   let totalReviews = 0;
 
@@ -407,10 +410,12 @@ function initOverallWebsiteRating() {
   const overallEl = document.getElementById('site-overall-rating');
   if (!overallEl) return;
 
-  function updateOverallRatingUI(averageRating, totalReviews) {
-    const ratingValueEl = overallEl.querySelector('.value');
-    const ratingCountEl = overallEl.querySelector('.count');
+  const ratingValueEl = overallEl.querySelector('.value');
+  const ratingCountEl = overallEl.querySelector('.count');
+  if (ratingValueEl) ratingValueEl.textContent = '...';
+  if (ratingCountEl) ratingCountEl.textContent = '...';
 
+  function updateOverallRatingUI(averageRating, totalReviews) {
     if (ratingValueEl) {
       ratingValueEl.textContent = averageRating.toFixed(1);
     }
@@ -479,6 +484,23 @@ function initOverallWebsiteRating() {
 function initHomepageToolRatings() {
   const toolsGrid = document.querySelector('.tools-grid');
   if (!toolsGrid) return;
+
+  // Render initial loading badges on the homepage tool cards
+  const cards = toolsGrid.querySelectorAll('.tool-card');
+  cards.forEach(card => {
+    let badge = card.querySelector('.tool-card__rating');
+    if (!badge) {
+      badge = document.createElement('div');
+      badge.className = 'tool-card__rating';
+      const desc = card.querySelector('.tool-card__desc');
+      if (desc) {
+        desc.parentNode.insertBefore(badge, desc.nextSibling);
+      } else {
+        card.appendChild(badge);
+      }
+    }
+    badge.innerHTML = `<span class="star">★</span> <span class="rating-value">...</span>/5 <span class="rating-count">(... reviews)</span>`;
+  });
 
   loadSupabase(async function (supabase) {
     let summaries = {};
