@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresher Resume Viewer – Free & Private | ToolCanvas</title>
+    <meta name="description" content="Preview and download premium entry-level ATS resume templates. Processed locally in your browser—completely free, private, with no signup needed.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Fresher Resume Viewer – Free & Private | ToolCanvas">
+    <meta property="og:description" content="Preview and download premium entry-level ATS resume templates. Processed locally in your browser—completely free, private, with no signup needed.">
+    <meta property="og:image" content="https://toolcanvas.online/logo/social-share.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fresher Resume Viewer – Free & Private | ToolCanvas">
+    <meta name="twitter:description" content="Preview and download premium entry-level ATS resume templates. Processed locally in your browser—completely free, private, with no signup needed.">
+    <meta name="twitter:image" content="https://toolcanvas.online/logo/social-share.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="../logo/logo.png">
+    
+    <style>
+        /* Modern Base Styles */
+        html, body {
+            overscroll-behavior-y: none;
+        }
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            background-color: #f4f2ee !important; /* Newsprint desk color */
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Newspaper Header Toolbar */
+        .viewer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fbfaf7;
+            border-bottom: 4px double #1a1a1a;
+            padding: 10px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            gap: 12px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-center {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* Newspaper logo branding */
+        .newspaper-logo {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-weight: 700;
+            font-size: 1.35rem;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+            margin-right: 8px;
+        }
+
+        .newspaper-logo span {
+            color: #2563eb;
+        }
+
+        /* Styled select template dropdown */
+        .select-wrapper {
+            position: relative;
+        }
+
+        #template-select {
+            padding: 8px 14px;
+            border: 1px solid #1a1a1a;
+            background-color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        #template-select:hover {
+            background-color: #f1f5f9;
+        }
+
+        /* Premium Back Button Style */
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            border: 1px solid #1a1a1a;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .btn-back svg {
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-back:hover {
+            background-color: #f1f5f9;
+            border-color: #2563eb;
+            color: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.15);
+        }
+
+        .btn-back:hover svg {
+            transform: translateX(-4px);
+        }
+
+        .btn-back:active {
+            transform: translateY(0) scale(0.96);
+        }
+
+        /* Zoom controls pod */
+        .zoom-controls {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 2px;
+        }
+
+        .btn-zoom {
+            background: none;
+            border: none;
+            width: 28px;
+            height: 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .btn-zoom:hover {
+            background: #f1f5f9;
+            color: #1a1a1a;
+        }
+
+        .zoom-text {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            padding: 0 10px;
+            min-width: 65px;
+            text-align: center;
+            user-select: none;
+        }
+
+        .btn-zoom-text {
+            background: none;
+            border: none;
+            border-left: 1px solid #e2e8f0;
+            padding: 0 8px;
+            height: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: color 0.15s;
+        }
+
+        .btn-zoom-text:hover {
+            color: #2563eb;
+        }
+
+        /* Download PDF Premium Button */
+        .btn-download {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn-download:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-download:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* Main Workspace Content area */
+        .viewer-main {
+            min-height: calc(100vh - 60px);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow: auto;
+            padding: 30px 20px;
+            box-sizing: border-box;
+        }
+
+        /* Centered Paper Container */
+        .document-container {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06), 0 5px 15px rgba(0,0,0,0.03);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            box-sizing: border-box;
+            background-color: #fcfaf7; /* Off-white warm paper */
+        }
+
+        .resume-paper-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 991px) {
+            .newspaper-logo {
+                display: none;
+            }
+            .viewer-header {
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .viewer-header {
+                padding: 10px 16px;
+            }
+            .zoom-controls {
+                display: none; /* Auto scale handles it on mobile */
+            }
+            #template-select {
+                font-size: 0.8rem;
+                padding: 6px 10px;
+            }
+            .btn-download {
+                font-size: 0.8rem;
+                padding: 6px 14px;
+            }
+            .btn-back {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+            .viewer-main {
+                padding: 15px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Newspaper Header Bar -->
+    <header class="viewer-header">
+        <div class="header-left">
+            <a href="index.html" class="btn-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Back</span>
+            </a>
+        </div>
+        <div class="header-center">
+            <span class="newspaper-logo">Tool<span>Canvas</span></span>
+            <div class="select-wrapper">
+                <select id="template-select">
+                    <option value="template1">Template 1: Minimalist Executive</option>
+                    <option value="template2">Template 2: Modern Professional</option>
+                    <option value="template3">Template 3: Slate Tech</option>
+                    <option value="template4">Template 4: Simple Elegant</option>
+                    <option value="template5">Template 5: Creative Narrative</option>
+                </select>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="zoom-controls">
+                <button type="button" id="zoom-out-btn" class="btn-zoom" title="Zoom Out">−</button>
+                <span id="zoom-value" class="zoom-text">Fit</span>
+                <button type="button" id="zoom-in-btn" class="btn-zoom" title="Zoom In">+</button>
+                <button type="button" id="zoom-fit-btn" class="btn-zoom-text">Fit</button>
+            </div>
+            <button type="button" id="download-pdf-btn" class="btn-download">Download PDF</button>
+        </div>
+    </header>
+
+    <!-- Document Showcase Workspace -->
+    <main class="viewer-main">
+        <div class="document-container">
+            <div class="resume-paper-wrapper">
+                <!-- Loaded dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <!-- PDF Generator CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Loader Logic -->
+    <script>
+        const MOCK_DATA = {
+            name: "Jane Vance",
+            title: "Computer Science Graduate",
+            email: "jane.vance@studentdev.com",
+            phone: "+1 (617) 555-0143",
+            location: "Boston, MA",
+            linkedin: "linkedin.com/in/janevance",
+            website: "github.com/janevance",
+            summary: "Motivated and detail-oriented Computer Science Graduate with hands-on experience in full-stack web development, software engineering principles, and agile methodologies. Proven ability to design, build, and deploy robust web applications and microservices. Skilled in modern frontend frameworks, backend API construction, and cloud deployment, seeking an entry-level software engineer role.",
+            skills: "Python, Java, JavaScript, TypeScript, C++, HTML5, CSS3, React, Node.js, Express, Next.js, PostgreSQL, MongoDB, Git, Docker, AWS (S3, Lambda), Jest, CI/CD, Agile/Scrum, RESTful APIs",
+            education: [
+                {
+                    school: "Boston University",
+                    degree: "B.S. in Computer Science (GPA: 3.82/4.00)",
+                    dates: "Sep 2022 - May 2026",
+                    location: "Boston, MA"
+                }
+            ],
+            projects: [
+                {
+                    name: "Cloud-Based Kanban Task Manager",
+                    tech: "React, Node.js, Express, MongoDB, AWS",
+                    dates: "Sep 2025 - Dec 2025",
+                    description: "- Designed and implemented a responsive, multi-tenant task management tool utilizing React for dynamic UI transitions.\n- Engineered secure RESTful APIs with Node.js/Express, incorporating JWT authentication and role-based access control.\n- Deployed backend services on AWS EC2 and database schemas on MongoDB Atlas, ensuring 99.9% uptime during university demo days."
+                },
+                {
+                    name: "Automated Algorithmic Trading Bot",
+                    tech: "Python, Pandas, NumPy, Alpaca API",
+                    dates: "May 2025 - Aug 2025",
+                    description: "- Built a backtesting simulator using Python and Pandas to test moving average crossover strategies with 5 years of historical stock data.\n- Optimized execution latency by 15% using multi-threaded request workers to interact with the Alpaca trade execution API.\n- Implemented automated slack notifications to alert users on key market trends and daily portfolio performance changes."
+                },
+                {
+                    name: "Distributed Chat Application",
+                    tech: "Java, WebSockets, Redis, Docker",
+                    dates: "Jan 2025 - May 2025",
+                    description: "- Developed a real-time messaging system in Java utilizing WebSockets for low-latency peer-to-peer communication.\n- Integrated Redis Pub/Sub architecture to enable message synchronization across multiple scaling chat server instances.\n- Containerized the entire stack using Docker and Docker Compose, simplifying development onboarding to a single command."
+                }
+            ],
+            experience: [
+                {
+                    company: "Tech Startups Inc.",
+                    title: "Software Engineering Intern",
+                    dates: "Jun 2025 - Aug 2025",
+                    location: "Boston, MA",
+                    description: "- Collaborated with a team of 4 engineers to design, build, and test features for a cloud-hosted customer dashboard.\n- Wrote automated unit and integration tests using Jest, boosting codebase coverage from 68% to 84%.\n- Refactored legacy UI components using React hooks, reducing client-side load time by 12%."
+                }
+            ],
+            activities: [
+                {
+                    role: "President",
+                    organization: "BU Computer Science Society",
+                    dates: "Sep 2024 - Present",
+                    location: "Boston, MA",
+                    description: "- Organized weekly technical workshops, hackathons, and guest speaker panels for 300+ active student members.\n- Established partnerships with local tech companies, securing $5,000 in sponsorships for the annual campus hackathon."
+                },
+                {
+                    role: "Peer Tutor",
+                    organization: "BU CS Department",
+                    dates: "Sep 2023 - May 2025",
+                    location: "Boston, MA",
+                    description: "- Provided weekly academic tutoring and homework code-review sessions to 30+ introductory Java and Data Structures students.\n- Helped students debug logic errors, verify algorithm complexities, and grasp fundamental object-oriented design patterns."
+                }
+            ]
+        };
+
+        const templateSelect = document.getElementById('template-select');
+        const paperWrapper = document.querySelector('.resume-paper-wrapper');
+        let activeTemplate = 'template1';
+
+        // Zoom Management
+        let currentZoomMode = 'fit';
+        let currentZoomScale = 1.0;
+        const ZOOM_PRESETS = [0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5];
+
+        // Track active styles to clear
+        let activeStyleSheets = [];
+
+        // Parse query params to load template
+        const urlParams = new URLSearchParams(window.location.search);
+        const templateParam = urlParams.get('template') || 'template1';
+        if (['template1', 'template2', 'template3', 'template4', 'template5'].includes(templateParam)) {
+            activeTemplate = templateParam;
+            templateSelect.value = activeTemplate;
+        }
+
+        // Initialize Page
+        loadTemplate(activeTemplate);
+
+        // Bind dropdown change
+        templateSelect.addEventListener('change', (e) => {
+            activeTemplate = e.target.value;
+            loadTemplate(activeTemplate);
+            
+            // Update URL without reloading
+            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?template=' + activeTemplate;
+            window.history.pushState({ path: newUrl }, '', newUrl);
+        });
+
+        // Load specific template html and stylesheets
+        function loadTemplate(templateName) {
+            // Remove previous template stylesheets
+            activeStyleSheets.forEach(el => el.remove());
+            activeStyleSheets = [];
+
+            const htmlUrl = `templates/${templateName}.html`;
+            fetch(htmlUrl)
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to fetch template.');
+                    return response.text();
+                })
+                .then(htmlText => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(htmlText, 'text/html');
+                    const resumeSheet = doc.querySelector('.resume-sheet');
+
+                    if (!resumeSheet) {
+                        paperWrapper.innerHTML = '<div style="padding: 40px; text-align: center; color: red;">Failed to parse template wrapper.</div>';
+                        return;
+                    }
+
+                    // Clean embedded scripts
+                    resumeSheet.querySelectorAll('script').forEach(s => s.remove());
+
+                    // Clear and append
+                    paperWrapper.innerHTML = '';
+                    paperWrapper.appendChild(resumeSheet);
+
+                    // Load CSS files
+                    loadStyleSheet('templates/shared.css');
+                    loadStyleSheet(`templates/${templateName}.css`);
+
+                    // Populate preview elements
+                    renderMockData();
+
+                    // Adjust zoom scale after layout finishes
+                    setTimeout(adjustScale, 50);
+                })
+                .catch(err => {
+                    console.error(err);
+                    paperWrapper.innerHTML = '<div style="padding: 40px; text-align: center; color: red;">Failed to load template layout.</div>';
+                });
+        }
+
+        function loadStyleSheet(href) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = href;
+            document.head.appendChild(link);
+            activeStyleSheets.push(link);
+        }
+
+        function renderMockData() {
+            const data = MOCK_DATA;
+            
+            // Name & Title
+            const nameEl = document.getElementById("doc-name");
+            const titleEl = document.getElementById("doc-title");
+            if (nameEl) nameEl.textContent = data.name;
+            if (titleEl) titleEl.textContent = data.title;
+
+            // Contact Details Row
+            const contactEl = document.getElementById("doc-contact-row");
+            if (contactEl) {
+                const contactItems = [];
+                if (data.email) contactItems.push(data.email);
+                if (data.phone) contactItems.push(data.phone);
+                if (data.location) contactItems.push(data.location);
+                if (data.linkedin) contactItems.push(data.linkedin);
+                if (data.website) contactItems.push(data.website);
+                
+                contactEl.innerHTML = contactItems.join(" &nbsp;|&nbsp; ");
+            }
+
+            // Summary
+            const summaryVal = document.getElementById("doc-summary-val");
+            const summarySection = document.getElementById("doc-summary-section");
+            if (summaryVal) {
+                if (data.summary) {
+                    summaryVal.textContent = data.summary;
+                    if (summarySection) summarySection.style.display = "block";
+                } else {
+                    if (summarySection) summarySection.style.display = "none";
+                }
+            }
+
+            // Education list
+            const eduList = document.getElementById("doc-education-list");
+            const eduSection = document.getElementById("doc-education-section");
+            if (eduList) {
+                eduList.innerHTML = "";
+                if (data.education && data.education.length > 0) {
+                    if (eduSection) eduSection.style.display = "block";
+                    
+                    data.education.forEach(edu => {
+                        const article = document.createElement("article");
+                        article.className = "edu-item";
+                        article.innerHTML = `
+                            <div class="item-header-row">
+                                <span class="item-school">${edu.school}</span>
+                                <span class="item-dates">${edu.dates}</span>
+                            </div>
+                            <div class="item-subheader-row">
+                                <span class="item-degree">${edu.degree}</span>
+                                <span class="item-location">${edu.location}</span>
+                            </div>
+                        `;
+                        eduList.appendChild(article);
+                    });
+                } else {
+                    if (eduSection) eduSection.style.display = "none";
+                }
+            }
+
+            // Academic Projects list
+            const projectList = document.getElementById("doc-project-list");
+            const projectSection = document.getElementById("doc-projects-section");
+            if (projectList) {
+                projectList.innerHTML = "";
+                if (data.projects && data.projects.length > 0) {
+                    if (projectSection) projectSection.style.display = "block";
+                    
+                    data.projects.forEach(proj => {
+                        const article = document.createElement("article");
+                        article.className = "project-item";
+                        
+                        let bulletsHtml = "";
+                        if (proj.description) {
+                            const lines = proj.description.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+                            lines.forEach(line => {
+                                let cleaned = line;
+                                if (cleaned.startsWith("-")) cleaned = cleaned.substring(1).trim();
+                                else if (cleaned.startsWith("*")) cleaned = cleaned.substring(1).trim();
+                                else if (cleaned.startsWith("•")) cleaned = cleaned.substring(1).trim();
+                                
+                                bulletsHtml += `<li>${cleaned}</li>`;
+                            });
+                        }
+
+                        article.innerHTML = `
+                            <div class="item-header-row">
+                                <span class="item-project-name">${proj.name}</span>
+                                <span class="item-dates">${proj.dates}</span>
+                            </div>
+                            <div class="item-subheader-row">
+                                <span class="item-tech">${proj.tech}</span>
+                            </div>
+                            <ul class="item-bullets">
+                                ${bulletsHtml}
+                            </ul>
+                        `;
+                        projectList.appendChild(article);
+                    });
+                } else {
+                    if (projectSection) projectSection.style.display = "none";
+                }
+            }
+
+            // Experience list
+            const expList = document.getElementById("doc-experience-list");
+            const expSection = document.getElementById("doc-experience-section");
+            if (expList) {
+                expList.innerHTML = "";
+                if (data.experience && data.experience.length > 0) {
+                    if (expSection) expSection.style.display = "block";
+                    
+                    data.experience.forEach(job => {
+                        const article = document.createElement("article");
+                        article.className = "job-item";
+                        
+                        let bulletsHtml = "";
+                        if (job.description) {
+                            const lines = job.description.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+                            lines.forEach(line => {
+                                let cleaned = line;
+                                if (cleaned.startsWith("-")) cleaned = cleaned.substring(1).trim();
+                                else if (cleaned.startsWith("*")) cleaned = cleaned.substring(1).trim();
+                                else if (cleaned.startsWith("•")) cleaned = cleaned.substring(1).trim();
+                                
+                                bulletsHtml += `<li>${cleaned}</li>`;
+                            });
+                        }
+
+                        article.innerHTML = `
+                            <div class="item-header-row">
+                                <span class="item-company">${job.company}</span>
+                                <span class="item-dates">${job.dates}</span>
+                            </div>
+                            <div class="item-subheader-row">
+                                <span class="item-title">${job.title}</span>
+                                <span class="item-location">${job.location}</span>
+                            </div>
+                            <ul class="item-bullets">
+                                ${bulletsHtml}
+                            </ul>
+                        `;
+                        expList.appendChild(article);
+                    });
+                } else {
+                    if (expSection) expSection.style.display = "none";
+                }
+            }
+
+            // Activities / Extracurriculars
+            const actList = document.getElementById("doc-activities-list");
+            const actSection = document.getElementById("doc-activities-section");
+            if (actList) {
+                actList.innerHTML = "";
+                if (data.activities && data.activities.length > 0) {
+                    if (actSection) actSection.style.display = "block";
+                    
+                    data.activities.forEach(act => {
+                        const article = document.createElement("article");
+                        article.className = "activity-item";
+                        
+                        let bulletsHtml = "";
+                        if (act.description) {
+                            const lines = act.description.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+                            lines.forEach(line => {
+                                let cleaned = line;
+                                if (cleaned.startsWith("-")) cleaned = cleaned.substring(1).trim();
+                                else if (cleaned.startsWith("*")) cleaned = cleaned.substring(1).trim();
+                                else if (cleaned.startsWith("•")) cleaned = cleaned.substring(1).trim();
+                                
+                                bulletsHtml += `<li>${cleaned}</li>`;
+                            });
+                        }
+
+                        article.innerHTML = `
+                            <div class="item-header-row">
+                                <span class="item-org">${act.organization}</span>
+                                <span class="item-dates">${act.dates}</span>
+                            </div>
+                            <div class="item-subheader-row">
+                                <span class="item-role">${act.role}</span>
+                                <span class="item-location">${act.location || ''}</span>
+                            </div>
+                            <ul class="item-bullets">
+                                ${bulletsHtml}
+                            </ul>
+                        `;
+                        actList.appendChild(article);
+                    });
+                } else {
+                    if (actSection) actSection.style.display = "none";
+                }
+            }
+
+            // Skills
+            const skillsVal = document.getElementById("doc-skills-val");
+            const skillsSection = document.getElementById("doc-skills-section");
+            if (skillsVal) {
+                if (data.skills) {
+                    const skillsArr = data.skills.split(",").map(s => s.trim()).filter(s => s.length > 0);
+                    if (skillsVal.tagName.toLowerCase() === "p") {
+                        skillsVal.textContent = skillsArr.join(" • ");
+                    } else {
+                        skillsVal.innerHTML = skillsArr.map(s => `<span>${s}</span>`).join("");
+                    }
+                    if (skillsSection) skillsSection.style.display = "block";
+                } else {
+                    if (skillsSection) skillsSection.style.display = "none";
+                }
+            }
+        }
+
+        // Adjust document scaling relative to workspace bounds
+        function adjustScale() {
+            const sheet = document.querySelector(".resume-sheet");
+            const container = document.querySelector(".document-container");
+            const main = document.querySelector(".viewer-main");
+            if (!sheet || !container || !main) return;
+
+            const padding = window.innerWidth <= 768 ? 20 : 60;
+            const availW = main.clientWidth - padding;
+            const availH = main.clientHeight - padding;
+
+            const scaleX = availW / 816;
+            const scaleY = availH / 1056;
+
+            if (currentZoomMode === 'fit') {
+                currentZoomScale = Math.max(0.35, Math.min(scaleX, scaleY, 1.4));
+                document.getElementById("zoom-value").textContent = "Fit (" + Math.round(currentZoomScale * 100) + "%)";
+            } else {
+                document.getElementById("zoom-value").textContent = Math.round(currentZoomScale * 100) + "%";
+            }
+
+            sheet.style.transform = `scale(${currentZoomScale})`;
+            sheet.style.transformOrigin = "top center";
+
+            // Set wrapper bounds to align precisely with scale dimensions
+            container.style.width = (816 * currentZoomScale) + "px";
+            container.style.height = (1056 * currentZoomScale) + "px";
+        }
+
+        window.addEventListener('resize', adjustScale);
+
+        // Bind zoom inputs
+        document.getElementById("zoom-out-btn").addEventListener("click", () => {
+            currentZoomMode = 'fixed';
+            let nextZoom = ZOOM_PRESETS[0];
+            for (let i = ZOOM_PRESETS.length - 1; i >= 0; i--) {
+                if (ZOOM_PRESETS[i] < currentZoomScale - 0.02) {
+                    nextZoom = ZOOM_PRESETS[i];
+                    break;
+                }
+            }
+            currentZoomScale = nextZoom;
+            adjustScale();
+        });
+
+        document.getElementById("zoom-in-btn").addEventListener("click", () => {
+            currentZoomMode = 'fixed';
+            let nextZoom = ZOOM_PRESETS[ZOOM_PRESETS.length - 1];
+            for (let i = 0; i < ZOOM_PRESETS.length; i++) {
+                if (ZOOM_PRESETS[i] > currentZoomScale + 0.02) {
+                    nextZoom = ZOOM_PRESETS[i];
+                    break;
+                }
+            }
+            currentZoomScale = nextZoom;
+            adjustScale();
+        });
+
+        document.getElementById("zoom-fit-btn").addEventListener("click", () => {
+            currentZoomMode = 'fit';
+            adjustScale();
+        });
+
+        // Download PDF direct compiler
+        document.getElementById("download-pdf-btn").addEventListener("click", () => {
+            const btn = document.getElementById("download-pdf-btn");
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = "Downloading...";
+
+            const element = document.querySelector(".resume-sheet");
+            if (!element) return;
+
+            // Reset scale transform before printing
+            const originalTransform = element.style.transform;
+            const originalTransformOrigin = element.style.transformOrigin;
+            element.style.transform = "none";
+            element.style.transformOrigin = "";
+
+            const opt = {
+                margin: 0,
+                filename: (document.getElementById("doc-name")?.textContent || "resume").trim().replace(/\s+/g, "_") + "_resume.pdf",
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                     scale: 2, 
+                     useCORS: true,
+                     logging: false
+                },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.style.transform = originalTransform;
+                element.style.transformOrigin = originalTransformOrigin;
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }).catch(err => {
+                console.error(err);
+                element.style.transform = originalTransform;
+                element.style.transformOrigin = originalTransformOrigin;
+                btn.disabled = false;
+                btn.textContent = originalText;
+                window.print(); // fallback
+            });
+        });
+    </script>
+</body>
+</html>

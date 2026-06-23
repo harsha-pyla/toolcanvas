@@ -1345,10 +1345,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const shareUrl = window.location.origin + window.location.pathname + '#' + compressed;
         
         navigator.clipboard.writeText(shareUrl).then(() => {
-            showToast("Shareable link copied to clipboard! Anyone opening this link will see your sketch.");
+            showShareModal(shareUrl);
         }).catch(err => {
             console.error("Clipboard copy failed:", err);
-            prompt("Copy this URL to share your sketch:", shareUrl);
+            showShareModal(shareUrl);
         });
     });
 
@@ -1358,6 +1358,247 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             alert(message);
         }
+    }
+
+    // Custom sharing modal with direct app integrations
+    function showShareModal(shareUrl) {
+        // Ensure style tag exists
+        let styleTag = document.getElementById('share-modal-styles');
+        if (!styleTag) {
+            styleTag = document.createElement('style');
+            styleTag.id = 'share-modal-styles';
+            styleTag.textContent = `
+                .share-overlay {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(15, 23, 42, 0.6);
+                    backdrop-filter: blur(4px);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 100000;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
+                .share-overlay.active {
+                    opacity: 1;
+                }
+                .share-dialog {
+                    background: #ffffff;
+                    border-radius: 24px;
+                    padding: 32px;
+                    width: 90%;
+                    max-width: 440px;
+                    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+                    position: relative;
+                    transform: scale(0.9) translateY(10px);
+                    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                }
+                .share-overlay.active .share-dialog {
+                    transform: scale(1) translateY(0);
+                }
+                .share-close-btn {
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                    background: #f1f5f9;
+                    border: none;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #64748b;
+                    font-weight: bold;
+                    font-size: 18px;
+                    transition: all 0.2s ease;
+                }
+                .share-close-btn:hover {
+                    background: #e2e8f0;
+                    color: #0f172a;
+                }
+                .share-dialog h3 {
+                    margin: 0 0 8px 0;
+                    font-size: 1.35rem;
+                    color: #0f172a;
+                    font-weight: 700;
+                }
+                .share-dialog p {
+                    margin: 0 0 24px 0;
+                    font-size: 0.9rem;
+                    color: #64748b;
+                    line-height: 1.45;
+                }
+                .share-link-box {
+                    display: flex;
+                    gap: 8px;
+                    margin-bottom: 24px;
+                }
+                .share-link-input {
+                    flex-grow: 1;
+                    padding: 12px 16px;
+                    border: 1px solid #cbd5e1;
+                    border-radius: 12px;
+                    font-size: 0.85rem;
+                    color: #334155;
+                    background: #f8fafc;
+                    outline: none;
+                    width: 100%;
+                }
+                .share-copy-btn {
+                    background: #0f172a;
+                    color: #ffffff;
+                    border: none;
+                    border-radius: 12px;
+                    padding: 0 20px;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    white-space: nowrap;
+                }
+                .share-copy-btn:hover {
+                    background: #1e293b;
+                }
+                .share-apps-grid {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 16px;
+                }
+                .share-app-link {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 8px;
+                    text-decoration: none;
+                    color: #64748b;
+                    font-size: 0.75rem;
+                    font-weight: 500;
+                    transition: transform 0.2s ease, color 0.2s ease;
+                }
+                .share-app-link:hover {
+                    transform: translateY(-2px);
+                    color: #0f172a;
+                }
+                .share-icon-wrapper {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #ffffff;
+                }
+                .share-icon-wrapper svg {
+                    width: 22px;
+                    height: 22px;
+                    fill: currentColor;
+                }
+                .bg-wa { background: #25d366; }
+                .bg-tw { background: #000000; }
+                .bg-fb { background: #1877f2; }
+                .bg-mail { background: #64748b; }
+            `;
+            document.head.appendChild(styleTag);
+        }
+
+        // Create overlay element
+        const overlay = document.createElement('div');
+        overlay.className = 'share-overlay';
+        
+        const mailtoUrl = `mailto:?subject=${encodeURIComponent('My Blackboard Sketch')}&body=${encodeURIComponent('Check out my drawing on ToolCanvas:\n\n' + shareUrl)}`;
+        const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent('Check out my drawing on ToolCanvas! ' + shareUrl)}`;
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent('Check out my drawing on ToolCanvas! ')}&url=${encodeURIComponent(shareUrl)}`;
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+
+        overlay.innerHTML = `
+            <div class="share-dialog">
+                <button class="share-close-btn">&times;</button>
+                <h3>Share Your Drawing</h3>
+                <p>Anyone opening this link can view your sketch directly in their browser.</p>
+                
+                <div class="share-link-box">
+                    <input type="text" class="share-link-input" readonly value="${shareUrl}">
+                    <button class="share-copy-btn">Copy</button>
+                </div>
+                
+                <div class="share-apps-grid">
+                    <a href="${whatsappUrl}" target="_blank" class="share-app-link">
+                        <div class="share-icon-wrapper bg-wa">
+                            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.446L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.852.002-2.63-1.023-5.101-2.887-6.968C16.584 1.865 14.12 .84 11.49.84c-5.44 0-9.866 4.421-9.87 9.854 0 1.63.454 3.223 1.317 4.625L1.874 20.89l5.773-1.736zM17.487 14.39c-.3-.15-1.782-.88-2.057-.98-.275-.1-.475-.15-.675.15-.2.3-.775.98-.95 1.18-.175.2-.35.225-.65.075-1.03-.52-1.92-1.02-2.66-2.28-.2-.35 0-.54.15-.71.135-.15.3-.35.45-.52.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.589-.5-.508-.675-.517-.175-.009-.375-.01-.575-.01-.2 0-.525.075-.8 1.01-.275 1.01-1.05 1.01-1.25 1.1-.19.09-.64-.09-1.29-.69-1.75-1.56-2.93-3.97-3.23-4.52-.3-.55-.03-.85.24-1.12.25-.24.52-.58.78-.88.26-.3.35-.5.52-.83.18-.33.09-.63-.04-.88-.13-.25-.925-2.225-1.275-3.05-.34-.81-.69-.7-1.12-.7-.3 0-.6-.05-.9.1-.3.15-1.175 1.15-1.175 2.8 0 1.65 1.2 3.25 1.365 3.48.165.225 2.36 3.6 5.72 5.05.8.35 1.425.56 1.912.72.805.257 1.54.22 2.115.135.64-.095 1.78-.73 2.03-1.435.25-.705.25-1.31.175-1.435-.075-.125-.275-.2-.575-.35z"/></svg>
+                        </div>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="${twitterUrl}" target="_blank" class="share-app-link">
+                        <div class="share-icon-wrapper bg-tw">
+                            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </div>
+                        <span>X (Twitter)</span>
+                    </a>
+                    <a href="${facebookUrl}" target="_blank" class="share-app-link">
+                        <div class="share-icon-wrapper bg-fb">
+                            <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.85z"/></svg>
+                        </div>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="${mailtoUrl}" class="share-app-link">
+                        <div class="share-icon-wrapper bg-mail">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </div>
+                        <span>Email</span>
+                    </a>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(overlay);
+
+        // Force layout reflow to trigger overlay CSS transition
+        overlay.offsetWidth;
+        overlay.classList.add('active');
+
+        function closeShareModal() {
+            overlay.classList.remove('active');
+            setTimeout(() => {
+                overlay.remove();
+            }, 300);
+        }
+
+        // Dismiss on clicking background overlay
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeShareModal();
+        });
+
+        // Close on close button click
+        const closeBtn = overlay.querySelector('.share-close-btn');
+        closeBtn.addEventListener('click', closeShareModal);
+
+        // Manual copy button action
+        const copyBtn = overlay.querySelector('.share-copy-btn');
+        const linkInput = overlay.querySelector('.share-link-input');
+
+        copyBtn.addEventListener('click', () => {
+            linkInput.select();
+            linkInput.setSelectionRange(0, 99999);
+            
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                copyBtn.textContent = 'Copied!';
+                copyBtn.style.background = '#10b981';
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy';
+                    copyBtn.style.background = '#0f172a';
+                }, 2000);
+                showToast("Link copied to clipboard!");
+            }).catch(err => {
+                console.error("Clipboard copy failed:", err);
+            });
+        });
     }
 
     // -------------------------------------------------------------

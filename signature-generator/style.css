@@ -1,0 +1,523 @@
+/* Signature Generator Styles */
+
+.signature-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+/* Tabs switcher */
+.signature-tabs {
+    display: flex;
+    gap: 12px;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 24px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s ease;
+    outline: none;
+}
+
+.tab-btn:hover {
+    color: #1e293b;
+}
+
+.tab-btn.active {
+    color: #2563eb;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #2563eb;
+}
+
+/* Tab contents */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Canvas Area */
+.canvas-outer-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 16px;
+    background-color: #fafbfd;
+    overflow: hidden;
+}
+
+#signature-canvas {
+    display: block;
+    width: 100%;
+    height: 280px;
+    cursor: crosshair;
+    touch-action: none;
+}
+
+.canvas-line-hint {
+    position: absolute;
+    bottom: 50px;
+    left: 10%;
+    right: 10%;
+    border-bottom: 1px dashed #94a3b8;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    text-align: center;
+    padding-bottom: 4px;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Toolbar styling */
+.signature-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.control-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.color-options {
+    display: flex;
+    gap: 8px;
+}
+
+.color-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 0;
+}
+
+.color-circle:hover {
+    transform: scale(1.1);
+}
+
+.color-circle.active {
+    border-color: #3b82f6;
+    transform: scale(1.1);
+    box-shadow: 0 0 0 2px #ffffff inset;
+}
+
+.width-options {
+    display: flex;
+    gap: 6px;
+}
+
+.width-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.width-btn:hover {
+    border-color: #94a3b8;
+    background: #f8fafc;
+}
+
+.width-btn.active {
+    background: #eff6ff;
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+.dot {
+    background-color: #1e293b;
+    border-radius: 50%;
+    display: block;
+}
+.dot.thin { width: 3px; height: 3px; }
+.dot.medium { width: 6px; height: 6px; }
+.dot.thick { width: 9px; height: 9px; }
+
+.btn-clear {
+    background: none;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-clear:hover {
+    background: #fef2f2;
+    border-color: #fee2e2;
+    color: #ef4444;
+}
+
+/* Cursive Typewriter styling */
+.type-input-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 400px;
+    margin: 0 auto 24px auto;
+}
+
+.type-input-row label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #475569;
+}
+
+.type-input-row input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.type-input-row input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.fonts-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+    margin-bottom: 10px;
+}
+
+.font-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    transition: all 0.2s ease;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.font-card:hover {
+    border-color: #cbd5e1;
+    background: #f1f5f9;
+}
+
+.font-card.active {
+    background: #eff6ff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 1px #2563eb;
+}
+
+.font-preview-text {
+    font-size: 2.2rem;
+    color: #0f172a;
+    line-height: 1.2;
+    word-break: break-all;
+}
+
+.font-name-label {
+    position: absolute;
+    bottom: 6px;
+    right: 12px;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+/* Actions Panel */
+.actions-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.actions-panel button {
+    min-width: 200px;
+}
+
+/* Document Signer section styling */
+.document-signer-section {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.signer-header {
+    margin-bottom: 24px;
+}
+
+.signer-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 8px 0;
+}
+
+.signer-header p {
+    font-size: 0.95rem;
+    color: #475569;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.signer-workspace-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media (min-width: 992px) {
+    .signer-workspace-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.signer-preview-panel {
+    background-color: #f1f5f9;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    min-height: 400px;
+    max-height: 650px;
+    border: 1px solid #e2e8f0;
+}
+
+.document-wrapper {
+    position: relative;
+    display: inline-block;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    max-width: 100%;
+}
+
+#bg-doc-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    user-select: none;
+    pointer-events: none;
+}
+
+.signature-overlay {
+    position: absolute;
+    cursor: move;
+    border: 1.5px dashed #3b82f6;
+    background-color: rgba(59, 130, 246, 0.05);
+    user-select: none;
+    touch-action: none;
+    padding: 4px;
+    display: block;
+    box-sizing: border-box;
+}
+
+.signature-overlay.dragging {
+    border-color: #2563eb;
+    background-color: rgba(37, 99, 235, 0.08);
+}
+
+#sig-overlay-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+.signer-controls-panel {
+    background: #fafbfd;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    height: fit-content;
+}
+
+.signer-controls-panel h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 16px 0;
+}
+
+/* Option Groups overrides */
+.option-group {
+    margin-bottom: 20px;
+}
+
+.option-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.option-label-row label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #475569;
+}
+
+.option-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2563eb;
+    background: #eff6ff;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+.option-group input[type="range"] {
+    width: 100%;
+    height: 6px;
+    background: #cbd5e1;
+    border-radius: 3px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.option-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #2563eb;
+    cursor: pointer;
+}
+
+.option-hint {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin: 6px 0 0 0;
+    line-height: 1.4;
+}
+
+.doc-drop-zone__link {
+    color: #2563eb;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Resize Handle Style */
+.resize-handle {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: #2563eb;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    bottom: -7px;
+    right: -7px;
+    cursor: se-resize;
+    z-index: 10;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: transform 0.1s ease;
+}
+
+.resize-handle:hover {
+    transform: scale(1.2);
+}
+
+/* PDF Page Navigation Controls */
+.pdf-page-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 16px;
+    background: #ffffff;
+    padding: 8px 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.btn-page {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-page:hover:not(:disabled) {
+    background: #e2e8f0;
+    color: #1e293b;
+}
+
+.btn-page:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pdf-page-info {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #475569;
+    user-select: none;
+}
