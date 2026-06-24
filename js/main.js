@@ -193,17 +193,22 @@ function initMain() {
     });
   }
   
-  // ---- Tool Rating Widget Init ----
-  initToolRating();
-
-  // ---- Site Overall Rating Init ----
-  initOverallWebsiteRating();
-
-  // ---- Homepage Tool Ratings Grid Init ----
-  initHomepageToolRatings();
-
   // ---- Contact Form Init ----
   initContactForm();
+
+  // Defer database-reliant/heavy ratings widgets initialization to avoid blocking the main thread during initial load
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      // ---- Tool Rating Widget Init ----
+      initToolRating();
+
+      // ---- Site Overall Rating Init ----
+      initOverallWebsiteRating();
+
+      // ---- Homepage Tool Ratings Grid Init ----
+      initHomepageToolRatings();
+    }, 50);
+  });
 }
 
 function initToolRating() {
