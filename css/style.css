@@ -1254,16 +1254,17 @@ a:hover {
   }
 }
 
-/* Site Overall Rating Widget (Home Page Header) */
+/* Site Overall Rating Widget (Home Page Footer) */
 .site-overall-rating {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   font-family: 'Inter', sans-serif;
-  text-align: right;
-  gap: 2px;
+  text-align: center;
+  gap: 4px;
   user-select: none;
+  margin-bottom: var(--space-md);
 }
 
 .site-overall-rating .stars-outer {
@@ -1314,15 +1315,6 @@ a:hover {
 @media (max-width: 768px) {
   .logo-search-container {
     align-items: center;
-  }
-  .site-overall-rating {
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    order: 3; /* Push it below the logo and hamburger on mobile */
-    margin-top: 5px;
-    border-top: 1px dashed #e2e8f0;
-    padding-top: 8px;
   }
 }
 
