@@ -1,6 +1,5 @@
 {
   "cleanUrls": true,
-  "trailingSlash": true,
   "redirects": [
     {
       "source": "/index.html",
@@ -31,12 +30,6 @@
       "source": "/privacy",
       "destination": "/privacy-policy",
       "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "destination": "https://toolcanvas.online/$1",
-      "permanent": true,
-      "has": [{ "type": "host", "value": "www.toolcanvas.online" }]
     },
     {
       "source": "/tools/jpg-to-png",
