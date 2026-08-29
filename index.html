@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ToolCanvas — Free Online Tools for Everyday Tasks</title>
-  <meta name="description" content="Free online utility tools for everyday tasks. Custom link-in-bio pages, image converters, and resume builders. Secure, private, offline, and no signup.">
-  <meta name="keywords" content="free online tools, link in bio, image converter, resume builder, social media tools, place name generator">
+  <meta name="description" content="Free online utility tools for everyday tasks. Image converters and resume builders. Secure, private, offline, and no signup.">
+  <meta name="keywords" content="free online tools, image converter, resume builder, social media tools, place name generator">
   <meta name="author" content="ToolCanvas">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://toolcanvas.online/">
@@ -14,7 +14,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="ToolCanvas — Free Online Tools for Everyday Tasks">
-  <meta property="og:description" content="Free online utility tools. Custom link-in-bio, image converters, and resume builders. Secure, private, offline, and no signup.">
+  <meta property="og:description" content="Free online utility tools. Image converters and resume builders. Secure, private, offline, and no signup.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://toolcanvas.online/">
   <meta property="og:image" content="https://toolcanvas.online/logo/social-share.png">
@@ -24,7 +24,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ToolCanvas — Free Online Tools for Everyday Tasks">
-  <meta name="twitter:description" content="Free online utility tools. Custom link-in-bio, image converters, and resume builders. Secure, private, offline, and no signup.">
+  <meta name="twitter:description" content="Free online utility tools. Image converters and resume builders. Secure, private, offline, and no signup.">
   <meta name="twitter:image" content="https://toolcanvas.online/logo/social-share.png">
 
   <!-- Google Fonts -->
@@ -68,10 +68,7 @@
     <div class="container">
       <nav class="site-nav">
           <div class="nav-item">
-              <a href="index.html" class="active">Home</a>
-          </div>
-          <div class="nav-item">
-              <a href="link-in-bio/">Link in Bio</a>
+              <a href="/" class="active">Home</a>
           </div>
           <div class="nav-item dropdown">
               <a href="#random-tools">Random</a>
@@ -87,16 +84,10 @@
               <div class="dropdown-menu">
               <a href="image-to-jpg/">Image to JPG</a>
               <a href="image-to-png/">Image to PNG</a>
+                    <a href="jpg-to-png/">JPG to PNG</a>
               <a href="image-to-webp/">Image to WebP</a>
               <a href="image-to-text/">Image to Text (OCR)</a>
               <a href="image-resizer/">Image Resizer</a>
-              </div>
-          </div>
-          <div class="nav-item dropdown">
-              <a href="#pdf-tools">PDF</a>
-              <div class="dropdown-menu">
-              <a href="image-to-pdf/">Image to PDF</a>
-              <a href="signature-generator/">Signature Generator</a>
               </div>
           </div>
           <div class="nav-item dropdown">
@@ -105,13 +96,6 @@
               <a href="instagram-profile-preview/">Instagram Preview</a>
               <a href="linkedin-profile-preview/">LinkedIn Preview</a>
               <a href="social-media-card/">Social Media Card</a>
-              </div>
-          </div>
-          <div class="nav-item dropdown">
-              <a href="#resume-tools">Resume</a>
-              <div class="dropdown-menu">
-              <a href="experience-templates/">Experience Templates</a>
-              <a href="fresher-templates/">Fresher Templates</a>
               </div>
           </div>
           <div class="nav-item dropdown">
@@ -133,14 +117,14 @@
               </div>
           </div>
           <div class="nav-item">
-              <a href="about.html">About</a>
+              <a href="/about">About</a>
           </div>
           <div class="nav-item">
-              <a href="contact.html">Contact</a>
+              <a href="/contact">Contact</a>
           </div>
       </nav>
       <div class="logo-search-container">
-        <a href="index.html" class="site-logo">Tool<span>Canvas</span></a>
+        <a href="/" class="site-logo">Tool<span>Canvas</span></a>
 
         <button class="nav-toggle" aria-label="Toggle navigation">
           <span class="hamburger-bar"></span>
@@ -191,7 +175,7 @@
                 <div id="generator-result">Generating...</div>
               </div>
               <div class="place-widget__footer">
-                Powered by <a href="index.html">ToolCanvas</a>
+                Powered by <a href="/">ToolCanvas</a>
               </div>
             </div>
           </div>
@@ -205,35 +189,23 @@
         
         <div class="filter-tabs">
           <button class="filter-tab active" data-filter="all">All</button>
-          <button class="filter-tab" data-filter="web">Web & List</button>
           <button class="filter-tab" data-filter="random">Random</button>
           <button class="filter-tab" data-filter="image">Image Tools</button>
-          <button class="filter-tab" data-filter="pdf">PDF Tools</button>
           <button class="filter-tab" data-filter="social">Social Media</button>
-          <button class="filter-tab" data-filter="resume">Resume Builder</button>
           <button class="filter-tab" data-filter="canva">Canva Workspace</button>
           <button class="filter-tab" data-filter="video">Video Tools</button>
         </div>
 
         <div class="tools-grid">
-          <!-- Web: Link in Bio -->
-          <div class="tool-card" data-category="web">
-            <div class="tool-card__icon-wrapper bg-web">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-            </div>
-            <h4 class="tool-card__title">Link in Bio Generator</h4>
-            <p class="tool-card__desc">A secure builder that lets you create a clean, shareable landing page for your social profiles in seconds.</p>
-            <a href="link-in-bio/" class="stretched-link" aria-label="Launch Link in Bio Generator"></a>
-          </div>
 
           <!-- Random: Place Name -->
           <div class="tool-card" data-category="random">
             <div class="tool-card__icon-wrapper bg-random">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             </div>
-            <h4 class="tool-card__title">Random Place Name Generator</h4>
-            <p class="tool-card__desc">Instantly generate random city, country, landmark, nature, or fantasy names for creative writing, planning, or brainstorming.</p>
-            <a href="place-name-generator/" class="stretched-link" aria-label="Launch Place Name Generator"></a>
+            <h4 class="tool-card__title">Real Place Generator</h4>
+            <p class="tool-card__desc">Select any country and generate real places — name, state & map link. Filter by trips or beautiful spots.</p>
+            <a href="place-name-generator/" class="stretched-link" aria-label="Launch Real Place Generator"></a>
           </div>
 
           <!-- Random: Password -->
@@ -286,6 +258,16 @@
             <a href="image-to-png/" class="stretched-link" aria-label="Launch Image to PNG Converter"></a>
           </div>
 
+          <!-- Image: JPG to PNG -->
+          <div class="tool-card" data-category="image">
+            <div class="tool-card__icon-wrapper bg-image">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="9" cy="15" r="1"></circle><polygon points="17 21 12 16 9 19"></polygon></svg>
+            </div>
+            <h4 class="tool-card__title">JPG to PNG</h4>
+            <p class="tool-card__desc">Convert JPG to PNG instantly — private, offline and free. No server upload.</p>
+            <a href="jpg-to-png/" class="stretched-link" aria-label="Launch JPG to PNG Converter"></a>
+          </div>
+
           <!-- Image: Image to WebP -->
           <div class="tool-card" data-category="image">
             <div class="tool-card__icon-wrapper bg-image">
@@ -316,26 +298,6 @@
             <a href="image-resizer/" class="stretched-link" aria-label="Launch Image Resizer"></a>
           </div>
 
-          <!-- PDF: Image to PDF -->
-          <div class="tool-card" data-category="pdf">
-            <div class="tool-card__icon-wrapper bg-pdf">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            </div>
-            <h4 class="tool-card__title">Image to PDF</h4>
-            <p class="tool-card__desc">Compile multiple images into a single, downloadable PDF document securely.</p>
-            <a href="image-to-pdf/" class="stretched-link" aria-label="Launch Image to PDF Compiler"></a>
-          </div>
-
-          <!-- PDF: Signature Generator -->
-          <div class="tool-card" data-category="pdf">
-            <div class="tool-card__icon-wrapper bg-pdf">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-            </div>
-            <h4 class="tool-card__title">Signature Generator</h4>
-            <p class="tool-card__desc">Draw, customize, and download your handwritten digital signature securely.</p>
-            <a href="signature-generator/" class="stretched-link" aria-label="Launch Signature Generator"></a>
-          </div>
-
           <!-- Social: Instagram Preview -->
           <div class="tool-card" data-category="social">
             <div class="tool-card__icon-wrapper bg-social">
@@ -364,26 +326,6 @@
             <h4 class="tool-card__title">Social Media Card</h4>
             <p class="tool-card__desc">Design custom digital business cards with profile photos, Silver/Gold/Custom themes, links, and scan-to-connect QR codes.</p>
             <a href="social-media-card/" class="stretched-link" aria-label="Launch Social Media Card"></a>
-          </div>
-
-          <!-- Resume: Experience Templates -->
-          <div class="tool-card" data-category="resume">
-            <div class="tool-card__icon-wrapper bg-resume">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M8 13h8M8 17h8"></path></svg>
-            </div>
-            <h4 class="tool-card__title">Experience Templates</h4>
-            <p class="tool-card__desc">Choose from chronological & functional layouts designed for candidates with work experience.</p>
-            <a href="experience-templates/" class="stretched-link" aria-label="Launch Experience Resume Templates"></a>
-          </div>
-
-          <!-- Resume: Fresher Templates -->
-          <div class="tool-card" data-category="resume">
-            <div class="tool-card__icon-wrapper bg-resume">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
-            </div>
-            <h4 class="tool-card__title">Fresher Templates</h4>
-            <p class="tool-card__desc">Clean resume layouts tailored for fresh graduates and entry-level candidates.</p>
-            <a href="fresher-templates/" class="stretched-link" aria-label="Launch Fresher Resume Templates"></a>
           </div>
 
           <!-- Canva: Whiteboard -->
@@ -474,13 +416,13 @@
         <h3 class="category-heading" style="color: #000000;">Learn about ToolCanvas</h3>
         <ul class="newspaper-list">
           <li>
-            <a href="about.html">About ToolCanvas</a> explains our mission and how browser-side tools protect your data.
+            <a href="/about">About ToolCanvas</a> explains our mission and how browser-side tools protect your data.
           </li>
           <li>
-            <a href="privacy-policy.html">Privacy Policy</a> details our strict stance on user privacy and data collection.
+            <a href="/privacy-policy">Privacy Policy</a> details our strict stance on user privacy and data collection.
           </li>
           <li>
-            <a href="terms.html">Terms of Use</a> outlines the general rules and terms for using our website.
+            <a href="/terms">Terms of Use</a> outlines the general rules and terms for using our website.
           </li>
         </ul>
       </div>
@@ -491,7 +433,7 @@
         <h3 class="category-heading" style="color: #000000;">Contact and Help</h3>
         <ul class="newspaper-list">
           <li>
-            <a href="contact.html">Contact Details</a> lets you get in touch with us for support or tool suggestions.
+            <a href="/contact">Contact Details</a> lets you get in touch with us for support or tool suggestions.
           </li>
         </ul>
       </div>
@@ -507,21 +449,12 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
-      <!-- Site Overall Rating Widget (Read-Only) -->
-      <div class="site-overall-rating" id="site-overall-rating">
-        <div class="stars-outer">
-          <div class="stars-inner">★★★★★</div>
-        </div>
-        <div class="rating-stats-text">
-          <span class="value">...</span>/5 (<span class="count">...</span> reviews)
-        </div>
-      </div>
       <p>&copy; 2026 ToolCanvas. All rights reserved.</p>
       <div class="footer-links">
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Use</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms">Terms of Use</a>
       </div>
     </div>
   </footer>

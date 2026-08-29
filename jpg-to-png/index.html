@@ -4,17 +4,17 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Image to PNG Converter — Convert Images Online Locally | ToolCanvas</title>
-    <meta name="description" content="Convert your JPG, WebP, BMP, and GIF images to PNG format locally in your browser. Preserves image transparency, secure private processing, no server uploads.">
-    <meta name="keywords" content="image to png, convert jpg to png, convert webp to png, transparency converter, local image converter, private png converter, offline image converter">
+    <title>JPG to PNG Converter – Free & Private | ToolCanvas</title>
+    <meta name="description" content="Convert JPG to PNG for free. No signup, files stay private on your device, no upload. Works offline in your browser.">
+    <meta name="keywords" content="jpg to png, jpeg to png, convert jpg to png, jpg to png converter, image converter, offline, private">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://toolcanvas.online/image-to-png/">
+    <link rel="canonical" href="https://toolcanvas.online/jpg-to-png/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Free Image to PNG Converter — Convert Online Locally | ToolCanvas">
-    <meta property="og:description" content="Convert JPG, WebP, and other formats to PNG securely in your browser while preserving transparency. No files uploaded.">
+    <meta property="og:title" content="JPG to PNG Converter – Free & Private | ToolCanvas">
+    <meta property="og:description" content="Convert JPG/JPEG to PNG instantly in your browser. Private, no upload, free & works offline.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://toolcanvas.online/image-to-png/">
+    <meta property="og:url" content="https://toolcanvas.online/jpg-to-png/">
     <meta property="og:site_name" content="ToolCanvas">
 
     <!-- Google Fonts -->
@@ -31,9 +31,9 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Image to PNG Converter",
-        "description": "Convert images to PNG locally in your browser. Preserves full transparency and supports custom resizing without server uploads.",
-        "url": "https://toolcanvas.online/image-to-png/",
+        "name": "JPG to PNG Converter",
+        "description": "Convert JPG/JPEG images to PNG locally in your browser. No upload, private, free and offline.",
+        "url": "https://toolcanvas.online/jpg-to-png/",
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Any",
         "offers": {
@@ -81,8 +81,8 @@
                     <a href="/#image-tools" class="active">Image Tools</a>
                     <div class="dropdown-menu">
                     <a href="../image-to-jpg/">Image to JPG</a>
-                    <a href="index.html">Image to PNG</a>
-                    <a href="../jpg-to-png/">JPG to PNG</a>
+                    <a href="../image-to-png/">Image to PNG</a>
+                    <a href="index.html">JPG to PNG</a>
                     <a href="../image-to-webp/">Image to WebP</a>
                     <a href="../image-to-text/">Image to Text (OCR)</a>
                     <a href="../image-resizer/">Image Resizer</a>
@@ -138,7 +138,7 @@
             <div class="container">
                 <a href="/">Home</a>
                 <span class="separator">›</span>
-                <span class="current">Image to PNG</span>
+                <span class="current">JPG to PNG</span>
             </div>
         </nav>
 
@@ -146,8 +146,8 @@
         <section class="tool-section">
             <div class="container">
                 <div class="tool-header">
-                    <h1>Free Image to PNG Converter</h1>
-                    <p class="tool-intro">Convert your JPG, WebP, BMP, and GIF images to transparent PNG format locally. Resize your images if needed and download instantly. No server uploads, no data collection.</p>
+                    <h1>JPG to PNG Converter</h1>
+                    <p class="tool-intro">Convert JPG/JPEG to PNG instantly — lossless, private and offline. No upload, files never leave your device. Optional resize before export.</p>
 </div>
 
                 <div class="converter-card">
@@ -155,10 +155,10 @@
                     <div class="drop-zone" id="drop-zone">
                         <div class="drop-zone__inner">
                             <span class="drop-zone__icon">🖼️</span>
-                            <p class="drop-zone__text">Drag & drop your images here, or <span class="drop-zone__link">browse files</span></p>
-                            <p class="drop-zone__formats">Supports JPG, JPEG, WebP, GIF, BMP, and SVG</p>
+                            <p class="drop-zone__text">Drag & drop your JPGs here, or <span class="drop-zone__link">browse files</span></p>
+                            <p class="drop-zone__formats">Supports JPG, JPEG only — converts to PNG</p>
                         </div>
-                        <input type="file" id="file-input" accept="image/*" style="display: none;" multiple>
+                        <input type="file" id="file-input" accept=".jpg,.jpeg,image/jpeg" style="display: none;" multiple>
                     </div>
 
                     <!-- Editor Workspace (hidden by default) -->
@@ -176,8 +176,8 @@
                                 <h3>Conversion Options</h3>
                                 
                                 <div class="option-info-box">
-                                    <p><strong>Format:</strong> PNG (Portable Network Graphics)</p>
-                                    <p class="option-hint">PNG is a lossless raster format that supports transparency and preserves maximum detail. Ideal for graphics, illustrations, and screenshots.</p>
+                                    <p><strong>Input:</strong> JPG / JPEG &nbsp; → &nbsp;<strong>Output:</strong> PNG</p>
+                                    <p class="option-hint">PNG is lossless and supports transparency. Your JPG background stays opaque (JPG has no transparency). Perfect for editing, logos, and high-quality exports.</p>
                                 </div>
 
                                 <!-- Resize Dimensions -->
@@ -210,8 +210,8 @@
 
                                 <!-- Action Buttons -->
                                 <div class="controls-actions" style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
-                                    <button type="button" class="btn-primary" id="convert-btn" style="width: 100%;">Convert All Images</button>
-                                    <button type="button" class="btn-primary" id="download-all-btn" style="width: 100%; display: none; background-color: #16a34a;">Download All Converted</button>
+                                    <button type="button" class="btn-primary" id="convert-btn" style="width: 100%;">Convert to PNG</button>
+                                    <button type="button" class="btn-primary" id="download-all-btn" style="width: 100%; display: none; background-color: #16a34a;">Download All PNGs</button>
                                     <button type="button" class="btn-secondary" id="reset-btn" style="width: 100%;">Clear All</button>
                                 </div>
                             </div>
@@ -226,18 +226,18 @@
         <section class="seo-content">
             <div class="container">
                 <div class="seo-block">
-                    <h2>How Does the Secure Image to PNG Converter Work?</h2>
-                    <p>This tool processes your images with strict security. When you select your photo, it is rendered and encoded into a Portable Network Graphics (PNG) file instantly on your device, providing a secure and direct download path.</p>
-                    <p>This structure guarantees complete data privacy. Your personal images, photos, and graphic sheets are never uploaded to our servers, nor do we run any server-side scripts. It makes processing extremely fast, secure, and compatible with complete offline use.</p>
+                    <h2>How the JPG to PNG Converter Works</h2>
+                    <p>Your JPG is decoded and re-encoded as PNG entirely in your browser. The image is drawn to a canvas and exported with <code>canvas.toDataURL('image/png')</code> — no server upload, no waiting.</p>
+                    <p>This keeps your photos private and makes conversion instant and offline-capable. Because PNG is lossless, every pixel is preserved at full quality.</p>
                 </div>
 
                 <div class="seo-block">
-                    <h2>The Key Advantages of the PNG File Format</h2>
-                    <p>PNG (Portable Network Graphics) is a highly optimized raster graphics file format developed to replace the legacy GIF format. It has unique strengths for web and design assets:</p>
+                    <h2>Why Convert JPG to PNG?</h2>
                     <ul>
-                        <li><strong>Lossless Compression:</strong> Unlike JPG, which permanently discards color details to save space, PNG utilizes DEFLATE compression. This ensures that every pixel matches the original perfectly, making it the choice format for logo designs, text charts, screenshots, and vector exports.</li>
-                        <li><strong>Full Transparency Support:</strong> PNG supports an 8-bit alpha channel, allowing pixels to be fully transparent, semi-transparent, or opaque. This lets graphics blend seamlessly on top of colored web page headers or background patterns.</li>
-                        <li><strong>Sharp Text Rendering:</strong> Because there are no compression artifacts (common in JPG files around high-contrast edges), text, lines, and borders remain crisp and legible even at high zoom levels.</li>
+                        <li><strong>Lossless quality:</strong> PNG uses DEFLATE compression with zero visual loss — ideal for editing, printing, and archiving.</li>
+                        <li><strong>Ready for transparency:</strong> After conversion you can edit the PNG in any editor and add transparent backgrounds (JPG itself never has transparency).</li>
+                        <li><strong>Sharp edges:</strong> PNG avoids JPG block artifacts around text and lines — great for graphics and screenshots.</li>
+                        <li><strong>Universal support:</strong> PNG is supported everywhere — browsers, phones, design tools.</li>
                     </ul>
                 </div>
 
@@ -245,23 +245,23 @@
                     <h2>Frequently Asked Questions</h2>
 
                     <div class="faq-item">
-                        <h3 class="faq-question">Will my image's transparency be preserved?</h3>
-                        <p class="faq-answer">Yes! If your source image (like a transparent WebP or GIF) has transparent regions, this tool preserves them perfectly. The output PNG will retain full alpha transparency. If your source file is a flat JPG, it will convert cleanly, but no transparency will be added (the background will remain opaque as in the original).</p>
+                        <h3 class="faq-question">Will my JPG become transparent?</h3>
+                        <p class="faq-answer">JPG has no transparency, so the converted PNG will have an opaque background matching the original. You can later edit the PNG to make areas transparent.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h3 class="faq-question">Is this service free to use?</h3>
-                        <p class="faq-answer">Absolutely. ToolCanvas tools are free, private utilities. There are no limits on file sizes, no watermarks, no registration screens, and no premium restrictions.</p>
+                        <h3 class="faq-question">Is the file size larger after JPG → PNG?</h3>
+                        <p class="faq-answer">Often yes. JPG is lossy and highly compressed; PNG is lossless, so the same photo at full fidelity can be larger. Use PNG when quality matters, JPG when you need smallest size.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h3 class="faq-question">Why is the converted PNG file larger than my original JPG?</h3>
-                        <p class="faq-answer">Since PNG is a lossless format, it preserves the exact color values of every pixel. JPG uses lossy compression to discard visual information. Converting a JPG to a PNG requires translating compressed color grids into full lossless raster lines, which often results in a larger file size. Use PNG when quality is paramount and JPG when storage efficiency is the goal.</p>
+                        <h3 class="faq-question">Is this private and offline?</h3>
+                        <p class="faq-answer">Yes. Files never leave your device, no upload, works offline after page load. No signup required.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h3 class="faq-question">Can I use this tool on my smartphone?</h3>
-                        <p class="faq-answer">Yes, our tool is responsive and mobile-friendly. You can upload photos directly from your phone's camera roll or file explorer and download the converted PNG on Android, iOS, tablet, or desktop devices.</p>
+                        <h3 class="faq-question">Can I convert multiple JPGs at once?</h3>
+                        <p class="faq-answer">Yes — drop many JPGs, convert in one click, then download individually or use “Download All PNGs”.</p>
                     </div>
                 </div>
             </div>

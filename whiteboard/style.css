@@ -60,7 +60,7 @@ body.whiteboard-maximized-active {
     position: absolute;
     background-color: var(--color-accent);
     color: #ffffff;
-    padding: 8px 16px;
+    padding: 6px 14px;
     border-radius: 9999px;
     font-size: var(--font-size-xs);
     font-weight: 600;
@@ -682,13 +682,13 @@ body.whiteboard-maximized-active {
 /* ---------- Drawing Floating Dock ---------- */
 .drawing-dock {
     position: absolute;
-    bottom: 24px;
+    bottom: 16px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 9999px;
-    padding: 8px 16px;
+    padding: 6px 14px;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -879,7 +879,7 @@ body.whiteboard-maximized-active {
 /* ---------- Transparent Footer Links ---------- */
 .bottom-left-links {
     position: absolute;
-    bottom: 24px;
+    bottom: 16px;
     left: 24px;
     z-index: 5;
     font-size: 11px;
@@ -909,7 +909,7 @@ body.whiteboard-maximized-active {
 /* ---------- About Trigger Button ---------- */
 .btn-about-trigger {
     position: absolute;
-    bottom: 24px;
+    bottom: 16px;
     right: 24px;
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -1006,10 +1006,10 @@ body.whiteboard-maximized-active {
 .launch-card {
     background: #ffffff;
     border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    padding: 60px 40px;
+    border-radius: 12px;
+    padding: 36px 32px;
     text-align: center;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     margin: 20px 0 40px 0;
     display: flex;
     flex-direction: column;
@@ -1018,9 +1018,9 @@ body.whiteboard-maximized-active {
 }
 
 .launch-card-icon {
-    width: 80px;
-    height: 80px;
-    background: rgba(37, 99, 235, 0.08);
+    width: 64px;
+    height: 64px;
+    background: #eff6ff;
     color: var(--color-accent);
     border-radius: 50%;
     display: flex;
@@ -1030,7 +1030,7 @@ body.whiteboard-maximized-active {
 }
 
 .launch-card h2 {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--color-text);
     margin: 0;

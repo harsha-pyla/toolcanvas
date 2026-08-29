@@ -1,0 +1,282 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy.html",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/terms.html",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://toolcanvas.online/$1",
+      "permanent": true,
+      "has": [{ "type": "host", "value": "www.toolcanvas.online" }]
+    },
+    {
+      "source": "/tools/jpg-to-png",
+      "destination": "/jpg-to-png/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/jpg-to-png/",
+      "destination": "/jpg-to-png/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/png-to-jpg",
+      "destination": "/image-to-jpg/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/png-to-jpg/",
+      "destination": "/image-to-jpg/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/img-resize",
+      "destination": "/image-resizer/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/img-resize/",
+      "destination": "/image-resizer/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/img-crop",
+      "destination": "/image-resizer/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/img-crop/",
+      "destination": "/image-resizer/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/img-rotate",
+      "destination": "/image-resizer/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/img-rotate/",
+      "destination": "/image-resizer/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/img-blur",
+      "destination": "/image-resizer/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/img-blur/",
+      "destination": "/image-resizer/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/img-compress",
+      "destination": "/image-resizer/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/img-compress/",
+      "destination": "/image-resizer/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/password-generator",
+      "destination": "/password-generator/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/password-generator/",
+      "destination": "/password-generator/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/pass-gen",
+      "destination": "/password-generator/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/pass-gen/",
+      "destination": "/password-generator/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/qr-gen",
+      "destination": "/social-media-card/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/qr-gen/",
+      "destination": "/social-media-card/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/qr-code-generator",
+      "destination": "/social-media-card/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/qr-code-generator/",
+      "destination": "/social-media-card/",
+      "permanent": true
+    },
+    {
+      "source": "/link-in-bio",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/link-in-bio/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/image-to-pdf",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/image-to-pdf/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/signature-generator",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/signature-generator/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/experience-templates",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/experience-templates/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fresher-templates",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fresher-templates/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/explore",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/explore/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/careers",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/careers/",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/tools/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    }
+  ]
+}

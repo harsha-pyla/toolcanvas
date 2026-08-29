@@ -3,7 +3,6 @@
    Clean, light design inspired by random.org
    ========================================= */
 
-
 /* ---------- CSS Reset ---------- */
 *,
 *::before,
@@ -250,7 +249,6 @@ a:hover {
     color: #94a3b8 !important;
   }
 }
-
 
 /* Logo and search box layout */
 .logo-search-container {
@@ -707,34 +705,6 @@ a:hover {
   margin: 0;
 }
 
-.tool-card__rating {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: #64748b;
-  margin-top: auto;
-  padding-top: 14px;
-  position: relative;
-  z-index: 2; /* keep it above stretched link for hover readability, but click still works since stretched-link covers the card */
-  pointer-events: none; /* let clicks pass through to the stretched link */
-}
-
-.tool-card__rating .star {
-  color: #fbbf24;
-  font-size: 0.95rem;
-}
-
-.tool-card__rating .rating-value {
-  color: #1e293b;
-  font-weight: 600;
-}
-
-.tool-card__rating .rating-count {
-  color: #64748b;
-}
-
 .tool-card .stretched-link::after {
   position: absolute;
   top: 0;
@@ -1031,7 +1001,6 @@ a:hover {
     font-style: italic;
   }
 
-
   .site-header .container {
     position: relative;
   }
@@ -1131,182 +1100,6 @@ a:hover {
   line-height: 1.55;
   color: var(--color-text-secondary);
   margin: 0;
-}
-
-
-/* =========================================
-   Tool Rating Widget Styles
-   ========================================= */
-.tool-header, .tool-hero .container {
-  position: relative;
-}
-
-@media (min-width: 769px) {
-  .tool-header, .tool-hero .container {
-    padding-right: 200px; /* Leave space for the rating box on desktop */
-  }
-}
-
-.tool-rating-wrapper {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 10px 16px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
-  user-select: none;
-  min-width: 150px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 10;
-}
-
-.tool-hero .container .tool-rating-wrapper {
-  right: 15px; /* Alignment for tool hero container */
-  top: 15px;
-}
-
-.tool-rating-wrapper:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  border-color: #cbd5e1;
-}
-
-.tool-rating-stars {
-  display: flex;
-  gap: 4px;
-}
-
-.star-btn {
-  font-size: 1.3rem;
-  color: #e2e8f0;
-  cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s ease;
-  display: inline-block;
-}
-
-.star-btn.hover,
-.star-btn.active {
-  color: #fbbf24; /* Warm gold yellow */
-}
-
-.star-btn:hover {
-  transform: scale(1.25);
-}
-
-.tool-rating-wrapper.rated .star-btn {
-  cursor: default;
-}
-
-.tool-rating-wrapper.rated .star-btn:hover {
-  transform: none;
-}
-
-.tool-rating-text {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #64748b;
-  margin-top: 6px;
-  transition: opacity 0.2s ease;
-}
-
-.tool-rating-text .rating-value {
-  color: #0f172a;
-  font-weight: 700;
-}
-
-.tool-rating-feedback {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #16a34a; /* Emerald green */
-  margin-top: 6px;
-  display: none;
-}
-
-/* Mobile Styling */
-@media (max-width: 768px) {
-  .tool-header, .tool-hero .container {
-    padding-right: 0 !important; /* Reset space */
-    display: flex;
-    flex-direction: column;
-  }
-
-  .tool-rating-wrapper {
-    position: static !important;
-    margin-top: 14px;
-    align-self: flex-start; /* Left align on mobile */
-    align-items: flex-start;
-    text-align: left;
-    min-width: unset;
-    width: fit-content;
-    padding: 8px 12px;
-  }
-
-  .tool-hero .container .tool-rating-wrapper {
-    position: static !important;
-    margin-top: 14px;
-  }
-}
-
-/* Site Overall Rating Widget (Home Page Footer) */
-.site-overall-rating {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Inter', sans-serif;
-  text-align: center;
-  gap: 4px;
-  user-select: none;
-  margin-bottom: var(--space-md);
-}
-
-.site-overall-rating .stars-outer {
-  position: relative;
-  display: inline-block;
-  font-size: 18px;
-  letter-spacing: 1.5px;
-  line-height: 1;
-  color: #cbd5e1; /* Grey background stars */
-}
-
-.site-overall-rating .stars-outer::before {
-  content: "★★★★★";
-}
-
-.site-overall-rating .stars-inner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0%; /* Set dynamically by JS */
-  color: #fbbf24; /* Gold foreground stars */
-  line-height: 1;
-}
-
-.site-overall-rating .stars-inner::before {
-  content: "★★★★★";
-}
-
-.site-overall-rating .rating-stats-text {
-  font-size: 12px;
-  font-weight: 500;
-  color: #595959; /* WCAG compliant muted text */
-}
-
-.site-overall-rating .rating-stats-text .value {
-  font-weight: 700;
-  color: #1a1a1a;
-}
-
-.site-overall-rating .rating-stats-text .count {
-  font-weight: 600;
-  color: #1a1a1a;
 }
 
 /* Mobile responsive */

@@ -4,15 +4,15 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Free Infinite Online Blackboard — Sketch & Brainstorm | ToolCanvas</title>
-    <meta name="description" content="Draw, sketch, and brainstorm on an infinite smooth dark chalkboard. Features pen, pencil, size control, dynamic eraser, chalky colors, and url-based sharing. Fully private.">
+    <title>Blackboard — Infinite Dark Canvas, Short Share Link | ToolCanvas</title>
+    <meta name="description" content="Infinite blackboard with clean design and short share links — no long URLs. Draw with pen, pencil, eraser & chalk colors. Private, offline.">
     <meta name="keywords" content="online blackboard, chalkboard, infinite blackboard, dark drawing board, digital blackboard, zoomable canvas, sketchpad, brainstorm board">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://toolcanvas.online/blackboard/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Free Infinite Online Blackboard — Sketch & Brainstorm | ToolCanvas">
-    <meta property="og:description" content="Instantly sketch and brainstorm on an infinite dark chalkboard. Share your drawings easily via URL hashes. Zero server data uploads.">
+    <meta property="og:title" content="Blackboard — Infinite Dark Canvas, Short Share Link | ToolCanvas">
+    <meta property="og:description" content="Clean infinite blackboard with short share links — no long URLs. Pen, pencil, eraser & chalk colors. Private & offline.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolcanvas.online/blackboard/">
     <meta property="og:site_name" content="ToolCanvas">
@@ -26,11 +26,17 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="style.css">
 
-    <!-- Automatic Hash Redirect -->
+    <!-- Automatic Short Link / Hash Redirect -->
     <script>
-        if (window.location.hash) {
-            window.location.replace("app.html" + window.location.hash);
-        }
+        (function(){
+            const qs = window.location.search;
+            const hash = window.location.hash;
+            if (qs && (qs.includes('s=') || qs.includes('share=') || qs.includes('id='))) {
+                window.location.replace("app.html" + qs + hash);
+            } else if (hash) {
+                window.location.replace("app.html" + hash);
+            }
+        })();
     </script>
 
     <!-- JSON-LD Structured Data -->
@@ -73,13 +79,10 @@
         <div class="container">
             <nav class="site-nav">
                 <div class="nav-item">
-                    <a href="../index.html">Home</a>
-                </div>
-                <div class="nav-item">
-                    <a href="../link-in-bio/">Link in Bio</a>
+                    <a href="/">Home</a>
                 </div>
                 <div class="nav-item dropdown">
-                    <a href="../index.html#random-tools">Random</a>
+                    <a href="/#random-tools">Random</a>
                     <div class="dropdown-menu">
                     <a href="../place-name-generator/">Place Name Generator</a>
                     <a href="../password-generator/">Password Generator</a>
@@ -88,24 +91,18 @@
                     </div>
                 </div>
                 <div class="nav-item dropdown">
-                    <a href="../index.html#image-tools">Image Tools</a>
+                    <a href="/#image-tools">Image Tools</a>
                     <div class="dropdown-menu">
                     <a href="../image-to-jpg/">Image to JPG</a>
                     <a href="../image-to-png/">Image to PNG</a>
+                    <a href="../jpg-to-png/">JPG to PNG</a>
                     <a href="../image-to-webp/">Image to WebP</a>
                     <a href="../image-to-text/">Image to Text (OCR)</a>
                     <a href="../image-resizer/">Image Resizer</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
-                    <a href="../index.html#pdf-tools">PDF</a>
-                    <div class="dropdown-menu">
-                    <a href="../image-to-pdf/">Image to PDF</a>
-                    <a href="../signature-generator/">Signature Generator</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="../index.html#social-media-tools">Social Media</a>
+                    <a href="/#social-media-tools">Social Media</a>
                     <div class="dropdown-menu">
                     <a href="../instagram-profile-preview/">Instagram Preview</a>
                     <a href="../linkedin-profile-preview/">LinkedIn Preview</a>
@@ -113,14 +110,7 @@
                     </div>
                 </div>
                 <div class="nav-item dropdown">
-                    <a href="../index.html#resume-tools">Resume Builder</a>
-                    <div class="dropdown-menu">
-                    <a href="../experience-templates/">Experience Templates</a>
-                    <a href="../fresher-templates/">Fresher Templates</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="../index.html#canva-workspace" class="active">Canva Workspace</a>
+                    <a href="/#canva-workspace" class="active">Canva Workspace</a>
                     <div class="dropdown-menu">
                     <a href="../whiteboard/">Whiteboard</a>
                     <a href="index.html">Blackboard</a>
@@ -128,7 +118,7 @@
                     </div>
                 </div>
                 <div class="nav-item dropdown">
-                    <a href="../index.html#video-tools">Video</a>
+                    <a href="/#video-tools">Video</a>
                     <div class="dropdown-menu">
                     <a href="../video-metadata-viewer/">Video Metadata Viewer</a>
                     <a href="../thumbnail-generator/">Thumbnail Generator</a>
@@ -138,14 +128,14 @@
                     </div>
                 </div>
                 <div class="nav-item">
-                    <a href="../about.html">About</a>
+                    <a href="/about">About</a>
                 </div>
                 <div class="nav-item">
-                    <a href="../contact.html">Contact</a>
+                    <a href="/contact">Contact</a>
                 </div>
             </nav>
             <div class="logo-search-container">
-                <a href="../index.html" class="site-logo">Tool<span>Canvas</span></a>
+                <a href="/" class="site-logo">Tool<span>Canvas</span></a>
             <button class="nav-toggle" aria-label="Toggle navigation">
                     <span class="hamburger-bar"></span>
                     <span class="hamburger-bar"></span>
@@ -159,7 +149,7 @@
         <!-- Breadcrumb -->
         <nav class="breadcrumb" aria-label="Breadcrumb">
             <div class="container">
-                <a href="../index.html">Home</a>
+                <a href="/">Home</a>
                 <span class="separator">›</span>
                 <span class="current">Infinite Blackboard</span>
             </div>
@@ -170,23 +160,8 @@
             <div class="container">
                 
                 <div class="tool-header">
-                    <h1>Free Infinite Online Blackboard</h1>
-                    <p class="tool-intro">Sketch, draw, tutor, and brainstorm on a dark slate blackboard. Features chalky colors, size controls, dynamic vector stroke eraser, and URL-based sharing.</p>
-                                    <div class="tool-rating-wrapper" data-tool-key="blackboard">
-                        <div class="tool-rating-stars">
-                            <span class="star-btn" data-value="1">★</span>
-                            <span class="star-btn" data-value="2">★</span>
-                            <span class="star-btn" data-value="3">★</span>
-                            <span class="star-btn" data-value="4">★</span>
-                            <span class="star-btn" data-value="5">★</span>
-                        </div>
-                        <div class="tool-rating-text">
-                            <span class="rating-value">...</span>/5 (<span class="rating-count">...</span> reviews)
-                        </div>
-                        <div class="tool-rating-feedback" style="display: none;">
-                            Thank you for your feedback!
-                        </div>
-                    </div>
+                    <h1>Blackboard — Clean Infinite Canvas</h1>
+                    <p class="tool-intro">Clean dark slate for sketching & teaching — short share links (no long URLs), pen/pencil/eraser, chalk colors & infinite pan/zoom. Private, offline.</p>
 </div>
 
                 <!-- Launch Blackboard CTA Card -->
@@ -225,7 +200,7 @@
                         <li><strong>Maximize for Classroom Focus:</strong> Click the fullscreen maximize icon on the card's top-right corner. This puts the blackboard into a distraction-free view that covers your entire browser screen.</li>
                         <li><strong>Color Coding Complex Formulas:</strong> Use white chalk for main equations, yellow for key values, and pink or blue to mark steps in derivation. This makes technical notes easy to follow.</li>
                         <li><strong>Paging with Infinite Pan:</strong> Instead of erasing your notes, switch to the Hand tool (H key) and drag the screen to clean space. If you get lost, click the green recenter arrow that appears at the edge of the card to jump straight back to your notes.</li>
-                        <li><strong>Generate Offline Share Links:</strong> Click "Share" to convert your chalkboard vectors into a URL hash. This creates a secure link that can be shared with students or colleagues to instantly replicate the drawing on their screens.</li>
+                        <li><strong>Short Share Links:</strong> Click “Share” to create a short link like <code>?s=Ab12Cd3</code> — no long hash URLs. Anyone with the link instantly loads your drawing.</li>
                     </ul>
 
                     <h2>Frequently Asked Questions</h2>
@@ -258,10 +233,10 @@
         <div class="container">
             <p>&copy; 2026 ToolCanvas. All rights reserved.</p>
             <div class="footer-links">
-                <a href="../about.html">About</a>
-                <a href="../contact.html">Contact</a>
-                <a href="../privacy-policy.html">Privacy Policy</a>
-                <a href="../terms.html">Terms of Use</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms">Terms of Use</a>
             </div>
         </div>
     </footer>

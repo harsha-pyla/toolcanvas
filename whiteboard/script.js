@@ -85,7 +85,57 @@ document.addEventListener('DOMContentLoaded', () => {
     let boardId = '';
     let boardName = 'Untitled Sketch';
 
-    // Base Color Palette
+    
+    // ---- Supabase Short Link Helpers (clean, no long hash) ----
+    let supabaseClient = null;
+    let supabaseConfigPromise = null;
+    function getSupabaseConfig() {
+        if (!supabaseConfigPromise) {
+            supabaseConfigPromise = fetch('/api/supabase-config')
+                .then(r => { if (!r.ok) throw new Error('no vercel config'); return r.json(); })
+                .then(d => {
+                    if (!d.supabaseUrl || !d.supabaseKey) throw new Error('missing creds');
+                    return d;
+                })
+                .catch(() => fetch('../js/local-config.json')
+                    .then(r => { if (!r.ok) throw new Error('no local config'); return r.json(); })
+                    .catch(() => ({
+                        supabaseUrl: 'https://xldublyrjqnlbyfwjpwd.supabase.co',
+                        supabaseKey: 'sb_publishable_yjD30uSZL1QRD2_t3_JCTg_lqMExOhT'
+                    }))
+                );
+        }
+        return supabaseConfigPromise;
+    }
+    function loadSupabase(cb) {
+        if (window.supabase) {
+            if (supabaseClient) { if (cb) cb(supabaseClient); return; }
+            getSupabaseConfig().then(cfg => {
+                if (!supabaseClient && window.supabase) supabaseClient = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseKey);
+                if (cb) cb(supabaseClient);
+            });
+            return;
+        }
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+        s.onload = () => {
+            getSupabaseConfig().then(cfg => {
+                if (window.supabase && !supabaseClient) supabaseClient = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseKey);
+                if (cb) cb(supabaseClient);
+            });
+        };
+        document.head.appendChild(s);
+    }
+    function generateShortId(len) {
+        len = len || 7;
+        const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        const arr = new Uint32Array(len);
+        window.crypto.getRandomValues(arr);
+        let id = '';
+        for (let i=0;i<len;i++) id += chars[arr[i] % chars.length];
+        return id;
+    }
+// Base Color Palette
     const colorPalette = ["#1a1a1a", "#2563eb", "#10b981", "#ef4444", "#f59e0b"];
 
     // -------------------------------------------------------------
@@ -170,8 +220,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // LocalStorage Preserving
     // -------------------------------------------------------------
     function initBoardSession() {
-        boardId = new URLSearchParams(window.location.search).get('b') || 'board_' + Date.now();
-        boardName = 'Sketch ' + new Date().toLocaleDateString();
+        let urlParams = new URLSearchParams(window.location.search);
+        boardId = urlParams.get('b');
+        if (!boardId) {
+            const lastList = JSON.parse(localStorage.getItem('toolcanvas_whiteboards') || '[]');
+            const lastId = lastList.length ? lastList[0].id : null;
+            if (lastId && lastList[0].strokes && lastList[0].strokes.length === 0) {
+                boardId = lastId;
+            } else {
+                boardId = 'board_' + Date.now();
+            }
+            const url = new URL(window.location.href);
+            url.searchParams.set('b', boardId);
+            window.history.replaceState({}, '', url);
+        }
+        boardName = 'Whiteboard ' + new Date().toLocaleDateString();
         
         if (preserveData) {
             const listJson = localStorage.getItem('toolcanvas_whiteboards');
@@ -198,12 +261,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function saveBoardToLocalStorage() {
         if (!preserveData) return;
-        
-        // Skip saving loaded external hashes unless edited
+        const isEmptyBoard = strokes.length === 0;
         const listJson = localStorage.getItem('toolcanvas_whiteboards') || '[]';
         let list = JSON.parse(listJson);
-        
+        list = list.filter((b, idx, arr) => arr.findIndex(x => x.id === b.id) === idx);
         const boardIdx = list.findIndex(b => b.id === boardId);
+        if (isEmptyBoard && boardIdx === -1 && list.length > 0 && list[0].strokes && list[0].strokes.length === 0) {
+            return;
+        }
         const dataToSave = {
             id: boardId,
             name: boardName,
@@ -211,18 +276,15 @@ document.addEventListener('DOMContentLoaded', () => {
             strokes: strokes,
             bgType: bgType
         };
-
         if (boardIdx !== -1) {
-            list[boardIdx] = dataToSave;
+            list.splice(boardIdx, 1);
+            list.unshift(dataToSave);
         } else {
             list.unshift(dataToSave);
         }
-
-        // Limit to last 15 sketches
         if (list.length > 15) {
             list = list.slice(0, 15);
         }
-
         localStorage.setItem('toolcanvas_whiteboards', JSON.stringify(list));
         renderRecentList();
     }
@@ -254,12 +316,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderRecentList() {
         recentDrawingsList.innerHTML = '';
         const listJson = localStorage.getItem('toolcanvas_whiteboards');
-        if (!listJson || JSON.parse(listJson).length === 0) {
+        let rawList = [];
+        try { rawList = JSON.parse(listJson || '[]'); } catch(_) { rawList = []; }
+        const seen = new Set();
+        const list = [];
+        rawList.forEach(b => {
+            if (seen.has(b.id)) return;
+            seen.add(b.id);
+            const isEmpty = !b.strokes || b.strokes.length === 0;
+            if (isEmpty && b.id !== boardId) return;
+            list.push(b);
+        });
+        if (list.length === 0) {
             recentDrawingsList.innerHTML = '<li class="empty-recent-msg">No recent sketches yet.</li>';
             return;
         }
-
-        const list = JSON.parse(listJson);
         list.forEach(b => {
             const li = document.createElement('li');
             li.className = 'recent-item-container';
@@ -389,7 +460,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function loadSharedLink() {
+    async function loadSharedLink() {
+        const params = new URLSearchParams(window.location.search);
+        const shortId = params.get('s') || params.get('share') || params.get('id');
+        if (shortId) {
+            showToast("Loading shared whiteboard…");
+            loadSupabase(async (supabase) => {
+                try {
+                    if (!supabase) throw new Error('no supabase');
+                    const { data, error } = await supabase.from('whiteboard_shares').select('data, bg').eq('id', shortId).maybeSingle();
+                    if (error) throw error;
+                    if (!data || !data.data) throw new Error('not found');
+                    const loaded = decompressDrawingData(data.data);
+                    if (loaded && loaded.length > 0) {
+                        strokes = loaded;
+                        if (data.bg) { bgType = data.bg; }
+                        undoHistory = []; redoHistory = [];
+                        updateHistoryButtons();
+                        centerOnContent(true);
+                        showToast("Shared whiteboard loaded!");
+                        return;
+                    }
+                    throw new Error('empty drawing');
+                } catch (e) {
+                    console.warn('Short link load failed:', e);
+                    showToast("Could not load short link — link may be expired");
+                }
+            });
+            return;
+        }
         const hash = window.location.hash.substring(1);
         if (hash) {
             const loadedStrokes = decompressDrawingData(hash);
@@ -443,7 +542,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function eraseIntersectingStrokes(worldCoords) {
-        const threshold = toolSizes.eraser / zoom; // Scales tolerance relative to zoom and eraser size
+        const base = toolSizes.eraser * 0.55;
+        const threshold = base / Math.max(zoom, 0.5);
         let modified = false;
         
         const nextStrokes = strokes.filter(s => {
@@ -453,7 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const dx = s.points[0].x - worldCoords.x;
                 const dy = s.points[0].y - worldCoords.y;
                 const d = Math.sqrt(dx * dx + dy * dy);
-                if (d < threshold + s.width / 2) {
+                if (d < threshold + s.width * 0.4) {
                     modified = true;
                     return false;
                 }
@@ -463,7 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Check distance to all segments
             for (let i = 0; i < s.points.length - 1; i++) {
                 const dist = getDistanceToSegment(worldCoords, s.points[i], s.points[i+1]);
-                if (dist < threshold + s.width / 2) {
+                if (dist < threshold + s.width * 0.4) {
                     modified = true;
                     return false; // Erases the entire line stroke
                 }
@@ -1338,23 +1438,146 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // New Whiteboard Action
-    newBoardBtn.addEventListener('click', () => {
-        triggerSave(true);
-        strokes = [];
-        undoHistory = [];
-        redoHistory = [];
-        updateHistoryButtons();
-        
-        // Reset URL hash and query param
-        window.location.hash = '';
-        const newUrl = window.location.pathname;
-        window.history.pushState({}, '', newUrl);
-        
-        initBoardSession();
-        selectTool('pen');
-        closeAllDialogs();
-        centerOnContent();
+    
+    function showClearConfirm(onConfirm) {
+        const prev = document.getElementById('wb-clear-confirm');
+        if (prev) prev.remove();
+        let styleTag = document.getElementById('wb-clear-styles');
+        if (!styleTag) {
+            styleTag = document.createElement('style');
+            styleTag.id = 'wb-clear-styles';
+            styleTag.textContent = `
+                #wb-clear-confirm {
+                    position: fixed;
+                    inset: 0;
+                    background: rgba(15,23,42,0.45);
+                    backdrop-filter: blur(3px);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 100001;
+                    opacity: 0;
+                    transition: opacity 0.2s ease;
+                }
+                #wb-clear-confirm.show { opacity: 1; }
+                .wb-clear-box {
+                    background: #fff;
+                    border-radius: 14px;
+                    padding: 22px;
+                    width: 92%;
+                    max-width: 380px;
+                    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+                    text-align: center;
+                    font-family: Inter, system-ui, sans-serif;
+                }
+                .wb-clear-box h4 { margin: 0 0 8px 0; font-size: 15px; color: #0f172a; }
+                .wb-clear-box p { margin: 0 0 18px 0; font-size: 13px; color: #64748b; line-height: 1.4; }
+                .wb-clear-actions { display: flex; gap: 10px; justify-content: center; }
+                .wb-clear-cancel { flex:1; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:8px; padding:9px; font-size:13px; font-weight:600; cursor:pointer; color:#334155; }
+                .wb-clear-ok { flex:1; background:#ef4444; border:none; border-radius:8px; padding:9px; font-size:13px; font-weight:600; cursor:pointer; color:#fff; }
+                .wb-clear-ok:hover { background:#dc2626; }
+            `;
+            document.head.appendChild(styleTag);
+        }
+        const overlay = document.createElement('div');
+        overlay.id = 'wb-clear-confirm';
+        overlay.innerHTML = `
+            <div class="wb-clear-box">
+                <h4>Clear entire board?</h4>
+                <p>This will erase all strokes. You can undo with Ctrl+Z.</p>
+                <div class="wb-clear-actions">
+                    <button class="wb-clear-cancel">Cancel</button>
+                    <button class="wb-clear-ok">Clear All</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+        requestAnimationFrame(() => overlay.classList.add('show'));
+        const close = () => { overlay.classList.remove('show'); setTimeout(()=>overlay.remove(), 200); };
+        overlay.addEventListener('click', (e)=>{ if(e.target===overlay) close(); });
+        overlay.querySelector('.wb-clear-cancel').addEventListener('click', close);
+        overlay.querySelector('.wb-clear-ok').addEventListener('click', ()=>{ close(); onConfirm(); });
+    }
+
+newBoardBtn.addEventListener('click', () => {
+        if (strokes.length === 0) {
+            showTopToast('Board is already empty', 1600);
+            return;
+        }
+        showClearConfirm(() => {
+            preActionState = structuredClone(strokes);
+            commitAction();
+            strokes = [];
+            updateHistoryButtons();
+            window.location.hash = '';
+            const newUrl = window.location.pathname + '?b=' + boardId;
+            window.history.replaceState({}, '', newUrl);
+            triggerSave(true);
+            selectTool('pen');
+            closeAllDialogs();
+            centerOnContent();
+            showTopToast('Board cleared', 1800);
+        });
     });
+
+    const exportPngBtn = document.getElementById('export-png-btn');
+    function exportToPNG() {
+        if (strokes.length === 0) {
+            showTopToast('Nothing to export — draw first', 1800);
+            return;
+        }
+        const box = getContentBoundingBox();
+        const pad = 24;
+        const minX = box.minX - pad;
+        const minY = box.minY - pad;
+        const w = (box.maxX - box.minX) + pad*2;
+        const h = (box.maxY - box.minY) + pad*2;
+        const exportW = Math.max(800, Math.ceil(w));
+        const exportH = Math.max(600, Math.ceil(h));
+        const tmp = document.createElement('canvas');
+        tmp.width = exportW;
+        tmp.height = exportH;
+        const tctx = tmp.getContext('2d');
+        tctx.fillStyle = '#ffffff';
+        tctx.fillRect(0, 0, exportW, exportH);
+        if (bgType !== 'plain') {
+            tctx.strokeStyle = 'rgba(0,0,0,0.08)';
+            tctx.fillStyle = 'rgba(0,0,0,0.12)';
+            const step = 40;
+            const offsetX = (-minX) % step;
+            const offsetY = (-minY) % step;
+            if (bgType === 'grid') {
+                tctx.lineWidth = 1;
+                for (let x = offsetX; x < exportW; x += step) { tctx.beginPath(); tctx.moveTo(x, 0); tctx.lineTo(x, exportH); tctx.stroke(); }
+                for (let y = offsetY; y < exportH; y += step) { tctx.beginPath(); tctx.moveTo(0, y); tctx.lineTo(exportW, y); tctx.stroke(); }
+            } else if (bgType === 'dots') {
+                for (let x = offsetX; x < exportW; x += step) for (let y = offsetY; y < exportH; y += step) { tctx.beginPath(); tctx.arc(x, y, 1.5, 0, Math.PI*2); tctx.fill(); }
+            }
+        }
+        tctx.save();
+        tctx.translate(-minX, -minY);
+        strokes.forEach(s => {
+            if (!s.points.length) return;
+            tctx.beginPath();
+            tctx.lineCap = 'round';
+            tctx.lineJoin = 'round';
+            tctx.strokeStyle = s.color;
+            tctx.lineWidth = s.width;
+            tctx.globalAlpha = s.tool === 'pencil' ? 0.7 : 1;
+            tctx.moveTo(s.points[0].x, s.points[0].y);
+            for (let i=1;i<s.points.length;i++) tctx.lineTo(s.points[i].x, s.points[i].y);
+            tctx.stroke();
+        });
+        tctx.restore();
+        const url = tmp.toDataURL('image/png');
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `whiteboard-${new Date().toISOString().slice(0,10)}.png`;
+        a.click();
+        showTopToast('PNG exported', 1800);
+        closeAllDialogs();
+    }
+    if (exportPngBtn) exportPngBtn.addEventListener('click', exportToPNG);
 
     // Window beforeunload logic
     window.addEventListener('beforeunload', () => {
@@ -1369,275 +1592,229 @@ document.addEventListener('DOMContentLoaded', () => {
             showToast("Draw something on the canvas first before sharing!");
             return;
         }
-
         const compressed = compressDrawingData(strokes);
         if (!compressed) {
             showToast("Failed to compile drawing data.");
             return;
         }
+        const prevHTML = shareBtn.innerHTML;
+        shareBtn.disabled = true;
+        shareBtn.style.opacity = '0.6';
+        shareBtn.style.pointerEvents = 'none';
+        showToast("Creating short link…");
 
-        // Set compressed drawing in hash link
-        const shareUrl = window.location.origin + window.location.pathname + '#' + compressed;
-        
-        navigator.clipboard.writeText(shareUrl).then(() => {
-            showShareModal(shareUrl);
-        }).catch(err => {
-            console.error("Clipboard copy failed:", err);
-            showShareModal(shareUrl);
+        const shortId = generateShortId(7);
+
+        loadSupabase(async (supabase) => {
+            try {
+                if (!supabase) throw new Error('Supabase not available');
+                const { error } = await supabase.from('whiteboard_shares').insert([{ id: shortId, data: compressed, bg: bgType }]);
+                if (error) throw error;
+                const shortUrl = window.location.origin + window.location.pathname + '?s=' + shortId;
+                window.history.replaceState({}, '', shortUrl);
+                try { await navigator.clipboard.writeText(shortUrl); } catch(_) {}
+                showShareModal(shortUrl);
+                showToast("Short link copied!");
+            } catch (err) {
+                console.warn("Short link failed, falling back to long link:", err && err.message ? err.message : err);
+                const fallbackUrl = window.location.origin + window.location.pathname + '#' + compressed;
+                try { await navigator.clipboard.writeText(fallbackUrl); } catch(_) {}
+                showShareModal(fallbackUrl);
+                if (err && err.message && err.message.toLowerCase().includes('whiteboard_shares')) {
+                    showToast("Short links need table whiteboard_shares — using long link");
+                } else {
+                    showToast("Short link unavailable — long link copied");
+                }
+            } finally {
+                shareBtn.disabled = false;
+                shareBtn.style.opacity = '';
+                shareBtn.style.pointerEvents = '';
+                shareBtn.innerHTML = prevHTML;
+            }
         });
     });
 
     // Toast notification utility
-    function showToast(message) {
-        if (window.showToast) {
-            window.showToast(message, 3500);
-        } else {
-            alert(message);
-        }
+    function showToast(message, duration) {
+        showTopToast(message, duration || 2600);
     }
 
-    // Custom sharing modal with direct app integrations
-    function showShareModal(shareUrl) {
-        // Ensure style tag exists
-        let styleTag = document.getElementById('share-modal-styles');
+    function showTopToast(message, duration) {
+        duration = duration || 2600;
+        const existing = document.getElementById('wb-top-toast');
+        if (existing) existing.remove();
+        let styleTag = document.getElementById('wb-toast-styles');
         if (!styleTag) {
             styleTag = document.createElement('style');
-            styleTag.id = 'share-modal-styles';
+            styleTag.id = 'wb-toast-styles';
             styleTag.textContent = `
-                .share-overlay {
+                #wb-top-toast {
                     position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(15, 23, 42, 0.6);
-                    backdrop-filter: blur(4px);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+                    top: 14px;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(-8px);
+                    background: #0f172a;
+                    color: #f8fafc;
+                    padding: 10px 18px;
+                    border-radius: 9999px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
                     z-index: 100000;
                     opacity: 0;
-                    transition: opacity 0.3s ease;
-                }
-                .share-overlay.active {
-                    opacity: 1;
-                }
-                .share-dialog {
-                    background: #ffffff;
-                    border-radius: 24px;
-                    padding: 32px;
-                    width: 90%;
-                    max-width: 440px;
-                    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-                    position: relative;
-                    transform: scale(0.9) translateY(10px);
-                    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-                }
-                .share-overlay.active .share-dialog {
-                    transform: scale(1) translateY(0);
-                }
-                .share-close-btn {
-                    position: absolute;
-                    top: 20px;
-                    right: 20px;
-                    background: #f1f5f9;
-                    border: none;
-                    width: 32px;
-                    height: 32px;
-                    border-radius: 50%;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #64748b;
-                    font-weight: bold;
-                    font-size: 18px;
-                    transition: all 0.2s ease;
-                }
-                .share-close-btn:hover {
-                    background: #e2e8f0;
-                    color: #0f172a;
-                }
-                .share-dialog h3 {
-                    margin: 0 0 8px 0;
-                    font-size: 1.35rem;
-                    color: #0f172a;
-                    font-weight: 700;
-                }
-                .share-dialog p {
-                    margin: 0 0 24px 0;
-                    font-size: 0.9rem;
-                    color: #64748b;
-                    line-height: 1.45;
-                }
-                .share-link-box {
-                    display: flex;
-                    gap: 8px;
-                    margin-bottom: 24px;
-                }
-                .share-link-input {
-                    flex-grow: 1;
-                    padding: 12px 16px;
-                    border: 1px solid #cbd5e1;
-                    border-radius: 12px;
-                    font-size: 0.85rem;
-                    color: #334155;
-                    background: #f8fafc;
-                    outline: none;
-                    width: 100%;
-                }
-                .share-copy-btn {
-                    background: #0f172a;
-                    color: #ffffff;
-                    border: none;
-                    border-radius: 12px;
-                    padding: 0 20px;
-                    font-size: 0.85rem;
-                    font-weight: 600;
-                    cursor: pointer;
-                    transition: all 0.2s ease;
+                    pointer-events: none;
+                    transition: opacity 0.22s ease, transform 0.22s ease;
+                    will-change: opacity, transform;
                     white-space: nowrap;
+                    max-width: calc(100vw - 32px);
+                    text-align: center;
+                    font-family: Inter, system-ui, sans-serif;
                 }
-                .share-copy-btn:hover {
-                    background: #1e293b;
+                #wb-top-toast.show {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
                 }
-                .share-apps-grid {
-                    display: grid;
-                    grid-template-columns: repeat(4, 1fr);
-                    gap: 16px;
-                }
-                .share-app-link {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 8px;
-                    text-decoration: none;
-                    color: #64748b;
-                    font-size: 0.75rem;
-                    font-weight: 500;
-                    transition: transform 0.2s ease, color 0.2s ease;
-                }
-                .share-app-link:hover {
-                    transform: translateY(-2px);
-                    color: #0f172a;
-                }
-                .share-icon-wrapper {
-                    width: 48px;
-                    height: 48px;
-                    border-radius: 14px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #ffffff;
-                }
-                .share-icon-wrapper svg {
-                    width: 22px;
-                    height: 22px;
-                    fill: currentColor;
-                }
-                .bg-wa { background: #25d366; }
-                .bg-tw { background: #000000; }
-                .bg-fb { background: #1877f2; }
-                .bg-mail { background: #64748b; }
             `;
             document.head.appendChild(styleTag);
         }
-
-        // Create overlay element
-        const overlay = document.createElement('div');
-        overlay.className = 'share-overlay';
-        
-        const mailtoUrl = `mailto:?subject=${encodeURIComponent('My Whiteboard Sketch')}&body=${encodeURIComponent('Check out my drawing on ToolCanvas:\n\n' + shareUrl)}`;
-        const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent('Check out my drawing on ToolCanvas! ' + shareUrl)}`;
-        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent('Check out my drawing on ToolCanvas! ')}&url=${encodeURIComponent(shareUrl)}`;
-        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
-
-        overlay.innerHTML = `
-            <div class="share-dialog">
-                <button class="share-close-btn">&times;</button>
-                <h3>Share Your Drawing</h3>
-                <p>Anyone opening this link can view your sketch directly in their browser.</p>
-                
-                <div class="share-link-box">
-                    <input type="text" class="share-link-input" readonly value="${shareUrl}">
-                    <button class="share-copy-btn">Copy</button>
-                </div>
-                
-                <div class="share-apps-grid">
-                    <a href="${whatsappUrl}" target="_blank" class="share-app-link">
-                        <div class="share-icon-wrapper bg-wa">
-                            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.446L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.852.002-2.63-1.023-5.101-2.887-6.968C16.584 1.865 14.12 .84 11.49.84c-5.44 0-9.866 4.421-9.87 9.854 0 1.63.454 3.223 1.317 4.625L1.874 20.89l5.773-1.736zM17.487 14.39c-.3-.15-1.782-.88-2.057-.98-.275-.1-.475-.15-.675.15-.2.3-.775.98-.95 1.18-.175.2-.35.225-.65.075-1.03-.52-1.92-1.02-2.66-2.28-.2-.35 0-.54.15-.71.135-.15.3-.35.45-.52.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.589-.5-.508-.675-.517-.175-.009-.375-.01-.575-.01-.2 0-.525.075-.8 1.01-.275 1.01-1.05 1.01-1.25 1.1-.19.09-.64-.09-1.29-.69-1.75-1.56-2.93-3.97-3.23-4.52-.3-.55-.03-.85.24-1.12.25-.24.52-.58.78-.88.26-.3.35-.5.52-.83.18-.33.09-.63-.04-.88-.13-.25-.925-2.225-1.275-3.05-.34-.81-.69-.7-1.12-.7-.3 0-.6-.05-.9.1-.3.15-1.175 1.15-1.175 2.8 0 1.65 1.2 3.25 1.365 3.48.165.225 2.36 3.6 5.72 5.05.8.35 1.425.56 1.912.72.805.257 1.54.22 2.115.135.64-.095 1.78-.73 2.03-1.435.25-.705.25-1.31.175-1.435-.075-.125-.275-.2-.575-.35z"/></svg>
-                        </div>
-                        <span>WhatsApp</span>
-                    </a>
-                    <a href="${twitterUrl}" target="_blank" class="share-app-link">
-                        <div class="share-icon-wrapper bg-tw">
-                            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                        </div>
-                        <span>X (Twitter)</span>
-                    </a>
-                    <a href="${facebookUrl}" target="_blank" class="share-app-link">
-                        <div class="share-icon-wrapper bg-fb">
-                            <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.85z"/></svg>
-                        </div>
-                        <span>Facebook</span>
-                    </a>
-                    <a href="${mailtoUrl}" class="share-app-link">
-                        <div class="share-icon-wrapper bg-mail">
-                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                        </div>
-                        <span>Email</span>
-                    </a>
-                </div>
-            </div>
-        `;
-
-        document.body.appendChild(overlay);
-
-        // Force layout reflow to trigger overlay CSS transition
-        overlay.offsetWidth;
-        overlay.classList.add('active');
-
-        function closeShareModal() {
-            overlay.classList.remove('active');
-            setTimeout(() => {
-                overlay.remove();
-            }, 300);
-        }
-
-        // Dismiss on clicking background overlay
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) closeShareModal();
-        });
-
-        // Close on close button click
-        const closeBtn = overlay.querySelector('.share-close-btn');
-        closeBtn.addEventListener('click', closeShareModal);
-
-        // Manual copy button action
-        const copyBtn = overlay.querySelector('.share-copy-btn');
-        const linkInput = overlay.querySelector('.share-link-input');
-
-        copyBtn.addEventListener('click', () => {
-            linkInput.select();
-            linkInput.setSelectionRange(0, 99999);
-            
-            navigator.clipboard.writeText(shareUrl).then(() => {
-                copyBtn.textContent = 'Copied!';
-                copyBtn.style.background = '#10b981';
-                setTimeout(() => {
-                    copyBtn.textContent = 'Copy';
-                    copyBtn.style.background = '#0f172a';
-                }, 2000);
-                showToast("Link copied to clipboard!");
-            }).catch(err => {
-                console.error("Clipboard copy failed:", err);
-            });
-        });
+        const el = document.createElement('div');
+        el.id = 'wb-top-toast';
+        el.textContent = message;
+        document.body.appendChild(el);
+        requestAnimationFrame(() => el.classList.add('show'));
+        setTimeout(() => {
+            el.classList.remove('show');
+            setTimeout(() => el.remove(), 220);
+        }, duration);
     }
 
-    // -------------------------------------------------------------
+    // Clean top-middle share popup — no large modal, no glitch, auto-close
+    function showShareModal(shareUrl) {
+        const prev = document.getElementById('wb-share-popup');
+        if (prev) prev.remove();
+        let styleTag = document.getElementById('wb-share-styles');
+        if (!styleTag) {
+            styleTag = document.createElement('style');
+            styleTag.id = 'wb-share-styles';
+            styleTag.textContent = `
+                #wb-share-popup {
+                    position: fixed;
+                    top: 14px;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(-10px);
+                    background: #ffffff;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 14px;
+                    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+                    padding: 10px 12px 10px 16px;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    z-index: 100000;
+                    opacity: 0;
+                    transition: opacity 0.24s ease, transform 0.24s ease;
+                    will-change: opacity, transform;
+                    max-width: 560px;
+                    width: calc(100% - 24px);
+                    font-family: Inter, system-ui, sans-serif;
+                }
+                #wb-share-popup.show {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+                .wb-share-label {
+                    font-size: 13px;
+                    font-weight: 600;
+                    color: #0f172a;
+                    white-space: nowrap;
+                }
+                .wb-share-link {
+                    font-size: 12px;
+                    color: #334155;
+                    background: #f8fafc;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 8px;
+                    padding: 6px 10px;
+                    flex: 1;
+                    min-width: 0;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                .wb-share-copy {
+                    background: #0f172a;
+                    color: #fff;
+                    border: none;
+                    border-radius: 8px;
+                    padding: 7px 14px;
+                    font-size: 12px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    flex-shrink: 0;
+                }
+                .wb-share-copy:active { transform: scale(0.98); }
+                .wb-share-close {
+                    background: #f1f5f9;
+                    border: none;
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    color: #64748b;
+                    font-size: 16px;
+                    flex-shrink: 0;
+                }
+                .wb-share-close:hover { background: #e2e8f0; color: #0f172a; }
+                @media (max-width: 480px) {
+                    .wb-share-label { display: none; }
+                }
+            `;
+            document.head.appendChild(styleTag);
+        }
+        const wrap = document.createElement('div');
+        wrap.id = 'wb-share-popup';
+        wrap.innerHTML = `
+            <span class="wb-share-label">Short link</span>
+            <span class="wb-share-link" title="${shareUrl}">${shareUrl}</span>
+            <button class="wb-share-copy">Copy</button>
+            <button class="wb-share-close" aria-label="Close">&times;</button>
+        `;
+        document.body.appendChild(wrap);
+        requestAnimationFrame(() => wrap.classList.add('show'));
+        let closed = false;
+        let timer = setTimeout(close, 4200);
+        function close() {
+            if (closed) return;
+            closed = true;
+            wrap.classList.remove('show');
+            setTimeout(() => wrap.remove(), 240);
+        }
+        wrap.addEventListener('mouseenter', () => clearTimeout(timer));
+        wrap.addEventListener('mouseleave', () => { timer = setTimeout(close, 1800); });
+        wrap.querySelector('.wb-share-close').addEventListener('click', close);
+        wrap.querySelector('.wb-share-copy').addEventListener('click', async () => {
+            try { await navigator.clipboard.writeText(shareUrl); } catch(_){ const ta=document.createElement('textarea'); ta.value=shareUrl; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+            const btn = wrap.querySelector('.wb-share-copy');
+            const prev = btn.textContent;
+            btn.textContent = 'Copied!';
+            btn.style.background = '#10b981';
+            showTopToast('Copied!', 1400);
+            setTimeout(() => { btn.textContent = prev; btn.style.background = '#0f172a'; }, 1400);
+            clearTimeout(timer);
+            timer = setTimeout(close, 1600);
+        });
+        setTimeout(() => {
+            const onDocClick = (e) => {
+                if (!wrap.contains(e.target)) { close(); document.removeEventListener('click', onDocClick); }
+            };
+            document.addEventListener('click', onDocClick);
+        }, 100);
+    }
+
+        // -------------------------------------------------------------
     // Fullscreen / Maximize Toggle Logic
     // -------------------------------------------------------------
     const fullscreenBtn = document.getElementById('fullscreen-btn');
@@ -1676,11 +1853,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initBoardSession();
     selectTool('pen');
     
-    // Check if loading a shared URL hash
-    if (window.location.hash) {
+    const qp = new URLSearchParams(window.location.search);
+    if (qp.get('s') || qp.get('share') || qp.get('id') || window.location.hash) {
         loadSharedLink();
+        setTimeout(() => { if (strokes.length===0) centerOnContent(); }, 1200);
     } else {
-        // Center view on origin on empty load
         centerOnContent();
     }
 });

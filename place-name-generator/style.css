@@ -1,5 +1,6 @@
 /* =========================================
    ToolCanvas — Place Name Generator Styles
+   Clean, no-AI-fluff design
    ========================================= */
 
 .generator-card {
@@ -13,11 +14,11 @@
 /* Option Grid: Controls on left, Results on right */
 .option-grid {
     display: grid;
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 340px 1fr;
     gap: 32px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
     .option-grid {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -52,13 +53,13 @@
 }
 
 .field-item select {
-    padding: 8px 12px;
+    padding: 9px 12px;
     border: 1px solid #cbd5e1;
     border-radius: 4px;
     background-color: #ffffff;
     font-family: inherit;
     font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
+    color: var(--color-text);
     outline: none;
     cursor: pointer;
     transition: border-color var(--transition-fast);
@@ -66,6 +67,20 @@
 
 .field-item select:focus {
     border-color: var(--color-accent);
+}
+
+.field-hint {
+    font-size: 12px;
+    color: #64748b;
+    margin: 2px 0 0 0;
+    line-height: 1.4;
+}
+
+.generate-hint {
+    font-size: 12px;
+    color: #64748b;
+    text-align: center;
+    margin-top: 10px;
 }
 
 .option-slider-group {
@@ -119,10 +134,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 /* Checkboxes */
-.option-checkbox-group {
+.checkbox-group {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
+    margin-top: 4px;
 }
 
 .checkbox-container {
@@ -134,6 +150,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     font-size: var(--font-size-sm);
     user-select: none;
     color: var(--color-text-secondary);
+    line-height: 1.3;
 }
 
 .checkbox-container input {
@@ -146,7 +163,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .checkmark {
     position: absolute;
-    top: 2px;
+    top: 1px;
     left: 0;
     height: 18px;
     width: 18px;
@@ -210,6 +227,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .results-panel {
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
 .results-header {
@@ -253,6 +271,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
     color: var(--color-accent);
 }
 
+.btn-icon.small {
+    width: 28px;
+    height: 28px;
+}
+
 /* Tooltip overlay */
 .tooltip {
     visibility: hidden;
@@ -284,18 +307,18 @@ input[type="range"]::-webkit-slider-thumb:hover {
     border-color: #1e293b transparent transparent transparent;
 }
 
-.btn-icon:hover .tooltip.show {
+.tooltip.show {
     visibility: visible;
     opacity: 1;
 }
 
-/* List displaying generated names */
+/* List displaying generated places */
 .results-container {
     border: 1px solid #cbd5e1;
     border-radius: 4px;
     background-color: #f8fafc;
-    min-height: 250px;
-    max-height: 400px;
+    min-height: 280px;
+    max-height: 520px;
     overflow-y: auto;
 }
 
@@ -306,11 +329,9 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 .names-list li {
-    padding: 12px 16px;
-    border-bottom: 1px solid #cbd5e1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    background: #ffffff;
     transition: background-color var(--transition-fast);
 }
 
@@ -319,26 +340,111 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 .names-list li:hover {
-    background-color: #f1f5f9;
+    background-color: #f8fafc;
 }
 
-.name-item-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: var(--font-size-base);
+/* New place card */
+.place-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.place-card-main {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.place-name {
+    font-size: 15px;
     font-weight: 600;
-    color: var(--color-text);
+    color: #0f172a;
+    margin: 0;
+    line-height: 1.3;
 }
 
-.name-item-desc {
-    font-size: var(--font-size-xs);
-    color: var(--color-text-secondary);
+.place-loc {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
     line-height: 1.4;
+}
+
+.place-tags {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 9999px;
+    border: 1px solid;
+    line-height: 1.4;
+}
+
+.tag-beautiful {
+    background: #ecfdf5;
+    color: #065f46;
+    border-color: #a7f3d0;
+}
+
+.tag-trip {
+    background: #eff6ff;
+    color: #1e40af;
+    border-color: #bfdbfe;
+}
+
+.place-card-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.map-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-accent);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.map-link:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+}
+
+.place-copy {
+    font-size: 12px;
+    color: #64748b;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.place-copy:hover {
+    border-color: #cbd5e1;
+    color: #334155;
 }
 
 .names-empty {
     color: var(--color-text-muted);
     font-style: italic;
     text-align: center;
-    padding: 40px 20px;
+    padding: 48px 20px;
     font-size: var(--font-size-sm);
+    line-height: 1.5;
+    background: #ffffff;
 }
