@@ -1,475 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ToolCanvas — Free Online Tools for Everyday Tasks</title>
-  <meta name="description" content="Free online utility tools for everyday tasks. Image converters and resume builders. Secure, private, offline, and no signup.">
-  <meta name="keywords" content="free online tools, image converter, resume builder, social media tools, place name generator">
-  <meta name="author" content="ToolCanvas">
+  <title>ToolCanvas — Precise, private tools that run in your browser</title>
+  <meta name="description" content="A precise toolbox of free tools that run in your browser — converters, resizers, generators. No signup, no upload, private by design.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://toolcanvas.online/">
-  <meta name="msvalidate.01" content="EF6C95DA50FCBAC796E24531E053D78E">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="ToolCanvas — Free Online Tools for Everyday Tasks">
-  <meta property="og:description" content="Free online utility tools. Image converters and resume builders. Secure, private, offline, and no signup.">
+  <meta property="og:title" content="ToolCanvas — Precise, private tools that run in your browser">
+  <meta property="og:description" content="A precise toolbox of free tools that run in your browser — converters, resizers, generators. No signup, no upload.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://toolcanvas.online/">
   <meta property="og:image" content="https://toolcanvas.online/logo/social-share.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ToolCanvas — Free Online Tools for Everyday Tasks">
-  <meta name="twitter:description" content="Free online utility tools. Image converters and resume builders. Secure, private, offline, and no signup.">
-  <meta name="twitter:image" content="https://toolcanvas.online/logo/social-share.png">
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Limelight&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-
-  <!-- JSON-LD Structured Data -->
+  <link rel="icon" type="image/png" href="logo/logo.png">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "ToolCanvas",
-    "url": "https://toolcanvas.online",
-    "description": "A collection of free online tools for everyday digital tasks.",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://toolcanvas.online/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
+  {"@context":"https://schema.org","@type":"WebSite","name":"ToolCanvas","url":"https://toolcanvas.online","description":"Precise, private browser-based tools."}
   </script>
-    <link rel="icon" type="image/png" href="logo/logo.png">
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGKGRK5NFL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-QGKGRK5NFL');
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QGKGRK5NFL');</script>
 </head>
 <body>
-
-  <!-- Header -->
   <header class="site-header">
     <div class="container">
-      <nav class="site-nav">
-          <div class="nav-item">
-              <a href="/" class="active">Home</a>
+      <a href="/" class="site-logo">Tool<span>Canvas</span></a>
+      <nav class="site-nav" aria-label="Primary">
+        <div class="nav-item"><a href="/" class="active">Home</a></div>
+        <div class="nav-item dropdown">
+          <a href="#random-tools">Random</a>
+          <div class="dropdown-menu">
+            <a href="place-name-generator/">Place name generator</a>
+            <a href="password-generator/">Password generator</a>
+            <a href="string-randomizer/">String randomizer</a>
+            <a href="random-business-name-generator/">Business name generator</a>
           </div>
-          <div class="nav-item dropdown">
-              <a href="#random-tools">Random</a>
-              <div class="dropdown-menu">
-              <a href="place-name-generator/">Place Name Generator</a>
-              <a href="password-generator/">Password Generator</a>
-              <a href="string-randomizer/">String Randomizer</a>
-              <a href="random-business-name-generator/">Business Name Generator</a>
-              </div>
+        </div>
+        <div class="nav-item dropdown">
+          <a href="#image-tools">Image tools</a>
+          <div class="dropdown-menu">
+            <a href="image-to-jpg/">Image to JPG</a>
+            <a href="image-to-png/">Image to PNG</a>
+            <a href="jpg-to-png/">JPG to PNG</a>
+            <a href="heic-to-jpg/">HEIC to JPG</a>
+            <a href="image-to-webp/">Image to WebP</a>
+            <a href="image-to-text/">Image to text</a>
+            <a href="image-resizer/">Image resizer</a>
           </div>
-          <div class="nav-item dropdown">
-              <a href="#image-tools">Image Tools</a>
-              <div class="dropdown-menu">
-              <a href="image-to-jpg/">Image to JPG</a>
-              <a href="image-to-png/">Image to PNG</a>
-                    <a href="jpg-to-png/">JPG to PNG</a>
-                    <a href="heic-to-jpg/">HEIC to JPG</a>
-              <a href="image-to-webp/">Image to WebP</a>
-              <a href="image-to-text/">Image to Text (OCR)</a>
-              <a href="image-resizer/">Image Resizer</a>
-              </div>
+        </div>
+        <div class="nav-item dropdown">
+          <a href="#social-media-tools">Social media</a>
+          <div class="dropdown-menu">
+            <a href="instagram-profile-preview/">Instagram preview</a>
+            <a href="linkedin-profile-preview/">LinkedIn preview</a>
+            <a href="social-media-card/">Social media card</a>
           </div>
-          <div class="nav-item dropdown">
-              <a href="#social-media-tools">Social Media</a>
-              <div class="dropdown-menu">
-              <a href="instagram-profile-preview/">Instagram Preview</a>
-              <a href="linkedin-profile-preview/">LinkedIn Preview</a>
-              <a href="social-media-card/">Social Media Card</a>
-              </div>
+        </div>
+        <div class="nav-item dropdown">
+          <a href="#canva-workspace">Canva workspace</a>
+          <div class="dropdown-menu">
+            <a href="whiteboard/">Whiteboard</a>
+            <a href="blackboard/">Blackboard</a>
+            <a href="notebook/">Notebook</a>
           </div>
-          <div class="nav-item dropdown">
-              <a href="#canva-workspace">Canva Workspace</a>
-              <div class="dropdown-menu">
-              <a href="whiteboard/">Whiteboard</a>
-              <a href="blackboard/">Blackboard</a>
-              <a href="notebook/">Notebook</a>
-              </div>
+        </div>
+        <div class="nav-item dropdown">
+          <a href="#video-tools">Video</a>
+          <div class="dropdown-menu">
+            <a href="video-metadata-viewer/">Video metadata viewer</a>
+            <a href="thumbnail-generator/">Thumbnail generator</a>
+            <a href="video-screenshot-tool/">Video screenshot tool</a>
+            <a href="video-to-audio-converter/">Video to audio converter</a>
+            <a href="video-trimmer/">Video trimmer</a>
           </div>
-          <div class="nav-item dropdown">
-              <a href="#video-tools">Video</a>
-              <div class="dropdown-menu">
-              <a href="video-metadata-viewer/">Video tools Viewer</a>
-              <a href="thumbnail-generator/">Thumbnail Generator</a>
-              <a href="video-screenshot-tool/">Video Screenshot Tool</a>
-              <a href="video-to-audio-converter/">Video to Audio Converter</a>
-              <a href="video-trimmer/">Video Trimmer</a>
-              </div>
-          </div>
-          <div class="nav-item"><a href="/about">About</a></div>
+        </div>
+        <div class="nav-item"><a href="/about">About</a></div>
         <div class="nav-item"><a href="/blog/">Blog</a></div>
-          <div class="nav-item">
-              <a href="/contact">Contact</a>
-          </div>
+        <div class="nav-item"><a href="/contact">Contact</a></div>
       </nav>
-      <div class="logo-search-container">
-        <a href="/" class="site-logo">Tool<span>Canvas</span></a>
-
-        <button class="nav-toggle" aria-label="Toggle navigation">
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-        </button>
-      </div>
+      <button class="nav-toggle" aria-label="Open menu"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
     </div>
   </header>
 
-  <!-- Main Content -->
   <main class="site-main">
     <div class="container">
+      <div class="intro-section">
+        <section class="hero">
+          <h1 class="display-l hero-animate" data-animate="1">Precise tools that run where your files are.</h1>
+          <p class="body-l hero-animate" data-animate="2">A small, precise toolbox — converters, resizers, generators — that runs in your browser. No upload, no signup. Your files never leave your device.</p>
+          <div class="hero-search hero-animate" data-animate="3">
+            <span class="hero-search__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+            <input id="hero-search" type="search" placeholder="Find a tool — e.g. resize an image" aria-label="Find a tool">
+            <select id="hero-category" aria-label="Filter by category">
+              <option value="all">All tools</option>
+              <option value="random">Random</option>
+              <option value="image">Image tools</option>
+              <option value="social">Social media</option>
+              <option value="canva">Canva workspace</option>
+              <option value="video">Video</option>
+            </select>
+          </div>
+          <div class="ruler-wrap hero-animate" data-animate="4" aria-hidden="true">
+            <div class="ruler" id="ruler"></div>
+          </div>
+        </section>
 
-      <!-- Intro & Widget Section -->
-      <section class="intro-section">
-        <div class="intro-text">
-          <h2>What is ToolCanvas?</h2>
-          <p>ToolCanvas is a comprehensive suite of free, secure, and private online utility tools designed to simplify your daily digital tasks without any signups or registration. It features a wide range of web tools, converters, and creative generators built with clean, premium designs for an optimal user experience.</p>
-          <h2>Why are our tools secure and private?</h2>
-          <p>Perhaps you have wondered how web utilities can process your files, generate pages, and formats without sending them to a third-party server. On ToolCanvas, your data is processed directly on your device. This means your personal information, links, and documents never leave your device or get sent to remote servers.</p>
-          <p>ToolCanvas offers a collection of free, secure, and private tools. We aim to provide simple, fast services with clean designs and no signup requirements. The service has been operational since 2026 and is built to remain fast and accessible for all users.</p>
-        </div>
-        
-        <!-- Right Column Generator Widget -->
-        <div class="widget-container">
-          <div class="place-widget">
-            <div class="place-widget__header">Random Place Name Generator</div>
-            <div class="place-widget__body">
-              <div class="place-widget__row">
-                <label for="place-category">Category:</label>
+        <aside class="widget-container">
+          <div class="specimen">
+            <div class="specimen__header">
+              <h3>Random place name generator</h3>
+              <span class="specimen__live"><span class="live-dot" aria-hidden="true"></span> Runs on your device.</span>
+            </div>
+            <div class="specimen__body">
+              <div class="specimen__row">
+                <label for="place-category">Category</label>
                 <select id="place-category">
                   <option value="cities">Cities</option>
                   <option value="countries">Countries</option>
                   <option value="landmarks">Landmarks</option>
-                  <option value="nature">Nature Places</option>
-                  <option value="fantasy">Fantasy Names</option>
+                  <option value="nature">Nature places</option>
+                  <option value="fantasy">Fantasy names</option>
                 </select>
               </div>
-              <div class="place-widget__row">
-                <label for="place-count">Count:</label>
+              <div class="specimen__row">
+                <label for="place-count">Count</label>
                 <input type="number" id="place-count" min="1" max="10" value="1">
               </div>
-              <div class="place-widget__button-row">
-                <button id="generate-btn">Generate</button>
+              <button id="generate-btn" class="btn-primary" style="width:100%">Generate names</button>
+              <div class="specimen__result">
+                <span id="generator-result" class="data" style="min-height:20px;">Cologne</span>
+                <button id="copy-specimen" aria-label="Copy result"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="3" y="3" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M6 3V2a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H11" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></button>
               </div>
-              <div class="place-widget__result-box">
-                <div id="generator-result">Generating...</div>
-              </div>
-              <div class="place-widget__footer">
-                Powered by <a href="/">ToolCanvas</a>
-              </div>
+              <p class="body-s" style="text-align:right; margin:0;">Powered by <a href="/">ToolCanvas</a></p>
             </div>
           </div>
-        </div>
-      </section>
-      <hr class="ruler">
+        </aside>
+      </div>
 
-      <!-- Explore All Tools Dashboard -->
       <section class="tools-dashboard" id="tools-dashboard">
-        <h3 class="category-heading" style="color: #000000; text-align: center; margin-bottom: 20px;">Explore All Tools</h3>
-        
-        <div class="filter-tabs">
-          <button class="filter-tab active" data-filter="all">All</button>
-          <button class="filter-tab" data-filter="random">Random</button>
-          <button class="filter-tab" data-filter="image">Image Tools</button>
-          <button class="filter-tab" data-filter="social">Social Media</button>
-          <button class="filter-tab" data-filter="canva">Canva Workspace</button>
-          <button class="filter-tab" data-filter="video">Video Tools</button>
+        <div class="filter-tabs" role="tablist" aria-label="Filter tools">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter-tab" data-filter="random" role="tab">Random</button>
+          <button class="filter-tab" data-filter="image" role="tab">Image tools</button>
+          <button class="filter-tab" data-filter="social" role="tab">Social media</button>
+          <button class="filter-tab" data-filter="canva" role="tab">Canva workspace</button>
+          <button class="filter-tab" data-filter="video" role="tab">Video</button>
         </div>
 
         <div class="tools-grid">
-
-          <!-- Random: Place Name -->
           <div class="tool-card" data-category="random">
-            <div class="tool-card__icon-wrapper bg-random">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            </div>
-            <h4 class="tool-card__title">Real Place Generator</h4>
-            <p class="tool-card__desc">Select any country and generate real places — name, state & map link. Filter by trips or beautiful spots.</p>
-            <a href="place-name-generator/" class="stretched-link" aria-label="Launch Real Place Generator"></a>
+            <div class="tool-card__icon-wrap" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M12 13v-1"/><path d="M9 21a6 6 0 0 0 6 0"/></svg></div><span class="crop-tr" aria-hidden="true"></span><span class="crop-bl" aria-hidden="true"></span>
+            <h3 class="h3-card">Real place generator</h3>
+            <p class="body-s">Select any country and generate real places — name, state and map link. Filter by trips or beautiful spots.</p>
+            <a href="place-name-generator/" class="stretched-link" aria-label="Open real place generator"></a>
           </div>
 
-          <!-- Random: Password -->
           <div class="tool-card" data-category="random">
-            <div class="tool-card__icon-wrapper bg-random">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            </div>
-            <h4 class="tool-card__title">Password Generator</h4>
-            <p class="tool-card__desc">Create strong, secure random passwords of customizable length.</p>
-            <a href="password-generator/" class="stretched-link" aria-label="Launch Password Generator"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/><circle cx="12" cy="14" r="2"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Password generator</h3>
+            <p class="body-s">Create strong, secure random passwords of customizable length.</p>
+            <a href="password-generator/" class="stretched-link" aria-label="Open password generator"></a>
           </div>
 
-          <!-- Random: String -->
           <div class="tool-card" data-category="random">
-            <div class="tool-card__icon-wrapper bg-random">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line></svg>
-            </div>
-            <h4 class="tool-card__title">String Randomizer</h4>
-            <p class="tool-card__desc">Take a list of items and randomly shuffle, sort, or select from them.</p>
-            <a href="string-randomizer/" class="stretched-link" aria-label="Launch String Randomizer"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 3h5v5"/><path d="M4 20L21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">String randomizer</h3>
+            <p class="body-s">Take a list and randomly shuffle, sort, or select from them.</p>
+            <a href="string-randomizer/" class="stretched-link" aria-label="Open string randomizer"></a>
           </div>
 
-          <!-- Random: Business Name -->
           <div class="tool-card" data-category="random">
-            <div class="tool-card__icon-wrapper bg-random">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .6 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path><line x1="9" y1="18" x2="15" y2="18"></line><line x1="10" y1="22" x2="14" y2="22"></line></svg>
-            </div>
-            <h4 class="tool-card__title">Business Name Generator</h4>
-            <p class="tool-card__desc">Instantly generate professional, unique business name ideas and slogans for your company or startup.</p>
-            <a href="random-business-name-generator/" class="stretched-link" aria-label="Launch Business Name Generator"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/><path d="M8 14a4 4 0 1 0 8 0"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Business name generator</h3>
+            <p class="body-s">Generate professional business name ideas and slogans.</p>
+            <a href="random-business-name-generator/" class="stretched-link" aria-label="Open business name generator"></a>
           </div>
 
-          <!-- Image: Image to JPG -->
           <div class="tool-card" data-category="image">
-            <div class="tool-card__icon-wrapper bg-image">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="9" cy="15" r="1"></circle><polygon points="17 21 12 16 9 19"></polygon></svg>
-            </div>
-            <h4 class="tool-card__title">Image to JPG</h4>
-            <p class="tool-card__desc">Convert PNG, WebP, or other formats to JPG images without server upload.</p>
-            <a href="image-to-jpg/" class="stretched-link" aria-label="Launch Image to JPG Converter"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M10 13H8"/><path d="M14 17H8"/><path d="M10 9H8"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Image to JPG</h3>
+            <p class="body-s">Convert PNG, WebP or other formats to JPG without server upload.</p>
+            <a href="image-to-jpg/" class="stretched-link" aria-label="Open image to JPG"></a>
           </div>
 
-          <!-- Image: Image to PNG -->
           <div class="tool-card" data-category="image">
-            <div class="tool-card__icon-wrapper bg-image">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-            </div>
-            <h4 class="tool-card__title">Image to PNG</h4>
-            <p class="tool-card__desc">Convert files to PNG with full transparency support.</p>
-            <a href="image-to-png/" class="stretched-link" aria-label="Launch Image to PNG Converter"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Image to PNG</h3>
+            <p class="body-s">Convert files to PNG with full transparency support.</p>
+            <a href="image-to-png/" class="stretched-link" aria-label="Open image to PNG"></a>
           </div>
 
-          <!-- Image: JPG to PNG -->
           <div class="tool-card" data-category="image">
-            <div class="tool-card__icon-wrapper bg-image">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="9" cy="15" r="1"></circle><polygon points="17 21 12 16 9 19"></polygon></svg>
-            </div>
-            <h4 class="tool-card__title">JPG to PNG</h4>
-            <p class="tool-card__desc">Convert JPG to PNG instantly — private, offline and free. No server upload.</p>
-            <a href="jpg-to-png/" class="stretched-link" aria-label="Launch JPG to PNG Converter"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><circle cx="10" cy="13" r="1.5"/><path d="M13 17l2-2 4 4"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">JPG to PNG</h3>
+            <p class="body-s">Convert JPG to PNG instantly — private, offline and free. No server upload.</p>
+            <a href="jpg-to-png/" class="stretched-link" aria-label="Open JPG to PNG"></a>
           </div>
 
-          <!-- Image: HEIC to JPG -->
           <div class="tool-card" data-category="image">
-            <div class="tool-card__icon-wrapper bg-image">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M14 14l4 4"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg>
-            </div>
-            <h4 class="tool-card__title">HEIC to JPG</h4>
-            <p class="tool-card__desc">Convert iPhone HEIC to JPG — private, offline, no upload.</p>
-            <a href="heic-to-jpg/" class="stretched-link" aria-label="Launch HEIC to JPG Converter"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M14 14l4 4"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">HEIC to JPG</h3>
+            <p class="body-s">Convert iPhone HEIC to JPG — private, offline, no upload.</p>
+            <a href="heic-to-jpg/" class="stretched-link" aria-label="Open HEIC to JPG"></a>
           </div>
 
-          <!-- Image: Image to WebP -->
           <div class="tool-card" data-category="image">
-            <div class="tool-card__icon-wrapper bg-image">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            </div>
-            <h4 class="tool-card__title">Image to WebP</h4>
-            <p class="tool-card__desc">Compress and convert images to WebP format for fast web delivery.</p>
-            <a href="image-to-webp/" class="stretched-link" aria-label="Launch Image to WebP Converter"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Image to WebP</h3>
+            <p class="body-s">Compress and convert images to WebP for fast web delivery.</p>
+            <a href="image-to-webp/" class="stretched-link" aria-label="Open image to WebP"></a>
           </div>
 
-          <!-- Image: Image to Text -->
           <div class="tool-card" data-category="image">
-            <div class="tool-card__icon-wrapper bg-image">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-            </div>
-            <h4 class="tool-card__title">Image to Text (OCR)</h4>
-            <p class="tool-card__desc">Run optical character recognition to extract readable text from images.</p>
-            <a href="image-to-text/" class="stretched-link" aria-label="Launch Image to Text (OCR)"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/><path d="M8 11h6"/><path d="M11 8v6"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Image to text</h3>
+            <p class="body-s">Run optical character recognition to extract readable text from images.</p>
+            <a href="image-to-text/" class="stretched-link" aria-label="Open image to text"></a>
           </div>
 
-          <!-- Image: Image Resizer -->
           <div class="tool-card" data-category="image">
-            <div class="tool-card__icon-wrapper bg-image">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="10" y1="14" x2="3" y2="21"></line></svg>
-            </div>
-            <h4 class="tool-card__title">Image Resizer</h4>
-            <p class="tool-card__desc">Resize and crop images to exact aspect ratios or dimensions.</p>
-            <a href="image-resizer/" class="stretched-link" aria-label="Launch Image Resizer"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 14h6v6"/><path d="M20 10h-6V4"/><path d="M14 10l7-7"/><path d="M10 14l-7 7"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Image resizer</h3>
+            <p class="body-s">Resize and crop images to exact aspect ratios or dimensions.</p>
+            <a href="image-resizer/" class="stretched-link" aria-label="Open image resizer"></a>
           </div>
 
-          <!-- Social: Instagram Preview -->
           <div class="tool-card" data-category="social">
-            <div class="tool-card__icon-wrapper bg-social">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            </div>
-            <h4 class="tool-card__title">Instagram Profile Preview</h4>
-            <p class="tool-card__desc">Lay out, arrange, and preview your grid feed, avatar, story highlights, bio, and stats in light and dark modes.</p>
-            <a href="instagram-profile-preview/" class="stretched-link" aria-label="Launch Instagram Profile Preview"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Instagram profile preview</h3>
+            <p class="body-s">Lay out and preview your grid feed, avatar, highlights, bio and stats in light and dark modes.</p>
+            <a href="instagram-profile-preview/" class="stretched-link" aria-label="Open Instagram preview"></a>
           </div>
 
-          <!-- Social: LinkedIn Preview -->
           <div class="tool-card" data-category="social">
-            <div class="tool-card__icon-wrapper bg-social">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            </div>
-            <h4 class="tool-card__title">LinkedIn Profile Preview</h4>
-            <p class="tool-card__desc">Draft, organize, and preview your professional cover banner, avatar, premium badge, summary, experience lists, and education records in light and dark modes.</p>
-            <a href="linkedin-profile-preview/" class="stretched-link" aria-label="Launch LinkedIn Profile Preview"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">LinkedIn profile preview</h3>
+            <p class="body-s">Draft and preview your cover banner, avatar, badge, summary and experience lists.</p>
+            <a href="linkedin-profile-preview/" class="stretched-link" aria-label="Open LinkedIn preview"></a>
           </div>
 
-          <!-- Social: Social Media Card -->
           <div class="tool-card" data-category="social">
-            <div class="tool-card__icon-wrapper bg-social">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2" ry="2"></rect><line x1="16" y1="8" x2="16" y2="8"></line><line x1="8" y1="12" x2="16" y2="12"></line><line x1="8" y1="16" x2="16" y2="16"></line></svg>
-            </div>
-            <h4 class="tool-card__title">Social Media Card</h4>
-            <p class="tool-card__desc">Design custom digital business cards with profile photos, Silver/Gold/Custom themes, links, and scan-to-connect QR codes.</p>
-            <a href="social-media-card/" class="stretched-link" aria-label="Launch Social Media Card"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M7 10h10"/><path d="M7 14h10"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Social media card</h3>
+            <p class="body-s">Design custom digital business cards with QR codes.</p>
+            <a href="social-media-card/" class="stretched-link" aria-label="Open social media card"></a>
           </div>
 
-          <!-- Canva: Whiteboard -->
           <div class="tool-card" data-category="canva">
-            <div class="tool-card__icon-wrapper bg-canva">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-            </div>
-            <h4 class="tool-card__title">Whiteboard</h4>
-            <p class="tool-card__desc">A private, zoomable canvas for sketching, brainstorming, and planning layouts.</p>
-            <a href="whiteboard/" class="stretched-link" aria-label="Launch Whiteboard Drawing App"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Whiteboard</h3>
+            <p class="body-s">A private, zoomable canvas for sketching and planning layouts.</p>
+            <a href="whiteboard/" class="stretched-link" aria-label="Open whiteboard"></a>
           </div>
 
-          <!-- Canva: Blackboard -->
           <div class="tool-card" data-category="canva">
-            <div class="tool-card__icon-wrapper bg-canva">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="12" rx="2"></rect><path d="M9 21h6M12 15v6M12 3v12"></path></svg>
-            </div>
-            <h4 class="tool-card__title">Blackboard</h4>
-            <p class="tool-card__desc">A dark chalkboard canvas ideal for sketching with pastel chalk colors and drafting designs.</p>
-            <a href="blackboard/" class="stretched-link" aria-label="Launch Blackboard Drawing App"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="12" rx="1"/><path d="M8 18h8"/><path d="M12 15v6"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Blackboard</h3>
+            <p class="body-s">A dark chalkboard canvas for pastel sketching and drafting.</p>
+            <a href="blackboard/" class="stretched-link" aria-label="Open blackboard"></a>
           </div>
 
-          <!-- Canva: Notebook -->
           <div class="tool-card" data-category="canva">
-            <div class="tool-card__icon-wrapper bg-canva">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-            </div>
-            <h4 class="tool-card__title">Notebook</h4>
-            <p class="tool-card__desc">Ruled and grid layout pages for typing notes, formatting text documents, and organizing thoughts.</p>
-            <a href="notebook/" class="stretched-link" aria-label="Launch Notebook Notepad App"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Notebook</h3>
+            <p class="body-s">Ruled and grid pages for typing notes and organizing thoughts.</p>
+            <a href="notebook/" class="stretched-link" aria-label="Open notebook"></a>
           </div>
 
-          <!-- Video: Video Metadata Viewer -->
           <div class="tool-card" data-category="video">
-            <div class="tool-card__icon-wrapper bg-video">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect><circle cx="12" cy="12" r="3"></circle></svg>
-            </div>
-            <h4 class="tool-card__title">Video Metadata Viewer</h4>
-            <p class="tool-card__desc">Extracts and displays detailed resolution, aspect ratio, duration, and file metadata from your video files.</p>
-            <a href="video-metadata-viewer/" class="stretched-link" aria-label="Launch Video Metadata Viewer"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="15" height="15" rx="2"/><path d="M18 6l4 3v6l-4 3V6Z"/><circle cx="9" cy="9" r="2"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Video metadata viewer</h3>
+            <p class="body-s">Extracts resolution, aspect ratio, duration and file metadata.</p>
+            <a href="video-metadata-viewer/" class="stretched-link" aria-label="Open video metadata viewer"></a>
           </div>
 
-          <!-- Video: Thumbnail Generator -->
           <div class="tool-card" data-category="video">
-            <div class="tool-card__icon-wrapper bg-video">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="M20.4 20.4L15 11l-4 5-3-3-5.4 7.4"></path></svg>
-            </div>
-            <h4 class="tool-card__title">Thumbnail Generator</h4>
-            <p class="tool-card__desc">Capture video frames, upload custom cover images, add text overlays, and generate high-quality thumbnails.</p>
-            <a href="thumbnail-generator/" class="stretched-link" aria-label="Launch Video Thumbnail Generator"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M14 11l5 5-4 4-4-4"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Thumbnail generator</h3>
+            <p class="body-s">Capture frames, add text overlays and generate thumbnails.</p>
+            <a href="thumbnail-generator/" class="stretched-link" aria-label="Open thumbnail generator"></a>
           </div>
 
-          <!-- Video: Video Screenshot -->
           <div class="tool-card" data-category="video">
-            <div class="tool-card__icon-wrapper bg-video">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            </div>
-            <h4 class="tool-card__title">Video Screenshot Tool</h4>
-            <p class="tool-card__desc">Captures high-resolution snapshot frames from any timestamp in your video.</p>
-            <a href="video-screenshot-tool/" class="stretched-link" aria-label="Launch Video Screenshot Tool"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3"/><path d="M8 3l2 2h4l2-2"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Video screenshot tool</h3>
+            <p class="body-s">Captures high-resolution snapshot frames from any timestamp.</p>
+            <a href="video-screenshot-tool/" class="stretched-link" aria-label="Open video screenshot tool"></a>
           </div>
 
-          <!-- Video: Video to Audio -->
           <div class="tool-card" data-category="video">
-            <div class="tool-card__icon-wrapper bg-video">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><circle cx="12" cy="14" r="4"></circle><line x1="12" y1="6" x2="12.01" y2="6"></line></svg>
-            </div>
-            <h4 class="tool-card__title">Video to Audio Converter</h4>
-            <p class="tool-card__desc">Extracts audio tracks from video files and saves them in WAV format.</p>
-            <a href="video-to-audio-converter/" class="stretched-link" aria-label="Launch Video to Audio Converter"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="4"/><path d="M12 6h2"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Video to audio converter</h3>
+            <p class="body-s">Extracts audio tracks from video files and saves them in WAV format.</p>
+            <a href="video-to-audio-converter/" class="stretched-link" aria-label="Open video to audio converter"></a>
           </div>
 
-          <!-- Video: Video Trimmer -->
           <div class="tool-card" data-category="video">
-            <div class="tool-card__icon-wrapper bg-video">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="9.8" y1="8.2" x2="20" y2="18"></line><line x1="9.8" y1="15.8" x2="20" y2="6"></line></svg>
-            </div>
-            <h4 class="tool-card__title">Video Trimmer</h4>
-            <p class="tool-card__desc">Cuts and trims video files secure-side to keep only the sections you need.</p>
-            <a href="video-trimmer/" class="stretched-link" aria-label="Launch Video Trimmer"></a>
+            <div class="tool-card__icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M13 9l11 9"/><path d="M13 15l11-9"/></svg></div><span class="crop-tr"></span><span class="crop-bl"></span>
+            <h3 class="h3-card">Video trimmer</h3>
+            <p class="body-s">Cuts and trims video files to keep only the sections you need.</p>
+            <a href="video-trimmer/" class="stretched-link" aria-label="Open video trimmer"></a>
           </div>
         </div>
       </section>
-      <hr class="ruler">
 
-<!-- Learn Section -->
-      <div class="category-block">
-        <h3 class="category-heading" style="color: #000000;">Learn about ToolCanvas</h3>
+      <hr class="ruler-hr">
+      <section class="category-block">
+        <h2 class="h2-section">Learn about ToolCanvas</h2>
         <ul class="newspaper-list">
-          <li>
-            <a href="/about">About ToolCanvas</a> explains our mission and how browser-side tools protect your data.
-          </li>
-          <li>
-            <a href="/privacy-policy">Privacy Policy</a> details our strict stance on user privacy and data collection.
-          </li>
-          <li>
-            <a href="/terms">Terms of Use</a> outlines the general rules and terms for using our website.
-          </li>
+          <li><a href="/about">About ToolCanvas</a> explains our mission and how browser-side tools protect your data.</li>
+          <li><a href="/privacy-policy">Privacy Policy</a> details our strict stance on user privacy and data collection.</li>
+          <li><a href="/terms">Terms of Use</a> outlines the general rules and terms for using our website.</li>
         </ul>
-      </div>
-      <hr class="ruler">
-
-      <!-- Help / Contact Section -->
-      <div class="category-block">
-        <h3 class="category-heading" style="color: #000000;">Contact and Help</h3>
+      </section>
+      <hr class="ruler-hr">
+      <section class="category-block">
+        <h2 class="h2-section">Contact and Help</h2>
         <ul class="newspaper-list">
-          <li>
-            <a href="/contact">Contact Details</a> lets you get in touch with us for support or tool suggestions.
-          </li>
+          <li><a href="/contact">Contact details</a> lets you get in touch with us for support or tool suggestions.</li>
         </ul>
-      </div>
-
-      <!-- Ad Placeholder (hidden until AdSense active) -->
-      <div class="ad-space" aria-hidden="true">
-        <!-- AdSense ad unit will go here -->
-      </div>
-
+      </section>
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; 2026 ToolCanvas. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-        <a href="/privacy-policy">Privacy Policy</a>
-        <a href="/terms">Terms of Use</a>
+      <div class="footer-grid">
+        <div>
+          <h4>Product</h4>
+          <a href="/#image-tools">Image tools</a>
+          <a href="/#random-tools">Random</a>
+          <a href="/#video-tools">Video</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="/about">About</a>
+          <a href="/blog/">Blog</a>
+          <a href="/contact">Contact</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms">Terms of Use</a>
+        </div>
       </div>
+      <p style="margin-top:32px; text-align:center; font-size:14px; color:var(--ink-muted);">© 2026 ToolCanvas. All rights reserved.</p>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
   <script src="js/place-generator.js"></script>
+  <script>
+  // Hero stagger + ruler draw + search filter
+  (function(){
+    const heroEls = document.querySelectorAll('.hero-animate');
+    heroEls.forEach((el,i)=>{
+      const d = [0,80,140,200][i] || 0;
+      setTimeout(()=> el.classList.add('in'), d);
+    });
+    // Ruler ticks
+    const ruler = document.getElementById('ruler');
+    if(ruler){
+      const w = ruler.parentElement.clientWidth;
+      const count = Math.floor(w/8);
+      for(let i=0;i<count;i++){
+        const tick = document.createElement('div');
+        tick.className = 'ruler-tick' + (i%5===0 ? ' tall' : '');
+        tick.style.position='absolute';
+        tick.style.left = (i*8)+'px';
+        ruler.appendChild(tick);
+        if(i%5===0){
+          const label = document.createElement('span');
+          label.className='ruler-label';
+          label.textContent = i;
+          label.style.left = (i*8)+'px';
+          ruler.appendChild(label);
+        }
+      }
+      // clip-path reveal
+      ruler.style.clipPath='inset(0 100% 0 0)';
+      setTimeout(()=>{ ruler.style.transition='clip-path 400ms cubic-bezier(0.16,1,0.3,1)'; ruler.style.clipPath='inset(0 0 0 0)'; },200);
+    }
+    // Search + category select filter
+    const search = document.getElementById('hero-search');
+    const catSel = document.getElementById('hero-category');
+    const tabs = document.querySelectorAll('.filter-tab');
+    const cards = document.querySelectorAll('.tool-card');
+    function applyFilter(){
+      const q = (search.value||'').toLowerCase();
+      const cat = catSel ? catSel.value : 'all';
+      const activeTab = document.querySelector('.filter-tab.active');
+      const tabCat = activeTab ? activeTab.dataset.filter : 'all';
+      const finalCat = cat !== 'all' ? cat : tabCat;
+      cards.forEach(c=>{
+        const title = c.querySelector('.h3-card').textContent.toLowerCase();
+        const desc = c.querySelector('.body-s').textContent.toLowerCase();
+        const matchesSearch = !q || title.includes(q) || desc.includes(q);
+        const matchesCat = finalCat==='all' || c.dataset.category===finalCat;
+        c.style.display = (matchesSearch && matchesCat) ? '' : 'none';
+      });
+    }
+    if(search) search.addEventListener('input', applyFilter);
+    if(catSel) catSel.addEventListener('change', applyFilter);
+    // Copy specimen
+    const copyBtn = document.getElementById('copy-specimen');
+    if(copyBtn){
+      copyBtn.addEventListener('click', ()=>{
+        const txt = document.getElementById('generator-result').textContent;
+        navigator.clipboard.writeText(txt);
+        copyBtn.style.borderColor='var(--accent-green)';
+        setTimeout(()=> copyBtn.style.borderColor='', 800);
+      });
+    }
+  })();
+  </script>
 </body>
 </html>
