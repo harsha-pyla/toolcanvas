@@ -456,3 +456,59 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--ink); }
 
 /* ---------- Legacy overrides to remove forbidden styles ---------- */
 .tool-card, .place-widget, .converter-card, .launch-card { box-shadow:none !important; }
+
+/* ---------- Tool Pages — Instrument-Panel ---------- */
+.tool-section { padding:24px 0; }
+.tool-header { max-width:720px; margin-bottom:32px; }
+.tool-header h1 { font-family:var(--font-display); font-size:32px; line-height:40px; font-weight:600; letter-spacing:-0.01em; color:var(--ink); margin-bottom:12px; }
+.tool-header .tool-intro { font-size:16px; line-height:26px; color:var(--ink-muted); max-width:72ch; }
+.converter-card, .generator-card {
+  background: var(--surface);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:24px;
+}
+.drop-zone {
+  border:1px dashed var(--line);
+  background: var(--paper);
+  border-radius:4px;
+  padding:32px 24px;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+  transition:border-color 160ms ease-out;
+}
+.drop-zone:hover, .drop-zone.dragover { border-color:var(--accent-green); background:var(--surface); }
+.drop-zone__text { font-size:14px; font-weight:500; color:var(--ink); }
+.drop-zone__formats { font-size:13px; color:var(--ink-muted); margin-top:4px; }
+.drop-zone::before, .drop-zone::after {
+  content:""; position:absolute; width:8px; height:8px; border:1.5px solid var(--line); transition:border-color 160ms;
+}
+.drop-zone::before { top:8px; left:8px; border-right:none; border-bottom:none; }
+.drop-zone::after { bottom:8px; right:8px; border-left:none; border-top:none; }
+.drop-zone:hover::before, .drop-zone:hover::after { border-color:var(--accent-green); }
+.workspace-grid { display:grid; grid-template-columns: 1fr 340px; gap:24px; margin-top:24px; }
+@media (max-width:1023px) { .workspace-grid { grid-template-columns:1fr; } }
+.workspace-preview-panel, .workspace-controls-panel {
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:16px;
+}
+.file-card {
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:12px;
+  position:relative;
+  transition:border-color 160ms;
+}
+.file-card:hover { border-color:var(--accent-green); }
+.file-card::before, .file-card::after {
+  content:""; position:absolute; width:8px; height:8px; border:1.5px solid var(--accent-green); opacity:0; transition:opacity 120ms;
+}
+.file-card::before { top:-1px; left:-1px; border-right:none; border-bottom:none; }
+.file-card::after { bottom:-1px; right:-1px; border-left:none; border-top:none; }
+.file-card:hover::before, .file-card:hover::after { opacity:1; }
+.file-card-name { font-size:14px; font-weight:500; }
+.file-card-meta, .file-card-status { font-family:var(--font-mono); font-size:13px; font-variant-numeric:tabular-nums; }
