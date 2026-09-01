@@ -4,18 +4,27 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JPG to PNG Converter – Free & Private | ToolCanvas</title>
-    <meta name="description" content="Convert JPG to PNG for free. No signup, files stay private on your device, no upload. Works offline in your browser.">
-    <meta name="keywords" content="jpg to png, jpeg to png, convert jpg to png, jpg to png converter, image converter, offline, private">
+    <title>HEIC to JPG Converter – Free & Private | ToolCanvas</title>
+    <meta name="description" content="Convert HEIC to JPG for free. No signup, files stay private on your device, no upload. Works offline. iPhone HEIC to JPG.">
+    <meta name="keywords" content="heic to jpg, heif to jpg, convert heic to jpg, iphone heic converter, heic converter, offline, private">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://toolcanvas.online/jpg-to-png/">
+    <link rel="canonical" href="https://toolcanvas.online/heic-to-jpg/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="JPG to PNG Converter – Free & Private | ToolCanvas">
-    <meta property="og:description" content="Convert JPG/JPEG to PNG instantly in your browser. Private, no upload, free & works offline.">
+    <meta property="og:title" content="HEIC to JPG Converter – Free & Private | ToolCanvas">
+    <meta property="og:description" content="Convert iPhone HEIC/HEIF to JPG instantly in your browser. Private, no upload, free & works offline.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://toolcanvas.online/jpg-to-png/">
+    <meta property="og:url" content="https://toolcanvas.online/heic-to-jpg/">
     <meta property="og:site_name" content="ToolCanvas">
+    <meta property="og:image" content="https://toolcanvas.online/logo/social-share.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HEIC to JPG Converter – Free & Private | ToolCanvas">
+    <meta name="twitter:description" content="Convert HEIC to JPG instantly — private, no upload, free & offline.">
+    <meta name="twitter:image" content="https://toolcanvas.online/logo/social-share.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,9 +40,9 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "JPG to PNG Converter",
-        "description": "Convert JPG/JPEG images to PNG locally in your browser. No upload, private, free and offline.",
-        "url": "https://toolcanvas.online/jpg-to-png/",
+        "name": "HEIC to JPG Converter",
+        "description": "Convert HEIC/HEIF images to JPG locally in your browser. No upload, private, free and offline.",
+        "url": "https://toolcanvas.online/heic-to-jpg/",
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Any",
         "offers": {
@@ -58,6 +67,8 @@
   
     gtag('config', 'G-QGKGRK5NFL');
   </script>
+  <!-- heic2any for HEIC decoding -->
+  <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
 </head>
 <body>
 
@@ -82,8 +93,8 @@
                     <div class="dropdown-menu">
                     <a href="../image-to-jpg/">Image to JPG</a>
                     <a href="../image-to-png/">Image to PNG</a>
-                    <a href="index.html">JPG to PNG</a>
-                    <a href="../heic-to-jpg/">HEIC to JPG</a>
+                    <a href="../jpg-to-png/">JPG to PNG</a>
+                    <a href="index.html">HEIC to JPG</a>
                     <a href="../image-to-webp/">Image to WebP</a>
                     <a href="../image-to-text/">Image to Text (OCR)</a>
                     <a href="../image-resizer/">Image Resizer</a>
@@ -138,7 +149,7 @@
             <div class="container">
                 <a href="/">Home</a>
                 <span class="separator">›</span>
-                <span class="current">JPG to PNG</span>
+                <span class="current">HEIC to JPG</span>
             </div>
         </nav>
 
@@ -146,19 +157,19 @@
         <section class="tool-section">
             <div class="container">
                 <div class="tool-header">
-                    <h1>JPG to PNG Converter</h1>
-                    <p class="tool-intro">Convert JPG/JPEG to PNG instantly — lossless, private and offline. No upload, files never leave your device. Optional resize before export.</p>
+                    <h1>HEIC to JPG Converter</h1>
+                    <p class="tool-intro">Convert iPhone HEIC/HEIF to JPG — private, offline, no upload. Files never leave your device. Choose quality and optional resize.</p>
 </div>
 
                 <div class="converter-card">
                     <!-- Drop Zone -->
                     <div class="drop-zone" id="drop-zone">
                         <div class="drop-zone__inner">
-                            <span class="drop-zone__icon">🖼️</span>
-                            <p class="drop-zone__text">Drag & drop your JPGs here, or <span class="drop-zone__link">browse files</span></p>
-                            <p class="drop-zone__formats">Supports JPG, JPEG only — converts to PNG</p>
+                            <span class="drop-zone__icon">📱</span>
+                            <p class="drop-zone__text">Drag & drop your HEIC files here, or <span class="drop-zone__link">browse files</span></p>
+                            <p class="drop-zone__formats">Supports HEIC, HEIF — converts to JPG</p>
                         </div>
-                        <input type="file" id="file-input" accept=".jpg,.jpeg,image/jpeg" style="display: none;" multiple>
+                        <input type="file" id="file-input" accept=".heic,.heif,image/heic,image/heif" style="display: none;" multiple>
                     </div>
 
                     <!-- Editor Workspace (hidden by default) -->
@@ -175,9 +186,14 @@
                             <div class="workspace-controls-panel">
                                 <h3>Conversion Options</h3>
                                 
-                                <div class="option-info-box">
-                                    <p><strong>Input:</strong> JPG / JPEG &nbsp; → &nbsp;<strong>Output:</strong> PNG</p>
-                                    <p class="option-hint">PNG is lossless and supports transparency. Your JPG background stays opaque (JPG has no transparency). Perfect for editing, logos, and high-quality exports.</p>
+                                <!-- JPG Quality -->
+                                <div class="option-group">
+                                    <div class="option-label-row">
+                                        <label for="quality-slider">JPG Quality</label>
+                                        <span class="option-value" id="quality-val">90%</span>
+                                    </div>
+                                    <input type="range" id="quality-slider" min="10" max="100" value="90" step="1">
+                                    <p class="option-hint">90% is best for photos. Lower = smaller file.</p>
                                 </div>
 
                                 <!-- Resize Dimensions -->
@@ -210,8 +226,8 @@
 
                                 <!-- Action Buttons -->
                                 <div class="controls-actions" style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
-                                    <button type="button" class="btn-primary" id="convert-btn" style="width: 100%;">Convert to PNG</button>
-                                    <button type="button" class="btn-primary" id="download-all-btn" style="width: 100%; display: none; background-color: #16a34a;">Download All PNGs</button>
+                                    <button type="button" class="btn-primary" id="convert-btn" style="width: 100%;">Convert to JPG</button>
+                                    <button type="button" class="btn-primary" id="download-all-btn" style="width: 100%; display: none; background-color: #16a34a;">Download All JPGs</button>
                                     <button type="button" class="btn-secondary" id="reset-btn" style="width: 100%;">Clear All</button>
                                 </div>
                             </div>
@@ -226,18 +242,17 @@
         <section class="seo-content">
             <div class="container">
                 <div class="seo-block">
-                    <h2>How the JPG to PNG Converter Works</h2>
-                    <p>Your JPG is decoded and re-encoded as PNG entirely in your browser. The image is drawn to a canvas and exported with <code>canvas.toDataURL('image/png')</code> — no server upload, no waiting.</p>
-                    <p>This keeps your photos private and makes conversion instant and offline-capable. Because PNG is lossless, every pixel is preserved at full quality.</p>
+                    <h2>How HEIC to JPG Works — Private & Offline</h2>
+                    <p>Your HEIC file is decoded in your browser with <code>heic2any</code> and drawn to a canvas, then exported as JPG with your chosen quality. No upload — everything stays on your device and works offline after load.</p>
+                    <p>HEIC (High Efficiency Image Container) is the iPhone default. JPG is universal — every browser, app and printer opens it.</p>
                 </div>
 
                 <div class="seo-block">
-                    <h2>Why Convert JPG to PNG?</h2>
+                    <h2>Why Convert HEIC to JPG?</h2>
                     <ul>
-                        <li><strong>Lossless quality:</strong> PNG uses DEFLATE compression with zero visual loss — ideal for editing, printing, and archiving.</li>
-                        <li><strong>Ready for transparency:</strong> After conversion you can edit the PNG in any editor and add transparent backgrounds (JPG itself never has transparency).</li>
-                        <li><strong>Sharp edges:</strong> PNG avoids JPG block artifacts around text and lines — great for graphics and screenshots.</li>
-                        <li><strong>Universal support:</strong> PNG is supported everywhere — browsers, phones, design tools.</li>
+                        <li><strong>Universal compatibility:</strong> JPG opens everywhere — Windows, Android, web, email. HEIC often fails outside Apple.</li>
+                        <li><strong>Easy sharing:</strong> Social apps and older devices handle JPG without conversion prompts.</li>
+                        <li><strong>Choose quality:</strong> 90% keeps photo detail small. Lower for web, 100% for max fidelity.</li>
                     </ul>
                 </div>
 
@@ -245,23 +260,23 @@
                     <h2>Frequently Asked Questions</h2>
 
                     <div class="faq-item">
-                        <h3 class="faq-question">Will my JPG become transparent?</h3>
-                        <p class="faq-answer">JPG has no transparency, so the converted PNG will have an opaque background matching the original. You can later edit the PNG to make areas transparent.</p>
+                        <h3 class="faq-question">Is my HEIC private?</h3>
+                        <p class="faq-answer">Yes. Files never leave your device. No server upload, no storage.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h3 class="faq-question">Is the file size larger after JPG → PNG?</h3>
-                        <p class="faq-answer">Often yes. JPG is lossy and highly compressed; PNG is lossless, so the same photo at full fidelity can be larger. Use PNG when quality matters, JPG when you need smallest size.</p>
+                        <h3 class="faq-question">Will quality drop?</h3>
+                        <p class="faq-answer">JPG is lossy. At 90% you’ll rarely see loss. Use 90–95% for photos. Avoid re-saving the same JPG many times.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h3 class="faq-question">Is this private and offline?</h3>
-                        <p class="faq-answer">Yes. Files never leave your device, no upload, works offline after page load. No signup required.</p>
+                        <h3 class="faq-question">Can I convert many HEICs at once?</h3>
+                        <p class="faq-answer">Yes — drop multiple HEIC/HEIF files, convert together, download individually or via “Download All JPGs”.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h3 class="faq-question">Can I convert multiple JPGs at once?</h3>
-                        <p class="faq-answer">Yes — drop many JPGs, convert in one click, then download individually or use “Download All PNGs”.</p>
+                        <h3 class="faq-question">Does it work offline?</h3>
+                        <p class="faq-answer">After the page loads (and heic2any loads once), it works offline — all decoding is local.</p>
                     </div>
                 </div>
             </div>
