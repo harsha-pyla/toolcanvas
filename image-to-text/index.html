@@ -1,302 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Image to Text Converter — Extract Text from Images Locally | ToolCanvas</title>
-    <meta name="description" content="Convert images to text locally in your browser. Free private OCR tool extracts text from JPG, PNG, and WebP images securely with zero server uploads.">
-    <meta name="keywords" content="image to text, ocr converter, extract text from image, picture to text, private ocr, local image to text, offline ocr converter, free ocr tool">
+    <meta name="description" content="Extract editable text from your images (PNG, JPG, WebP) instantly using secure OCR. No server uploads, fully private extraction — runs locally via Tesseract.js.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://toolcanvas.online/image-to-text/">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Free Image to Text OCR Converter — Extract Online Locally | ToolCanvas">
-    <meta property="og:description" content="Extract text from JPG, PNG, and WebP images securely in your browser. Pure private OCR engine. No files uploaded.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://toolcanvas.online/image-to-text/">
-    <meta property="og:site_name" content="ToolCanvas">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Limelight&display=swap" rel="stylesheet">
-
-    <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="style.css">
-
-    <!-- Tesseract.js Library (Loaded securely via CDN for client-side OCR) -->
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.0.3/dist/tesseract.min.js"></script>
-
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Image to Text OCR Converter",
-        "description": "Extract text from images locally in your browser using secure local OCR. Supports English, Spanish, French, and German without server uploads.",
-        "url": "https://toolcanvas.online/image-to-text/",
-        "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "Any",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "isPartOf": {
-            "@type": "WebSite",
-            "name": "ToolCanvas",
-            "url": "https://toolcanvas.online"
-        }
-    }
-    </script>
     <link rel="icon" type="image/png" href="../logo/logo.png">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGKGRK5NFL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-QGKGRK5NFL');
-  </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGKGRK5NFL"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QGKGRK5NFL');</script>
 </head>
 <body>
-
-    <!-- Header -->
     <header class="site-header">
-        <div class="container">
-            <nav class="site-nav">
-                <div class="nav-item">
-                    <a href="/">Home</a>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#random-tools">Random</a>
-                    <div class="dropdown-menu">
-                    <a href="../place-name-generator/">Place Name Generator</a>
-                    <a href="../password-generator/">Password Generator</a>
-                    <a href="../string-randomizer/">String Randomizer</a>
-                    <a href="../random-business-name-generator/">Business Name Generator</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#image-tools" class="active">Image Tools</a>
-                    <div class="dropdown-menu">
-                    <a href="../image-to-jpg/">Image to JPG</a>
-                    <a href="../image-to-png/">Image to PNG</a>
-                    <a href="../jpg-to-png/">JPG to PNG</a>
-                    <a href="../heic-to-jpg/">HEIC to JPG</a>
-                    <a href="../image-to-webp/">Image to WebP</a>
-                    <a href="index.html">Image to Text (OCR)</a>
-                    <a href="../image-resizer/">Image Resizer</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#social-media-tools">Social Media</a>
-                    <div class="dropdown-menu">
-                    <a href="../instagram-profile-preview/">Instagram Preview</a>
-                    <a href="../linkedin-profile-preview/">LinkedIn Preview</a>
-                    <a href="../social-media-card/">Social Media Card</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#canva-workspace">Canva Workspace</a>
-                    <div class="dropdown-menu">
-                    <a href="../whiteboard/">Whiteboard</a>
-                    <a href="../blackboard/">Blackboard</a>
-                    <a href="../notebook/">Notebook</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#video-tools">Video</a>
-                    <div class="dropdown-menu">
-                    <a href="../video-metadata-viewer/">Video Metadata Viewer</a>
-                    <a href="../thumbnail-generator/">Thumbnail Generator</a>
-                    <a href="../video-screenshot-tool/">Video Screenshot Tool</a>
-                    <a href="../video-to-audio-converter/">Video to Audio Converter</a>
-                    <a href="../video-trimmer/">Video Trimmer</a>
-                    </div>
-                </div>
-                <div class="nav-item"><a href="/about">About</a></div>
-        <div class="nav-item"><a href="/blog/">Blog</a></div>
-                <div class="nav-item">
-                    <a href="/contact">Contact</a>
-                </div>
-            </nav>
-            <div class="logo-search-container">
-                <a href="/" class="site-logo">Tool<span>Canvas</span></a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                </button>
+    <div class="container">      <a href="/" class="site-logo" aria-label="ToolCanvas home">
+        <span class="logo-mark" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="9" fill="#3F6B4F"/><text x="16" y="21" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="white" letter-spacing="-0.3">TC</text></svg></span>
+        <span class="logo-text">Tool<span>Canvas</span></span>
+      </a>
+      <nav class="site-nav center-nav" aria-label="Primary">
+        <div class="nav-item dropdown">
+          <a href="#all-tools" class="active">All tools</a>
+          <div class="dropdown-menu all-tools-menu">
+            <div class="all-tools-grid">
+              <div class="all-tools-col">
+                <h4>Random</h4>
+                <a href="../place-name-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M12 13c-3.5 0-6 2.5-6 4v1h12v-1c0-1.5-2.5-4-6-4Z"/><path d="M12 8v-1"/><path d="M15 11l2 2"/><path d="M9 11l-2 2"/></svg></span> Place name generator</a>
+                <a href="../password-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/><path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/><path d="M12 17v-1"/><path d="M8 14l-2-2"/><path d="M16 14l2-2"/></svg></span> Password generator</a>
+                <a href="../string-randomizer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M8 7l4-3 4 3"/></svg></span> String randomizer</a>
+                <a href="../random-business-name-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/><path d="M16 16l2 2 2-2"/><path d="M18 8l-2 2"/></svg></span> Business name generator</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Image Tools</h4>
+                <a href="../image-to-jpg/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h5"/><circle cx="15" cy="16" r="1" fill="currentColor"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg></span> Image to JPG</a>
+                <a href="../image-to-png/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22a5 5 0 0 0 5-5c0-2-1.5-3.5-3.5-5.5L12 10l-1.5 1.5C8.5 13.5 7 15 7 17a5 5 0 0 0 5 5Z"/><path d="M9 17h6"/><path d="M12 14v6"/></svg></span> Image to PNG</a>
+                <a href="../jpg-to-png/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M4 14l4-4 3 3 4-4 4 4"/><circle cx="9" cy="9" r="1.5"/></svg></span> JPG to PNG</a>
+                <a href="../heic-to-jpg/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3a4 4 0 0 1 4 4v1H8V7a4 4 0 0 1 4-4Z"/><rect x="6" y="8" width="12" height="10" rx="2"/><path d="M8 12h8"/><path d="M8 14l2 2l2-2 2 2 2-2"/></svg></span> HEIC to JPG</a>
+                <a href="../image-to-webp/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l9 4v2H3V7l9-4Z"/><path d="M12 9a2 2 0 1 0 4 4 2 2 0 0 1-4 4"/><path d="M12 17a2 2 0 1 0 4 4 2 2 0 0 1-4 4"/></svg></span> Image to WebP</a>
+                <a href="../image-to-text/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H4z"/><path d="M8 8h2"/><path d="M8 12h2"/><path d="M12 8h4"/><path d="M12 12h4"/><circle cx="16" cy="16" r="3"/></svg></span> Image to text</a>
+                <a href="../image-resizer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="14" height="14" rx="1"/><path d="M9 9l6 6"/><path d="M15 9l-6 6"/><path d="M5 15l5-1 1-5"/></svg></span> Image resizer</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Social Media</h4>
+                <a href="../instagram-profile-preview/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3h10v4H7z"/><path d="M7 9h10"/><path d="M7 13h10"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span> Instagram preview</a>
+                <a href="../linkedin-profile-preview/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span> LinkedIn preview</a>
+                <a href="../social-media-card/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="14" height="10" rx="1"/><path d="M9 9h6"/><path d="M9 12h6"/><circle cx="14" cy="14" r="2"/></svg></span> Social media card</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Canva Workspace</h4>
+                <a href="../whiteboard/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/><path d="M7 12h10"/><path d="M12 7v10"/></svg></span> Whiteboard</a>
+                <a href="../blackboard/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H4z"/><path d="M4 16l8 5 8-5"/><path d="M8 12h8"/><path d="M12 8v4"/></svg></span> Blackboard</a>
+                <a href="../notebook/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v4H6z"/><path d="M6 8h12"/><path d="M6 12h12"/><path d="M6 16h12"/><path d="M6 20h12"/></svg></span> Notebook</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Video</h4>
+                <a href="../video-metadata-viewer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="16" height="12" rx="1"/><path d="M19 7l3 2v6l-3 2"/><path d="M7 7h3"/><path d="M7 11h3"/></svg></span> Video metadata viewer</a>
+                <a href="../thumbnail-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="12" rx="1"/><path d="M8 8h8"/><path d="M8 12h6"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span> Thumbnail generator</a>
+                <a href="../video-screenshot-tool/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6v6H9z"/><path d="M4 8h16v8H4z"/><circle cx="12" cy="12" r="2"/><path d="M12 10v4"/><path d="M10 12h4"/></svg></span> Video screenshot tool</a>
+                <a href="../video-to-audio-converter/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v4"/><path d="M8 7h8"/><rect x="5" y="7" width="14" height="10" rx="1"/><path d="M9 12h6"/><path d="M9 15h6"/></svg></span> Video to audio converter</a>
+                <a href="../video-trimmer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 8h8"/><path d="M8 12h8"/><path d="M12 8v8"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/><circle cx="6" cy="12" r="1.5" fill="currentColor"/><circle cx="6" cy="18" r="1.5" fill="currentColor"/></svg></span> Video trimmer</a>
+              </div>
             </div>
+          </div>
         </div>
-    </header>
+        <div class="trending" aria-label="Most popular">
+          <a href="image-to-jpg/" class="trending-btn">Image to JPG</a>
+          <a href="image-resizer/" class="trending-btn">Image resizer</a>
+          <a href="password-generator/" class="trending-btn">Password generator</a>
+          <a href="whiteboard/" class="trending-btn">Whiteboard</a>
+        </div>
+      </nav>
+      <nav class="site-nav right-nav" aria-label="Secondary">
+        <div class="nav-item"><a href="/about">About</a></div>
+        <div class="nav-item"><a href="/contact">Contact</a></div>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+    </div>
+  </header>
 
     <main class="site-main">
-        <!-- Breadcrumb -->
         <nav class="breadcrumb" aria-label="Breadcrumb">
             <div class="container">
                 <a href="/">Home</a>
-                <span class="separator">›</span>
-                <span class="current">Image to Text</span>
+                <span class="separator" aria-hidden="true">›</span>
+                <span class="current" aria-current="page">Image to Text</span>
             </div>
         </nav>
 
-        <!-- Tool Section -->
         <section class="tool-section">
             <div class="container">
                 <div class="tool-header">
                     <h1>Free Image to Text OCR Converter</h1>
-                    <p class="tool-intro">Extract editable text from your images (PNG, JPG, WebP) instantly using secure OCR technology. No server uploads, no data transmission, fully secure and private extraction.</p>
-</div>
+                    <p class="tool-intro">Extract editable text from your images (PNG, JPG, WebP) instantly using secure OCR. No server uploads, fully private extraction — runs locally via Tesseract.js.</p>
+                </div>
 
                 <div class="converter-card">
-                    <!-- Drop Zone -->
-                    <div class="drop-zone" id="drop-zone">
-                        <div class="drop-zone__inner">
-                            <span class="drop-zone__icon">🔍</span>
-                            <p class="drop-zone__text">Drag & drop your image here, or <span class="drop-zone__link">browse files</span></p>
-                            <p class="drop-zone__formats">Supports PNG, JPG, JPEG, and WebP formats</p>
+                    <div class="drop-zone" id="drop-zone" role="button" tabindex="0" aria-label="Upload files" aria-describedby="drop-hint">
+                        <div class="drop-zone__icon-wrap" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V3"/><path d="M8 7l4-4 4 4"/><path d="M20 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2"/></svg>
                         </div>
-                        <input type="file" id="file-input" accept="image/*" style="display: none;">
+                        <p class="drop-zone__text">Drag &amp; drop files here <button type="button" class="tc-browse-link" tabindex="-1">or browse files</button></p>
+                        <p class="drop-zone__formats" id="drop-hint">Supports PNG, JPG, JPEG, and WebP formats</p>
+                        <input type="file" id="file-input" accept="image/*" style="display:none;">
                     </div>
 
-                    <!-- Editor Workspace (hidden by default) -->
-                    <div class="converter-workspace" id="converter-workspace" style="display: none;">
+                    <div class="converter-workspace" id="converter-workspace" style="display:none;">
                         <div class="workspace-grid">
-                            <!-- Left: Preview & File info -->
-                            <div class="workspace-preview-panel">
-                                <div class="image-preview-container">
-                                    <img id="image-preview" src="#" alt="Original image preview">
-                                </div>
-                                <div class="file-details">
-                                    <span class="file-name" id="file-name">filename.png</span>
-                                    <span class="file-size" id="file-size">0 KB</span>
-                                    <span class="file-dimensions" id="file-dimensions">0 × 0 px</span>
-                                </div>
-                            </div>
 
-                            <!-- Right: Configuration & Conversion Controls -->
+                        <div class="workspace-preview-panel">
+                            <div class="image-preview-container" style="min-height:200px; display:flex; align-items:center; justify-content:center;">
+                                <img id="image-preview" src="#" alt="Original image preview" style="max-width:100%; max-height:320px; display:none;">
+                                <span class="body-s" id="preview-placeholder" style="color:var(--ink-muted);">Preview will appear here</span>
+                            </div>
+                            <div class="file-details">
+                                <span class="file-name body-s" id="file-name">—</span>
+                                <span class="file-size" id="file-size">—</span>
+                                <span class="file-dimensions body-s" id="file-dimensions">—</span>
+                            </div>
+                        </div>
                             <div class="workspace-controls-panel">
-                                <h3>OCR Settings</h3>
-                                
-                                <!-- Language Sizing -->
+                                <h3>Conversion Options</h3>
+
                                 <div class="option-group">
                                     <label for="ocr-lang">Recognition Language</label>
-                                    <select id="ocr-lang">
+                                    <select id="ocr-lang" aria-describedby="ocr-lang-hint">
                                         <option value="eng" selected>English (eng)</option>
                                         <option value="spa">Spanish / Español (spa)</option>
                                         <option value="fra">French / Français (fra)</option>
                                         <option value="deu">German / Deutsch (deu)</option>
                                     </select>
-                                    <p class="option-hint">Selecting the correct language optimizes recognition speed and character accuracy.</p>
+                                    <p class="option-hint" id="ocr-lang-hint">Select the correct language for best accuracy.</p>
                                 </div>
-
-                                <!-- Progress indicator (hidden by default) -->
-                                <div class="ocr-progress" id="ocr-progress" style="display: none;">
-                                    <div class="progress-bar-container">
-                                        <div class="progress-bar" id="progress-bar"></div>
+                                <div class="ocr-progress" id="ocr-progress" style="display:none; margin-bottom:16px;">
+                                    <div class="progress-bar-container tc-progress" style="margin-top:0;">
+                                        <div class="progress-bar tc-progress-bar" id="progress-bar" style="width:40%;"></div>
                                     </div>
-                                    <span class="progress-text" id="progress-text">Initializing OCR engine...</span>
+                                    <span class="progress-text body-s" id="progress-text" style="display:block; margin-top:8px;">Initializing OCR engine...</span>
                                 </div>
 
-                                <!-- Action Buttons -->
-                                <div class="controls-actions">
-                                    <button type="button" class="btn-primary" id="convert-btn">Extract Text</button>
-                                    <button type="button" class="btn-secondary" id="reset-btn">Clear Image</button>
-                                </div>
+                            <div class="controls-actions">
+                                <button type="button" class="btn-primary" id="convert-btn">Extract Text</button>
+                                <div class="tc-progress" id="tc-progress" style="display:none;"><div class="tc-progress-bar"></div></div>
+                                <button type="button" class="btn-secondary" id="reset-btn">Clear Image</button>
+                            </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Result Panel (hidden by default) -->
-                    <div class="result-panel" id="result-panel" style="display: none;">
+                    <div class="result-panel" id="result-panel" style="display:none;">
                         <div class="result-card">
                             <span class="result-success-icon">✓</span>
                             <h3>Text Extracted Successfully!</h3>
-                            
-                            <!-- Extracted text display -->
                             <div class="extracted-text-wrapper">
                                 <label for="extracted-text">Extracted Output</label>
-                                <textarea id="extracted-text" rows="8" placeholder="No text extracted."></textarea>
+                                <textarea id="extracted-text" rows="8" placeholder="No text extracted." aria-describedby="extract-hint"></textarea>
+                                <p class="option-hint" id="extract-hint">Editable — copy or download as .TXT.</p>
                             </div>
-
                             <div class="result-actions">
-                                <button type="button" id="copy-btn" class="btn-primary">Copy Text</button>
-                                <button type="button" id="download-txt-btn" class="btn-primary btn-download">Download .TXT</button>
-                                <button type="button" class="btn-secondary" id="convert-another-btn">Convert Another</button>
+                                <button type="button" id="copy-btn" class="btn-primary" aria-live="polite">Copy Text</button>
+                                <button type="button" id="download-txt-btn" class="btn-primary">Download .TXT</button>
+                                <button type="button" class="btn-secondary" id="convert-another-btn">Convert another</button>
                             </div>
                         </div>
                     </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- SEO Content Section -->
-        <section class="seo-content">
-            <div class="container">
-                <div class="seo-block">
-                    <h2>How Does the Private Image to Text OCR Converter Work?</h2>
-                    <p>Optical Character Recognition (OCR) traditionally requires running heavy character recognition models on powerful servers. However, using WebAssembly and Web Worker threads, our tool embeds the Tesseract OCR engine directly inside your browser cache. When you upload your files, Tesseract.js analyzes the graphical matrix, detects text lines, parses letter shapes, and outputs readable text strings entirely inside your browser sandbox.</p>
-                    <p>This serverless design ensures that your scans, receipts, document screenshots, and private files never leave your device. It provides complete data safety, works offline after the initial page load, and guarantees zero server queues.</p>
                 </div>
 
-                <div class="seo-block">
-                    <h2>Best Practices for Getting High Accuracy OCR Results</h2>
-                    <p>While this local OCR technology is highly advanced, the accuracy of character recognition depends on the image qualities:</p>
-                    <ul>
-                        <li><strong>High Contrast:</strong> Black text on a solid white background yields the highest accuracy. If the background is cluttered or dark, the engine may misinterpret characters.</li>
-                        <li><strong>Proper Orientation:</strong> Ensure your image is upright. If a document screenshot is tilted or sideways, character lines won't parse correctly.</li>
-                        <li><strong>Clear Typography:</strong> Clean printed typefaces (like Arial, Times New Roman, or Inter) convert almost perfectly. Highly stylistic hand-written text or script fonts will have significantly lower recognition rates.</li>
-                        <li><strong>Resolution:</strong> Lower-resolution pictures can blur letter boundaries. Standard scans at 150-300 DPI convert best.</li>
+                <section class="seo-block" aria-labelledby="how-heading">
+                    <h2 id="how-heading">How it works</h2>
+                    <ol class="how-steps">
+                        <li>Drop an image or browse — file is loaded locally in your browser.</li>
+                        <li>Select recognition language for best accuracy, then click Extract Text.</li>
+                        <li>Tesseract.js analyzes the image matrix locally and outputs text.</li>
+                        <li>Copy the editable result, download as .TXT, or convert another image.</li>
+                    </ol>
+                </section>
+
+                <section class="seo-block" aria-labelledby="what-heading">
+                    <h2 id="what-heading">What you get</h2>
+                    <ul class="what-list">
+                        <li>Editable extracted text in an accessible textarea</li>
+                        <li>Copy to clipboard with aria-live confirmation and border flash</li>
+                        <li>Download as plain .TXT file instantly</li>
+                        <li>Private, offline-capable processing with no server storage</li>
                     </ul>
-                </div>
+                </section>
 
-                <div class="seo-block faq-section">
-                    <h2>Frequently Asked Questions</h2>
-
-                    <div class="faq-item">
-                        <h3 class="faq-question">Is my text document private?</h3>
-                        <p class="faq-answer">Yes, 100%. Unlike conventional online OCR portals, we do not upload files to remote servers or log the text contents. All processing is executed securely on your device, making it highly secure for banking statements, receipts, and sensitive documents.</p>
+                <section class="faq-section" aria-labelledby="faq-heading">
+                    <h2 id="faq-heading">Frequently Asked Questions</h2>
+                    <div class="faq-item" id="faq-0">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a-0">
+                            <span>Is my text document private?</span>
+                            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="faq-answer" id="faq-a-0" role="region" aria-labelledby="faq-0">
+                            <p>Yes, 100%. No uploads, no logging. All processing is local — secure for receipts and sensitive docs.</p>
+                        </div>
                     </div>
-
-                    <div class="faq-item">
-                        <h3 class="faq-question">Why does it take a few seconds to start the extraction?</h3>
-                        <p class="faq-answer">When you click "Extract Text" for the first time in a browser session, the script worker downloads the Tesseract WebAssembly engine and the specific language trained data (e.g. English). Once these files are cached in your browser, subsequent extractions will start instantly.</p>
+                    <div class="faq-item" id="faq-1">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a-1">
+                            <span>Why does it take a few seconds the first time?</span>
+                            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="faq-answer" id="faq-a-1" role="region" aria-labelledby="faq-1">
+                            <p>First run downloads the Tesseract WebAssembly engine and language data; subsequent runs are cached and instant.</p>
+                        </div>
                     </div>
-
-                    <div class="faq-item">
-                        <h3 class="faq-question">Can I extract text from handwritten notes?</h3>
-                        <p class="faq-answer">It depends on the legibility of the handwriting. While standard printed typefaces parse with high precision, handwritten text recognition rates can vary based on script style, spacing, and stroke contrast.</p>
+                    <div class="faq-item" id="faq-2">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a-2">
+                            <span>Can I extract text from handwritten notes?</span>
+                            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="faq-answer" id="faq-a-2" role="region" aria-labelledby="faq-2">
+                            <p>Printed typefaces parse best; handwriting accuracy varies by legibility and contrast.</p>
+                        </div>
                     </div>
-
-                    <div class="faq-item">
-                        <h3 class="faq-question">Can I edit the text after extraction?</h3>
-                        <p class="faq-answer">Yes! The extracted output is displayed in a standard editable text area. You can modify spelling, format lines, copy sections, or download the final edited draft directly as a plain text (.txt) file.</p>
+                    <div class="faq-item" id="faq-3">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a-3">
+                            <span>Can I edit the text after extraction?</span>
+                            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="faq-answer" id="faq-a-3" role="region" aria-labelledby="faq-3">
+                            <p>Yes — the output is an editable textarea; copy sections or download the final .TXT.</p>
+                        </div>
                     </div>
-                </div>
+                </section>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
             <p>&copy; 2026 ToolCanvas. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-                <a href="/privacy-policy">Privacy Policy</a>
-                <a href="/terms">Terms of Use</a>
-            </div>
+            <div class="footer-links"><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy Policy</a><a href="/terms">Terms of Use</a></div>
         </div>
     </footer>
 
     <script src="script.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+    // Archetype A enhancements: dropzone keyboard, browse link, progress >300ms, FAQ accordion, copy feedback
+    (function(){
+        const dz = document.getElementById('drop-zone');
+        const fi = document.getElementById('file-input');
+        if(dz && fi){
+            const browse = dz.querySelector('.tc-browse-link');
+            if(browse) browse.addEventListener('click', (e)=>{ e.stopPropagation(); fi.click(); });
+            dz.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); fi.click(); } });
+            // drag-over already handled in script.js; ensure class toggle works
+        }
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(btn=>{
+            btn.addEventListener('click', ()=>{
+                const item = btn.closest('.faq-item');
+                const expanded = btn.getAttribute('aria-expanded')==='true';
+                btn.setAttribute('aria-expanded', !expanded);
+                item.classList.toggle('is-open', !expanded);
+            });
+        });
+        // Progress >300ms indeterminate hook: wrap convert buttons to show tc-progress after 300ms
+        const progress = document.getElementById('tc-progress');
+        const convertBtn = document.getElementById('convert-btn') || document.getElementById('btn-convert') || document.getElementById('btn-trim') || document.getElementById('btn-download');
+        if(progress && convertBtn){
+            let timer=null;
+            convertBtn.addEventListener('click', ()=>{
+                progress.style.display='block';
+                clearTimeout(timer);
+                timer=setTimeout(()=>{ progress.style.display='none'; }, 4000);
+            });
+            // Hide when download appears (mutation observer)
+            const obs = new MutationObserver(()=>{ if(document.getElementById('download-all-btn') && document.getElementById('download-all-btn').style.display!=='none') progress.style.display='none'; });
+            obs.observe(document.body, {attributes:true, subtree:true, attributeFilter:['style']});
+        }
+        // Icon button copy feedback (for btn-copy)
+        const copyBtn = document.getElementById('btn-copy') || document.getElementById('copy-btn');
+        if(copyBtn){
+            copyBtn.addEventListener('click', ()=>{
+                copyBtn.classList.add('copied');
+                copyBtn.setAttribute('aria-live','polite');
+                setTimeout(()=>copyBtn.classList.remove('copied'), 200);
+            });
+        }
+    })();
+    </script>
 </body>
 </html>

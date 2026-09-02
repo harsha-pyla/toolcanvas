@@ -183,15 +183,15 @@ document.addEventListener('DOMContentLoaded', () => {
         let overlayColor = '#1e293b';
 
         if (paper === 'ruled-ivory' || paper === 'ruled-yellow' || paper === 'ruled-white') {
-            let bgColor = '#fcfbf7'; // ivory
-            let lineColor = 'rgba(37, 99, 235, 0.25)'; // standard ruled blue
-            let marginColor = 'rgba(239, 68, 68, 0.45)'; // red left margin
+            let bgColor = '#F6F5F1'; // token paper
+            let lineColor = '#DCDAD2'; // token line — ruled
+            let marginColor = 'rgba(181,101,43,0.35)'; // token copper — margin
             
             if (paper === 'ruled-yellow') {
-                bgColor = '#fdf6e2'; // legal pad yellow
-                lineColor = 'rgba(37, 99, 235, 0.22)';
+                bgColor = '#fdf6e2'; // legal pad yellow tint
+                lineColor = '#DCDAD2';
             } else if (paper === 'ruled-white') {
-                bgColor = '#ffffff';
+                bgColor = '#FFFFFF';
             }
             
             textarea.style.backgroundColor = bgColor;
@@ -212,8 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (overlay) overlay.style.paddingLeft = paddingLeftVal + 'px';
             
         } else if (paper === 'graph') {
-            textarea.style.backgroundColor = '#ffffff';
-            const gridColor = 'rgba(37, 99, 235, 0.15)';
+            textarea.style.backgroundColor = '#FFFFFF';
+            const gridColor = '#DCDAD2';
             textarea.style.backgroundImage = `
                 linear-gradient(90deg, ${gridColor} 1px, transparent 1px),
                 linear-gradient(${gridColor} 1px, transparent 1px)

@@ -1,337 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online Video to Audio Converter — Extract Audio | ToolCanvas</title>
-    <meta name="description" content="Extract high-quality audio tracks from video files locally in your browser. Convert MP4, WebM, and MOV containers to CD-quality WAV files. 100% private.">
-    <meta name="keywords" content="video to audio converter, extract audio from video, convert mp4 to wav, extract wav from video, strip audio, webm to audio, local audio extractor">
+    <meta name="description" content="Extract high-quality audio tracks from video files locally inside your browser. Converts MP4 and WebM to CD-quality uncompressed WAV. No file data sent to a server.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://toolcanvas.online/video-to-audio-converter/">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Free Online Video to Audio Converter — Extract Audio | ToolCanvas">
-    <meta property="og:description" content="Convert video containers to uncompressed WAV audio files local-side in your browser. Private Web Audio decoding with no server data uploads.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://toolcanvas.online/video-to-audio-converter/">
-    <meta property="og:site_name" content="ToolCanvas">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Limelight&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-
-    <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="style.css">
 
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Video to Audio Converter",
-        "description": "A private client-side utility to extract audio tracks from video files using the Web Audio API, exporting to WAV format.",
-        "url": "https://toolcanvas.online/video-to-audio-converter/",
-        "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "Any",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "isPartOf": {
-            "@type": "WebSite",
-            "name": "ToolCanvas",
-            "url": "https://toolcanvas.online"
-        }
-    }
-    </script>
     <link rel="icon" type="image/png" href="../logo/logo.png">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGKGRK5NFL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-QGKGRK5NFL');
-  </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGKGRK5NFL"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QGKGRK5NFL');</script>
 </head>
 <body>
-
-    <!-- Header -->
     <header class="site-header">
-        <div class="container">
-            <nav class="site-nav">
-                <div class="nav-item">
-                    <a href="/">Home</a>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#random-tools">Random</a>
-                    <div class="dropdown-menu">
-                    <a href="../place-name-generator/">Place Name Generator</a>
-                    <a href="../password-generator/">Password Generator</a>
-                    <a href="../string-randomizer/">String Randomizer</a>
-                    <a href="../random-business-name-generator/">Business Name Generator</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#image-tools">Image Tools</a>
-                    <div class="dropdown-menu">
-                    <a href="../image-to-jpg/">Image to JPG</a>
-                    <a href="../image-to-png/">Image to PNG</a>
-                    <a href="../jpg-to-png/">JPG to PNG</a>
-                    <a href="../heic-to-jpg/">HEIC to JPG</a>
-                    <a href="../image-to-webp/">Image to WebP</a>
-                    <a href="../image-to-text/">Image to Text (OCR)</a>
-                    <a href="../image-resizer/">Image Resizer</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#social-media-tools">Social Media</a>
-                    <div class="dropdown-menu">
-                    <a href="../instagram-profile-preview/">Instagram Preview</a>
-                    <a href="../linkedin-profile-preview/">LinkedIn Preview</a>
-                    <a href="../social-media-card/">Social Media Card</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#canva-workspace">Canva Workspace</a>
-                    <div class="dropdown-menu">
-                    <a href="../whiteboard/">Whiteboard</a>
-                    <a href="../blackboard/">Blackboard</a>
-                    <a href="../notebook/">Notebook</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#video-tools" class="active">Video</a>
-                    <div class="dropdown-menu">
-                    <a href="../video-metadata-viewer/">Video Metadata Viewer</a>
-                    <a href="../thumbnail-generator/">Thumbnail Generator</a>
-                    <a href="../video-screenshot-tool/">Video Screenshot Tool</a>
-                    <a href="index.html">Video to Audio Converter</a>
-                    <a href="../video-trimmer/">Video Trimmer</a>
-                    </div>
-                </div>
-                <div class="nav-item"><a href="/about">About</a></div>
-        <div class="nav-item"><a href="/blog/">Blog</a></div>
-                <div class="nav-item">
-                    <a href="/contact">Contact</a>
-                </div>
-            </nav>
-            <div class="logo-search-container">
-                <a href="/" class="site-logo">Tool<span>Canvas</span></a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                </button>
+    <div class="container">      <a href="/" class="site-logo" aria-label="ToolCanvas home">
+        <span class="logo-mark" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="9" fill="#3F6B4F"/><text x="16" y="21" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="white" letter-spacing="-0.3">TC</text></svg></span>
+        <span class="logo-text">Tool<span>Canvas</span></span>
+      </a>
+      <nav class="site-nav center-nav" aria-label="Primary">
+        <div class="nav-item dropdown">
+          <a href="#all-tools" class="active">All tools</a>
+          <div class="dropdown-menu all-tools-menu">
+            <div class="all-tools-grid">
+              <div class="all-tools-col">
+                <h4>Random</h4>
+                <a href="../place-name-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M12 13c-3.5 0-6 2.5-6 4v1h12v-1c0-1.5-2.5-4-6-4Z"/><path d="M12 8v-1"/><path d="M15 11l2 2"/><path d="M9 11l-2 2"/></svg></span> Place name generator</a>
+                <a href="../password-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/><path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/><path d="M12 17v-1"/><path d="M8 14l-2-2"/><path d="M16 14l2-2"/></svg></span> Password generator</a>
+                <a href="../string-randomizer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M8 7l4-3 4 3"/></svg></span> String randomizer</a>
+                <a href="../random-business-name-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/><path d="M16 16l2 2 2-2"/><path d="M18 8l-2 2"/></svg></span> Business name generator</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Image Tools</h4>
+                <a href="../image-to-jpg/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h5"/><circle cx="15" cy="16" r="1" fill="currentColor"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg></span> Image to JPG</a>
+                <a href="../image-to-png/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22a5 5 0 0 0 5-5c0-2-1.5-3.5-3.5-5.5L12 10l-1.5 1.5C8.5 13.5 7 15 7 17a5 5 0 0 0 5 5Z"/><path d="M9 17h6"/><path d="M12 14v6"/></svg></span> Image to PNG</a>
+                <a href="../jpg-to-png/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M4 14l4-4 3 3 4-4 4 4"/><circle cx="9" cy="9" r="1.5"/></svg></span> JPG to PNG</a>
+                <a href="../heic-to-jpg/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3a4 4 0 0 1 4 4v1H8V7a4 4 0 0 1 4-4Z"/><rect x="6" y="8" width="12" height="10" rx="2"/><path d="M8 12h8"/><path d="M8 14l2 2l2-2 2 2 2-2"/></svg></span> HEIC to JPG</a>
+                <a href="../image-to-webp/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l9 4v2H3V7l9-4Z"/><path d="M12 9a2 2 0 1 0 4 4 2 2 0 0 1-4 4"/><path d="M12 17a2 2 0 1 0 4 4 2 2 0 0 1-4 4"/></svg></span> Image to WebP</a>
+                <a href="../image-to-text/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H4z"/><path d="M8 8h2"/><path d="M8 12h2"/><path d="M12 8h4"/><path d="M12 12h4"/><circle cx="16" cy="16" r="3"/></svg></span> Image to text</a>
+                <a href="../image-resizer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="14" height="14" rx="1"/><path d="M9 9l6 6"/><path d="M15 9l-6 6"/><path d="M5 15l5-1 1-5"/></svg></span> Image resizer</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Social Media</h4>
+                <a href="../instagram-profile-preview/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3h10v4H7z"/><path d="M7 9h10"/><path d="M7 13h10"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span> Instagram preview</a>
+                <a href="../linkedin-profile-preview/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span> LinkedIn preview</a>
+                <a href="../social-media-card/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="14" height="10" rx="1"/><path d="M9 9h6"/><path d="M9 12h6"/><circle cx="14" cy="14" r="2"/></svg></span> Social media card</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Canva Workspace</h4>
+                <a href="../whiteboard/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/><path d="M7 12h10"/><path d="M12 7v10"/></svg></span> Whiteboard</a>
+                <a href="../blackboard/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H4z"/><path d="M4 16l8 5 8-5"/><path d="M8 12h8"/><path d="M12 8v4"/></svg></span> Blackboard</a>
+                <a href="../notebook/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v4H6z"/><path d="M6 8h12"/><path d="M6 12h12"/><path d="M6 16h12"/><path d="M6 20h12"/></svg></span> Notebook</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Video</h4>
+                <a href="../video-metadata-viewer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="16" height="12" rx="1"/><path d="M19 7l3 2v6l-3 2"/><path d="M7 7h3"/><path d="M7 11h3"/></svg></span> Video metadata viewer</a>
+                <a href="../thumbnail-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="12" rx="1"/><path d="M8 8h8"/><path d="M8 12h6"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span> Thumbnail generator</a>
+                <a href="../video-screenshot-tool/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6v6H9z"/><path d="M4 8h16v8H4z"/><circle cx="12" cy="12" r="2"/><path d="M12 10v4"/><path d="M10 12h4"/></svg></span> Video screenshot tool</a>
+                <a href="../video-to-audio-converter/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v4"/><path d="M8 7h8"/><rect x="5" y="7" width="14" height="10" rx="1"/><path d="M9 12h6"/><path d="M9 15h6"/></svg></span> Video to audio converter</a>
+                <a href="../video-trimmer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 8h8"/><path d="M8 12h8"/><path d="M12 8v8"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/><circle cx="6" cy="12" r="1.5" fill="currentColor"/><circle cx="6" cy="18" r="1.5" fill="currentColor"/></svg></span> Video trimmer</a>
+              </div>
             </div>
+          </div>
         </div>
-    </header>
+        <div class="trending" aria-label="Most popular">
+          <a href="image-to-jpg/" class="trending-btn">Image to JPG</a>
+          <a href="image-resizer/" class="trending-btn">Image resizer</a>
+          <a href="password-generator/" class="trending-btn">Password generator</a>
+          <a href="whiteboard/" class="trending-btn">Whiteboard</a>
+        </div>
+      </nav>
+      <nav class="site-nav right-nav" aria-label="Secondary">
+        <div class="nav-item"><a href="/about">About</a></div>
+        <div class="nav-item"><a href="/contact">Contact</a></div>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+    </div>
+  </header>
 
     <main class="site-main">
-        <!-- Breadcrumb -->
         <nav class="breadcrumb" aria-label="Breadcrumb">
             <div class="container">
                 <a href="/">Home</a>
-                <span class="separator">›</span>
-                <span class="current">Video to Audio Converter</span>
+                <span class="separator" aria-hidden="true">›</span>
+                <span class="current" aria-current="page">Video to Audio Converter</span>
             </div>
         </nav>
 
-        <!-- Tool Section -->
         <section class="tool-section">
             <div class="container">
-                
                 <div class="tool-header">
                     <h1>Free Online Video to Audio Converter</h1>
-                    <p class="tool-intro">Extract high-quality audio tracks from video files locally inside your browser. Converts formats like MP4 and WebM into CD-quality uncompressed WAV audio. No file data is sent to a server.</p>
-</div>
-
-                <!-- Google AdSense Top Banner Placeholder (Hidden until approval)
-                <div class="adsense-block adsense-top" aria-label="Advertisement Space">
-                    <div class="adsense-label">Advertisement</div>
-                    <div class="adsense-placeholder">[Google AdSense Banner - High Visibility]</div>
+                    <p class="tool-intro">Extract high-quality audio tracks from video files locally inside your browser. Converts MP4 and WebM to CD-quality uncompressed WAV. No file data sent to a server.</p>
                 </div>
-                -->
 
-                <!-- Main Converter Card -->
                 <div class="converter-card">
-                    <!-- Drop Zone -->
-                    <div class="drop-zone" id="drop-zone">
-                        <div class="drop-zone-content">
-                            <svg viewBox="0 0 24 24" width="48" height="48" class="upload-icon"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6zm4 14H4v2h12v-2z" fill="currentColor"/></svg>
-                            <h3>Drag & Drop Video File</h3>
-                            <p>or click to browse your folders</p>
-                            <span class="file-hint">Supports MP4, WebM, OGG, MOV, AVI, and MKV formats</span>
+                    <div class="drop-zone" id="drop-zone" role="button" tabindex="0" aria-label="Upload files" aria-describedby="drop-hint">
+                        <div class="drop-zone__icon-wrap" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V3"/><path d="M8 7l4-4 4 4"/><path d="M20 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2"/></svg>
                         </div>
-                        <input type="file" id="video-input" accept="video/*" style="display: none;">
+                        <p class="drop-zone__text">Drag &amp; drop files here <span class="tc-browse-link">or browse files</span></p>
+                        <p class="drop-zone__formats" id="drop-hint">Supports MP4, WebM, OGG, MOV, AVI, and MKV formats</p>
+                        <input type="file" id="video-input" accept="video/*" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0; pointer-events:none;" tabindex="-1">
                     </div>
 
-                    <!-- Converter Workspace (Hidden until load) -->
-                    <div class="converter-workspace" id="converter-workspace" style="display: none;">
+                    <div class="converter-workspace" id="converter-workspace" style="display:none;">
                         <div class="workspace-grid">
-                            
-                            <!-- Left: Video Properties -->
-                            <div class="details-column">
-                                <div class="dashboard-subcard">
-                                    <h4>Video Source details</h4>
-                                    <table class="metadata-table">
-                                        <tbody>
-                                            <tr>
-                                                <td class="prop-label">File Name</td>
-                                                <td class="prop-val" id="meta-filename">-</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="prop-label">File Size</td>
-                                                <td class="prop-val" id="meta-filesize">-</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="prop-label">MIME Type</td>
-                                                <td class="prop-val" id="meta-mimetype">-</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="prop-label">Duration</td>
-                                                <td class="prop-val" id="meta-duration">-</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+
+                        <div class="workspace-preview-panel" style="padding:0; overflow:hidden; background:var(--paper); display:flex; flex-direction:column;">
+                            <div class="video-container" style="background:#000; position:relative; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; overflow:hidden; border-radius:4px 4px 0 0;">
+                                <video id="preview-video" controls playsinline preload="metadata" style="width:100%; height:100%; object-fit:contain; background:#000; display:block;"></video>
+                            </div>
+                            <div style="padding:12px 16px; display:flex; align-items:center; gap:10px; border-top:1px solid var(--line); background:var(--surface); border-radius:0 0 4px 4px;">
+                                <div style="width:36px; height:36px; border-radius:4px; background:#F1F5F2; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--accent-green); flex-shrink:0;">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
                                 </div>
-                            </div>
-
-                            <!-- Right: Extraction Settings -->
-                            <div class="settings-column">
-                                <div class="dashboard-subcard">
-                                    <h4>Audio Output Settings</h4>
-                                    
-                                    <div class="input-group">
-                                        <label for="output-format">Audio Format</label>
-                                        <select id="output-format">
-                                            <option value="wav" selected>WAV (Lossless uncompressed PCM)</option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="input-group">
-                                        <label for="output-channels">Channel Mode</label>
-                                        <select id="output-channels">
-                                            <option value="2" selected>Stereo (2 Channels)</option>
-                                            <option value="1">Mono (1 Channel)</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="input-group">
-                                        <label for="output-samplerate">Sample Rate</label>
-                                        <select id="output-samplerate">
-                                            <option value="44100" selected>44100 Hz (CD Quality)</option>
-                                            <option value="48000">48000 Hz (DVD Quality)</option>
-                                            <option value="22050">22050 Hz (Low Bitrate)</option>
-                                        </select>
-                                    </div>
+                                <div style="min-width:0; flex:1; text-align:left;">
+                                    <div id="preview-filename" style="font-family:var(--font-body); font-size:13px; font-weight:500; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"></div>
+                                    <div style="font-family:var(--font-mono); font-size:12px; color:var(--ink-muted);">Video source loaded — ready to extract audio.</div>
                                 </div>
+                                <span id="preview-duration-badge" style="font-family:var(--font-mono); font-size:12px; font-weight:500; background:var(--ink); color:#fff; padding:4px 8px; border-radius:4px; flex-shrink:0;">--:--</span>
                             </div>
                         </div>
+                            <div class="workspace-controls-panel">
+                                <h3>Conversion Options</h3>
 
-                        <!-- Progress Display Area -->
-                        <div class="progress-container" id="progress-container" style="display: none;">
-                            <div class="progress-info">
-                                <span id="progress-status">Preparing file...</span>
-                                <span id="progress-percentage">0%</span>
+                                <div class="input-group">
+                                    <label for="output-format">Audio Format</label>
+                                    <select id="output-format"><option value="wav" selected>WAV (Lossless uncompressed PCM)</option></select>
+                                </div>
+                                <div class="input-group">
+                                    <label for="output-channels">Channel Mode</label>
+                                    <select id="output-channels"><option value="2" selected>Stereo (2 Channels)</option><option value="1">Mono (1 Channel)</option></select>
+                                </div>
+                                <div class="input-group">
+                                    <label for="output-samplerate">Sample Rate</label>
+                                    <select id="output-samplerate"><option value="44100" selected>44100 Hz (CD Quality)</option><option value="48000">48000 Hz (DVD Quality)</option><option value="22050">22050 Hz (Low Bitrate)</option></select>
+                                </div>
+                                <table class="metadata-table" style="margin-top:12px;">
+                                    <tbody>
+                                        <tr><td class="prop-label">File Name</td><td class="prop-val" id="meta-filename">-</td></tr>
+                                        <tr><td class="prop-label">File Size</td><td class="prop-val" id="meta-filesize">-</td></tr>
+                                        <tr><td class="prop-label">MIME Type</td><td class="prop-val" id="meta-mimetype">-</td></tr>
+                                        <tr><td class="prop-label">Duration</td><td class="prop-val" id="meta-duration">-</td></tr>
+                                    </tbody>
+                                </table>
+                                <div class="progress-container tc-progress" id="progress-container" style="display:none;"><div class="progress-bar tc-progress-bar" id="progress-bar"></div></div>
+
+                            <div class="controls-actions">
+                                <button type="button" class="btn-primary" id="btn-convert">Convert & Download Audio</button>
+                                <div class="tc-progress" id="tc-progress" style="display:none;"><div class="tc-progress-bar"></div></div>
+                                <button type="button" class="btn-secondary" id="btn-reset">Change Video</button>
                             </div>
-                            <div class="progress-bar-wrapper">
-                                <div class="progress-bar" id="progress-bar"></div>
                             </div>
-                        </div>
-
-                        <!-- Actions Row -->
-                        <div class="actions-row">
-                            <button type="button" class="btn btn-secondary" id="btn-reset">
-                                <svg viewBox="0 0 24 24" width="18" height="18"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" fill="currentColor"/></svg>
-                                <span>Change Video</span>
-                            </button>
-                            
-                            <button type="button" class="btn btn-download" id="btn-convert">
-                                <svg viewBox="0 0 24 24" width="18" height="18"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/></svg>
-                                <span>Convert & Download Audio</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Google AdSense Middle Banner Placeholder (Hidden until approval)
-                <div class="adsense-block adsense-middle" aria-label="Advertisement Space">
-                    <div class="adsense-label">Advertisement</div>
-                    <div class="adsense-placeholder">[Google AdSense Banner - Inline Desktop/Mobile]</div>
-                </div>
-                -->
-
-                <!-- SEO Optimized Technical Article -->
-                <article class="tool-article">
-                    <h2>Understanding Audio Extraction: Sample Rates, Channel Layouts, and Lossless Formats</h2>
-                    <p>Extracting the audio track from a video container involves parsing the container stream, separating the audio packets from the video frames, and re-compiling them into a standalone audio file. While standard online converters carry out this compression by uploading files to server databases, browser-side conversion decodes the audio streams directly in your browser tab. This method ensures maximum privacy while generating clean uncompressed audio files.</p>
-
-                    <div class="article-grid">
-                        <div class="article-card">
-                            <h3>WAV vs. Compressed Audio Formats</h3>
-                            <p>WAV (Waveform Audio File Format) is the gold standard for audio editing. It stores audio streams as raw, uncompressed PCM data. Unlike lossy formats (like MP3 or AAC) that compress audio files by permanently discarding high and low frequencies, WAV files preserve every detail of the original sound. This makes WAV ideal for video editing, recording voiceovers, and archival tasks.</p>
-                        </div>
-
-                        <div class="article-card">
-                            <h3>Private Browser Decoding</h3>
-                            <p>This utility uses the native Web Audio API to decode the audio stream of your video files locally. The browser reads the video data, decodes the audio packets, and loads the raw PCM data into a temporary buffer in your system memory. The script then compiles this buffer into a CD-quality WAV file. Your files never touch external servers, making this tool completely private.</p>
                         </div>
                     </div>
 
-                    <h2>Key Audio Parameters Explained: Channel Modes and Sample Rates</h2>
-                    <p>When converting your videos to standalone audio tracks, choosing correct parameters helps align the output file with your specific workflow requirements:</p>
-                    <ul>
-                        <li><strong>Channel Layouts (Stereo vs. Mono):</strong> Stereo files use two independent audio channels (left and right) to create a sense of direction and space, which is ideal for music and environment tracks. Mono files compile channels into a single track, which is perfect for speech recordings and podcasts as it reduces the final file size by half.</li>
-                        <li><strong>Sample Rates (Hz):</strong> The sample rate defines how many times per second the audio waveform is measured. Standard CD quality uses `44100 Hz`, which captures the full spectrum of human hearing. DVD quality uses `48000 Hz`, which is standard for video editing suites. Lower rates (like `22050 Hz`) are suitable for low-bandwidth voice notes.</li>
-                        <li><strong>Bit Depth:</strong> This tool exports files in standard 16-bit depth, providing a dynamic range of 96 dB—ensuring high fidelity and low noise levels.</li>
+                </div>
+
+                <section class="seo-block" aria-labelledby="how-heading">
+                    <h2 id="how-heading">How it works</h2>
+                    <ol class="how-steps">
+                        <li>Drop a video file or browse — audio stream is decoded locally.</li>
+                        <li>Choose channel mode (stereo/mono) and sample rate (44.1/48 kHz).</li>
+                        <li>Click Convert & Download Audio — Web Audio API decodes to PCM.</li>
+                        <li>A WAV file is compiled and downloaded; use Convert another for the next file.</li>
+                    </ol>
+                </section>
+
+                <section class="seo-block" aria-labelledby="what-heading">
+                    <h2 id="what-heading">What you get</h2>
+                    <ul class="what-list">
+                        <li>Lossless WAV output with raw PCM data — ideal for editing</li>
+                        <li>Stereo (2ch) or mono (1ch) downmix with selectable sample rate</li>
+                        <li>16-bit depth for high fidelity and low noise</li>
+                        <li>Private local decoding — no server upload, no limits beyond RAM</li>
                     </ul>
+                </section>
 
-                    <h2>Frequently Asked Questions</h2>
-                    <div class="faq-container">
-                        <div class="faq-item">
-                            <h3 class="faq-question">What file formats are supported for extraction?</h3>
-                            <p class="faq-answer">Any video file containing audio tracks that your browser can decode natively is supported. Standard formats include MP4 (with AAC audio) and WebM (with Opus/Vorbis audio). Support for MOV or AVI depends on your browser's installed codecs.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3 class="faq-question">Are there any file size limits?</h3>
-                            <p class="faq-answer">Since files are processed entirely in your computer's RAM, the limit depends on your browser's available memory. Videos up to 100-200MB are processed quickly. For very large files, make sure you have sufficient free RAM in your system.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3 class="faq-question">Why is the output format WAV instead of MP3?</h3>
-                            <p class="faq-answer">WAV is a lossless, uncompressed format that can be generated quickly and cleanly in the browser without loading heavy external encoder libraries. This keeps the tool extremely lightweight and fast.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3 class="faq-question">Is my video uploaded to a converter server?</h3>
-                            <p class="faq-answer">No. All decoding and file writing take place locally inside your browser tab. Your files never leave your computer, ensuring absolute privacy for your media files.</p>
+                <section class="faq-section" aria-labelledby="faq-heading">
+                    <h2 id="faq-heading">Frequently Asked Questions</h2>
+                    <div class="faq-item" id="faq-0">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a-0">
+                            <span>What formats are supported for extraction?</span>
+                            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="faq-answer" id="faq-a-0" role="region" aria-labelledby="faq-0">
+                            <p>Any video your browser can decode — MP4/AAC, WebM/Opus; MOV/AVI depend on codecs.</p>
                         </div>
                     </div>
-                </article>
-
+                    <div class="faq-item" id="faq-1">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a-1">
+                            <span>Are there file size limits?</span>
+                            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="faq-answer" id="faq-a-1" role="region" aria-labelledby="faq-1">
+                            <p>Limited by browser RAM; 100–200MB processes quickly.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" id="faq-2">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a-2">
+                            <span>Why WAV instead of MP3?</span>
+                            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="faq-answer" id="faq-a-2" role="region" aria-labelledby="faq-2">
+                            <p>WAV is lossless and lightweight to generate locally without heavy encoders.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" id="faq-3">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a-3">
+                            <span>Is my video uploaded?</span>
+                            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="faq-answer" id="faq-a-3" role="region" aria-labelledby="faq-3">
+                            <p>No. All decoding and writing happen locally in your browser tab.</p>
+                        </div>
+                    </div>
+                </section>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
             <p>&copy; 2026 ToolCanvas. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-                <a href="/privacy-policy">Privacy Policy</a>
-                <a href="/terms">Terms of Use</a>
-            </div>
+            <div class="footer-links"><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy Policy</a><a href="/terms">Terms of Use</a></div>
         </div>
     </footer>
 
-    <!-- JavaScript Scripts -->
     <script src="script.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+    // Archetype A enhancements: dropzone keyboard, browse link, progress >300ms, FAQ accordion, copy feedback
+    (function(){
+        const dz = document.getElementById('drop-zone');
+        const fi = document.getElementById('video-input');
+        if(dz && fi){
+            const browse = dz.querySelector('.tc-browse-link');
+            if(browse) browse.addEventListener('click', (e)=>{ e.stopPropagation(); fi.click(); });
+            dz.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); fi.click(); } });
+            // drag-over already handled in script.js; ensure class toggle works
+        }
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(btn=>{
+            btn.addEventListener('click', ()=>{
+                const item = btn.closest('.faq-item');
+                const expanded = btn.getAttribute('aria-expanded')==='true';
+                btn.setAttribute('aria-expanded', !expanded);
+                item.classList.toggle('is-open', !expanded);
+            });
+        });
+        // Progress >300ms indeterminate hook: wrap convert buttons to show tc-progress after 300ms
+        const progress = document.getElementById('tc-progress');
+        const convertBtn = document.getElementById('convert-btn') || document.getElementById('btn-convert') || document.getElementById('btn-trim') || document.getElementById('btn-download');
+        if(progress && convertBtn){
+            let timer=null;
+            convertBtn.addEventListener('click', ()=>{
+                progress.style.display='block';
+                clearTimeout(timer);
+                timer=setTimeout(()=>{ progress.style.display='none'; }, 4000);
+            });
+            // Hide when download appears (mutation observer)
+            const obs = new MutationObserver(()=>{ if(document.getElementById('download-all-btn') && document.getElementById('download-all-btn').style.display!=='none') progress.style.display='none'; });
+            obs.observe(document.body, {attributes:true, subtree:true, attributeFilter:['style']});
+        }
+        // Icon button copy feedback (for btn-copy)
+        const copyBtn = document.getElementById('btn-copy') || document.getElementById('copy-btn');
+        if(copyBtn){
+            copyBtn.addEventListener('click', ()=>{
+                copyBtn.classList.add('copied');
+                copyBtn.setAttribute('aria-live','polite');
+                setTimeout(()=>copyBtn.classList.remove('copied'), 200);
+            });
+        }
+    })();
+    </script>
 </body>
 </html>

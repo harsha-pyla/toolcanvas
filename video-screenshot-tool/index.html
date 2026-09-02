@@ -1,354 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online Video Screenshot Tool — Capture High-Res Frames | ToolCanvas</title>
-    <meta name="description" content="Capture high-resolution screenshot frames from any video file directly in your browser. Seek precisely, copy to clipboard, or export to PNG, JPEG, and WebP. 100% secure.">
-    <meta name="keywords" content="video screenshot tool, take video screenshot, capture video frame, grab video frame, video frame grabber, browser frame capture, extract video image">
+    <meta name="description" content="Grab high-resolution image frames from video files directly. Scrub with millisecond accuracy, choose PNG/JPEG/WebP export, copy to clipboard, or download — 100% local.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://toolcanvas.online/video-screenshot-tool/">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Free Online Video Screenshot Tool — Capture High-Res Frames | ToolCanvas">
-    <meta property="og:description" content="Extract precise, full-resolution image frames from video files local-side in your browser. Format to JPEG, PNG, or WebP and copy directly to your clipboard.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://toolcanvas.online/video-screenshot-tool/">
-    <meta property="og:site_name" content="ToolCanvas">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Limelight&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-
-    <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="style.css">
 
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Video Screenshot Tool",
-        "description": "A private client-side utility to capture high-definition frame screenshots from video timelines, exporting to PNG, JPEG, and WebP with clipboard support.",
-        "url": "https://toolcanvas.online/video-screenshot-tool/",
-        "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "Any",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "isPartOf": {
-            "@type": "WebSite",
-            "name": "ToolCanvas",
-            "url": "https://toolcanvas.online"
-        }
-    }
-    </script>
     <link rel="icon" type="image/png" href="../logo/logo.png">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGKGRK5NFL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-QGKGRK5NFL');
-  </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGKGRK5NFL"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QGKGRK5NFL');</script>
 </head>
 <body>
-
-    <!-- Header -->
     <header class="site-header">
-        <div class="container">
-            <nav class="site-nav">
-                <div class="nav-item">
-                    <a href="/">Home</a>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#random-tools">Random</a>
-                    <div class="dropdown-menu">
-                    <a href="../place-name-generator/">Place Name Generator</a>
-                    <a href="../password-generator/">Password Generator</a>
-                    <a href="../string-randomizer/">String Randomizer</a>
-                    <a href="../random-business-name-generator/">Business Name Generator</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#image-tools">Image Tools</a>
-                    <div class="dropdown-menu">
-                    <a href="../image-to-jpg/">Image to JPG</a>
-                    <a href="../image-to-png/">Image to PNG</a>
-                    <a href="../jpg-to-png/">JPG to PNG</a>
-                    <a href="../heic-to-jpg/">HEIC to JPG</a>
-                    <a href="../image-to-webp/">Image to WebP</a>
-                    <a href="../image-to-text/">Image to Text (OCR)</a>
-                    <a href="../image-resizer/">Image Resizer</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#social-media-tools">Social Media</a>
-                    <div class="dropdown-menu">
-                    <a href="../instagram-profile-preview/">Instagram Preview</a>
-                    <a href="../linkedin-profile-preview/">LinkedIn Preview</a>
-                    <a href="../social-media-card/">Social Media Card</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#canva-workspace">Canva Workspace</a>
-                    <div class="dropdown-menu">
-                    <a href="../whiteboard/">Whiteboard</a>
-                    <a href="../blackboard/">Blackboard</a>
-                    <a href="../notebook/">Notebook</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#video-tools" class="active">Video</a>
-                    <div class="dropdown-menu">
-                    <a href="../video-metadata-viewer/">Video Metadata Viewer</a>
-                    <a href="../thumbnail-generator/">Thumbnail Generator</a>
-                    <a href="index.html">Video Screenshot Tool</a>
-                    <a href="../video-to-audio-converter/">Video to Audio Converter</a>
-                    <a href="../video-trimmer/">Video Trimmer</a>
-                    </div>
-                </div>
-                <div class="nav-item"><a href="/about">About</a></div>
-        <div class="nav-item"><a href="/blog/">Blog</a></div>
-                <div class="nav-item">
-                    <a href="/contact">Contact</a>
-                </div>
-            </nav>
-            <div class="logo-search-container">
-                <a href="/" class="site-logo">Tool<span>Canvas</span></a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                </button>
+    <div class="container">      <a href="/" class="site-logo" aria-label="ToolCanvas home">
+        <span class="logo-mark" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="9" fill="#3F6B4F"/><text x="16" y="21" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="white" letter-spacing="-0.3">TC</text></svg></span>
+        <span class="logo-text">Tool<span>Canvas</span></span>
+      </a>
+      <nav class="site-nav center-nav" aria-label="Primary">
+        <div class="nav-item dropdown">
+          <a href="#all-tools" class="active">All tools</a>
+          <div class="dropdown-menu all-tools-menu">
+            <div class="all-tools-grid">
+              <div class="all-tools-col">
+                <h4>Random</h4>
+                <a href="../place-name-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M12 13c-3.5 0-6 2.5-6 4v1h12v-1c0-1.5-2.5-4-6-4Z"/><path d="M12 8v-1"/><path d="M15 11l2 2"/><path d="M9 11l-2 2"/></svg></span> Place name generator</a>
+                <a href="../password-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/><path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/><path d="M12 17v-1"/><path d="M8 14l-2-2"/><path d="M16 14l2-2"/></svg></span> Password generator</a>
+                <a href="../string-randomizer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M8 7l4-3 4 3"/></svg></span> String randomizer</a>
+                <a href="../random-business-name-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/><path d="M16 16l2 2 2-2"/><path d="M18 8l-2 2"/></svg></span> Business name generator</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Image Tools</h4>
+                <a href="../image-to-jpg/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h5"/><circle cx="15" cy="16" r="1" fill="currentColor"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg></span> Image to JPG</a>
+                <a href="../image-to-png/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22a5 5 0 0 0 5-5c0-2-1.5-3.5-3.5-5.5L12 10l-1.5 1.5C8.5 13.5 7 15 7 17a5 5 0 0 0 5 5Z"/><path d="M9 17h6"/><path d="M12 14v6"/></svg></span> Image to PNG</a>
+                <a href="../jpg-to-png/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M4 14l4-4 3 3 4-4 4 4"/><circle cx="9" cy="9" r="1.5"/></svg></span> JPG to PNG</a>
+                <a href="../heic-to-jpg/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3a4 4 0 0 1 4 4v1H8V7a4 4 0 0 1 4-4Z"/><rect x="6" y="8" width="12" height="10" rx="2"/><path d="M8 12h8"/><path d="M8 14l2 2l2-2 2 2 2-2"/></svg></span> HEIC to JPG</a>
+                <a href="../image-to-webp/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l9 4v2H3V7l9-4Z"/><path d="M12 9a2 2 0 1 0 4 4 2 2 0 0 1-4 4"/><path d="M12 17a2 2 0 1 0 4 4 2 2 0 0 1-4 4"/></svg></span> Image to WebP</a>
+                <a href="../image-to-text/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H4z"/><path d="M8 8h2"/><path d="M8 12h2"/><path d="M12 8h4"/><path d="M12 12h4"/><circle cx="16" cy="16" r="3"/></svg></span> Image to text</a>
+                <a href="../image-resizer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="14" height="14" rx="1"/><path d="M9 9l6 6"/><path d="M15 9l-6 6"/><path d="M5 15l5-1 1-5"/></svg></span> Image resizer</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Social Media</h4>
+                <a href="../instagram-profile-preview/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3h10v4H7z"/><path d="M7 9h10"/><path d="M7 13h10"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span> Instagram preview</a>
+                <a href="../linkedin-profile-preview/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span> LinkedIn preview</a>
+                <a href="../social-media-card/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="14" height="10" rx="1"/><path d="M9 9h6"/><path d="M9 12h6"/><circle cx="14" cy="14" r="2"/></svg></span> Social media card</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Canva Workspace</h4>
+                <a href="../whiteboard/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/><path d="M7 12h10"/><path d="M12 7v10"/></svg></span> Whiteboard</a>
+                <a href="../blackboard/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H4z"/><path d="M4 16l8 5 8-5"/><path d="M8 12h8"/><path d="M12 8v4"/></svg></span> Blackboard</a>
+                <a href="../notebook/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v4H6z"/><path d="M6 8h12"/><path d="M6 12h12"/><path d="M6 16h12"/><path d="M6 20h12"/></svg></span> Notebook</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Video</h4>
+                <a href="../video-metadata-viewer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="16" height="12" rx="1"/><path d="M19 7l3 2v6l-3 2"/><path d="M7 7h3"/><path d="M7 11h3"/></svg></span> Video metadata viewer</a>
+                <a href="../thumbnail-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="12" rx="1"/><path d="M8 8h8"/><path d="M8 12h6"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span> Thumbnail generator</a>
+                <a href="../video-screenshot-tool/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6v6H9z"/><path d="M4 8h16v8H4z"/><circle cx="12" cy="12" r="2"/><path d="M12 10v4"/><path d="M10 12h4"/></svg></span> Video screenshot tool</a>
+                <a href="../video-to-audio-converter/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v4"/><path d="M8 7h8"/><rect x="5" y="7" width="14" height="10" rx="1"/><path d="M9 12h6"/><path d="M9 15h6"/></svg></span> Video to audio converter</a>
+                <a href="../video-trimmer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 8h8"/><path d="M8 12h8"/><path d="M12 8v8"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/><circle cx="6" cy="12" r="1.5" fill="currentColor"/><circle cx="6" cy="18" r="1.5" fill="currentColor"/></svg></span> Video trimmer</a>
+              </div>
             </div>
+          </div>
         </div>
-    </header>
+        <div class="trending" aria-label="Most popular">
+          <a href="image-to-jpg/" class="trending-btn">Image to JPG</a>
+          <a href="image-resizer/" class="trending-btn">Image resizer</a>
+          <a href="password-generator/" class="trending-btn">Password generator</a>
+          <a href="whiteboard/" class="trending-btn">Whiteboard</a>
+        </div>
+      </nav>
+      <nav class="site-nav right-nav" aria-label="Secondary">
+        <div class="nav-item"><a href="/about">About</a></div>
+        <div class="nav-item"><a href="/contact">Contact</a></div>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+    </div>
+  </header>
 
     <main class="site-main">
-        <!-- Breadcrumb -->
         <nav class="breadcrumb" aria-label="Breadcrumb">
             <div class="container">
                 <a href="/">Home</a>
-                <span class="separator">›</span>
-                <span class="current">Video Screenshot Tool</span>
+                <span class="separator" aria-hidden="true">›</span>
+                <span class="current" aria-current="page">Video Screenshot Tool</span>
             </div>
         </nav>
 
-        <!-- Tool Section -->
         <section class="tool-section">
             <div class="container">
-                
                 <div class="tool-header">
                     <h1>Free Online Video Screenshot Tool</h1>
-                    <p class="tool-intro">Grab and extract high-resolution image frames from video files directly. Scrub timelines with millisecond accuracy, swap format exports (PNG, JPEG, WebP), copy snapshots directly to clipboard, or download them. Runs 100% locally on your browser.</p>
-</div>
-
-                <!-- Google AdSense Top Banner Placeholder (Hidden until approval)
-                <div class="adsense-block adsense-top" aria-label="Advertisement Space">
-                    <div class="adsense-label">Advertisement</div>
-                    <div class="adsense-placeholder">[Google AdSense Banner - High Visibility]</div>
+                    <p class="tool-intro">Grab high-resolution image frames from video files directly. Scrub with millisecond accuracy, choose PNG/JPEG/WebP export, copy to clipboard, or download — 100% local.</p>
                 </div>
-                -->
 
-                <!-- Main Capturer Card -->
-                <div class="screenshot-card">
-                    <!-- Drop Zone -->
-                    <div class="drop-zone" id="drop-zone">
-                        <div class="drop-zone-content">
-                            <svg viewBox="0 0 24 24" width="48" height="48" class="upload-icon"><path d="M4 4h16v12H4V4m0-2c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4zm16 16H4v2h16v-2zM9.5 8.5L11 10l3.75-4.5L16 7H8l1.5 1.5z" fill="currentColor"/></svg>
-                            <h3>Drag & Drop Video File</h3>
-                            <p>or click to browse your folders</p>
-                            <span class="file-hint">Supports MP4, WebM, OGG, MOV, AVI, and MKV formats</span>
+                <div class="converter-card screenshot-card">
+                    <div class="drop-zone" id="drop-zone" role="button" tabindex="0" aria-label="Upload files" aria-describedby="drop-hint">
+                        <div class="drop-zone__icon-wrap" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V3"/><path d="M8 7l4-4 4 4"/><path d="M20 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2"/></svg>
                         </div>
-                        <input type="file" id="video-input" accept="video/*" style="display: none;">
+                        <p class="drop-zone__text">Drag &amp; drop files here <button type="button" class="tc-browse-link" tabindex="-1">or browse files</button></p>
+                        <p class="drop-zone__formats" id="drop-hint">Supports MP4, WebM, OGG, MOV, AVI, and MKV formats</p>
+                        <input type="file" id="video-input" accept="video/*" style="display:none;">
                     </div>
 
-                    <!-- Capturer Workspace (Hidden until load) -->
-                    <div class="capturer-workspace" id="capturer-workspace" style="display: none;">
+                    <div class="capturer-workspace" id="capturer-workspace" style="display:none;">
                         <div class="workspace-grid">
-                            
-                            <!-- Left: Video Player Preview & Seeker -->
-                            <div class="player-column">
-                                <div class="dashboard-subcard player-subcard">
-                                    <h4>Video Timeline Seeker</h4>
-                                    <div class="video-container">
-                                        <video id="main-video" controls preload="metadata"></video>
+
+                        <div class="workspace-preview-panel">
+                            <div class="video-container">
+                                <video id="main-video" controls preload="metadata" style="width:100%;"></video>
+                            </div>
+                            <div class="scrubber-panel" style="margin-top:12px;">
+                                <input type="range" id="time-seeker" min="0" max="100" value="0" step="0.001" aria-label="Seek video time">
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+                                    <div style="display:flex; gap:8px;">
+                                        <button type="button" class="btn-secondary" id="btn-play" style="height:32px; padding:0 12px; font-size:12px;">Play</button>
+                                        <button type="button" class="btn-secondary" id="btn-prev-frame" style="height:32px; padding:0 8px; font-size:12px;">◀ -0.1s</button>
+                                        <button type="button" class="btn-secondary" id="btn-next-frame" style="height:32px; padding:0 8px; font-size:12px;">+0.1s ▶</button>
                                     </div>
-                                    
-                                    <!-- Detailed Seeker & Time Code Navigation -->
-                                    <div class="scrubber-panel">
-                                        <div class="seeker-row">
-                                            <input type="range" id="time-seeker" min="0" max="100" value="0" step="0.001">
-                                        </div>
-                                        <div class="nav-controls-row">
-                                            <div class="left-controls">
-                                                <button type="button" class="btn-action-sm" id="btn-play" title="Play/Pause">Play</button>
-                                                <button type="button" class="btn-action-sm" id="btn-prev-frame" title="Step Back 0.1s">◀ -0.1s</button>
-                                                <button type="button" class="btn-action-sm" id="btn-next-frame" title="Step Forward 0.1s">+0.1s ▶</button>
-                                            </div>
-                                            <div class="right-timer">
-                                                <span id="timestamp-display">00:00.000 / 00:00.000</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <span id="timestamp-display" class="data" style="font-family:var(--font-mono); font-size:12px;">00:00.000 / 00:00.000</span>
                                 </div>
                             </div>
+                            <canvas id="render-canvas" style="display:none;"></canvas>
+                            <div class="captured-section" style="margin-top:16px;">
+                                <div style="display:flex; justify-content:space-between; align-items:center;">
+                                    <h4 style="font-family:var(--font-display); font-size:14px; font-weight:600;">Captured Snapshots</h4>
+                                    <span class="captured-count tag tag--green" id="captured-count">0 frames captured</span>
+                                </div>
+                                <div class="snapshots-grid" id="snapshots-grid"><div class="body-s" id="empty-msg" style="grid-column:1/-1; text-align:center; padding:16px; border:1px dashed var(--line); border-radius:4px;">No frames captured yet. Scrub and click Capture.</div></div>
+                                <div class="group-actions-row" id="group-actions" style="display:none; margin-top:12px;">
+                                    <button type="button" class="btn-secondary" id="btn-clear-all">Clear All</button>
+                                    <button type="button" class="btn-primary" id="btn-download-all">Download All</button>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="workspace-controls-panel">
+                                <h3>Conversion Options</h3>
 
-                            <!-- Right: Export Capture Settings -->
-                            <div class="settings-column">
-                                <!-- Group 1: Output Format Settings -->
-                                <div class="dashboard-subcard">
-                                    <h4>1. Export Settings</h4>
-                                    <div class="input-group">
-                                        <label for="export-format">Image Format</label>
-                                        <select id="export-format">
-                                            <option value="image/png">PNG (Lossless, Transparent)</option>
-                                            <option value="image/jpeg" selected>JPEG (Optimized, Compressed)</option>
-                                            <option value="image/webp">WebP (Modern Format)</option>
-                                        </select>
-                                    </div>
-                                    <div class="input-group" id="quality-group">
+                                <div class="input-group">
+                                    <label for="export-format">Image Format</label>
+                                    <select id="export-format">
+                                        <option value="image/png">PNG (Lossless, Transparent)</option>
+                                        <option value="image/jpeg" selected>JPEG (Optimized, Compressed)</option>
+                                        <option value="image/webp">WebP (Modern Format)</option>
+                                    </select>
+                                </div>
+                                <div class="option-group" id="quality-group">
+                                    <div class="option-label-row">
                                         <label for="export-quality">JPEG/WebP Quality</label>
-                                        <input type="range" id="export-quality" min="10" max="100" value="92">
-                                        <span class="slider-val" id="quality-display">92%</span>
+                                        <span class="option-value" id="quality-display">92%</span>
                                     </div>
+                                    <input type="range" id="export-quality" min="10" max="100" value="92">
+                                </div>
+                                <div style="display:flex; flex-direction:column; gap:8px; margin-top:12px;">
+                                    <button type="button" class="btn-primary" id="btn-capture-frame">Capture Current Frame</button>
+                                    <button type="button" class="btn-secondary" id="btn-copy-clipboard">Copy Frame to Clipboard</button>
                                 </div>
 
-                                <!-- Group 2: Capture Actions -->
-                                <div class="dashboard-subcard">
-                                    <h4>2. Capture Actions</h4>
-                                    <div class="capture-actions">
-                                        <button type="button" class="btn btn-capture" id="btn-capture-frame">
-                                            <svg viewBox="0 0 24 24" width="20" height="20"><path d="M3 4V1h2v3h3v2H5v3H3V4zm18 10h2v3h-3v-2h1v-1zm0-10V1h-2v3h-3v2h5zm-8 4c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z" fill="currentColor"/></svg>
-                                            <span>Capture Current Frame</span>
-                                        </button>
-                                        
-                                        <button type="button" class="btn btn-secondary" id="btn-copy-clipboard" style="width: 100%; justify-content: center; margin-top: 10px;">
-                                            <svg viewBox="0 0 24 24" width="18" height="18"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" fill="currentColor"/></svg>
-                                            <span>Copy Frame to Clipboard</span>
-                                        </button>
-                                    </div>
-                                </div>
+                            <div class="controls-actions">
+                                <button type="button" class="btn-secondary" id="btn-change-video">Change Video</button>
+                                <button type="button" class="btn-primary" id="btn-download-all-2">Download All Snapshots</button>
+                                <div class="tc-progress" id="tc-progress" style="display:none; margin-top:12px;"><div class="tc-progress-bar"></div></div>
                             </div>
-                        </div>
-
-                        <!-- Hidden canvas for rendering full resolution snapshots -->
-                        <canvas id="render-canvas" style="display: none;"></canvas>
-
-                        <!-- Section: Captured Screenshots List -->
-                        <div class="captured-section">
-                            <div class="captured-header">
-                                <h3>Captured Snapshots</h3>
-                                <span class="captured-count" id="captured-count">0 frames captured</span>
-                            </div>
-                            
-                            <!-- Snapshots Grid -->
-                            <div class="snapshots-grid" id="snapshots-grid">
-                                <div class="empty-snapshots-msg" id="empty-msg">
-                                    No frames captured yet. Scrub timeline and click "Capture Current Frame" to add snapshots here.
-                                </div>
-                            </div>
-
-                            <!-- Group Actions (Hidden when empty) -->
-                            <div class="group-actions-row" id="group-actions" style="display: none;">
-                                <button type="button" class="btn btn-danger" id="btn-reset">
-                                    <svg viewBox="0 0 24 24" width="18" height="18"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" fill="currentColor"/></svg>
-                                    <span>Change Video</span>
-                                </button>
-                                <button type="button" class="btn btn-secondary" id="btn-clear-all">
-                                    <svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" fill="currentColor"/></svg>
-                                    <span>Clear All Snapshots</span>
-                                </button>
-                                <button type="button" class="btn btn-download" id="btn-download-all">
-                                    <svg viewBox="0 0 24 24" width="18" height="18"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/></svg>
-                                    <span>Download All Snapshots</span>
-                                </button>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
-                <!-- Google AdSense Middle Banner Placeholder (Hidden until approval)
-                <div class="adsense-block adsense-middle" aria-label="Advertisement Space">
-                    <div class="adsense-label">Advertisement</div>
-                    <div class="adsense-placeholder">[Google AdSense Banner - Inline Desktop/Mobile]</div>
-                </div>
-                -->
+                <section class="seo-block" aria-labelledby="how-heading">
+                    <h2 id="how-heading">How it works</h2>
+                    <ol class="how-steps">
+                        <li>Drop a video or browse — decoded locally in a hidden video element.</li>
+                        <li>Scrub the timeline or step ±0.1s to find the exact frame.</li>
+                        <li>Select export format and quality, then Capture Current Frame.</li>
+                        <li>Copy frame to clipboard or download snapshots; clear to start again.</li>
+                    </ol>
+                </section>
 
-                <!-- SEO Optimized Technical Article -->
-                <article class="tool-article">
-                    <h2>Video Frame Extraction: Understanding Millisecond accuracy and keyframes</h2>
-                    <p>Capturing a high-resolution snapshot from a digital video file requires more than simply print-screening your device. Video streams are highly compressed sequences of pictures. They use advanced spatial and temporal compression metrics, saving bandwidth by only rendering changes between frames. Extracting a specific frame requires rendering context decoders. By leveraging local browser decoding APIs, you can extract exact frames at full video resolution—retaining lossless colors and pixel counts without compressing details.</p>
-
-                    <div class="article-grid">
-                        <div class="article-card">
-                            <h3>Keyframes vs. Inter-frames</h3>
-                            <p>Most frames in compressed video files (like MP4 or WebM) are not complete images. They are **inter-frames** (P-frames and B-frames) that rely on preceding or following **keyframes** (I-frames) to compute final pixels. Seeking to a millisecond-accurate timestamp forces the browser's hardware decoder to rebuild the image vector stream dynamically. This screenshot utility intercepts the fully compiled frame from the GPU buffer, saving it as a clean image file.</p>
-                        </div>
-
-                        <div class="article-card">
-                            <h3>High-Fidelity Clipboard Exports</h3>
-                            <p>For creators, copying screenshots directly into editing software (like Photoshop, Canva, or Figma) is a huge workflow accelerator. Modern browser APIs support custom clipboard item writing. Our utility compiles the canvas pixels into a binary Blob format, writing it directly as an image item to your system clipboard. This removes the need to download, save, locate, and manually import screenshots.</p>
-                        </div>
-                    </div>
-
-                    <h2>Why a Dedicated Frame Capture Tool is Better than Screenshots</h2>
-                    <p>Standard screen capture shortcuts (like PrtScn or Cmd+Shift+4) cause noticeable quality loss. Here is why using a dedicated video screenshot utility is superior:</p>
-                    <ul>
-                        <li><strong>Lossless Video Resolution:</strong> Standard screenshots are locked to your monitor display resolution. If you play a 4K video on a 1080p screen, a browser screenshot extracts the native 4K frame pixels (`3840x2160`), rather than clipping it to your display boundaries.</li>
-                        <li><strong>Scrubbing Millisecond Timelines:</strong> Use the step navigation controls (`-0.1s` and `+0.1s`) to frame-step forward and backward to get the exact transition frame.</li>
-                        <li><strong>Clean Frame Outputs:</strong> Screen grabs capture mouse cursor overlays, player timeline bars, and volume sliders. A dedicated frame grabber queries raw video buffers, exporting a clean, overlay-free frame image.</li>
-                        <li><strong>Format Control:</strong> Choose PNG formats for lossless technical review or alpha transparent layers, and JPG/WebP formats for optimized files ready for social sharing.</li>
+                <section class="seo-block" aria-labelledby="what-heading">
+                    <h2 id="what-heading">What you get</h2>
+                    <ul class="what-list">
+                        <li>Native-resolution frame capture (e.g., 4K) — not monitor-clipped</li>
+                        <li>Millisecond timeline seek with frame-step controls</li>
+                        <li>Format control: PNG lossless, JPEG/WebP with quality slider</li>
+                        <li>Clipboard API copy and batch download — overlay-free output</li>
                     </ul>
+                </section>
 
-                    <h2>Frequently Asked Questions</h2>
-                    <div class="faq-container">
-                        <div class="faq-item">
-                            <h3 class="faq-question">What file types can I export my screenshots to?</h3>
-                            <p class="faq-answer">The tool supports PNG, JPEG, and WebP formats. PNG is ideal for lossless quality, while JPEG and WebP support compression sliders to reduce file sizes for easy publishing.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3 class="faq-question">Is there a limit to how many screenshots I can take?</h3>
-                            <p class="faq-answer">No. You can capture as many frame snapshots as needed. All captured screenshots are stored locally in temporary browser memory and are cleared when you refresh the page or change the video.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3 class="faq-question">Does the tool upload my video to a server?</h3>
-                            <p class="faq-answer">No. The tool runs entirely in your browser. The video file is decoded locally on your device, and the snapshots are generated entirely within your browser window. Your private files never leave your computer.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3 class="faq-question">How does "Copy to Clipboard" work?</h3>
-                            <p class="faq-answer">The script uses the asynchronous Clipboard API to convert the canvas frame into a PNG blob, then writes it directly as an active image item. You can paste it immediately into any design app or chat tool (Ctrl+V).</p>
+                <section class="faq-section" aria-labelledby="faq-heading">
+                    <h2 id="faq-heading">Frequently Asked Questions</h2>
+                    <div class="faq-item" id="faq-0">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a-0">
+                            <span>What file types can I export?</span>
+                            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="faq-answer" id="faq-a-0" role="region" aria-labelledby="faq-0">
+                            <p>PNG, JPEG, and WebP. PNG for lossless, JPEG/WebP for compressed sharing.</p>
                         </div>
                     </div>
-                </article>
-
+                    <div class="faq-item" id="faq-1">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a-1">
+                            <span>Is there a limit on screenshots?</span>
+                            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="faq-answer" id="faq-a-1" role="region" aria-labelledby="faq-1">
+                            <p>No — stored locally in temporary memory, cleared on refresh.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" id="faq-2">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a-2">
+                            <span>Does the tool upload my video?</span>
+                            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="faq-answer" id="faq-a-2" role="region" aria-labelledby="faq-2">
+                            <p>No. All decoding and snapshot generation happen locally.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item" id="faq-3">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a-3">
+                            <span>How does Copy to Clipboard work?</span>
+                            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="faq-answer" id="faq-a-3" role="region" aria-labelledby="faq-3">
+                            <p>Uses Clipboard API to write a PNG blob as an image item — paste with Ctrl+V.</p>
+                        </div>
+                    </div>
+                </section>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
             <p>&copy; 2026 ToolCanvas. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-                <a href="/privacy-policy">Privacy Policy</a>
-                <a href="/terms">Terms of Use</a>
-            </div>
+            <div class="footer-links"><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy Policy</a><a href="/terms">Terms of Use</a></div>
         </div>
     </footer>
 
-    <!-- JavaScript Scripts -->
     <script src="script.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+    // Archetype A enhancements: dropzone keyboard, browse link, progress >300ms, FAQ accordion, copy feedback
+    (function(){
+        const dz = document.getElementById('drop-zone');
+        const fi = document.getElementById('video-input');
+        if(dz && fi){
+            const browse = dz.querySelector('.tc-browse-link');
+            if(browse) browse.addEventListener('click', (e)=>{ e.stopPropagation(); fi.click(); });
+            dz.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); fi.click(); } });
+            // drag-over already handled in script.js; ensure class toggle works
+        }
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(btn=>{
+            btn.addEventListener('click', ()=>{
+                const item = btn.closest('.faq-item');
+                const expanded = btn.getAttribute('aria-expanded')==='true';
+                btn.setAttribute('aria-expanded', !expanded);
+                item.classList.toggle('is-open', !expanded);
+            });
+        });
+        // Progress >300ms indeterminate hook: wrap convert buttons to show tc-progress after 300ms
+        const progress = document.getElementById('tc-progress');
+        const convertBtn = document.getElementById('convert-btn') || document.getElementById('btn-convert') || document.getElementById('btn-trim') || document.getElementById('btn-download');
+        if(progress && convertBtn){
+            let timer=null;
+            convertBtn.addEventListener('click', ()=>{
+                progress.style.display='block';
+                clearTimeout(timer);
+                timer=setTimeout(()=>{ progress.style.display='none'; }, 4000);
+            });
+            // Hide when download appears (mutation observer)
+            const obs = new MutationObserver(()=>{ if(document.getElementById('download-all-btn') && document.getElementById('download-all-btn').style.display!=='none') progress.style.display='none'; });
+            obs.observe(document.body, {attributes:true, subtree:true, attributeFilter:['style']});
+        }
+        // Icon button copy feedback (for btn-copy)
+        const copyBtn = document.getElementById('btn-copy') || document.getElementById('copy-btn');
+        if(copyBtn){
+            copyBtn.addEventListener('click', ()=>{
+                copyBtn.classList.add('copied');
+                copyBtn.setAttribute('aria-live','polite');
+                setTimeout(()=>copyBtn.classList.remove('copied'), 200);
+            });
+        }
+    })();
+    </script>
 </body>
 </html>

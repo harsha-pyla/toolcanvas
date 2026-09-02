@@ -1,32 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Whiteboard — Infinite Canvas, Short Share Link | ToolCanvas</title>
     <meta name="description" content="Infinite whiteboard with clean design and short share links — no long URLs. Pen, pencil, eraser, colors & grid. Private, offline.">
-    <meta name="keywords" content="online whiteboard, infinite whiteboard, free drawing board, digital whiteboard, zoomable canvas, sketchpad, concept map, design board">
+    <meta name="keywords" content="online whiteboard, infinite whiteboard, free drawing board, digital whiteboard, zoomable canvas, sketchpad">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://toolcanvas.online/whiteboard/">
-
-    <!-- Open Graph -->
     <meta property="og:title" content="Whiteboard — Infinite Canvas, Short Share Link | ToolCanvas">
     <meta property="og:description" content="Clean infinite whiteboard with short share links — no long URLs. Pen, pencil, eraser, colors & grid. Private & offline.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolcanvas.online/whiteboard/">
     <meta property="og:site_name" content="ToolCanvas">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Limelight&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-
-    <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="style.css">
-
-    <!-- Automatic Short Link / Hash Redirect -->
     <script>
         (function(){
             const qs = window.location.search;
@@ -38,223 +29,196 @@
             }
         })();
     </script>
-
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Infinite Online Whiteboard",
-        "description": "An infinite zoomable drawing canvas with advanced stroke erasing and local session preservation. No server data uploads.",
+        "description": "An infinite zoomable drawing canvas with advanced stroke erasing and local session preservation.",
         "url": "https://toolcanvas.online/whiteboard/",
         "applicationCategory": "DesignApplication",
         "operatingSystem": "Any",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "isPartOf": {
-            "@type": "WebSite",
-            "name": "ToolCanvas",
-            "url": "https://toolcanvas.online"
-        }
+        "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"}
     }
     </script>
     <link rel="icon" type="image/png" href="../logo/logo.png">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGKGRK5NFL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-QGKGRK5NFL');
-  </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGKGRK5NFL"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QGKGRK5NFL');</script>
 </head>
 <body>
-
-    <!-- Header -->
     <header class="site-header">
-        <div class="container">
-            <nav class="site-nav">
-                <div class="nav-item">
-                    <a href="/">Home</a>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#random-tools">Random</a>
-                    <div class="dropdown-menu">
-                    <a href="../place-name-generator/">Place Name Generator</a>
-                    <a href="../password-generator/">Password Generator</a>
-                    <a href="../string-randomizer/">String Randomizer</a>
-                    <a href="../random-business-name-generator/">Business Name Generator</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#image-tools">Image Tools</a>
-                    <div class="dropdown-menu">
-                    <a href="../image-to-jpg/">Image to JPG</a>
-                    <a href="../image-to-png/">Image to PNG</a>
-                    <a href="../jpg-to-png/">JPG to PNG</a>
-                    <a href="../heic-to-jpg/">HEIC to JPG</a>
-                    <a href="../image-to-webp/">Image to WebP</a>
-                    <a href="../image-to-text/">Image to Text (OCR)</a>
-                    <a href="../image-resizer/">Image Resizer</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#social-media-tools">Social Media</a>
-                    <div class="dropdown-menu">
-                    <a href="../instagram-profile-preview/">Instagram Preview</a>
-                    <a href="../linkedin-profile-preview/">LinkedIn Preview</a>
-                    <a href="../social-media-card/">Social Media Card</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#canva-workspace" class="active">Canva Workspace</a>
-                    <div class="dropdown-menu">
-                    <a href="index.html">Whiteboard</a>
-                    <a href="../blackboard/">Blackboard</a>
-                    <a href="../notebook/">Notebook</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#video-tools">Video</a>
-                    <div class="dropdown-menu">
-                    <a href="../video-metadata-viewer/">Video Metadata Viewer</a>
-                    <a href="../thumbnail-generator/">Thumbnail Generator</a>
-                    <a href="../video-screenshot-tool/">Video Screenshot Tool</a>
-                    <a href="../video-to-audio-converter/">Video to Audio Converter</a>
-                    <a href="../video-trimmer/">Video Trimmer</a>
-                    </div>
-                </div>
-                <div class="nav-item"><a href="/about">About</a></div>
-        <div class="nav-item"><a href="/blog/">Blog</a></div>
-                <div class="nav-item">
-                    <a href="/contact">Contact</a>
-                </div>
-            </nav>
-            <div class="logo-search-container">
-                <a href="/" class="site-logo">Tool<span>Canvas</span></a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                </button>
+    <div class="container">      <a href="/" class="site-logo" aria-label="ToolCanvas home">
+        <span class="logo-mark" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="9" fill="#3F6B4F"/><text x="16" y="21" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="white" letter-spacing="-0.3">TC</text></svg></span>
+        <span class="logo-text">Tool<span>Canvas</span></span>
+      </a>
+      <nav class="site-nav center-nav" aria-label="Primary">
+        <div class="nav-item dropdown">
+          <a href="#all-tools" class="active">All tools</a>
+          <div class="dropdown-menu all-tools-menu">
+            <div class="all-tools-grid">
+              <div class="all-tools-col">
+                <h4>Random</h4>
+                <a href="../place-name-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M12 13c-3.5 0-6 2.5-6 4v1h12v-1c0-1.5-2.5-4-6-4Z"/><path d="M12 8v-1"/><path d="M15 11l2 2"/><path d="M9 11l-2 2"/></svg></span> Place name generator</a>
+                <a href="../password-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/><path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/><path d="M12 17v-1"/><path d="M8 14l-2-2"/><path d="M16 14l2-2"/></svg></span> Password generator</a>
+                <a href="../string-randomizer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M8 7l4-3 4 3"/></svg></span> String randomizer</a>
+                <a href="../random-business-name-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/><path d="M16 16l2 2 2-2"/><path d="M18 8l-2 2"/></svg></span> Business name generator</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Image Tools</h4>
+                <a href="../image-to-jpg/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h5"/><circle cx="15" cy="16" r="1" fill="currentColor"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg></span> Image to JPG</a>
+                <a href="../image-to-png/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22a5 5 0 0 0 5-5c0-2-1.5-3.5-3.5-5.5L12 10l-1.5 1.5C8.5 13.5 7 15 7 17a5 5 0 0 0 5 5Z"/><path d="M9 17h6"/><path d="M12 14v6"/></svg></span> Image to PNG</a>
+                <a href="../jpg-to-png/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M4 14l4-4 3 3 4-4 4 4"/><circle cx="9" cy="9" r="1.5"/></svg></span> JPG to PNG</a>
+                <a href="../heic-to-jpg/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3a4 4 0 0 1 4 4v1H8V7a4 4 0 0 1 4-4Z"/><rect x="6" y="8" width="12" height="10" rx="2"/><path d="M8 12h8"/><path d="M8 14l2 2l2-2 2 2 2-2"/></svg></span> HEIC to JPG</a>
+                <a href="../image-to-webp/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l9 4v2H3V7l9-4Z"/><path d="M12 9a2 2 0 1 0 4 4 2 2 0 0 1-4 4"/><path d="M12 17a2 2 0 1 0 4 4 2 2 0 0 1-4 4"/></svg></span> Image to WebP</a>
+                <a href="../image-to-text/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H4z"/><path d="M8 8h2"/><path d="M8 12h2"/><path d="M12 8h4"/><path d="M12 12h4"/><circle cx="16" cy="16" r="3"/></svg></span> Image to text</a>
+                <a href="../image-resizer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="14" height="14" rx="1"/><path d="M9 9l6 6"/><path d="M15 9l-6 6"/><path d="M5 15l5-1 1-5"/></svg></span> Image resizer</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Social Media</h4>
+                <a href="../instagram-profile-preview/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3h10v4H7z"/><path d="M7 9h10"/><path d="M7 13h10"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span> Instagram preview</a>
+                <a href="../linkedin-profile-preview/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span> LinkedIn preview</a>
+                <a href="../social-media-card/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="14" height="10" rx="1"/><path d="M9 9h6"/><path d="M9 12h6"/><circle cx="14" cy="14" r="2"/></svg></span> Social media card</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Canva Workspace</h4>
+                <a href="../whiteboard/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/><path d="M7 12h10"/><path d="M12 7v10"/></svg></span> Whiteboard</a>
+                <a href="../blackboard/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H4z"/><path d="M4 16l8 5 8-5"/><path d="M8 12h8"/><path d="M12 8v4"/></svg></span> Blackboard</a>
+                <a href="../notebook/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v4H6z"/><path d="M6 8h12"/><path d="M6 12h12"/><path d="M6 16h12"/><path d="M6 20h12"/></svg></span> Notebook</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Video</h4>
+                <a href="../video-metadata-viewer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="16" height="12" rx="1"/><path d="M19 7l3 2v6l-3 2"/><path d="M7 7h3"/><path d="M7 11h3"/></svg></span> Video metadata viewer</a>
+                <a href="../thumbnail-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="12" rx="1"/><path d="M8 8h8"/><path d="M8 12h6"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span> Thumbnail generator</a>
+                <a href="../video-screenshot-tool/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6v6H9z"/><path d="M4 8h16v8H4z"/><circle cx="12" cy="12" r="2"/><path d="M12 10v4"/><path d="M10 12h4"/></svg></span> Video screenshot tool</a>
+                <a href="../video-to-audio-converter/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v4"/><path d="M8 7h8"/><rect x="5" y="7" width="14" height="10" rx="1"/><path d="M9 12h6"/><path d="M9 15h6"/></svg></span> Video to audio converter</a>
+                <a href="../video-trimmer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 8h8"/><path d="M8 12h8"/><path d="M12 8v8"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/><circle cx="6" cy="12" r="1.5" fill="currentColor"/><circle cx="6" cy="18" r="1.5" fill="currentColor"/></svg></span> Video trimmer</a>
+              </div>
             </div>
+          </div>
         </div>
-    </header>
+        <div class="trending" aria-label="Most popular">
+          <a href="image-to-jpg/" class="trending-btn">Image to JPG</a>
+          <a href="image-resizer/" class="trending-btn">Image resizer</a>
+          <a href="password-generator/" class="trending-btn">Password generator</a>
+          <a href="whiteboard/" class="trending-btn">Whiteboard</a>
+        </div>
+      </nav>
+      <nav class="site-nav right-nav" aria-label="Secondary">
+        <div class="nav-item"><a href="/about">About</a></div>
+        <div class="nav-item"><a href="/contact">Contact</a></div>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+    </div>
+  </header>
 
     <main class="site-main">
-        <!-- Breadcrumb -->
         <nav class="breadcrumb" aria-label="Breadcrumb">
             <div class="container">
                 <a href="/">Home</a>
-                <span class="separator">›</span>
-                <span class="current">Infinite Whiteboard</span>
+                <span class="separator" aria-hidden="true">›</span>
+                <span class="current" aria-current="page">Whiteboard</span>
             </div>
         </nav>
 
-        <!-- Tool & Content Section -->
         <section class="tool-section">
             <div class="container">
-                
                 <div class="tool-header">
-                    <h1>Whiteboard — Clean Infinite Canvas</h1>
-                    <p class="tool-intro">Clean infinite whiteboard — short share links (no long URLs), pen/pencil/eraser, colors & grid, infinite pan/zoom. Private, offline.</p>
-</div>
-
-                <!-- Google AdSense Top Banner Placeholder (Hidden until approval)
-                <div class="adsense-block adsense-top" aria-label="Advertisement Space">
-                    <div class="adsense-label">Advertisement</div>
-                    <div class="adsense-placeholder">[Google AdSense Banner - High Visibility]</div>
-                </div>
-                -->
-
-                <!-- Launch Whiteboard CTA Card -->
-                <div class="launch-card">
-                    <div class="launch-card-icon">
-                        <svg viewBox="0 0 24 24" width="48" height="48"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="currentColor"/></svg>
-                    </div>
-                    <h2>Start Brainstorming & Sketching Now</h2>
-                    <p>Open our zero-latency infinite drawing board. Completely private, secure, and runs entirely on your device.</p>
-                    <a href="app.html" class="btn-launch">
-                        <span>Launch Whiteboard</span>
-                        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" fill="currentColor"/></svg>
-                    </a>
+                    <h1>Whiteboard — Infinite Canvas</h1>
+                    <p class="tool-intro">Clean infinite drafting surface for sketching, mapping and planning. Pan and zoom with no borders, save locally, share with a short link.</p>
                 </div>
 
-                <!-- Google AdSense Middle Banner Placeholder (Hidden until approval)
-                <div class="adsense-block adsense-middle" aria-label="Advertisement Space">
-                    <div class="adsense-label">Advertisement</div>
-                    <div class="adsense-placeholder">[Google AdSense Banner - Inline Desktop/Mobile]</div>
+                <!-- Launch card as instrument panel -->
+                <div class="working-area-panel landing-panel" aria-label="Whiteboard launch">
+                    <div class="launch-card">
+                        <div class="launch-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 7-8Z"/></svg>
+                        </div>
+                        <span class="tag-chip">Canvas · Board</span>
+                        <h2>Start sketching on a clean surface</h2>
+                        <p>Zero-latency infinite board. Pen, pencil, eraser, colour and dot grid. Private — runs entirely on your device.</p>
+                        <a href="app.html" class="btn-primary">Launch Whiteboard <span aria-hidden="true">→</span></a>
+                        <p class="launch-meta">No signup · Short share links · Offline · 10–500% zoom</p>
+                    </div>
                 </div>
-                -->
 
-                <!-- Rich SEO Article Content for AdSense Value -->
-                <article class="tool-article">
-                    <h2>Complete Guide to Visual Collaboration & Brainstorming Online</h2>
-                    <p>In modern education, remote business planning, and creative workspaces, visual organization tools make capturing complex concepts intuitive. While standard text documents can feel rigid, an infinite online whiteboard provides an open canvas that adapts dynamically to your thought processes. Whether mapping user journeys, design wireframes, or teaching virtual classes, an online canvas speeds up comprehension and promotes engagement.</p>
+                <div class="article-grid archetype-d-article">
+                    <section class="how-it-works" aria-labelledby="how-it-works-title">
+                        <h2 id="how-it-works-title">How it works</h2>
+                        <p>Open the board and draw immediately. The surface is an infinite canvas — drag with the Hand tool or hold Space to pan, pinch or scroll to zoom. Every stroke is rendered as a vector so you can erase a whole stroke with a single swipe.</p>
+                        <p>Pick Pen for bold marks, Pencil for fine lines, and Eraser for stroke-based removal. Adjust size with the slider and pick a colour from the palette or your own custom colour. The dot grid at 24 px gives a subtle drafting reference without interfering with sketches.</p>
+                        <p>Your work is autosaved to local storage on this device. Share generates a short link like <code>?s=Ab12Cd3</code> — no long hash URLs. Recipients open the link and the drawing loads instantly. Export a PNG cropped to your drawing bounds at any time.</p>
+                    </section>
 
-                    <div class="article-grid">
-                        <div class="article-card">
-                            <h3>Cognitive Power of Visual Maps</h3>
-                            <p>Research shows that the human brain processes visual elements significantly faster than written copy. Drawing connections, sketching layouts, and color-coding concepts activates spatial memory, making it easier to retain structured information. This whiteboard is perfect for organizing ideas, building storyboards, and conducting visual retrospectives.</p>
+                    <section class="what-you-get" aria-labelledby="what-you-get-title">
+                        <h2 id="what-you-get-title">What you get</h2>
+                        <ul class="tick-list" role="list">
+                            <li><span class="tick-box" aria-hidden="true">✓</span> Infinite pan and zoom from 10% to 500% with a recenter arrow that appears when you drift from your content</li>
+                            <li><span class="tick-box" aria-hidden="true">✓</span> Pen, Pencil and stroke-eraser with size control, five quick colours plus custom picker</li>
+                            <li><span class="tick-box" aria-hidden="true">✓</span> Faint dot-grid drafting surface at 24 px spacing with Plain, Grid and Dots background options</li>
+                            <li><span class="tick-box" aria-hidden="true">✓</span> Local autosave, recent boards list, undo/redo and one-click PNG export</li>
+                            <li><span class="tick-box" aria-hidden="true">✓</span> Short Supabase-backed share links, touch and stylus support, keyboard shortcuts</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <section class="faq-section" aria-labelledby="faq-title">
+                    <h2 id="faq-title">Frequently asked questions</h2>
+                    <div class="faq-accordion" role="region" aria-label="FAQ">
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-a1" id="faq-q1"><span class="faq-label">How does the infinite whiteboard save my work?</span><span class="faq-chevron" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg></span></button>
+                            <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1" hidden><p>Your strokes are saved as a coordinate array in localStorage on this browser. Refresh or return days later and the drawing is restored exactly. Clear the board from the drawer menu when you want a fresh start.</p></div>
                         </div>
-
-                        <div class="article-card">
-                            <h3>Zero Server Footprint Security</h3>
-                            <p>Privacy is key when visual mapping proprietary business ideas or private brainstorming notes. This infinite board compiles all coordinates and strokes entirely client-side. No drawing vector is ever uploaded to a database or shared online without your consent. Your visual workspace stays local to your browser session, giving you full control over confidentiality.</p>
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-a2" id="faq-q2"><span class="faq-label">How does the stroke eraser work?</span><span class="faq-chevron" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg></span></button>
+                            <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2" hidden><p>Unlike pixel erasers, this eraser checks intersection with vector segments. Touching any part of a stroke deletes the entire stroke, making clean-ups fast even at low zoom.</p></div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-a3" id="faq-q3"><span class="faq-label">Can I use touch gestures on iPad or mobile?</span><span class="faq-chevron" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg></span></button>
+                            <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3" hidden><p>Yes. Draw with finger or stylus, pan with two fingers and pinch to zoom. The canvas handles pointer events for Apple Pencil, Wacom and trackpad input.</p></div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-a4" id="faq-q4"><span class="faq-label">How do I clear the board or export a PNG?</span><span class="faq-chevron" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg></span></button>
+                            <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4" hidden><p>Open the drawer and choose New Whiteboard to clear. Choose Export as PNG to download a tightly cropped image with your current background. Both respect your active zoom and background choice.</p></div>
                         </div>
                     </div>
-
-                    <h2>How to Maximize Your Infinite Canvas Drawing Sessions</h2>
-                    <p>An infinite workspace gives you complete freedom of movement. Follow these best practices to optimize your sketching:</p>
-                    <ul>
-                        <li><strong>Maximize to Full Viewport:</strong> Click the maximize button in the top right of the whiteboard card to cover the full screen. This enables a distraction-free drawing mode that is perfect for sketching and mindmapping.</li>
-                        <li><strong>Navigate with Hand Tool:</strong> Press the <code>H</code> key or click the Hand icon in the dock to pan smoothly in any direction. Swipe or drag to move around your drawings, and use the zoom panel to scale elements from 10% to 500%.</li>
-                        <li><strong>Leverage the Recenter Arrow:</strong> If you pan away from your canvas contents, a dynamic arrow indicator appears on the screen margin. Click it to center back to your drawing center immediately.</li>
-                        <li><strong>Short Share Links:</strong> Click “Share” to create a short link like <code>?s=Ab12Cd3</code> — no long hash URLs. Anyone with the link instantly loads your drawing.</li>
-                    </ul>
-
-                    <h2>Frequently Asked Questions</h2>
-                    <div class="faq-container">
-                        <div class="faq-item">
-                            <h3 class="faq-question">How does the infinite whiteboard save my work?</h3>
-                            <p class="faq-answer">By default, the whiteboard saves your coordinates array in your browser's private local storage space. If you refresh the window or return after several days, your drawing state is reconstructed exactly as you left it.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3 class="faq-question">How does the stroke-based eraser work?</h3>
-                            <p class="faq-answer">Unlike typical pixel erasers that wipe out canvas colors, our eraser identifies intersecting vector strokes. Swiping the eraser across any portion of a drawn line deletes the entire stroke instantly, making adjustments fast and clean.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3 class="faq-question">Can I use touch gestures on my iPad or mobile device?</h3>
-                            <p class="faq-answer">Yes. The canvas supports responsive multi-touch touch gestures. You can draw using your finger or stylus, use two fingers to pan around the infinite space, and pinch to zoom in or out smoothly.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3 class="faq-question">How can I clear the entire board to start a new sketch?</h3>
-                            <p class="faq-answer">Open the side drawer menu by clicking the hamburger toggle icon in the top left, then click "New Whiteboard". This resets the canvas zoom/pan offsets and clears the drawing data from local memory.</p>
-                        </div>
-                    </div>
-                </article>
-
+                </section>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2026 ToolCanvas. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-                <a href="/privacy-policy">Privacy Policy</a>
-                <a href="/terms">Terms of Use</a>
+            <div class="footer-grid">
+                <div><h4>Top Tools</h4><a href="/image-to-jpg/">Image to JPG</a><a href="/image-resizer/">Image Resizer</a><a href="/password-generator/">Password Generator</a></div>
+                <div><h4>Company</h4><a href="/about">About</a><a href="/blog/">Blog</a><a href="/contact">Contact</a></div>
+                <div><h4>Legal</h4><a href="/privacy-policy">Privacy Policy</a><a href="/terms">Terms of Use</a></div>
             </div>
+            <p style="margin-top:32px; text-align:center; font-size:14px; color:var(--ink-muted);">© 2026 ToolCanvas. All rights reserved.</p>
         </div>
     </footer>
-
     <script src="../js/main.js"></script>
+    <script>
+    // FAQ accordion: multiple open, 160ms chevron, 200ms height
+    document.querySelectorAll('.faq-question').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            const expanded = btn.getAttribute('aria-expanded')==='true';
+            const answer = document.getElementById(btn.getAttribute('aria-controls'));
+            btn.setAttribute('aria-expanded', String(!expanded));
+            if(!expanded){
+                answer.hidden=false;
+                answer.style.maxHeight='0px';
+                answer.style.overflow='hidden';
+                answer.style.transition='max-height 200ms ease';
+                requestAnimationFrame(()=>{ answer.style.maxHeight=answer.scrollHeight+'px'; });
+                answer.addEventListener('transitionend', function h(){ answer.style.maxHeight='none'; answer.style.overflow='visible'; answer.removeEventListener('transitionend',h); });
+            } else {
+                answer.style.maxHeight=answer.scrollHeight+'px';
+                answer.style.overflow='hidden';
+                requestAnimationFrame(()=>{ answer.style.maxHeight='0px'; });
+                answer.addEventListener('transitionend', function h(){ answer.hidden=true; answer.removeEventListener('transitionend',h); });
+            }
+        });
+    });
+    </script>
 </body>
 </html>

@@ -1,573 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Free Online Notepad — Type, Edit & Print Notes | ToolCanvas</title>
-    <meta name="description" content="Type, format, and download notes on an online notepad. Features lined paper styles, autosave, print, find and replace, date insertion, and local offline privacy.">
-    <meta name="keywords" content="online notepad, free text editor, lined notepad, yellow legal pad, notepad online, type notes, notepad with autosave, browser editor">
+    <meta name="description" content="Type, format, and download notes on an online notepad. Features ruled/grid paper, autosave, print, find and replace, and local privacy.">
+    <meta name="keywords" content="online notepad, free text editor, lined notepad, grid notepad, notepad online">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://toolcanvas.online/notebook/">
-
-    <!-- Open Graph -->
     <meta property="og:title" content="Free Online Notepad — Type, Edit & Print Notes | ToolCanvas">
-    <meta property="og:description" content="Type, format, and download notes on an online notepad. Features lined paper styles, autosave, print, find and replace, date insertion, and local offline privacy.">
+    <meta property="og:description" content="Type, format, and download notes with ruled or grid paper, autosave and print. Private & offline.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolcanvas.online/notebook/">
     <meta property="og:site_name" content="ToolCanvas">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&family=JetBrains+Mono:wght@500;600&family=Limelight&display=swap" rel="stylesheet">
-
-    <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500&family=Caveat:wght@400;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="style.css">
-
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Online Notepad",
-        "description": "An interactive digital text notepad with repeating line styles, print layout, find and replace functionality, and local offline autosave.",
-        "url": "https://toolcanvas.online/notebook/",
-        "applicationCategory": "OfficeApplication",
-        "operatingSystem": "Any",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "isPartOf": {
-            "@type": "WebSite",
-            "name": "ToolCanvas",
-            "url": "https://toolcanvas.online"
-        }
-    }
-    </script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Online Notepad","description":"Digital text notepad with ruled/grid paper, print, find and replace and local autosave.","url":"https://toolcanvas.online/notebook/","applicationCategory":"OfficeApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
     <link rel="icon" type="image/png" href="../logo/logo.png">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGKGRK5NFL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-QGKGRK5NFL');
-  </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGKGRK5NFL"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QGKGRK5NFL');</script>
 </head>
 <body>
-
-    <!-- Header -->
     <header class="site-header">
-        <div class="container">
-            <nav class="site-nav">
-                <div class="nav-item">
-                    <a href="/">Home</a>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#random-tools">Random</a>
-                    <div class="dropdown-menu">
-                    <a href="../place-name-generator/">Place Name Generator</a>
-                    <a href="../password-generator/">Password Generator</a>
-                    <a href="../string-randomizer/">String Randomizer</a>
-                    <a href="../random-business-name-generator/">Business Name Generator</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#image-tools">Image Tools</a>
-                    <div class="dropdown-menu">
-                    <a href="../image-to-jpg/">Image to JPG</a>
-                    <a href="../image-to-png/">Image to PNG</a>
-                    <a href="../jpg-to-png/">JPG to PNG</a>
-                    <a href="../heic-to-jpg/">HEIC to JPG</a>
-                    <a href="../image-to-webp/">Image to WebP</a>
-                    <a href="../image-to-text/">Image to Text (OCR)</a>
-                    <a href="../image-resizer/">Image Resizer</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#social-media-tools">Social Media</a>
-                    <div class="dropdown-menu">
-                    <a href="../instagram-profile-preview/">Instagram Preview</a>
-                    <a href="../linkedin-profile-preview/">LinkedIn Preview</a>
-                    <a href="../social-media-card/">Social Media Card</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#canva-workspace" class="active">Canva Workspace</a>
-                    <div class="dropdown-menu">
-                    <a href="../whiteboard/">Whiteboard</a>
-                    <a href="../blackboard/">Blackboard</a>
-                    <a href="index.html">Notebook</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#video-tools">Video</a>
-                    <div class="dropdown-menu">
-                    <a href="../video-metadata-viewer/">Video Metadata Viewer</a>
-                    <a href="../thumbnail-generator/">Thumbnail Generator</a>
-                    <a href="../video-screenshot-tool/">Video Screenshot Tool</a>
-                    <a href="../video-to-audio-converter/">Video to Audio Converter</a>
-                    <a href="../video-trimmer/">Video Trimmer</a>
-                    </div>
-                </div>
-                <div class="nav-item"><a href="/about">About</a></div>
-        <div class="nav-item"><a href="/blog/">Blog</a></div>
-                <div class="nav-item">
-                    <a href="/contact">Contact</a>
-                </div>
-            </nav>
-            <div class="logo-search-container">
-                <a href="/" class="site-logo">Tool<span>Canvas</span></a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                </button>
+    <div class="container">      <a href="/" class="site-logo" aria-label="ToolCanvas home">
+        <span class="logo-mark" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="9" fill="#3F6B4F"/><text x="16" y="21" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="white" letter-spacing="-0.3">TC</text></svg></span>
+        <span class="logo-text">Tool<span>Canvas</span></span>
+      </a>
+      <nav class="site-nav center-nav" aria-label="Primary">
+        <div class="nav-item dropdown">
+          <a href="#all-tools" class="active">All tools</a>
+          <div class="dropdown-menu all-tools-menu">
+            <div class="all-tools-grid">
+              <div class="all-tools-col">
+                <h4>Random</h4>
+                <a href="../place-name-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M12 13c-3.5 0-6 2.5-6 4v1h12v-1c0-1.5-2.5-4-6-4Z"/><path d="M12 8v-1"/><path d="M15 11l2 2"/><path d="M9 11l-2 2"/></svg></span> Place name generator</a>
+                <a href="../password-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/><path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/><path d="M12 17v-1"/><path d="M8 14l-2-2"/><path d="M16 14l2-2"/></svg></span> Password generator</a>
+                <a href="../string-randomizer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M8 7l4-3 4 3"/></svg></span> String randomizer</a>
+                <a href="../random-business-name-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/><path d="M16 16l2 2 2-2"/><path d="M18 8l-2 2"/></svg></span> Business name generator</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Image Tools</h4>
+                <a href="../image-to-jpg/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h5"/><circle cx="15" cy="16" r="1" fill="currentColor"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg></span> Image to JPG</a>
+                <a href="../image-to-png/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22a5 5 0 0 0 5-5c0-2-1.5-3.5-3.5-5.5L12 10l-1.5 1.5C8.5 13.5 7 15 7 17a5 5 0 0 0 5 5Z"/><path d="M9 17h6"/><path d="M12 14v6"/></svg></span> Image to PNG</a>
+                <a href="../jpg-to-png/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M4 14l4-4 3 3 4-4 4 4"/><circle cx="9" cy="9" r="1.5"/></svg></span> JPG to PNG</a>
+                <a href="../heic-to-jpg/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3a4 4 0 0 1 4 4v1H8V7a4 4 0 0 1 4-4Z"/><rect x="6" y="8" width="12" height="10" rx="2"/><path d="M8 12h8"/><path d="M8 14l2 2l2-2 2 2 2-2"/></svg></span> HEIC to JPG</a>
+                <a href="../image-to-webp/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l9 4v2H3V7l9-4Z"/><path d="M12 9a2 2 0 1 0 4 4 2 2 0 0 1-4 4"/><path d="M12 17a2 2 0 1 0 4 4 2 2 0 0 1-4 4"/></svg></span> Image to WebP</a>
+                <a href="../image-to-text/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H4z"/><path d="M8 8h2"/><path d="M8 12h2"/><path d="M12 8h4"/><path d="M12 12h4"/><circle cx="16" cy="16" r="3"/></svg></span> Image to text</a>
+                <a href="../image-resizer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="14" height="14" rx="1"/><path d="M9 9l6 6"/><path d="M15 9l-6 6"/><path d="M5 15l5-1 1-5"/></svg></span> Image resizer</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Social Media</h4>
+                <a href="../instagram-profile-preview/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3h10v4H7z"/><path d="M7 9h10"/><path d="M7 13h10"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span> Instagram preview</a>
+                <a href="../linkedin-profile-preview/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span> LinkedIn preview</a>
+                <a href="../social-media-card/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="14" height="10" rx="1"/><path d="M9 9h6"/><path d="M9 12h6"/><circle cx="14" cy="14" r="2"/></svg></span> Social media card</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Canva Workspace</h4>
+                <a href="../whiteboard/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/><path d="M7 12h10"/><path d="M12 7v10"/></svg></span> Whiteboard</a>
+                <a href="../blackboard/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H4z"/><path d="M4 16l8 5 8-5"/><path d="M8 12h8"/><path d="M12 8v4"/></svg></span> Blackboard</a>
+                <a href="../notebook/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v4H6z"/><path d="M6 8h12"/><path d="M6 12h12"/><path d="M6 16h12"/><path d="M6 20h12"/></svg></span> Notebook</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Video</h4>
+                <a href="../video-metadata-viewer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="16" height="12" rx="1"/><path d="M19 7l3 2v6l-3 2"/><path d="M7 7h3"/><path d="M7 11h3"/></svg></span> Video metadata viewer</a>
+                <a href="../thumbnail-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="12" rx="1"/><path d="M8 8h8"/><path d="M8 12h6"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span> Thumbnail generator</a>
+                <a href="../video-screenshot-tool/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6v6H9z"/><path d="M4 8h16v8H4z"/><circle cx="12" cy="12" r="2"/><path d="M12 10v4"/><path d="M10 12h4"/></svg></span> Video screenshot tool</a>
+                <a href="../video-to-audio-converter/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v4"/><path d="M8 7h8"/><rect x="5" y="7" width="14" height="10" rx="1"/><path d="M9 12h6"/><path d="M9 15h6"/></svg></span> Video to audio converter</a>
+                <a href="../video-trimmer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 8h8"/><path d="M8 12h8"/><path d="M12 8v8"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/><circle cx="6" cy="12" r="1.5" fill="currentColor"/><circle cx="6" cy="18" r="1.5" fill="currentColor"/></svg></span> Video trimmer</a>
+              </div>
             </div>
+          </div>
         </div>
-    </header>
+        <div class="trending" aria-label="Most popular">
+          <a href="image-to-jpg/" class="trending-btn">Image to JPG</a>
+          <a href="image-resizer/" class="trending-btn">Image resizer</a>
+          <a href="password-generator/" class="trending-btn">Password generator</a>
+          <a href="whiteboard/" class="trending-btn">Whiteboard</a>
+        </div>
+      </nav>
+      <nav class="site-nav right-nav" aria-label="Secondary">
+        <div class="nav-item"><a href="/about">About</a></div>
+        <div class="nav-item"><a href="/contact">Contact</a></div>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+    </div>
+  </header>
 
     <main class="site-main">
-        <!-- Breadcrumb -->
         <nav class="breadcrumb" aria-label="Breadcrumb">
             <div class="container">
                 <a href="/">Home</a>
-                <span class="separator">›</span>
-                <span class="current">Online Notepad</span>
+                <span class="separator" aria-hidden="true">›</span>
+                <span class="current" aria-current="page">Notebook</span>
             </div>
         </nav>
 
-        <!-- Tool & Content Section -->
         <section class="tool-section">
             <div class="container">
-                
                 <div class="tool-header">
-                    <h1>Free Online Notepad</h1>
-                    <p class="tool-intro">Write, format, print, and organize notes. Select paper layouts like ruled Ivory sheets, legal pads, graph grids, or dark-mode templates. Preserved locally on your browser.</p>
-</div>
-
-                <!-- Google AdSense Top Banner Placeholder (Hidden until approval)
-                <div class="adsense-block adsense-top" aria-label="Advertisement Space">
-                    <div class="adsense-label">Advertisement</div>
-                    <div class="adsense-placeholder">[Google AdSense Banner - High Visibility]</div>
+                    <h1>Notebook — Ruled & Grid Pages</h1>
+                    <p class="tool-intro">Clean paper for focused writing. Toggle ruled lines or grid, type with autosave and print without leaving your device.</p>
                 </div>
-                -->
 
-                <!-- Embedded Notepad App Card -->
-                <div class="notepad-app-card" id="notepad-app-card">
-                    <!-- Notepad Header -->
-                    <div class="notepad-card-header">
-                        <div class="nch-left">
-                            <!-- Three-line drawer button removed -->
-                            <span class="notepad-mobile-title">Notes</span>
-                            
-                            <!-- Menu Navigation Bar -->
-                            <nav class="notepad-menubar">
-                                <div class="menu-dropdown-container">
-                                    <button class="btn-menu-trigger" id="menu-file">File</button>
-                                    <div class="menu-dropdown-list" id="dropdown-file">
-                                        <button class="menu-item-btn" id="menu-new-doc">
-                                            <span>New Document</span>
-                                            <span class="shortcut-tip">Ctrl+N</span>
-                                        </button>
-                                        <button class="menu-item-btn" id="menu-open-doc">
-                                            <span>Open File...</span>
-                                            <span class="shortcut-tip">Ctrl+O</span>
-                                        </button>
-                                        <button class="menu-item-btn" id="menu-save-doc">
-                                            <span>Save / Download</span>
-                                            <span class="shortcut-tip">Ctrl+S</span>
-                                        </button>
-                                        <div class="menu-divider"></div>
-                                        <div class="menu-submenu-parent">
-                                            <button class="menu-item-btn">Save As...</button>
-                                            <div class="menu-submenu-list">
-                                                <button class="menu-item-btn" id="menu-download-txt">Plain Text (.txt)</button>
-                                                <button class="menu-item-btn" id="menu-download-html">HTML Document (.html)</button>
+                <!-- Working-area panel: full-bleed editor filling panel edge to edge, no inner padding -->
+                <div class="working-area-panel notebook-panel" id="notebook-editor" aria-label="Notebook editor">
+                    <!-- Alias for JS compat -->
+                    <div id="notebook-editor-alias" hidden></div>
+                    <div class="notepad-app-card" id="notepad-app-card">
+                        <div class="notepad-card-header">
+                            <div class="nch-left">
+                                <span class="notepad-mobile-title">Notes</span>
+                                <nav class="notepad-menubar" aria-label="Notebook menu">
+                                    <div class="menu-dropdown-container">
+                                        <button class="btn-menu-trigger" id="menu-file" aria-haspopup="true" aria-expanded="false">File</button>
+                                        <div class="menu-dropdown-list" id="dropdown-file" role="menu">
+                                            <button class="menu-item-btn" id="menu-new-doc" role="menuitem"><span>New Document</span><span class="shortcut-tip">Ctrl+N</span></button>
+                                            <button class="menu-item-btn" id="menu-open-doc" role="menuitem"><span>Open File…</span><span class="shortcut-tip">Ctrl+O</span></button>
+                                            <button class="menu-item-btn" id="menu-save-doc" role="menuitem"><span>Save / Download</span><span class="shortcut-tip">Ctrl+S</span></button>
+                                            <div class="menu-divider" aria-hidden="true"></div>
+                                            <div class="menu-submenu-parent">
+                                                <button class="menu-item-btn" aria-haspopup="true">Save As…</button>
+                                                <div class="menu-submenu-list" role="menu">
+                                                    <button class="menu-item-btn" id="menu-download-txt" role="menuitem">Plain Text (.txt)</button>
+                                                    <button class="menu-item-btn" id="menu-download-html" role="menuitem">HTML Document (.html)</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="menu-divider"></div>
-                                        <button class="menu-item-btn" id="menu-print-doc">
-                                            <span>Print Page</span>
-                                            <span class="shortcut-tip">Ctrl+P</span>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="menu-dropdown-container">
-                                    <button class="btn-menu-trigger" id="menu-edit">Edit</button>
-                                    <div class="menu-dropdown-list" id="dropdown-edit">
-                                        <button class="menu-item-btn" id="menu-undo" disabled>
-                                            <span>Undo</span>
-                                            <span class="shortcut-tip">Ctrl+Z</span>
-                                        </button>
-                                        <button class="menu-item-btn" id="menu-redo" disabled>
-                                            <span>Redo</span>
-                                            <span class="shortcut-tip">Ctrl+Y</span>
-                                        </button>
-                                        <div class="menu-divider"></div>
-                                        <button class="menu-item-btn" id="menu-cut">
-                                            <span>Cut</span>
-                                            <span class="shortcut-tip">Ctrl+X</span>
-                                        </button>
-                                        <button class="menu-item-btn" id="menu-copy">
-                                            <span>Copy</span>
-                                            <span class="shortcut-tip">Ctrl+C</span>
-                                        </button>
-                                        <button class="menu-item-btn" id="menu-paste">
-                                            <span>Paste</span>
-                                            <span class="shortcut-tip">Ctrl+V</span>
-                                        </button>
-                                        <div class="menu-divider"></div>
-                                        <button class="menu-item-btn" id="menu-find-btn">
-                                            <span>Find & Replace</span>
-                                            <span class="shortcut-tip">Ctrl+F</span>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="menu-dropdown-container">
-                                    <button class="btn-menu-trigger" id="menu-format">Format</button>
-                                    <div class="menu-dropdown-list" id="dropdown-format">
-                                        <div class="menu-submenu-parent">
-                                            <button class="menu-item-btn">Font Family</button>
-                                            <div class="menu-submenu-list" id="submenu-font-family">
-                                                <button class="menu-item-btn active" data-value="sans">Sans-Serif</button>
-                                                <button class="menu-item-btn" data-value="serif">Serif (Georgia)</button>
-                                                <button class="menu-item-btn" data-value="mono">Monospace</button>
-                                                <button class="menu-item-btn" data-value="handwriting">Handwriting</button>
-                                            </div>
-                                        </div>
-                                        <div class="menu-submenu-parent">
-                                            <button class="menu-item-btn">Font Size</button>
-                                            <div class="menu-submenu-list" id="submenu-font-size">
-                                                <button class="menu-item-btn" data-value="14">14px</button>
-                                                <button class="menu-item-btn" data-value="16">16px</button>
-                                                <button class="menu-item-btn active" data-value="18">18px</button>
-                                                <button class="menu-item-btn" data-value="20">20px</button>
-                                                <button class="menu-item-btn" data-value="24">24px</button>
-                                                <button class="menu-item-btn" data-value="28">28px</button>
-                                                <button class="menu-item-btn" data-value="32">32px</button>
-                                            </div>
-                                        </div>
-                                        <div class="menu-submenu-parent">
-                                            <button class="menu-item-btn">Paper Style</button>
-                                            <div class="menu-submenu-list" id="submenu-paper-style">
-                                                <button class="menu-item-btn active" data-value="ruled-ivory">Lined (Ivory)</button>
-                                                <button class="menu-item-btn" data-value="ruled-yellow">Lined (Yellow)</button>
-                                                <button class="menu-item-btn" data-value="ruled-white">Lined (White)</button>
-                                                <button class="menu-item-btn" data-value="graph">Graph Grid</button>
-                                                <button class="menu-item-btn" data-value="plain">Plain White</button>
-                                                <button class="menu-item-btn" data-value="dark">Dark Charcoal</button>
-                                            </div>
+                                            <div class="menu-divider" aria-hidden="true"></div>
+                                            <button class="menu-item-btn" id="menu-print-doc" role="menuitem"><span>Print Page</span><span class="shortcut-tip">Ctrl+P</span></button>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="menu-dropdown-container">
-                                    <button class="btn-menu-trigger" id="menu-insert">Insert</button>
-                                    <div class="menu-dropdown-list" id="dropdown-insert">
-                                        <button class="menu-item-btn" id="menu-insert-char">Special Characters...</button>
-                                        <button class="menu-item-btn" id="menu-insert-date">
-                                            <span>Current Date & Time</span>
-                                            <span class="shortcut-tip">Ctrl+Alt+T</span>
-                                        </button>
+                                    <div class="menu-dropdown-container">
+                                        <button class="btn-menu-trigger" id="menu-edit" aria-haspopup="true" aria-expanded="false">Edit</button>
+                                        <div class="menu-dropdown-list" id="dropdown-edit" role="menu">
+                                            <button class="menu-item-btn" id="menu-undo" disabled role="menuitem"><span>Undo</span><span class="shortcut-tip">Ctrl+Z</span></button>
+                                            <button class="menu-item-btn" id="menu-redo" disabled role="menuitem"><span>Redo</span><span class="shortcut-tip">Ctrl+Y</span></button>
+                                            <div class="menu-divider" aria-hidden="true"></div>
+                                            <button class="menu-item-btn" id="menu-cut" role="menuitem"><span>Cut</span><span class="shortcut-tip">Ctrl+X</span></button>
+                                            <button class="menu-item-btn" id="menu-copy" role="menuitem"><span>Copy</span><span class="shortcut-tip">Ctrl+C</span></button>
+                                            <button class="menu-item-btn" id="menu-paste" role="menuitem"><span>Paste</span><span class="shortcut-tip">Ctrl+V</span></button>
+                                            <div class="menu-divider" aria-hidden="true"></div>
+                                            <button class="menu-item-btn" id="menu-find-btn" role="menuitem"><span>Find &amp; Replace</span><span class="shortcut-tip">Ctrl+F</span></button>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="menu-dropdown-container">
-                                    <button class="btn-menu-trigger" id="menu-help">Help</button>
-                                    <div class="menu-dropdown-list" id="dropdown-help">
-                                        <button class="menu-item-btn" id="menu-show-shortcuts">Keyboard Shortcuts</button>
-                                        <button class="menu-item-btn" id="menu-show-about">About Notepad</button>
+                                    <div class="menu-dropdown-container">
+                                        <button class="btn-menu-trigger" id="menu-format" aria-haspopup="true" aria-expanded="false">Format</button>
+                                        <div class="menu-dropdown-list" id="dropdown-format" role="menu">
+                                            <div class="menu-submenu-parent"><button class="menu-item-btn" aria-haspopup="true">Font Family</button><div class="menu-submenu-list" id="submenu-font-family" role="menu"><button class="menu-item-btn active" data-value="sans" role="menuitem">Sans-Serif</button><button class="menu-item-btn" data-value="serif" role="menuitem">Serif (Georgia)</button><button class="menu-item-btn" data-value="mono" role="menuitem">Monospace</button><button class="menu-item-btn" data-value="handwriting" role="menuitem">Handwriting</button></div></div>
+                                            <div class="menu-submenu-parent"><button class="menu-item-btn" aria-haspopup="true">Font Size</button><div class="menu-submenu-list" id="submenu-font-size" role="menu"><button class="menu-item-btn" data-value="14" role="menuitem">14px</button><button class="menu-item-btn" data-value="16" role="menuitem">16px</button><button class="menu-item-btn active" data-value="18" role="menuitem">18px</button><button class="menu-item-btn" data-value="20" role="menuitem">20px</button><button class="menu-item-btn" data-value="24" role="menuitem">24px</button><button class="menu-item-btn" data-value="28" role="menuitem">28px</button><button class="menu-item-btn" data-value="32" role="menuitem">32px</button></div></div>
+                                            <div class="menu-submenu-parent"><button class="menu-item-btn" aria-haspopup="true">Paper Style</button><div class="menu-submenu-list" id="submenu-paper-style" role="menu"><button class="menu-item-btn active" data-value="ruled-ivory" role="menuitem">Lined (Ivory)</button><button class="menu-item-btn" data-value="ruled-yellow" role="menuitem">Lined (Yellow)</button><button class="menu-item-btn" data-value="ruled-white" role="menuitem">Lined (White)</button><button class="menu-item-btn" data-value="graph" role="menuitem">Graph Grid</button><button class="menu-item-btn" data-value="plain" role="menuitem">Plain White</button><button class="menu-item-btn" data-value="dark" role="menuitem">Dark Charcoal</button></div></div>
+                                        </div>
                                     </div>
-                                </div>
-                            </nav>
-                        </div>
-                        
-                        <div class="nch-right">
-                            <span class="save-status-indicator" id="save-status">Saved</span>
-                            
-                            <!-- Maximize / Restore Toggle button -->
-                            <button class="btn-action-icon" id="fullscreen-btn" title="Toggle Full Screen (Maximize)">
-                                <svg viewBox="0 0 24 24" width="18" height="18" id="maximize-icon"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" fill="currentColor"/></svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Quick formatting access toolbar -->
-                    <div class="quick-toolbar">
-                        <button class="toolbar-btn" id="tb-new" title="New Document (Ctrl+N)">
-                            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="currentColor"/></svg>
-                        </button>
-                        <button class="toolbar-btn" id="tb-open" title="Open File (Ctrl+O)">
-                            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 10H6v-2h8v2zm4-4H6v-2h12v2z" fill="currentColor"/></svg>
-                        </button>
-                        <button class="toolbar-btn" id="tb-save" title="Save / Download File (Ctrl+S)">
-                            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z" fill="currentColor"/></svg>
-                        </button>
-                        <button class="toolbar-btn" id="tb-print" title="Print Notes (Ctrl+P)">
-                            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" fill="currentColor"/></svg>
-                        </button>
-
-                        <div class="toolbar-sep"></div>
-
-                        <button class="toolbar-btn" id="tb-undo" title="Undo (Ctrl+Z)" disabled>
-                            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z" fill="currentColor"/></svg>
-                        </button>
-                        <button class="toolbar-btn" id="tb-redo" title="Redo (Ctrl+Y)" disabled>
-                            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M18.4 10.6C16.55 8.99 14.15 8 11.5 8c-4.65 0-8.58 3.03-9.96 7.22L3.9 16c1.05-3.19 4.05-5.5 7.6-5.5 1.95 0 3.73.72 5.12 1.88L13 16h9V7l-3.6 3.6z" fill="currentColor"/></svg>
-                        </button>
-                        <button class="toolbar-btn" id="tb-find" title="Find & Replace (Ctrl+F)">
-                            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/></svg>
-                        </button>
-
-                        <div class="toolbar-sep"></div>
-
-                        <div class="toolbar-select-container">
-                            <select id="tb-select-font" title="Font Family">
-                                <option value="sans" selected>Sans-Serif</option>
-                                <option value="serif">Serif (Georgia)</option>
-                                <option value="mono">Monospace</option>
-                                <option value="handwriting">Handwriting</option>
-                            </select>
-                        </div>
-
-                        <div class="toolbar-select-container">
-                            <select id="tb-select-size" title="Font Size">
-                                <option value="14">14px</option>
-                                <option value="16">16px</option>
-                                <option value="18" selected>18px</option>
-                                <option value="20">20px</option>
-                                <option value="24">24px</option>
-                                <option value="28">28px</option>
-                                <option value="32">32px</option>
-                            </select>
-                        </div>
-
-                        <div class="toolbar-select-container">
-                            <select id="tb-select-paper" title="Paper Style">
-                                <option value="ruled-ivory" selected>Lined (Ivory)</option>
-                                <option value="ruled-yellow">Lined (Yellow)</option>
-                                <option value="ruled-white">Lined (White)</option>
-                                <option value="graph">Graph Grid</option>
-                                <option value="plain">Plain White</option>
-                                <option value="dark">Dark Charcoal</option>
-                            </select>
-                        </div>
-
-                        <div class="toolbar-sep"></div>
-
-                        <button class="toolbar-btn" id="tb-char" title="Insert Special Character">Ω</button>
-                        <button class="toolbar-btn" id="tb-date" title="Insert Date & Time (Ctrl+Alt+T)">📅</button>
-                    </div>
-
-                    <!-- Notepad Editor Workspace -->
-                    <div class="notepad-workspace-container" id="notebook-editor">
-                        <!-- Find & Replace Panel -->
-                        <div class="find-replace-panel hidden" id="find-replace-panel">
-                            <div class="fr-row">
-                                <div class="fr-field">
-                                    <label for="fr-find-input">Find:</label>
-                                    <input type="text" id="fr-find-input" placeholder="Text to search...">
-                                </div>
-                                <div class="fr-field">
-                                    <label for="fr-replace-input">Replace:</label>
-                                    <input type="text" id="fr-replace-input" placeholder="Replace with...">
-                                </div>
+                                    <div class="menu-dropdown-container">
+                                        <button class="btn-menu-trigger" id="menu-insert" aria-haspopup="true" aria-expanded="false">Insert</button>
+                                        <div class="menu-dropdown-list" id="dropdown-insert" role="menu">
+                                            <button class="menu-item-btn" id="menu-insert-char" role="menuitem">Special Characters…</button>
+                                            <button class="menu-item-btn" id="menu-insert-date" role="menuitem"><span>Current Date &amp; Time</span><span class="shortcut-tip">Ctrl+Alt+T</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="menu-dropdown-container">
+                                        <button class="btn-menu-trigger" id="menu-help" aria-haspopup="true" aria-expanded="false">Help</button>
+                                        <div class="menu-dropdown-list" id="dropdown-help" role="menu">
+                                            <button class="menu-item-btn" id="menu-show-shortcuts" role="menuitem">Keyboard Shortcuts</button>
+                                            <button class="menu-item-btn" id="menu-show-about" role="menuitem">About Notepad</button>
+                                        </div>
+                                    </div>
+                                </nav>
                             </div>
-                            <div class="fr-actions">
-                                <button class="btn-fr-action" id="fr-find-next">Find Next</button>
-                                <button class="btn-fr-action" id="fr-replace">Replace</button>
-                                <button class="btn-fr-action" id="fr-replace-all">Replace All</button>
-                                <button class="btn-fr-close" id="fr-close-panel" title="Close Panel">&times;</button>
+                            <div class="nch-right">
+                                <span class="save-status-indicator" id="save-status" aria-live="polite">Saved</span>
+                                <button class="icon-btn btn-action-icon" id="fullscreen-btn" title="Toggle Full Screen" aria-label="Toggle full screen">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 14H5v5h5v-2H7v-3Z"/><path d="M5 10V5h5v2H7v3Z"/><path d="M17 14v3h-3v2h5v-5h-2Z"/><path d="M14 5h5v5h-2V7h-3Z"/></svg>
+                                </button>
                             </div>
                         </div>
 
-                        <!-- Typing Area -->
-                        <div class="editor-scroll-container">
-                            <div class="notepad-editor-overlay" id="notepad-editor-overlay"></div>
-                            <textarea class="notepad-editor" id="notepad-textarea" placeholder="Start typing your notes here..." spellcheck="false" autocomplete="off"></textarea>
+                        <!-- Floating toolbar: quick formatting -->
+                        <div class="quick-toolbar floating-toolbar" role="toolbar" aria-label="Quick formatting">
+                            <div class="toolbar-group" role="group" aria-label="File">
+                                <button class="icon-btn toolbar-btn" id="tb-new" title="New Document (Ctrl+N)" aria-label="New"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"/><path d="M14 2v6h6"/><path d="M10 13H8"/><path d="M14 17H8"/></svg><span class="crop-tr" aria-hidden="true"></span><span class="crop-bl" aria-hidden="true"></span></button>
+                                <button class="icon-btn toolbar-btn" id="tb-open" title="Open File (Ctrl+O)" aria-label="Open"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6h-8l-2-2H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2Z"/><path d="M8 14h8"/><path d="M8 18h8"/></svg></button>
+                                <button class="icon-btn toolbar-btn" id="tb-save" title="Save (Ctrl+S)" aria-label="Save"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7l-4-4Z"/><path d="M12 19a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M15 3v6H5"/></svg></button>
+                                <button class="icon-btn toolbar-btn" id="tb-print" title="Print (Ctrl+P)" aria-label="Print"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1"/><path d="M18 9h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-1"/><path d="M6 18h12"/><path d="M6 9V3h9l5 5v1"/><path d="M8 14h8v6H8Z"/></svg></button>
+                            </div>
+                            <div class="toolbar-divider" aria-hidden="true"></div>
+                            <div class="toolbar-group" role="group" aria-label="Edit">
+                                <button class="icon-btn toolbar-btn" id="tb-undo" title="Undo (Ctrl+Z)" disabled aria-label="Undo"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 8H5V5"/><path d="M5 8c2.5-2.5 6-4 10-4 5 0 9 4 9 9"/><path d="M5 8h4"/></svg></button>
+                                <button class="icon-btn toolbar-btn" id="tb-redo" title="Redo (Ctrl+Y)" disabled aria-label="Redo"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 8h4V5"/><path d="M19 8c-2.5-2.5-6-4-10-4-5 0-9 4-9 9"/><path d="M19 8h-4"/></svg></button>
+                                <button class="icon-btn toolbar-btn" id="tb-find" title="Find & Replace (Ctrl+F)" aria-label="Find"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="6"/><path d="M20 20L16 16"/><path d="M8 11h6"/><path d="M11 8v6"/></svg></button>
+                            </div>
+                            <div class="toolbar-divider" aria-hidden="true"></div>
+                            <div class="toolbar-group" role="group" aria-label="Format">
+                                <label class="sr-only" for="tb-select-font">Font family</label>
+                                <select id="tb-select-font" title="Font Family"><option value="sans" selected>Sans-Serif</option><option value="serif">Serif</option><option value="mono">Monospace</option><option value="handwriting">Handwriting</option></select>
+                                <label class="sr-only" for="tb-select-size">Font size</label>
+                                <select id="tb-select-size" title="Font Size"><option value="14">14px</option><option value="16">16px</option><option value="18" selected>18px</option><option value="20">20px</option><option value="24">24px</option><option value="28">28px</option><option value="32">32px</option></select>
+                                <label class="sr-only" for="tb-select-paper">Paper style</label>
+                                <select id="tb-select-paper" title="Paper Style"><option value="ruled-ivory" selected>Lined (Ivory)</option><option value="ruled-yellow">Lined (Yellow)</option><option value="ruled-white">Lined (White)</option><option value="graph">Graph Grid</option><option value="plain">Plain White</option><option value="dark">Dark Charcoal</option></select>
+                            </div>
+                            <div class="toolbar-divider" aria-hidden="true"></div>
+                            <div class="toolbar-group" role="group" aria-label="Insert">
+                                <button class="icon-btn toolbar-btn" id="tb-char" title="Insert Special Character" aria-label="Special characters">Ω</button>
+                                <button class="icon-btn toolbar-btn" id="tb-date" title="Insert Date & Time (Ctrl+Alt+T)" aria-label="Insert date">📅</button>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Footer Status Bar -->
-                    <footer class="notepad-statusbar">
-                        <div class="status-left">
-                            <span class="status-indicator">Words: <strong id="status-word-count">0</strong></span>
-                            <span class="status-separator">|</span>
-                            <span class="status-indicator">Characters: <strong id="status-char-count">0</strong></span>
-                            <span class="status-separator">|</span>
-                            <span class="status-indicator">Lines: <strong id="status-line-count">1</strong></span>
+                        <div class="notepad-workspace-container" id="notebook-workspace">
+                            <div class="find-replace-panel hidden" id="find-replace-panel" role="search" aria-label="Find and replace">
+                                <div class="fr-row">
+                                    <div class="fr-field"><label for="fr-find-input">Find:</label><input type="text" id="fr-find-input" placeholder="Text to search…"></div>
+                                    <div class="fr-field"><label for="fr-replace-input">Replace:</label><input type="text" id="fr-replace-input" placeholder="Replace with…"></div>
+                                </div>
+                                <div class="fr-actions">
+                                    <button class="btn-fr-action" id="fr-find-next">Find Next</button>
+                                    <button class="btn-fr-action" id="fr-replace">Replace</button>
+                                    <button class="btn-fr-action" id="fr-replace-all">Replace All</button>
+                                    <button class="icon-btn btn-fr-close" id="fr-close-panel" aria-label="Close">×</button>
+                                </div>
+                            </div>
+                            <div class="editor-scroll-container">
+                                <div class="notepad-editor-overlay" id="notepad-editor-overlay" aria-hidden="true"></div>
+                                <textarea class="notepad-editor" id="notepad-textarea" placeholder="Start typing your notes here…" spellcheck="false" autocomplete="off" aria-label="Notebook text editor"></textarea>
+                            </div>
                         </div>
-                        <div class="status-right">
-                            <span class="status-indicator">Format Preserved</span>
-                        </div>
-                    </footer>
+
+                        <footer class="notepad-statusbar" aria-label="Status bar">
+                            <div class="status-left">
+                                <span class="status-indicator">Words: <strong id="status-word-count">0</strong></span>
+                                <span class="status-separator" aria-hidden="true">|</span>
+                                <span class="status-indicator">Chars: <strong id="status-char-count">0</strong></span>
+                                <span class="status-separator" aria-hidden="true">|</span>
+                                <span class="status-indicator">Lines: <strong id="status-line-count">1</strong></span>
+                            </div>
+                            <div class="status-right"><span class="status-indicator">Autosaved locally</span></div>
+                        </footer>
+                    </div>
                 </div>
 
-                <!-- Google AdSense Middle Banner Placeholder (Hidden until approval)
-                <div class="adsense-block adsense-middle" aria-label="Advertisement Space">
-                    <div class="adsense-label">Advertisement</div>
-                    <div class="adsense-placeholder">[Google AdSense Banner - Inline Desktop/Mobile]</div>
+                <div class="article-grid archetype-d-article">
+                    <section class="how-it-works" aria-labelledby="how-title">
+                        <h2 id="how-title">How it works</h2>
+                        <p>Focus on writing — the paper adapts to you. Choose ruled lines on ivory, yellow or white, graph grid for structured lists, plain white for clean copy or dark charcoal for night writing. Lines are drawn in the line colour over paper and stay aligned to your font size and line height.</p>
+                        <p>Formatting stays local: font family, size and paper choice are saved to your browser. Autosave runs on every keystroke. Find and replace, undo and redo, print and download to .txt or styled .html all work offline after the first load.</p>
+                        <p>Use the menu bar or the floating toolbar to switch fonts, insert the current date or pull a special character. Toggle full-screen for distraction-free drafting. All processing is client-side — your notes never leave your device.</p>
+                    </section>
+                    <section class="what-you-get" aria-labelledby="what-title">
+                        <h2 id="what-title">What you get</h2>
+                        <ul class="tick-list" role="list">
+                            <li><span class="tick-box" aria-hidden="true">✓</span> Ruled lines and graph grid in line colour over paper, toggleable between Lined and Grid</li>
+                            <li><span class="tick-box" aria-hidden="true">✓</span> Four font families, seven sizes (14–32 px) with dynamically aligned baselines</li>
+                            <li><span class="tick-box" aria-hidden="true">✓</span> Find and replace, cut/copy/paste, local autosave, print and TXT/HTML export</li>
+                            <li><span class="tick-box" aria-hidden="true">✓</span> Floating toolbar on desktop (top) and mobile (bottom) with grouped controls and crop-mark active states</li>
+                            <li><span class="tick-box" aria-hidden="true">✓</span> Offline-first, spell highlighting with suggestions, special characters and date insertion</li>
+                        </ul>
+                    </section>
                 </div>
-                -->
 
-                <!-- Rich SEO Article Content for AdSense Value -->
-                <article class="tool-article">
-                    <h2>Complete Guide to Typing and Formatting Notes Online</h2>
-                    <p>In a fast-paced work environment, having access to a direct, private, and fully functional online text editor makes documenting ideas, compiling goals, and drafting documents seamless. Unlike complex word processors that require user accounts and long setups, this browser-based plain text notepad offers instant access with local privacy safeguards.</p>
-
-                    <div class="article-grid">
-                        <div class="article-card">
-                            <h3>Cognitive Benefits of Ruled Paper</h3>
-                            <p>Using structured paper templates helps organize visual information. The warm ivory backing and legal yellow pad styles mimic traditional yellow paper notebooks, reducing the harsh blue-light glare of plain white backgrounds. This makes long editing and typing sessions more comfortable for your eyes, while the grid layout sheets assist in structuring lists and code outlines.</p>
+                <section class="faq-section" aria-labelledby="faq-title">
+                    <h2 id="faq-title">Frequently asked questions</h2>
+                    <div class="faq-accordion" role="region" aria-label="FAQ">
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-n1" id="faq-nq1"><span class="faq-label">How does the notepad save my text?</span><span class="faq-chevron" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg></span></button>
+                            <div class="faq-answer" id="faq-n1" role="region" aria-labelledby="faq-nq1" hidden><p>Text and formatting are stored in localStorage on this browser. Nothing is uploaded to a server, so your drafts remain private and persist through refreshes.</p></div>
                         </div>
-
-                        <div class="article-card">
-                            <h3>Autosave & Local Encryption</h3>
-                            <p>This editor implements zero server-side transmission. Every keystroke is saved directly onto your device's browser index. Even if you refresh the browser, close the window, or lose network connectivity, your note content is fully preserved. All formatting attributes (font sizes, text styles, page backgrounds) remain synchronized for your next session.</p>
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-n2" id="faq-nq2"><span class="faq-label">How do I insert special characters?</span><span class="faq-chevron" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg></span></button>
+                            <div class="faq-answer" id="faq-n2" role="region" aria-labelledby="faq-nq2" hidden><p>Click Ω on the toolbar or choose Insert → Special Characters. Pick from currency, maths, arrows, typography and fractions to insert at the cursor.</p></div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-n3" id="faq-nq3"><span class="faq-label">Why does the notepad have background lines?</span><span class="faq-chevron" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg></span></button>
+                            <div class="faq-answer" id="faq-n3" role="region" aria-labelledby="faq-nq3" hidden><p>Ruled and grid lines replicate physical stationery and align dynamically to your chosen font size and line height so baselines sit cleanly on the lines. Toggle them from Format → Paper Style or the toolbar.</p></div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-n4" id="faq-nq4"><span class="faq-label">Can I use this notepad offline?</span><span class="faq-chevron" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg></span></button>
+                            <div class="faq-answer" id="faq-n4" role="region" aria-labelledby="faq-nq4" hidden><p>Yes. After the first load, typing, saving, search, download and print all run client-side with no network required.</p></div>
                         </div>
                     </div>
-
-                    <h2>How to Optimize Your Digital Writing Workspace</h2>
-                    <p>Writing effectively requires minimizing distractions. Here is how to make the most of this notepad application:</p>
-                    <ul>
-                        <li><strong>Maximize to Full Screen:</strong> Click the double-arrow icon in the top right of the notepad card to expand the text editor to cover your full browser window, giving you a distraction-free environment.</li>
-                        <li><strong>Structure with Margins:</strong> The college-ruled and yellow legal pad styles feature a vertical red margin line. Align your main headings to the left margin and indent nested bullet points to keep drafts clean.</li>
-                        <li><strong>Utilize Keyboard Shortcuts:</strong> Leverage rapid editing shortcuts like <code>Ctrl + S</code> to save immediately, <code>Ctrl + Z</code> to undo, <code>Ctrl + F</code> to find and replace words, and <code>Ctrl + P</code> to print pages.</li>
-                        <li><strong>Export Options:</strong> Once finished, download your note as a plain <code>.txt</code> file for general file indexing, or download it as a custom styled <code>.html</code> file that preserves the background and font styles for viewing in any web browser.</li>
-                    </ul>
-
-                    <h2>Frequently Asked Questions</h2>
-                    <div class="faq-container">
-                        <div class="faq-item">
-                            <h3 class="faq-question">How does the notepad save my text?</h3>
-                            <p class="faq-answer">The notepad writes your text content and format selections to your browser's private local storage space. No text is ever uploaded to a database or shared over the internet, ensuring absolute privacy for sensitive drafts.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3 class="faq-question">How do I insert special characters?</h3>
-                            <p class="faq-answer">Click the <code>Ω</code> icon on the toolbar or select "Special Characters" from the Insert menu. A panel will open allowing you to choose from currency symbols, arrows, typography marks, fractions, and mathematical notation.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3 class="faq-question">Why does the notepad have background lines?</h3>
-                            <p class="faq-answer">The background patterns replicate physical paper notebooks. The horizontal ruled lines dynamically align with your font size and family to ensure that text baselines rest perfectly on the lines, giving you a beautiful visual layout.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h3 class="faq-question">Can I use this notepad offline?</h3>
-                            <p class="faq-answer">Yes. Once loaded, the utility operates entirely client-side. You can write, save notes, search text, and download files even without an active internet connection.</p>
-                        </div>
-                    </div>
-                </article>
-
+                </section>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2026 ToolCanvas. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-                <a href="/privacy-policy">Privacy Policy</a>
-                <a href="/terms">Terms of Use</a>
+            <div class="footer-grid">
+                <div><h4>Top Tools</h4><a href="/image-to-jpg/">Image to JPG</a><a href="/image-resizer/">Image Resizer</a><a href="/password-generator/">Password Generator</a></div>
+                <div><h4>Company</h4><a href="/about">About</a><a href="/blog/">Blog</a><a href="/contact">Contact</a></div>
+                <div><h4>Legal</h4><a href="/privacy-policy">Privacy Policy</a><a href="/terms">Terms of Use</a></div>
             </div>
+            <p style="margin-top:32px; text-align:center; font-size:14px; color:var(--ink-muted);">© 2026 ToolCanvas. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Shortcuts Modal Dialog -->
-    <div class="modal-overlay hidden" id="shortcuts-modal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3>Keyboard Shortcuts</h3>
-                <button class="btn-close-modal" id="close-shortcuts-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <ul class="shortcuts-list">
-                    <li><span class="key">Ctrl + N</span> <span>New Document</span></li>
-                    <li><span class="key">Ctrl + S</span> <span>Save / Download File</span></li>
-                    <li><span class="key">Ctrl + P</span> <span>Print Notes</span></li>
-                    <li><span class="key">Ctrl + Z</span> <span>Undo Action</span></li>
-                    <li><span class="key">Ctrl + Y</span> <span>Redo Action</span></li>
-                    <li><span class="key">Ctrl + F</span> <span>Find & Replace</span></li>
-                    <li><span class="key">Ctrl + Alt + T</span> <span>Insert Current Date/Time</span></li>
-                    <li><span class="key">Esc</span> <span>Close Menus / Dialogs</span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Special Characters Modal Dialog -->
-    <div class="modal-overlay hidden" id="special-char-modal">
-        <div class="modal max-about-modal">
-            <div class="modal-header">
-                <h3>Insert Special Character</h3>
-                <button class="btn-close-modal" id="close-char-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="char-tabs">
-                    <button class="char-tab-btn active" data-tab="currency">Currency</button>
-                    <button class="char-tab-btn" data-tab="math">Math</button>
-                    <button class="char-tab-btn" data-tab="arrows">Arrows</button>
-                    <button class="char-tab-btn" data-tab="typography">Typography</button>
-                    <button class="char-tab-btn" data-tab="fractions">Fractions</button>
-                </div>
-                <div class="char-grid-container active" id="char-grid-currency"></div>
-                <div class="char-grid-container" id="char-grid-math"></div>
-                <div class="char-grid-container" id="char-grid-arrows"></div>
-                <div class="char-grid-container" id="char-grid-typography"></div>
-                <div class="char-grid-container" id="char-grid-fractions"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- About Notepad Modal Dialog -->
-    <div class="modal-overlay hidden" id="about-modal">
-        <div class="modal max-about-modal">
-            <div class="modal-header">
-                <h3>About ToolCanvas Notepad</h3>
-                <button class="btn-close-modal" id="close-about-modal">&times;</button>
-            </div>
-            <div class="modal-body about-modal-body">
-                <div class="about-section">
-                    <h4>What is the Online Notepad?</h4>
-                    <p>The Online Notepad is a premium digital word processing workspace. It brings the tactile feel of physical stationery—like warm Ivory notebook paper, traditional yellow legal pads, or clean engineering graph grid sheets—to your browser window. You can type, custom format, print, and organize multiple documents in a distraction-free, responsive typing dashboard.</p>
-                </div>
-                <div class="about-section">
-                    <h4>Autosave & Local Offline Privacy</h4>
-                    <p>Every keystroke, style option, and character is saved automatically to your device's memory. The application operates entirely client-side, meaning no text is ever sent to external databases or servers. Your brainstorming, thoughts, and sensitive documents remain 100% private and protected on your browser.</p>
-                </div>
-                <div class="about-section">
-                    <h4>Writing & Formatting Features</h4>
-                    <ul>
-                        <li><strong>Paper Styles:</strong> Swap between college-ruled ivory sheets, traditional legal pads with red left margins, blue graph cells, or clean white and dark-mode templates.</li>
-                        <li><strong>Font customizer:</strong> Adjust font sizing (14px up to 32px) and style families (Sans-serif, Serif, Monospace, and Caveat Handwriting cursive) to make reading and writing comfortable.</li>
-                        <li><strong>Shortcuts & Operations:</strong> Speeds up edits with full standard shortcuts support (New, Save, Print, Undo, Redo, and Find & Replace).</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Hidden File Input for Opening Files -->
+    <div class="modal-overlay hidden" id="shortcuts-modal" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts"><div class="modal"><div class="modal-header"><h3>Keyboard Shortcuts</h3><button class="icon-btn btn-close-modal" id="close-shortcuts-modal" aria-label="Close">×</button></div><div class="modal-body"><ul class="shortcuts-list"><li><span class="key">Ctrl + N</span><span>New Document</span></li><li><span class="key">Ctrl + S</span><span>Save / Download</span></li><li><span class="key">Ctrl + P</span><span>Print Notes</span></li><li><span class="key">Ctrl + Z</span><span>Undo</span></li><li><span class="key">Ctrl + Y</span><span>Redo</span></li><li><span class="key">Ctrl + F</span><span>Find & Replace</span></li><li><span class="key">Ctrl + Alt + T</span><span>Insert Date/Time</span></li><li><span class="key">Esc</span><span>Close Menus</span></li></ul></div></div></div>
+    <div class="modal-overlay hidden" id="special-char-modal" role="dialog" aria-modal="true" aria-label="Special characters"><div class="modal max-about-modal"><div class="modal-header"><h3>Insert Special Character</h3><button class="icon-btn btn-close-modal" id="close-char-modal" aria-label="Close">×</button></div><div class="modal-body"><div class="char-tabs" role="tablist"><button class="char-tab-btn active" data-tab="currency" role="tab" aria-selected="true">Currency</button><button class="char-tab-btn" data-tab="math" role="tab">Math</button><button class="char-tab-btn" data-tab="arrows" role="tab">Arrows</button><button class="char-tab-btn" data-tab="typography" role="tab">Typography</button><button class="char-tab-btn" data-tab="fractions" role="tab">Fractions</button></div><div class="char-grid-container active" id="char-grid-currency" role="tabpanel"></div><div class="char-grid-container" id="char-grid-math" role="tabpanel"></div><div class="char-grid-container" id="char-grid-arrows" role="tabpanel"></div><div class="char-grid-container" id="char-grid-typography" role="tabpanel"></div><div class="char-grid-container" id="char-grid-fractions" role="tabpanel"></div></div></div></div>
+    <div class="modal-overlay hidden" id="about-modal" role="dialog" aria-modal="true" aria-label="About"><div class="modal max-about-modal"><div class="modal-header"><h3>About ToolCanvas Notepad</h3><button class="icon-btn btn-close-modal" id="close-about-modal" aria-label="Close">×</button></div><div class="modal-body about-modal-body"><div class="about-section"><h4>What is the Online Notepad?</h4><p>Premium digital writing workspace with ivory, yellow, white, graph and dark paper styles.</p></div><div class="about-section"><h4>Autosave & Privacy</h4><p>Everything is saved locally and never leaves your browser.</p></div></div></div></div>
     <input type="file" id="file-input-uploader" accept=".txt,.html,.md,.json,text/*" style="display:none;">
-
-    <!-- Spellcheck Custom Context Menu -->
-    <div class="spellcheck-context-menu hidden" id="spellcheck-menu">
-        <div class="scm-suggestions" id="scm-suggestions"></div>
-        <div class="scm-divider"></div>
-        <button class="scm-item" id="scm-add-dict">Add to Dictionary</button>
-        <button class="scm-item" id="scm-ignore">Ignore Word</button>
-    </div>
+    <div class="spellcheck-context-menu hidden" id="spellcheck-menu" role="menu"><div class="scm-suggestions" id="scm-suggestions"></div><div class="scm-divider" aria-hidden="true"></div><button class="scm-item" id="scm-add-dict" role="menuitem">Add to Dictionary</button><button class="scm-item" id="scm-ignore" role="menuitem">Ignore Word</button></div>
 
     <script src="script.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+    document.querySelectorAll('.faq-question').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            const expanded = btn.getAttribute('aria-expanded')==='true';
+            const answer = document.getElementById(btn.getAttribute('aria-controls'));
+            btn.setAttribute('aria-expanded', String(!expanded));
+            if(!expanded){
+                answer.hidden=false; answer.style.maxHeight='0px'; answer.style.overflow='hidden'; answer.style.transition='max-height 200ms ease';
+                requestAnimationFrame(()=>{ answer.style.maxHeight=answer.scrollHeight+'px'; });
+                answer.addEventListener('transitionend', function h(){ answer.style.maxHeight='none'; answer.style.overflow='visible'; answer.removeEventListener('transitionend',h); });
+            } else {
+                answer.style.maxHeight=answer.scrollHeight+'px'; answer.style.overflow='hidden';
+                requestAnimationFrame(()=>{ answer.style.maxHeight='0px'; });
+                answer.addEventListener('transitionend', function h(){ answer.hidden=true; answer.removeEventListener('transitionend',h); });
+            }
+        });
+    });
+    </script>
 </body>
 </html>

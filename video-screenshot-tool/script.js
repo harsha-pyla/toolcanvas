@@ -32,9 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const snapshotsGrid = document.getElementById("snapshots-grid");
     const emptyMsg = document.getElementById("empty-msg");
     const groupActions = document.getElementById("group-actions");
-    const btnReset = document.getElementById("btn-reset");
+    const btnReset = document.getElementById("btn-change-video") || document.getElementById("btn-reset");
     const btnClearAll = document.getElementById("btn-clear-all");
     const btnDownloadAll = document.getElementById("btn-download-all");
+    const btnDownloadAll2 = document.getElementById("btn-download-all-2");
 
     // Session State
     let currentVideoFile = null;
@@ -335,16 +336,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Group Action: Download All Snapshots Sequentially
-    btnDownloadAll.addEventListener("click", () => {
+    function handleDownloadAll() {
         if (capturedFrames.length === 0) return;
-
-        // Sequentially trigger downloads to prevent browser throttling
         capturedFrames.forEach((frame, idx) => {
             setTimeout(() => {
                 downloadFrame(frame);
             }, idx * 250);
         });
-    });
+    }
+    btnDownloadAll.addEventListener("click", handleDownloadAll);
+    if (btnDownloadAll2) btnDownloadAll2.addEventListener("click", handleDownloadAll);
 
     // Group Action: Clear All Snapshots
     btnClearAll.addEventListener("click", () => {

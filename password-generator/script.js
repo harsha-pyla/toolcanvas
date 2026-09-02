@@ -1,5 +1,5 @@
 // =========================================
-// ToolCanvas — Password Generator Script
+// ToolCanvas — Password Generator Script — Archetype C
 // =========================================
 
 // Curated list of 600 easy, clear English words for passphrase generation
@@ -99,25 +99,51 @@ const clearHistoryBtn = document.getElementById("clear-history-btn");
 const historyList = document.getElementById("history-list");
 
 // State
-let activeTab = "standard"; // standard or passphrase
+let activeTab = "standard";
 let isVisible = true;
 let sessionHistory = [];
+let lastEntropy = 0;
+
+// Helpers
+function updateRangeFill(input) {
+    const min = parseFloat(input.min) || 0;
+    const max = parseFloat(input.max) || 100;
+    const val = parseFloat(input.value);
+    const pct = ((val - min) / (max - min)) * 100;
+    input.style.setProperty("--fill", pct + "%");
+}
+
+function setCopyLive(msg) {
+    const live = document.getElementById("copy-live");
+    if (live) {
+        live.textContent = msg;
+        setTimeout(() => { live.textContent = ""; }, 1200);
+    }
+}
 
 // Initialize
 window.addEventListener("DOMContentLoaded", () => {
     // Tab switching
-    tabStandard.addEventListener("click", () => switchTab("standard"));
-    tabPassphrase.addEventListener("click", () => switchTab("passphrase"));
+    if (tabStandard) tabStandard.addEventListener("click", () => switchTab("standard"));
+    if (tabPassphrase) tabPassphrase.addEventListener("click", () => switchTab("passphrase"));
 
-    // Real-time slider updates
-    passwordLength.addEventListener("input", (e) => {
-        lengthVal.textContent = e.target.value;
-        generate();
-    });
-    passphraseWords.addEventListener("input", (e) => {
-        wordsVal.textContent = e.target.value;
-        generate();
-    });
+    // Real-time slider updates + fill
+    if (passwordLength) {
+        updateRangeFill(passwordLength);
+        passwordLength.addEventListener("input", (e) => {
+            lengthVal.textContent = e.target.value;
+            updateRangeFill(e.target);
+            generate();
+        });
+    }
+    if (passphraseWords) {
+        updateRangeFill(passphraseWords);
+        passphraseWords.addEventListener("input", (e) => {
+            wordsVal.textContent = e.target.value;
+            updateRangeFill(e.target);
+            generate();
+        });
+    }
 
     // Checkboxes & Selects triggers
     const inputsToSync = [
@@ -126,14 +152,51 @@ window.addEventListener("DOMContentLoaded", () => {
         chkExcludeAmbiguous, chkEasySay
     ];
     inputsToSync.forEach(input => {
-        input.addEventListener("change", () => generate());
+        if (input) input.addEventListener("change", () => generate());
     });
 
     // Action buttons
-    generateBtn.addEventListener("click", () => generate());
-    toggleVisibilityBtn.addEventListener("click", toggleVisibility);
-    copyPasswordBtn.addEventListener("click", copyToClipboard);
-    clearHistoryBtn.addEventListener("click", clearHistory);
+    if (generateBtn) generateBtn.addEventListener("click", () => generate());
+    if (toggleVisibilityBtn) toggleVisibilityBtn.addEventListener("click", toggleVisibility);
+    if (copyPasswordBtn) copyPasswordBtn.addEventListener("click", copyToClipboard);
+    if (clearHistoryBtn) clearHistoryBtn.addEventListener("click", clearHistory);
+
+    // Disclosure toggle
+    const disclosureToggle = document.getElementById("disclosure-toggle");
+    const advancedPanel = document.getElementById("advanced-panel");
+    if (disclosureToggle && advancedPanel) {
+        disclosureToggle.addEventListener("click", () => {
+            const isOpen = disclosureToggle.getAttribute("aria-expanded") === "true";
+            const next = !isOpen;
+            disclosureToggle.setAttribute("aria-expanded", String(next));
+            if (next) {
+                advancedPanel.hidden = false;
+                requestAnimationFrame(() => advancedPanel.classList.add("is-open"));
+            } else {
+                advancedPanel.classList.remove("is-open");
+                setTimeout(() => { advancedPanel.hidden = true; }, 160);
+            }
+        });
+    }
+
+    // FAQ accordion — multiple open, 200ms height, chevron 160ms, line dividers
+    document.querySelectorAll(".faq-item").forEach(item => {
+        const btn = item.querySelector(".faq-question");
+        const answer = item.querySelector(".faq-answer");
+        if (!btn || !answer) return;
+        btn.addEventListener("click", () => {
+            const isOpen = item.classList.contains("is-open");
+            if (isOpen) {
+                item.classList.remove("is-open");
+                btn.setAttribute("aria-expanded", "false");
+                answer.style.maxHeight = "0";
+            } else {
+                item.classList.add("is-open");
+                btn.setAttribute("aria-expanded", "true");
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+        });
+    });
 
     // Initial password generation
     generate();
@@ -144,12 +207,16 @@ function switchTab(tab) {
     activeTab = tab;
     if (tab === "standard") {
         tabStandard.classList.add("active");
+        tabStandard.setAttribute("aria-selected", "true");
         tabPassphrase.classList.remove("active");
+        tabPassphrase.setAttribute("aria-selected", "false");
         panelStandard.style.display = "block";
         panelPassphrase.style.display = "none";
     } else {
         tabStandard.classList.remove("active");
+        tabStandard.setAttribute("aria-selected", "false");
         tabPassphrase.classList.add("active");
+        tabPassphrase.setAttribute("aria-selected", "true");
         panelStandard.style.display = "none";
         panelPassphrase.style.display = "block";
     }
@@ -161,15 +228,16 @@ function toggleVisibility() {
     isVisible = !isVisible;
     const eyeOpen = toggleVisibilityBtn.querySelector(".eye-open-icon");
     const eyeClosed = toggleVisibilityBtn.querySelector(".eye-closed-icon");
-
     if (isVisible) {
         passwordDisplay.classList.remove("redacted");
-        eyeOpen.style.display = "block";
-        eyeClosed.style.display = "none";
+        if (eyeOpen) eyeOpen.style.display = "block";
+        if (eyeClosed) eyeClosed.style.display = "none";
+        toggleVisibilityBtn.setAttribute("aria-label", "Hide password");
     } else {
         passwordDisplay.classList.add("redacted");
-        eyeOpen.style.display = "none";
-        eyeClosed.style.display = "block";
+        if (eyeOpen) eyeOpen.style.display = "none";
+        if (eyeClosed) eyeClosed.style.display = "block";
+        toggleVisibilityBtn.setAttribute("aria-label", "Show password");
     }
 }
 
@@ -179,12 +247,10 @@ function getSecureRandomInt(max) {
     const array = new Uint32Array(1);
     let randomVal;
     const maxSafe = Math.floor(4294967296 / max) * max;
-    
     do {
         window.crypto.getRandomValues(array);
         randomVal = array[0];
     } while (randomVal >= maxSafe);
-
     return randomVal % max;
 }
 
@@ -214,19 +280,16 @@ function generate() {
         let finalPool = "";
         let requiredChars = [];
 
-        // Build character pools
         let useUpper = chkUppercase.checked;
         let useLower = chkLowercase.checked;
         let useNum = chkNumbers.checked;
         let useSym = chkSymbols.checked;
 
-        // "Easy to Say" bypasses numbers/symbols
         if (chkEasySay.checked) {
             useNum = false;
             useSym = false;
         }
 
-        // Filter and collect potential characters
         const filterAmbiguous = (str) => {
             if (!chkExcludeAmbiguous.checked) return str;
             return str.split("").filter(c => !ambiguousChars.includes(c)).join("");
@@ -261,7 +324,6 @@ function generate() {
             }
         }
 
-        // Fallback if no sets are checked
         if (finalPool.length === 0) {
             const pool = filterAmbiguous(lowercasePool);
             finalPool += pool;
@@ -271,25 +333,20 @@ function generate() {
         const length = parseInt(passwordLength.value);
         let passwordArray = [];
 
-        // Add mandatory character types first
         for (let i = 0; i < Math.min(length, requiredChars.length); i++) {
             passwordArray.push(requiredChars[i]);
         }
 
-        // Fill remaining password slots with random pool selection
         while (passwordArray.length < length) {
             passwordArray.push(finalPool[getSecureRandomInt(finalPool.length)]);
         }
 
-        // Shuffle securely to hide positions of initial mandatory types
         passwordArray = secureShuffleArray(passwordArray);
         password = passwordArray.join("");
 
-        // Calculate Entropy: E = L * log2(R)
         entropy = Math.round(length * Math.log2(finalPool.length));
 
     } else {
-        // Passphrase generation
         const wordCount = parseInt(passphraseWords.value);
         const separator = passphraseSeparator.value;
         const casing = passphraseCase.value;
@@ -306,7 +363,6 @@ function generate() {
 
         for (let i = 0; i < wordCount; i++) {
             let word = filteredWordList[getSecureRandomInt(filteredWordList.length)];
-            
             if (casing === "uppercase") {
                 word = word.toUpperCase();
             } else if (casing === "capitalize") {
@@ -318,77 +374,109 @@ function generate() {
         }
 
         password = selectedWords.join(separator);
-
-        // Entropy: W * log2(D)
         entropy = Math.round(wordCount * Math.log2(filteredWordList.length));
     }
 
     passwordDisplay.value = password;
+    lastEntropy = entropy;
     updateStrengthMeter(entropy);
     addToHistory(password);
 }
 
-// Update strength visual bar and labels
+// Update strength visual bar and labels — 4 segments
 function updateStrengthMeter(entropy) {
     entropyText.textContent = `${entropy} bits of entropy`;
 
-    // Remove old classes
-    strengthBar.className = "strength-bar";
-    
-    let pct = 0;
-    let strength = "Too Short / Weak";
-    let cls = "weak";
+    let strength = "";
+    let segs = 0;
 
     if (entropy < 50) {
-        pct = Math.max(10, Math.round((entropy / 50) * 25));
-        strength = "Weak (Insecure)";
-        cls = "weak";
+        strength = "Weak";
+        segs = 1;
     } else if (entropy < 80) {
-        pct = 25 + Math.round(((entropy - 50) / 30) * 25);
-        strength = "Medium (Fair)";
-        cls = "medium";
+        strength = "Medium";
+        segs = 2;
     } else if (entropy < 120) {
-        pct = 50 + Math.round(((entropy - 80) / 40) * 25);
-        strength = "Strong (Secure)";
-        cls = "strong";
+        strength = "Strong";
+        segs = 3;
     } else {
-        pct = Math.min(100, 75 + Math.round(((entropy - 120) / 100) * 25));
-        strength = "Very Strong (Military Grade)";
-        cls = "very-strong";
+        strength = "Very Strong";
+        segs = 4;
     }
 
-    strengthBar.style.width = `${pct}%`;
-    strengthBar.classList.add(cls);
+    // Update segments
+    const segEls = strengthBar ? strengthBar.querySelectorAll(".strength-seg") : [];
+    segEls.forEach((el, idx) => {
+        if (idx < segs) el.classList.add("is-filled");
+        else el.classList.remove("is-filled");
+    });
+
+    // Legacy width support for fallback — no longer used visually but keep for compat
+    if (strengthBar) {
+        // keep class for potential CSS hooks, but not width
+        strengthBar.className = "strength-bar-container";
+        if (segs === 1) strengthBar.classList.add("weak");
+        if (segs === 2) strengthBar.classList.add("medium");
+        if (segs === 3) strengthBar.classList.add("strong");
+        if (segs === 4) strengthBar.classList.add("very-strong");
+    }
+
     strengthText.textContent = strength;
 }
 
-// Clipboard copying
+// Clipboard copying — swap to check 1200ms, border flash 200ms, aria-live polite
 function copyToClipboard() {
     const text = passwordDisplay.value;
     if (!text || text === "Loading...") return;
 
-    navigator.clipboard.writeText(text).then(() => {
-        copyTooltip.classList.add("show");
+    const doCopiedUI = () => {
+        const iconCopy = copyPasswordBtn.querySelector(".icon-copy");
+        const iconCheck = copyPasswordBtn.querySelector(".icon-check");
+        if (iconCopy) iconCopy.style.display = "none";
+        if (iconCheck) iconCheck.style.display = "block";
+        copyPasswordBtn.classList.add("copied");
+        if (copyTooltip) {
+            copyTooltip.classList.add("show");
+            copyTooltip.textContent = "Copied!";
+        }
+        setCopyLive("Copied to clipboard");
         setTimeout(() => {
-            copyTooltip.classList.remove("show");
-        }, 1500);
-    }).catch(err => {
-        console.error("Failed to copy password: ", err);
-    });
+            if (iconCopy) iconCopy.style.display = "block";
+            if (iconCheck) iconCheck.style.display = "none";
+            copyPasswordBtn.classList.remove("copied");
+            if (copyTooltip) copyTooltip.classList.remove("show");
+        }, 1200);
+    };
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(doCopiedUI).catch(err => {
+            console.error("Failed to copy password: ", err);
+            // fallback
+            fallbackCopy(text, doCopiedUI);
+        });
+    } else {
+        fallbackCopy(text, doCopiedUI);
+    }
+}
+
+function fallbackCopy(text, cb) {
+    passwordDisplay.select();
+    try {
+        document.execCommand("copy");
+        if (cb) cb();
+    } catch (e) {
+        console.error("fallback copy failed", e);
+    }
+    window.getSelection()?.removeAllRanges();
 }
 
 // Add newly generated password to history list
 function addToHistory(password) {
-    // Avoid duplicate addition if clicking generate frequently
     if (sessionHistory[0] === password) return;
-
     sessionHistory.unshift(password);
-    
-    // Cap at 10 items
     if (sessionHistory.length > 10) {
         sessionHistory.pop();
     }
-
     renderHistory();
 }
 
@@ -398,8 +486,9 @@ function clearHistory() {
     renderHistory();
 }
 
-// Render history log list
+// Render history log list — reuses result list row pattern, plain text link + copy icon button, stack on mobile, no card-in-card
 function renderHistory() {
+    if (!historyList) return;
     historyList.innerHTML = "";
 
     if (sessionHistory.length === 0) {
@@ -407,32 +496,88 @@ function renderHistory() {
         return;
     }
 
-    sessionHistory.forEach((pw, index) => {
+    sessionHistory.forEach((pw) => {
         const li = document.createElement("li");
-        
-        const span = document.createElement("span");
-        span.className = "history-item-pw";
-        span.textContent = pw;
-        li.appendChild(span);
 
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "history-item-copy-btn";
-        btn.textContent = "Copy";
-        btn.addEventListener("click", () => {
-            navigator.clipboard.writeText(pw).then(() => {
-                btn.textContent = "Copied!";
-                btn.style.borderColor = "var(--color-badge-active)";
-                btn.style.color = "var(--color-badge-active)";
-                setTimeout(() => {
-                    btn.textContent = "Copy";
-                    btn.style.borderColor = "";
-                    btn.style.color = "";
-                }, 1200);
-            });
-        });
-        
-        li.appendChild(btn);
+        const main = document.createElement("div");
+        main.className = "history-item-main";
+
+        const title = document.createElement("span");
+        title.className = "history-item-pw";
+        title.textContent = pw;
+        main.appendChild(title);
+
+        const meta = document.createElement("span");
+        meta.className = "history-item-meta";
+        // approximate meta from current mode entropy/length stored — show char count
+        meta.textContent = `${pw.length} characters`;
+        main.appendChild(meta);
+
+        const tags = document.createElement("div");
+        tags.className = "history-tags";
+        const chip = document.createElement("span");
+        chip.className = "chip chip--green";
+        chip.textContent = activeTab === "passphrase" ? "Passphrase" : "Password";
+        tags.appendChild(chip);
+        main.appendChild(tags);
+
+        li.appendChild(main);
+
+        const actions = document.createElement("div");
+        actions.className = "history-item-actions";
+
+        const textBtn = document.createElement("button");
+        textBtn.type = "button";
+        textBtn.className = "text-link";
+        textBtn.textContent = "Copy";
+        textBtn.setAttribute("aria-label", "Copy " + pw.slice(0, 8) + "…");
+        textBtn.addEventListener("click", () => copyHistoryItem(pw, textBtn, iconBtn));
+
+        const iconBtn = document.createElement("button");
+        iconBtn.type = "button";
+        iconBtn.className = "history-item-copy-btn";
+        iconBtn.setAttribute("aria-label", "Copy password");
+        iconBtn.title = "Copy";
+        iconBtn.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="1.2"/><path d="M15 9V7a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2"/></svg><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="display:none;"><path d="M5 13l4 4L19 7"/></svg>';
+        iconBtn.addEventListener("click", () => copyHistoryItem(pw, textBtn, iconBtn));
+
+        actions.appendChild(textBtn);
+        actions.appendChild(iconBtn);
+        li.appendChild(actions);
+
         historyList.appendChild(li);
     });
+}
+
+function copyHistoryItem(pw, textBtn, iconBtn) {
+    const doUI = () => {
+        if (textBtn) {
+            textBtn.textContent = "Copied!";
+            setTimeout(() => { textBtn.textContent = "Copy"; }, 1200);
+        }
+        if (iconBtn) {
+            iconBtn.classList.add("copied");
+            const svgs = iconBtn.querySelectorAll("svg");
+            if (svgs[0]) svgs[0].style.display = "none";
+            if (svgs[1]) svgs[1].style.display = "block";
+            setTimeout(() => {
+                iconBtn.classList.remove("copied");
+                if (svgs[0]) svgs[0].style.display = "block";
+                if (svgs[1]) svgs[1].style.display = "none";
+            }, 1200);
+        }
+        setCopyLive("Copied to clipboard");
+    };
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(pw).then(doUI);
+    } else {
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = pw;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); doUI(); } catch(e){ console.error(e);}
+        ta.remove();
+    }
 }

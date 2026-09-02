@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Random Password Generator — Secure Passphrase Creator | ToolCanvas</title>
@@ -9,24 +8,16 @@
     <meta name="keywords" content="password generator, random password, secure password, passphrase creator, password strength, hash generator, random string, offline password creator">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://toolcanvas.online/password-generator/">
-
-    <!-- Open Graph -->
     <meta property="og:title" content="Free Secure Password Generator & Passphrase Creator | ToolCanvas">
     <meta property="og:description" content="Generate highly secure random passwords or memorably strong passphrases locally in your browser. Custom character sets, word sizes, and real-time entropy calculation.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolcanvas.online/password-generator/">
     <meta property="og:site_name" content="ToolCanvas">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Limelight&display=swap" rel="stylesheet">
-
-    <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="style.css">
-
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -36,145 +27,123 @@
         "url": "https://toolcanvas.online/password-generator/",
         "applicationCategory": "SecurityApplication",
         "operatingSystem": "Any",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "isPartOf": {
-            "@type": "WebSite",
-            "name": "ToolCanvas",
-            "url": "https://toolcanvas.online"
-        }
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "isPartOf": { "@type": "WebSite", "name": "ToolCanvas", "url": "https://toolcanvas.online" }
     }
     </script>
     <link rel="icon" type="image/png" href="../logo/logo.png">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGKGRK5NFL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-QGKGRK5NFL');
-  </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QGKGRK5NFL"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QGKGRK5NFL');</script>
 </head>
 <body>
 
-    <!-- Header -->
     <header class="site-header">
-        <div class="container">
-            <nav class="site-nav">
-                <div class="nav-item">
-                    <a href="/">Home</a>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#random-tools" class="active">Random</a>
-                    <div class="dropdown-menu">
-                    <a href="../place-name-generator/">Place Name Generator</a>
-                    <a href="index.html">Password Generator</a>
-                    <a href="../string-randomizer/">String Randomizer</a>
-                    <a href="../random-business-name-generator/">Business Name Generator</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#image-tools">Image Tools</a>
-                    <div class="dropdown-menu">
-                    <a href="../image-to-jpg/">Image to JPG</a>
-                    <a href="../image-to-png/">Image to PNG</a>
-                    <a href="../jpg-to-png/">JPG to PNG</a>
-                    <a href="../heic-to-jpg/">HEIC to JPG</a>
-                    <a href="../image-to-webp/">Image to WebP</a>
-                    <a href="../image-to-text/">Image to Text (OCR)</a>
-                    <a href="../image-resizer/">Image Resizer</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#social-media-tools">Social Media</a>
-                    <div class="dropdown-menu">
-                    <a href="../instagram-profile-preview/">Instagram Preview</a>
-                    <a href="../linkedin-profile-preview/">LinkedIn Preview</a>
-                    <a href="../social-media-card/">Social Media Card</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#canva-workspace">Canva Workspace</a>
-                    <div class="dropdown-menu">
-                    <a href="../whiteboard/">Whiteboard</a>
-                    <a href="../blackboard/">Blackboard</a>
-                    <a href="../notebook/">Notebook</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="/#video-tools">Video</a>
-                    <div class="dropdown-menu">
-                    <a href="../video-metadata-viewer/">Video Metadata Viewer</a>
-                    <a href="../thumbnail-generator/">Thumbnail Generator</a>
-                    <a href="../video-screenshot-tool/">Video Screenshot Tool</a>
-                    <a href="../video-to-audio-converter/">Video to Audio Converter</a>
-                    <a href="../video-trimmer/">Video Trimmer</a>
-                    </div>
-                </div>
-                <div class="nav-item"><a href="/about">About</a></div>
-        <div class="nav-item"><a href="/blog/">Blog</a></div>
-                <div class="nav-item">
-                    <a href="/contact">Contact</a>
-                </div>
-            </nav>
-            <div class="logo-search-container">
-                <a href="/" class="site-logo">Tool<span>Canvas</span></a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                </button>
+    <div class="container">      <a href="/" class="site-logo" aria-label="ToolCanvas home">
+        <span class="logo-mark" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="9" fill="#3F6B4F"/><text x="16" y="21" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="white" letter-spacing="-0.3">TC</text></svg></span>
+        <span class="logo-text">Tool<span>Canvas</span></span>
+      </a>
+      <nav class="site-nav center-nav" aria-label="Primary">
+        <div class="nav-item dropdown">
+          <a href="#all-tools" class="active">All tools</a>
+          <div class="dropdown-menu all-tools-menu">
+            <div class="all-tools-grid">
+              <div class="all-tools-col">
+                <h4>Random</h4>
+                <a href="../place-name-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M12 13c-3.5 0-6 2.5-6 4v1h12v-1c0-1.5-2.5-4-6-4Z"/><path d="M12 8v-1"/><path d="M15 11l2 2"/><path d="M9 11l-2 2"/></svg></span> Place name generator</a>
+                <a href="../password-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/><path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/><path d="M12 17v-1"/><path d="M8 14l-2-2"/><path d="M16 14l2-2"/></svg></span> Password generator</a>
+                <a href="../string-randomizer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/><path d="M12 3v4"/><path d="M12 17v4"/><path d="M8 7l4-3 4 3"/></svg></span> String randomizer</a>
+                <a href="../random-business-name-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/><path d="M16 16l2 2 2-2"/><path d="M18 8l-2 2"/></svg></span> Business name generator</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Image Tools</h4>
+                <a href="../image-to-jpg/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h5"/><circle cx="15" cy="16" r="1" fill="currentColor"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg></span> Image to JPG</a>
+                <a href="../image-to-png/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22a5 5 0 0 0 5-5c0-2-1.5-3.5-3.5-5.5L12 10l-1.5 1.5C8.5 13.5 7 15 7 17a5 5 0 0 0 5 5Z"/><path d="M9 17h6"/><path d="M12 14v6"/></svg></span> Image to PNG</a>
+                <a href="../jpg-to-png/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M4 14l4-4 3 3 4-4 4 4"/><circle cx="9" cy="9" r="1.5"/></svg></span> JPG to PNG</a>
+                <a href="../heic-to-jpg/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3a4 4 0 0 1 4 4v1H8V7a4 4 0 0 1 4-4Z"/><rect x="6" y="8" width="12" height="10" rx="2"/><path d="M8 12h8"/><path d="M8 14l2 2l2-2 2 2 2-2"/></svg></span> HEIC to JPG</a>
+                <a href="../image-to-webp/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l9 4v2H3V7l9-4Z"/><path d="M12 9a2 2 0 1 0 4 4 2 2 0 0 1-4 4"/><path d="M12 17a2 2 0 1 0 4 4 2 2 0 0 1-4 4"/></svg></span> Image to WebP</a>
+                <a href="../image-to-text/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H4z"/><path d="M8 8h2"/><path d="M8 12h2"/><path d="M12 8h4"/><path d="M12 12h4"/><circle cx="16" cy="16" r="3"/></svg></span> Image to text</a>
+                <a href="../image-resizer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="14" height="14" rx="1"/><path d="M9 9l6 6"/><path d="M15 9l-6 6"/><path d="M5 15l5-1 1-5"/></svg></span> Image resizer</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Social Media</h4>
+                <a href="../instagram-profile-preview/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3h10v4H7z"/><path d="M7 9h10"/><path d="M7 13h10"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span> Instagram preview</a>
+                <a href="../linkedin-profile-preview/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span> LinkedIn preview</a>
+                <a href="../social-media-card/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="14" height="10" rx="1"/><path d="M9 9h6"/><path d="M9 12h6"/><circle cx="14" cy="14" r="2"/></svg></span> Social media card</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Canva Workspace</h4>
+                <a href="../whiteboard/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h18v18H3z"/><path d="M7 7h10v10H7z"/><path d="M7 12h10"/><path d="M12 7v10"/></svg></span> Whiteboard</a>
+                <a href="../blackboard/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H4z"/><path d="M4 16l8 5 8-5"/><path d="M8 12h8"/><path d="M12 8v4"/></svg></span> Blackboard</a>
+                <a href="../notebook/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v4H6z"/><path d="M6 8h12"/><path d="M6 12h12"/><path d="M6 16h12"/><path d="M6 20h12"/></svg></span> Notebook</a>
+              </div>
+              <div class="all-tools-col">
+                <h4>Video</h4>
+                <a href="../video-metadata-viewer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="16" height="12" rx="1"/><path d="M19 7l3 2v6l-3 2"/><path d="M7 7h3"/><path d="M7 11h3"/></svg></span> Video metadata viewer</a>
+                <a href="../thumbnail-generator/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="12" rx="1"/><path d="M8 8h8"/><path d="M8 12h6"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span> Thumbnail generator</a>
+                <a href="../video-screenshot-tool/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6v6H9z"/><path d="M4 8h16v8H4z"/><circle cx="12" cy="12" r="2"/><path d="M12 10v4"/><path d="M10 12h4"/></svg></span> Video screenshot tool</a>
+                <a href="../video-to-audio-converter/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v4"/><path d="M8 7h8"/><rect x="5" y="7" width="14" height="10" rx="1"/><path d="M9 12h6"/><path d="M9 15h6"/></svg></span> Video to audio converter</a>
+                <a href="../video-trimmer/"><span class="tool-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 8h8"/><path d="M8 12h8"/><path d="M12 8v8"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/><circle cx="6" cy="12" r="1.5" fill="currentColor"/><circle cx="6" cy="18" r="1.5" fill="currentColor"/></svg></span> Video trimmer</a>
+              </div>
             </div>
+          </div>
         </div>
-    </header>
+        <div class="trending" aria-label="Most popular">
+          <a href="image-to-jpg/" class="trending-btn">Image to JPG</a>
+          <a href="image-resizer/" class="trending-btn">Image resizer</a>
+          <a href="password-generator/" class="trending-btn">Password generator</a>
+          <a href="whiteboard/" class="trending-btn">Whiteboard</a>
+        </div>
+      </nav>
+      <nav class="site-nav right-nav" aria-label="Secondary">
+        <div class="nav-item"><a href="/about">About</a></div>
+        <div class="nav-item"><a href="/contact">Contact</a></div>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+    </div>
+  </header>
 
     <main class="site-main">
-        <!-- Breadcrumb -->
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-            <div class="container">
-                <a href="/">Home</a>
-                <span class="separator">›</span>
-                <span class="current">Password Generator</span>
-            </div>
-        </nav>
-
-        <!-- Tool Section -->
         <section class="tool-section">
             <div class="container">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="/">Home</a>
+                    <span class="separator" aria-hidden="true">›</span>
+                    <span class="current" aria-current="page">Password Generator</span>
+                </nav>
+
                 <div class="tool-header">
                     <h1>Free Secure Password Generator</h1>
-                    <p class="tool-intro">Create strong, customized passwords and memorable passphrases securely in your browser. All generation is done securely on your device using secure random number generators—no passwords are ever sent to a server.</p>
-</div>
+                    <p class="tool-intro">Create strong, customized passwords and memorable passphrases securely in your browser. All generation is done locally on your device using a cryptographically secure RNG — nothing is ever sent to a server.</p>
+                </div>
 
                 <div class="generator-card">
-                    <!-- Password Result Area -->
-                    <div class="result-display-wrapper">
-                        <div class="result-box">
-                            <input type="text" id="password-display" readonly value="Loading..." aria-label="Generated Password">
-                            <div class="result-box-actions">
-                                <button type="button" class="btn-icon" id="toggle-visibility-btn" title="Toggle visibility">
-                                    <svg viewBox="0 0 24 24" width="20" height="20" class="eye-open-icon"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/></svg>
-                                    <svg viewBox="0 0 24 24" width="20" height="20" class="eye-closed-icon" style="display: none;"><path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.82l2.92 2.92c1.51-1.2 2.7-2.78 3.44-4.74-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.17c0-1.66-1.34-3-3-3l-.17.02z" fill="currentColor"/></svg>
+                    <!-- Archetype C: single live output -->
+                    <div class="output-readout">
+                        <div class="readout-box">
+                            <input type="text" id="password-display" class="readout-input" readonly value="Loading..." aria-label="Generated Password" autocomplete="off" spellcheck="false">
+                            <div class="readout-actions">
+                                <button type="button" class="btn-icon" id="toggle-visibility-btn" aria-label="Toggle password visibility" title="Toggle visibility">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" class="eye-open-icon" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3.5"/></svg>
+                                    <svg viewBox="0 0 24 24" width="18" height="18" class="eye-closed-icon" style="display:none;" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A11 11 0 0 1 12 5c7 0 11 7 11 7a17.5 17.5 0 0 1-3.11 4.35"/><path d="M2 2l20 20"/><path d="M6.3 8.2A17.5 17.5 0 0 0 1 12s4 7 11 7a10.9 10.9 0 0 0 4.06-.77"/></svg>
                                 </button>
-                                <button type="button" class="btn-icon" id="copy-password-btn" title="Copy password">
-                                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" fill="currentColor"/></svg>
+                                <button type="button" class="btn-icon" id="copy-password-btn" aria-label="Copy password" title="Copy password">
+                                    <svg class="icon-copy" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="1.2"/><path d="M15 9V7a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2"/></svg>
+                                    <svg class="icon-check" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="display:none;"><path d="M5 13l4 4L19 7"/></svg>
                                     <span class="tooltip" id="copy-tooltip">Copied!</span>
                                 </button>
                             </div>
                         </div>
-                        <button type="button" class="btn-primary" id="generate-btn">
-                            Generate New
-                        </button>
+                        <button type="button" class="btn-primary" id="generate-btn">Generate New</button>
                     </div>
+                    <span class="sr-only" aria-live="polite" id="copy-live"></span>
 
-                    <!-- Strength Indicator -->
+                    <!-- Strength meter: 4-segment -->
                     <div class="strength-indicator-wrapper">
-                        <div class="strength-bar-container">
-                            <div class="strength-bar" id="strength-bar"></div>
+                        <div class="strength-bar-container" id="strength-bar" aria-hidden="true">
+                            <span class="strength-seg" data-seg="1"></span>
+                            <span class="strength-seg" data-seg="2"></span>
+                            <span class="strength-seg" data-seg="3"></span>
+                            <span class="strength-seg" data-seg="4"></span>
                         </div>
                         <div class="strength-meta">
                             <span class="strength-text" id="strength-text">Checking...</span>
@@ -182,109 +151,109 @@
                         </div>
                     </div>
 
-                    <!-- Configuration Panels -->
-                    <div class="config-tabs">
-                        <button type="button" class="tab-btn active" id="tab-standard">Standard Password</button>
-                        <button type="button" class="tab-btn" id="tab-passphrase">Memorable Passphrase</button>
+                    <!-- Type toggle: segmented control -->
+                    <div class="config-tabs" role="tablist" aria-label="Password type">
+                        <button type="button" class="tab-btn active" id="tab-standard" role="tab" aria-selected="true" aria-controls="panel-standard">Standard Password</button>
+                        <button type="button" class="tab-btn" id="tab-passphrase" role="tab" aria-selected="false" aria-controls="panel-passphrase">Memorable Passphrase</button>
                     </div>
 
                     <div class="config-content">
                         <!-- Standard Password Options -->
-                        <div class="tab-panel" id="panel-standard">
-                            <div class="option-grid">
-                                <div class="option-slider-group">
-                                    <div class="slider-header">
-                                        <label for="password-length">Password Length</label>
-                                        <span class="slider-value" id="length-val">16</span>
-                                    </div>
-                                    <input type="range" id="password-length" min="4" max="64" value="16" step="1">
+                        <div class="tab-panel" id="panel-standard" role="tabpanel" aria-labelledby="tab-standard">
+                            <div class="option-slider-group">
+                                <div class="slider-header">
+                                    <label for="password-length">Password Length</label>
+                                    <span class="slider-value" id="length-val">16</span>
                                 </div>
+                                <input type="range" id="password-length" min="4" max="64" value="16" step="1" aria-label="Password Length">
+                            </div>
 
-                                <div class="option-checkbox-group">
-                                    <label class="checkbox-container">
-                                        <input type="checkbox" id="chk-uppercase" checked>
-                                        <span class="checkmark"></span>
-                                        Uppercase Letters (A-Z)
-                                    </label>
-                                    <label class="checkbox-container">
-                                        <input type="checkbox" id="chk-lowercase" checked>
-                                        <span class="checkmark"></span>
-                                        Lowercase Letters (a-z)
-                                    </label>
-                                    <label class="checkbox-container">
-                                        <input type="checkbox" id="chk-numbers" checked>
-                                        <span class="checkmark"></span>
-                                        Numbers (0-9)
-                                    </label>
-                                    <label class="checkbox-container">
-                                        <input type="checkbox" id="chk-symbols" checked>
-                                        <span class="checkmark"></span>
-                                        Symbols (!@#$%^&*)
-                                    </label>
-                                </div>
+                            <div class="checkbox-grid">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="chk-uppercase" checked>
+                                    <span class="checkmark" aria-hidden="true"></span>
+                                    Uppercase Letters (A-Z)
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="chk-lowercase" checked>
+                                    <span class="checkmark" aria-hidden="true"></span>
+                                    Lowercase Letters (a-z)
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="chk-numbers" checked>
+                                    <span class="checkmark" aria-hidden="true"></span>
+                                    Numbers (0-9)
+                                </label>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="chk-symbols" checked>
+                                    <span class="checkmark" aria-hidden="true"></span>
+                                    Symbols (!@#$%^&amp;*)
+                                </label>
                             </div>
                         </div>
 
                         <!-- Memorable Passphrase Options -->
-                        <div class="tab-panel" id="panel-passphrase" style="display: none;">
-                            <div class="option-grid">
-                                <div class="option-slider-group">
-                                    <div class="slider-header">
-                                        <label for="passphrase-words">Number of Words</label>
-                                        <span class="slider-value" id="words-val">4</span>
-                                    </div>
-                                    <input type="range" id="passphrase-words" min="2" max="10" value="4" step="1">
+                        <div class="tab-panel" id="panel-passphrase" role="tabpanel" aria-labelledby="tab-passphrase" style="display: none;">
+                            <div class="option-slider-group">
+                                <div class="slider-header">
+                                    <label for="passphrase-words">Number of Words</label>
+                                    <span class="slider-value" id="words-val">4</span>
                                 </div>
+                                <input type="range" id="passphrase-words" min="2" max="10" value="4" step="1" aria-label="Number of Words">
+                            </div>
 
-                                <div class="option-select-group">
-                                    <div class="field-item">
-                                        <label for="passphrase-separator">Word Separator</label>
-                                        <select id="passphrase-separator">
-                                            <option value="-">Hyphen (-)</option>
-                                            <option value="_">Underscore (_)</option>
-                                            <option value=" ">Space ( )</option>
-                                            <option value=".">Dot (.)</option>
-                                            <option value="">None</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="field-item">
-                                        <label for="passphrase-case">Word Casing</label>
-                                        <select id="passphrase-case">
-                                            <option value="lowercase" selected>lowercase</option>
-                                            <option value="uppercase">UPPERCASE</option>
-                                            <option value="capitalize">Capitalize</option>
-                                        </select>
-                                    </div>
+                            <div class="passphrase-grid">
+                                <div class="field-item">
+                                    <label for="passphrase-separator">Word Separator</label>
+                                    <select id="passphrase-separator">
+                                        <option value="-">Hyphen (-)</option>
+                                        <option value="_">Underscore (_)</option>
+                                        <option value=" ">Space ( )</option>
+                                        <option value=".">Dot (.)</option>
+                                        <option value="">None</option>
+                                    </select>
+                                </div>
+                                <div class="field-item">
+                                    <label for="passphrase-case">Word Casing</label>
+                                    <select id="passphrase-case">
+                                        <option value="lowercase" selected>lowercase</option>
+                                        <option value="uppercase">UPPERCASE</option>
+                                        <option value="capitalize">Capitalize</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Shared Advanced Exclusions -->
-                        <div class="advanced-section">
-                            <h4>Advanced Exclusions</h4>
-                            <div class="option-checkbox-group inline-checkboxes">
-                                <label class="checkbox-container">
-                                    <input type="checkbox" id="chk-exclude-ambiguous">
-                                    <span class="checkmark"></span>
-                                    Exclude Ambiguous Characters (e.g. <code>I, l, 1, O, 0</code>)
-                                </label>
-                                <label class="checkbox-container">
-                                    <input type="checkbox" id="chk-easy-say">
-                                    <span class="checkmark"></span>
-                                    Easy to Say (Avoid numbers and symbols)
-                                </label>
+                        <!-- Advanced Exclusions: collapsible disclosure -->
+                        <div class="advanced-disclosure">
+                            <button type="button" class="disclosure-toggle" id="disclosure-toggle" aria-expanded="false" aria-controls="advanced-panel">
+                                <span class="disclosure-chevron" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6l5 5 5-5"/></svg></span>
+                                Advanced Exclusions
+                            </button>
+                            <div id="advanced-panel" class="disclosure-panel" hidden>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="chk-exclude-ambiguous">
+                                        <span class="checkmark" aria-hidden="true"></span>
+                                        Exclude Ambiguous Characters (e.g. <code>I, l, 1, O, 0</code>)
+                                    </label>
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="chk-easy-say">
+                                        <span class="checkmark" aria-hidden="true"></span>
+                                        Easy to Say (Avoid numbers and symbols)
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Session History -->
+                    <!-- Session History: result list row pattern -->
                     <div class="history-section">
                         <div class="history-header">
                             <h3>Session History</h3>
-                            <button type="button" class="btn-text-danger" id="clear-history-btn">Clear History</button>
+                            <button type="button" class="btn-text-link" id="clear-history-btn">Clear History</button>
                         </div>
-                        <ul class="history-list" id="history-list">
+                        <ul class="history-list" id="history-list" aria-live="polite" aria-label="Password session history">
                             <li class="history-empty">No passwords generated in this session yet.</li>
                         </ul>
                     </div>
@@ -293,59 +262,47 @@
             </div>
         </section>
 
-        <!-- SEO Content Section -->
         <section class="seo-content">
             <div class="container">
                 <div class="seo-block">
-                    <h2>How Does the Secure Password Generator Work?</h2>
-                    <p>Unlike traditional online password generators that transmit data to web servers, our generator operates with complete privacy. When you click "Generate New," the tool uses a secure random number generation method directly on your device.</p>
-                    <p>By leveraging secure entropy sources on your device, we obtain unpredictable seed values that ensure the produced strings are mathematically unguessable. Since zero data is transmitted over the internet, your credentials remain secure and invisible to any third parties.</p>
+                    <h2>How it works</h2>
+                    <p>When you press <strong>Generate New</strong>, the tool uses your browser’s cryptographically secure random number generator to draw unpredictable values directly on your device. No data is sent over the network, so your credentials stay invisible to any server or third party.</p>
+                    <p>For <strong>Standard Passwords</strong> the generator builds a pool from the character sets you enable, guarantees at least one character from each selected set, then fills the remaining length and shuffles with a Fisher–Yates pass. For <strong>Passphrases</strong> it draws distinct words from a curated local dictionary and joins them with your chosen separator and casing. Entropy in bits is computed instantly and shown beside the strength meter.</p>
                 </div>
 
                 <div class="seo-block">
-                    <h2>Password vs. Memorable Passphrase: Which is Better?</h2>
-                    <p>There are two primary paradigms for creating credentials today:</p>
+                    <h2>What you get</h2>
                     <ul>
-                        <li><strong>Standard Passwords:</strong> Made of randomized strings of upper and lowercase letters, numbers, and symbols. They provide high security in fewer characters (e.g., 16 characters) and are ideal for software integrations, database keys, and configuration vaults. However, they are highly difficult for humans to memorize.</li>
-                        <li><strong>Memorable Passphrases:</strong> Formed by chaining together random dictionary words (e.g., <code>correct-horse-battery-staple</code>). They are extremely long, which gives them massive cryptographic resistance to dictionary attacks, yet they are simple for a human to visualize and remember. They are highly recommended for master passwords, main computer lock screens, and email accounts.</li>
+                        <li><strong>Single live output</strong> — large, readable mono display with eye-toggle and one-click copy.</li>
+                        <li><strong>True 4-stage strength</strong> — 4-segment bar and bit count that update instantly from entropy math.</li>
+                        <li><strong>Two modes in one toggle</strong> — Standard Password (length + character sets) or Memorable Passphrase (words + separator + casing).</li>
+                        <li><strong>Private generation</strong> — uses <code>crypto.getRandomValues</code> locally; works offline after load.</li>
+                        <li><strong>Session history</strong> — reuses the clean list-row pattern with per-item copy, no clutter.</li>
                     </ul>
-                </div>
-
-                <div class="seo-block">
-                    <h2>Understanding Password Entropy (Bits of Security)</h2>
-                    <p>Password entropy measures the cryptographic strength of a password based on its length and the size of the character pool it is selected from. It is measured in bits:</p>
-                    <ul>
-                        <li><strong>Under 50 bits:</strong> Weak. Can be cracked via quick brute force.</li>
-                        <li><strong>50 to 79 bits:</strong> Medium. Reasonable security for temporary accounts.</li>
-                        <li><strong>80 to 119 bits:</strong> Strong. Extremely difficult to crack with modern supercomputers.</li>
-                        <li><strong>120+ bits:</strong> Very Strong. Safe from any brute force or dictionary attack for centuries.</li>
-                    </ul>
-                    <p>The math formula for entropy is: \(E = L \times \log_2(R)\) where \(L\) is the length of the password, and \(R\) is the size of the pool of possible characters (for example, a standard English lowercase + uppercase + number + symbol pool size is 94 characters).</p>
                 </div>
 
                 <div class="seo-block faq-section">
                     <h2>Frequently Asked Questions</h2>
 
                     <div class="faq-item">
-                        <h3 class="faq-question">Are my passwords sent to any server?</h3>
-                        <p class="faq-answer">No. All calculations are executed on your device's browser sandbox. The generator can run entirely offline without internet connections. We do not store, view, or log any credentials you generate.</p>
+                        <button class="faq-question" type="button" aria-expanded="false">Are my passwords sent to any server?<span class="faq-chevron" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6l5 5 5-5"/></svg></span></button>
+                        <div class="faq-answer"><p>No. All calculations run in your browser sandbox. The generator works offline after the page loads — we never store, view, or log any credentials you generate.</p></div>
                     </div>
 
                     <div class="faq-item">
-                        <h3 class="faq-question">How does passphrase generation work?</h3>
-                        <p class="faq-answer">We maintain a static dictionary of over 1,000 highly recognizable, distinct English nouns and adjectives. The generator randomly draws words from this array using secure indexes, concatenating them using your selected divider (like a hyphen or dot).</p>
+                        <button class="faq-question" type="button" aria-expanded="false">How does passphrase generation work?<span class="faq-chevron" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6l5 5 5-5"/></svg></span></button>
+                        <div class="faq-answer"><p>We keep a static dictionary of over 600 clear English words. The generator picks words with secure random indexes and concatenates them with your chosen divider — hyphen, underscore, dot, space, or none — applying the casing you select.</p></div>
                     </div>
 
                     <div class="faq-item">
-                        <h3 class="faq-question">What makes a password "cryptographically secure"?</h3>
-                        <p class="faq-answer">Standard computer programs generate numbers using algorithms that repeat eventually. A cryptographically secure generator (CSPRNG) uses hardware entropy sources (like electrical thermal noise on your processor) to ensure that the outputs cannot be modeled or guessed by analyzing previous outputs.</p>
+                        <button class="faq-question" type="button" aria-expanded="false">What makes a password “cryptographically secure”?<span class="faq-chevron" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6l5 5 5-5"/></svg></span></button>
+                        <div class="faq-answer"><p>Ordinary <code>Math.random()</code> is predictable. A CSPRNG draws entropy from hardware sources so outputs cannot be modelled from previous values. We use <code>window.crypto.getRandomValues</code> with rejection sampling and a secure shuffle for every generation.</p></div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
             <p>&copy; 2026 ToolCanvas. All rights reserved.</p>

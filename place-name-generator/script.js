@@ -1,6 +1,7 @@
 // =========================================
 // ToolCanvas — Real Place Generator Script
 // Real places, country filter, trip/beautiful tags, map links
+// Archetype B — Generate with list of results
 // =========================================
 
 const REAL_PLACES = [
@@ -297,6 +298,7 @@ const namesList = document.getElementById("names-list");
 const copyBtn = document.getElementById("copy-names-btn");
 const downloadBtn = document.getElementById("download-names-btn");
 const copyTooltip = document.getElementById("copy-tooltip");
+const copyLive = document.getElementById("copy-live");
 
 let currentResults = [];
 
@@ -307,66 +309,58 @@ function getSecureRandomInt(max) {
   window.crypto.getRandomValues(arr);
   return arr[0] % max;
 }
-
 function shuffleSecure(array) {
   const a = array.slice();
   for (let i = a.length - 1; i > 0; i--) {
     const j = getSecureRandomInt(i + 1);
-    const tmp = a[i];
-    a[i] = a[j];
-    a[j] = tmp;
+    const tmp = a[i]; a[i] = a[j]; a[j] = tmp;
   }
   return a;
 }
-
-// Populate country dropdown
 function initCountries() {
   const countries = [...new Set(REAL_PLACES.map(p => p.country))].sort((a,b) => a.localeCompare(b));
   countries.forEach(c => {
     const opt = document.createElement("option");
-    opt.value = c;
-    opt.textContent = c;
+    opt.value = c; opt.textContent = c;
     countrySelect.appendChild(opt);
   });
 }
-
-// Build map link
 function mapLink(place) {
   const query = `${place.name}, ${place.state}, ${place.country}`;
   return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(query);
 }
-
-// Filter logic
 function getFiltered() {
   const country = countrySelect.value;
   const wantsBeautiful = chkBeautiful.checked;
   const wantsTrip = chkTrip.checked;
-
   let filtered = REAL_PLACES;
-
-  if (country !== "Any") {
-    filtered = filtered.filter(p => p.country === country);
-  }
-
-  // If at least one checkbox checked, filter OR. If none checked, show all.
+  if (country !== "Any") filtered = filtered.filter(p => p.country === country);
   if (wantsBeautiful || wantsTrip) {
     const wanted = [];
     if (wantsBeautiful) wanted.push("beautiful");
     if (wantsTrip) wanted.push("trip");
     filtered = filtered.filter(p => p.categories.some(c => wanted.includes(c)));
   }
-
   return filtered;
 }
-
-// Generate
+function updateRangeFill(el) {
+  const min = parseFloat(el.min) || 0;
+  const max = parseFloat(el.max) || 100;
+  const val = parseFloat(el.value);
+  const pct = ((val - min) / (max - min)) * 100;
+  el.style.setProperty("--fill", pct + "%");
+}
+function iconCopySVG() {
+  return '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="1.2"/><path d="M15 9V7a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2"/></svg>';
+}
+function iconCheckSVG() {
+  return '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>';
+}
 function generatePlaces() {
   const count = parseInt(placeCount.value, 10);
   const filtered = getFiltered();
-
   namesList.innerHTML = "";
   currentResults = [];
-
   if (filtered.length === 0) {
     const li = document.createElement("li");
     li.className = "names-empty";
@@ -374,35 +368,34 @@ function generatePlaces() {
     namesList.appendChild(li);
     return;
   }
-
-  // Shuffle and take count distinct
   const shuffled = shuffleSecure(filtered);
   const take = Math.min(count, shuffled.length);
-  // Ensure distinct by name+country
   const seen = new Set();
   const picks = [];
   for (const p of shuffled) {
     const key = p.name + "|" + p.country;
     if (seen.has(key)) continue;
-    seen.add(key);
-    picks.push(p);
+    seen.add(key); picks.push(p);
     if (picks.length >= take) break;
   }
-
   currentResults = picks;
-
-  picks.forEach(place => {
+  picks.forEach((place, idx) => {
     const li = document.createElement("li");
     li.className = "place-card";
+    const stagger = Math.min(idx, 6);
+    if (stagger < 6) {
+      li.classList.add("is-animating");
+      li.style.animationDelay = (stagger * 40) + "ms";
+    }
 
     const main = document.createElement("div");
     main.className = "place-card-main";
 
-    const nameEl = document.createElement("h4");
+    const nameEl = document.createElement("div");
     nameEl.className = "place-name";
     nameEl.textContent = place.name;
 
-    const locEl = document.createElement("p");
+    const locEl = document.createElement("div");
     locEl.className = "place-loc";
     locEl.textContent = place.state + ", " + place.country;
 
@@ -424,20 +417,27 @@ function generatePlaces() {
 
     const a = document.createElement("a");
     a.href = mapLink(place);
-    a.target = "_blank";
-    a.rel = "noopener";
+    a.target = "_blank"; a.rel = "noopener";
     a.className = "map-link";
-    a.textContent = "View on Map →";
+    a.textContent = "View on Map \u2192";
 
     const copyOne = document.createElement("button");
     copyOne.type = "button";
     copyOne.className = "place-copy";
-    copyOne.textContent = "Copy";
+    copyOne.setAttribute("aria-label", "Copy " + place.name);
+    copyOne.innerHTML = iconCopySVG();
+    let copyTimer;
     copyOne.addEventListener("click", () => {
       const text = `${place.name}, ${place.state}, ${place.country} — ${mapLink(place)}`;
       navigator.clipboard.writeText(text).then(() => {
-        copyOne.textContent = "Copied!";
-        setTimeout(() => copyOne.textContent = "Copy", 1200);
+        copyOne.innerHTML = iconCheckSVG();
+        copyOne.classList.add("copied");
+        if (copyLive) copyLive.textContent = "Copied " + place.name;
+        clearTimeout(copyTimer);
+        copyTimer = setTimeout(() => {
+          copyOne.innerHTML = iconCopySVG();
+          copyOne.classList.remove("copied");
+        }, 1200);
       });
     });
 
@@ -449,41 +449,54 @@ function generatePlaces() {
     namesList.appendChild(li);
   });
 }
-
-// Copy all
 function copyAll() {
   if (currentResults.length === 0) return;
   const text = currentResults.map(p => `${p.name}, ${p.state}, ${p.country} — ${mapLink(p)}`).join("\r\n");
+  const originalHTML = copyBtn.innerHTML;
   navigator.clipboard.writeText(text).then(() => {
-    copyTooltip.classList.add("show");
-    setTimeout(() => copyTooltip.classList.remove("show"), 1500);
+    copyBtn.innerHTML = iconCheckSVG() + '<span class="tooltip show">Copied!</span>';
+    copyBtn.classList.add("copied");
+    if (copyLive) copyLive.textContent = "Copied " + currentResults.length + " places";
+    if (copyTooltip) { copyTooltip.classList.add("show"); }
+    setTimeout(() => {
+      copyBtn.innerHTML = originalHTML;
+      copyBtn.classList.remove("copied");
+      if (copyTooltip) copyTooltip.classList.remove("show");
+    }, 1200);
+    setTimeout(() => copyBtn.classList.remove("copied"), 200);
   });
 }
-
-// Download
 function downloadAll() {
   if (currentResults.length === 0) return;
   const text = currentResults.map(p => `${p.name}, ${p.state}, ${p.country} — ${mapLink(p)}`).join("\r\n");
   const blob = new Blob([text], {type:"text/plain;charset=utf-8"});
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
-  a.href = url;
-  a.download = "toolcanvas_places.txt";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  a.href = url; a.download = "toolcanvas_places.txt";
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
 }
-
-// Init
+function initFAQ() {
+  document.querySelectorAll(".faq-item").forEach(item => {
+    const btn = item.querySelector(".faq-question");
+    const ans = item.querySelector(".faq-answer");
+    if (!btn || !ans) return;
+    btn.addEventListener("click", () => {
+      const open = item.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  });
+}
 window.addEventListener("DOMContentLoaded", () => {
   initCountries();
+  updateRangeFill(placeCount);
   placeCount.addEventListener("input", e => {
     countVal.textContent = e.target.value;
+    updateRangeFill(e.target);
   });
   generateBtn.addEventListener("click", generatePlaces);
   copyBtn.addEventListener("click", copyAll);
   downloadBtn.addEventListener("click", downloadAll);
-  // Auto-generate initial set
+  initFAQ();
   generatePlaces();
 });

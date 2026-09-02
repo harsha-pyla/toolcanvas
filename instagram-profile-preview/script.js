@@ -1,11 +1,10 @@
 /* ========================================================
    ToolCanvas — Instagram Profile Preview JavaScript
-   Clean, simple logic for direct mockup editing
+   Archetype E — debounced live preview
    ======================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Default profile state
     let profileData = {
         username: 'yourbrandname',
         fullname: 'Your Brand Name',
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         gridPhotos: ['', '', '', '', '', '']
     };
 
-    // DOM references
     const btnThemeLight = document.getElementById('btn-theme-light');
     const btnThemeDark = document.getElementById('btn-theme-dark');
     const btnResetMockup = document.getElementById('btn-reset-mockup');
@@ -55,47 +53,167 @@ document.addEventListener('DOMContentLoaded', () => {
     const hiddenHighlightInput = document.getElementById('hidden-highlight-input');
     const hiddenGridInput = document.getElementById('hidden-grid-input');
 
+    // New form inputs (Archetype E)
+    const usernameInput = document.getElementById('username-input');
+    const fullnameInput = document.getElementById('fullname-input');
+    const categoryInput = document.getElementById('category-input');
+    const bioInput = document.getElementById('bio-input');
+    const websiteInput = document.getElementById('website-input');
+    const postsInput = document.getElementById('posts-input');
+    const followersInput = document.getElementById('followers-input');
+    const followingInput = document.getElementById('following-input');
+    const verifiedInput = document.getElementById('verified-input');
+    const avatarDropzone = document.getElementById('avatar-dropzone');
+    const avatarInputAlias = document.getElementById('avatar-input');
+    const btnAddHighlight = document.getElementById('btn-add-highlight');
+    const btnAddGrid = document.getElementById('btn-add-grid');
+
     let activeHighlightIdForUpload = null;
     let activeGridPhotoIndexForUpload = null;
 
-    // Initialize
     loadState();
     bindEvents();
     renderAll();
+    bindFormInputs();
+    initFaq();
+
+    function debounce(fn, wait){
+        let t;
+        return function(...args){
+            clearTimeout(t);
+            t=setTimeout(()=>fn.apply(this,args), wait);
+        };
+    }
+
+    function bindFormInputs(){
+        if(!usernameInput) return;
+        const syncUsername = debounce((v)=>{
+            let cleaned = v.trim().toLowerCase().replace(/[^a-z0-9_.]/g,'');
+            if(!cleaned) cleaned='username';
+            profileData.username=cleaned;
+            mockupUsername.textContent=cleaned;
+            saveState();
+        },80);
+        usernameInput.addEventListener('input', e=> syncUsername(e.target.value));
+        usernameInput.addEventListener('blur', e=>{
+            let c=e.target.value.trim().toLowerCase().replace(/[^a-z0-9_.]/g,'');
+            if(!c) c='username';
+            e.target.value=c;
+        });
+
+        if(fullnameInput){
+            const s=debounce(v=>{profileData.fullname=v; mockupFullname.textContent=v; saveState();},80);
+            fullnameInput.addEventListener('input', e=> s(e.target.value));
+        }
+        if(categoryInput){
+            const s=debounce(v=>{profileData.category=v; mockupCategory.textContent=v; mockupCategory.style.display=v?'block':'none'; saveState();},80);
+            categoryInput.addEventListener('input', e=> s(e.target.value));
+        }
+        if(bioInput){
+            const s=debounce(v=>{profileData.bio=v; formatBio(); saveState();},80);
+            bioInput.addEventListener('input', e=> s(e.target.value));
+        }
+        if(websiteInput){
+            const s=debounce(v=>{profileData.website=v.trim(); mockupWebsite.textContent=profileData.website; mockupWebsite.style.display=profileData.website?'inline-block':'none'; saveState();},80);
+            websiteInput.addEventListener('input', e=> s(e.target.value));
+        }
+        if(postsInput){
+            const s=debounce(v=>{profileData.posts=v.trim()||'0'; mockupStatPosts.textContent=profileData.posts; saveState();},80);
+            postsInput.addEventListener('input', e=> s(e.target.value));
+        }
+        if(followersInput){
+            const s=debounce(v=>{profileData.followers=v.trim()||'0'; mockupStatFollowers.textContent=profileData.followers; saveState();},80);
+            followersInput.addEventListener('input', e=> s(e.target.value));
+        }
+        if(followingInput){
+            const s=debounce(v=>{profileData.following=v.trim()||'0'; mockupStatFollowing.textContent=profileData.following; saveState();},80);
+            followingInput.addEventListener('input', e=> s(e.target.value));
+        }
+        if(verifiedInput){
+            verifiedInput.addEventListener('change', e=>{
+                profileData.verified=e.target.checked;
+                mockupVerifiedBadge.style.opacity=profileData.verified?'1':'0.2';
+                saveState();
+            });
+        }
+        if(avatarDropzone){
+            avatarDropzone.addEventListener('click', ()=> hiddenAvatarInput.click());
+            avatarDropzone.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); hiddenAvatarInput.click(); }});
+            avatarDropzone.addEventListener('dragover', e=>{ e.preventDefault(); avatarDropzone.style.borderColor='var(--accent-green)';});
+            avatarDropzone.addEventListener('dragleave', ()=>{ avatarDropzone.style.borderColor='';});
+            avatarDropzone.addEventListener('drop', e=>{
+                e.preventDefault(); avatarDropzone.style.borderColor='';
+                const f=e.dataTransfer.files[0];
+                if(f){ readAvatarFile(f); }
+            });
+        }
+        if(avatarInputAlias){
+            avatarInputAlias.addEventListener('change', e=>{
+                const f=e.target.files[0];
+                if(f) readAvatarFile(f);
+                avatarInputAlias.value='';
+            });
+        }
+        if(btnAddHighlight){
+            btnAddHighlight.addEventListener('click', ()=>{
+                profileData.highlights.push({id:Date.now(), title:'Highlight', image:''});
+                renderHighlights(); saveState();
+            });
+        }
+        if(btnAddGrid){
+            btnAddGrid.addEventListener('click', ()=>{
+                activeGridPhotoIndexForUpload=null;
+                hiddenGridInput.click();
+            });
+        }
+    }
+
+    function readAvatarFile(file){
+        const reader=new FileReader();
+        reader.onload=ev=>{
+            profileData.avatar=ev.target.result;
+            setAvatarImage(profileData.avatar);
+            saveState();
+        };
+        reader.readAsDataURL(file);
+    }
 
     function bindEvents() {
-
-        // === Contenteditable fields ===
 
         mockupUsername.addEventListener('blur', (e) => {
             let cleaned = e.target.textContent.trim().toLowerCase().replace(/[^a-z0-9_.]/g, '');
             if (!cleaned) cleaned = 'username';
             profileData.username = cleaned;
             mockupUsername.textContent = cleaned;
+            if(usernameInput) usernameInput.value=cleaned;
             saveState();
         });
         mockupUsername.addEventListener('keydown', preventEnter);
 
         mockupStatPosts.addEventListener('blur', (e) => {
             profileData.posts = e.target.textContent.trim() || '0';
+            if(postsInput) postsInput.value=profileData.posts;
             saveState();
         });
         mockupStatPosts.addEventListener('keydown', preventEnter);
 
         mockupStatFollowers.addEventListener('blur', (e) => {
             profileData.followers = e.target.textContent.trim() || '0';
+            if(followersInput) followersInput.value=profileData.followers;
             saveState();
         });
         mockupStatFollowers.addEventListener('keydown', preventEnter);
 
         mockupStatFollowing.addEventListener('blur', (e) => {
             profileData.following = e.target.textContent.trim() || '0';
+            if(followingInput) followingInput.value=profileData.following;
             saveState();
         });
         mockupStatFollowing.addEventListener('keydown', preventEnter);
 
         mockupFullname.addEventListener('blur', (e) => {
             profileData.fullname = e.target.textContent.trim();
+            if(fullnameInput) fullnameInput.value=profileData.fullname;
             saveState();
         });
         mockupFullname.addEventListener('keydown', preventEnter);
@@ -103,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mockupCategory.addEventListener('blur', (e) => {
             profileData.category = e.target.textContent.trim();
             mockupCategory.style.display = profileData.category ? 'block' : 'none';
+            if(categoryInput) categoryInput.value=profileData.category;
             saveState();
         });
         mockupCategory.addEventListener('keydown', preventEnter);
@@ -113,6 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         mockupBioText.addEventListener('blur', () => {
             profileData.bio = mockupBioText.innerText.trim();
+            if(bioInput) bioInput.value=profileData.bio;
             formatBio();
             saveState();
         });
@@ -120,18 +240,18 @@ document.addEventListener('DOMContentLoaded', () => {
         mockupWebsite.addEventListener('blur', (e) => {
             profileData.website = e.target.textContent.trim();
             mockupWebsite.style.display = profileData.website ? 'inline-block' : 'none';
+            if(websiteInput) websiteInput.value=profileData.website;
             saveState();
         });
         mockupWebsite.addEventListener('keydown', preventEnter);
 
-        // === Verified badge toggle (click the badge itself) ===
         mockupVerifiedBadge.addEventListener('click', () => {
             profileData.verified = !profileData.verified;
             mockupVerifiedBadge.style.opacity = profileData.verified ? '1' : '0.2';
+            if(verifiedInput) verifiedInput.checked=profileData.verified;
             saveState();
         });
 
-        // === Avatar upload ===
         mockupAvatarContainer.addEventListener('click', () => {
             hiddenAvatarInput.click();
         });
@@ -150,7 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
             hiddenAvatarInput.value = '';
         });
 
-        // === Highlight upload callback ===
         hiddenHighlightInput.addEventListener('change', (e) => {
             const file = e.target.files[0];
             const targetId = activeHighlightIdForUpload;
@@ -170,16 +289,12 @@ document.addEventListener('DOMContentLoaded', () => {
             activeHighlightIdForUpload = null;
         });
 
-        // === Grid photos upload callback (max 6 images) ===
         hiddenGridInput.addEventListener('change', (e) => {
             const MAX_GRID = 6;
             const files = Array.from(e.target.files);
             if (files.length === 0) return;
-
             const targetIndex = activeGridPhotoIndexForUpload;
-
             if (targetIndex !== null) {
-                // Replacing an existing slot
                 const reader = new FileReader();
                 reader.onload = (event) => {
                     profileData.gridPhotos[targetIndex] = event.target.result;
@@ -189,7 +304,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 reader.readAsDataURL(files[0]);
                 activeGridPhotoIndexForUpload = null;
             } else {
-                // Adding new photos — enforce 6 max
                 const currentCount = profileData.gridPhotos.filter(p => p !== '').length;
                 const slotsAvailable = MAX_GRID - currentCount;
                 if (slotsAvailable <= 0) {
@@ -199,25 +313,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 const filesToProcess = files.slice(0, slotsAvailable);
                 let loadedCount = 0;
-
-                // Remove empty placeholders for incoming files
                 let emptyIdx;
                 let removed = 0;
                 while ((emptyIdx = profileData.gridPhotos.indexOf('')) !== -1 && removed < filesToProcess.length) {
                     profileData.gridPhotos.splice(emptyIdx, 1);
                     removed++;
                 }
-
                 filesToProcess.forEach(file => {
                     const reader = new FileReader();
                     reader.onload = (event) => {
                         profileData.gridPhotos.unshift(event.target.result);
                         loadedCount++;
                         if (loadedCount === filesToProcess.length) {
-                            // Trim to max 6
                             profileData.gridPhotos = profileData.gridPhotos.slice(0, MAX_GRID);
                             profileData.posts = profileData.gridPhotos.filter(p => p !== '').length.toString();
                             mockupStatPosts.textContent = profileData.posts;
+                            if(postsInput) postsInput.value=profileData.posts;
                             renderGrid();
                             saveState();
                         }
@@ -228,11 +339,9 @@ document.addEventListener('DOMContentLoaded', () => {
             hiddenGridInput.value = '';
         });
 
-        // === Theme toggle ===
-        btnThemeLight.addEventListener('click', () => setTheme('light'));
-        btnThemeDark.addEventListener('click', () => setTheme('dark'));
+        if(btnThemeLight) btnThemeLight.addEventListener('click', () => setTheme('light'));
+        if(btnThemeDark) btnThemeDark.addEventListener('click', () => setTheme('dark'));
 
-        // === Reset ===
         btnResetMockup.addEventListener('click', () => {
             if (confirm('Reset the entire profile mockup? All photos and data will be cleared.')) {
                 localStorage.removeItem('toolcanvas_ig_preview_v3');
@@ -240,7 +349,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // === Download ===
         btnDownloadMockup.addEventListener('click', exportMockup);
     }
 
@@ -272,17 +380,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         mockupBioText.style.display = 'block';
-
         let formatted = profileData.bio
             .replace(/&/g, '&amp;')
             .replace(/</g, '&lt;')
             .replace(/>/g, '&gt;');
-
         formatted = formatted
             .replace(/(\n)/g, '<br>')
             .replace(/(#[a-zA-Z0-9_]+)/g, '<a href="#" onclick="event.preventDefault();">$1</a>')
             .replace(/(@[a-zA-Z0-9_.]+)/g, '<a href="#" onclick="event.preventDefault();">$1</a>');
-
         mockupBioText.innerHTML = formatted;
     }
 
@@ -291,21 +396,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (theme === 'dark') {
             mockupContainer.classList.remove('mockup-light');
             mockupContainer.classList.add('mockup-dark');
-            btnThemeDark.classList.add('active');
-            btnThemeLight.classList.remove('active');
+            if(btnThemeDark) btnThemeDark.classList.add('active');
+            if(btnThemeLight) btnThemeLight.classList.remove('active');
         } else {
             mockupContainer.classList.remove('mockup-dark');
             mockupContainer.classList.add('mockup-light');
-            btnThemeLight.classList.add('active');
-            btnThemeDark.classList.remove('active');
+            if(btnThemeLight) btnThemeLight.classList.add('active');
+            if(btnThemeDark) btnThemeDark.classList.remove('active');
         }
         saveState();
     }
 
-    // === Render Highlights ===
     function renderHighlights() {
         mockupHighlightsScroll.innerHTML = '';
-
         profileData.highlights.forEach((hl, index) => {
             const item = document.createElement('div');
             item.className = 'mockup-highlight-item';
@@ -321,10 +424,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="mockup-highlight-title" contenteditable="true" title="Click to edit">${hl.title || 'Highlight'}</span>
             `;
             mockupHighlightsScroll.appendChild(item);
-
             const hlImg = item.querySelector(`#hl-img-${hl.id}`);
             const hlPlaceholder = item.querySelector(`#hl-placeholder-${hl.id}`);
-
             if (hl.image) {
                 hlImg.src = hl.image;
                 hlImg.classList.remove('has-placeholder');
@@ -333,23 +434,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 hlImg.classList.add('has-placeholder');
                 hlPlaceholder.style.display = 'flex';
             }
-
-            // Click to change cover
             item.querySelector('.mockup-highlight-circle').addEventListener('click', (e) => {
                 e.stopPropagation();
                 activeHighlightIdForUpload = hl.id;
                 hiddenHighlightInput.click();
             });
-
-            // Edit title
             const titleEl = item.querySelector('.mockup-highlight-title');
             titleEl.addEventListener('blur', (e) => {
                 hl.title = e.target.textContent.trim();
                 saveState();
             });
             titleEl.addEventListener('keydown', preventEnter);
-
-            // Delete
             item.querySelector('.highlight-delete').addEventListener('click', (e) => {
                 e.stopPropagation();
                 profileData.highlights.splice(index, 1);
@@ -357,8 +452,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 saveState();
             });
         });
-
-        // Add button
         const addItem = document.createElement('div');
         addItem.className = 'mockup-highlight-item add-highlight-btn';
         addItem.innerHTML = `
@@ -366,7 +459,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="mockup-highlight-title">New</span>
         `;
         mockupHighlightsScroll.appendChild(addItem);
-
         addItem.addEventListener('click', () => {
             profileData.highlights.push({
                 id: Date.now(),
@@ -378,14 +470,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // === Render Grid (max 6) ===
     function renderGrid() {
         const MAX_GRID = 6;
         mockupPhotoGrid.innerHTML = '';
-
-        // Ensure grid never exceeds 6 items
         profileData.gridPhotos = profileData.gridPhotos.slice(0, MAX_GRID);
-
         profileData.gridPhotos.forEach((photo, index) => {
             const cell = document.createElement('div');
             cell.className = 'mockup-grid-photo';
@@ -399,10 +487,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${photo || ''}" class="has-placeholder" id="grid-img-${index}" alt="Post">
             `;
             mockupPhotoGrid.appendChild(cell);
-
             const gridImg = cell.querySelector(`#grid-img-${index}`);
             const gridPlaceholder = cell.querySelector(`#grid-placeholder-${index}`);
-
             if (photo) {
                 gridImg.src = photo;
                 gridImg.classList.remove('has-placeholder');
@@ -410,25 +496,21 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 gridImg.classList.add('has-placeholder');
                 gridPlaceholder.style.display = 'flex';
-
                 cell.addEventListener('click', () => {
                     activeGridPhotoIndexForUpload = index;
                     hiddenGridInput.click();
                 });
             }
-
-            // Delete
             cell.querySelector('.grid-photo-delete').addEventListener('click', (e) => {
                 e.stopPropagation();
                 profileData.gridPhotos.splice(index, 1);
                 profileData.posts = profileData.gridPhotos.filter(p => p !== '').length.toString();
                 mockupStatPosts.textContent = profileData.posts;
+                if(postsInput) postsInput.value=profileData.posts;
                 renderGrid();
                 saveState();
             });
         });
-
-        // Only show "Add Photos" button if under 6 images
         const filledCount = profileData.gridPhotos.filter(p => p !== '').length;
         if (filledCount < MAX_GRID && profileData.gridPhotos.length < MAX_GRID) {
             const addCell = document.createElement('div');
@@ -438,19 +520,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="label-text">Add Photos</span>
             `;
             mockupPhotoGrid.appendChild(addCell);
-
             addCell.addEventListener('click', () => {
                 activeGridPhotoIndexForUpload = null;
                 hiddenGridInput.click();
             });
         }
-
         initDragAndDrop();
     }
 
-    // === Drag & Drop ===
     let dragStartIndex;
-
     function initDragAndDrop() {
         const cells = mockupPhotoGrid.querySelectorAll('.mockup-grid-photo:not(.add-grid-photo-btn)');
         cells.forEach(cell => {
@@ -465,25 +543,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
     function onDragStart(e) {
         dragStartIndex = parseInt(this.dataset.index);
         this.classList.add('dragging');
         e.dataTransfer.effectAllowed = 'move';
     }
-
-    function onDragOver(e) {
-        e.preventDefault();
-    }
-
-    function onDragEnter() {
-        this.style.opacity = '0.6';
-    }
-
-    function onDragLeave() {
-        this.style.opacity = '';
-    }
-
+    function onDragOver(e) { e.preventDefault(); }
+    function onDragEnter() { this.style.opacity = '0.6'; }
+    function onDragLeave() { this.style.opacity = ''; }
     function onDrop(e) {
         e.stopPropagation();
         e.preventDefault();
@@ -496,23 +563,17 @@ document.addEventListener('DOMContentLoaded', () => {
             saveState();
         }
     }
-
     function onDragEnd() {
         this.classList.remove('dragging');
-        mockupPhotoGrid.querySelectorAll('.mockup-grid-photo').forEach(cell => {
-            cell.style.opacity = '';
-        });
+        mockupPhotoGrid.querySelectorAll('.mockup-grid-photo').forEach(cell => { cell.style.opacity = ''; });
     }
 
-    // === Export ===
     function exportMockup() {
         const area = document.getElementById('instagram-mockup');
         if (!area) return;
-
         const origText = btnDownloadMockup.textContent;
         btnDownloadMockup.textContent = 'Generating...';
         btnDownloadMockup.disabled = true;
-
         html2canvas(area, {
             scale: 2,
             useCORS: true,
@@ -535,35 +596,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // === Render All ===
     function renderAll() {
         mockupUsername.textContent = profileData.username || 'username';
+        if(usernameInput) usernameInput.value=profileData.username;
         mockupVerifiedBadge.style.opacity = profileData.verified ? '1' : '0.2';
-
+        if(verifiedInput) verifiedInput.checked=profileData.verified;
         mockupStatPosts.textContent = profileData.posts || '0';
         mockupStatFollowers.textContent = profileData.followers || '0';
         mockupStatFollowing.textContent = profileData.following || '0';
+        if(postsInput) postsInput.value=profileData.posts;
+        if(followersInput) followersInput.value=profileData.followers;
+        if(followingInput) followingInput.value=profileData.following;
         mockupFullname.textContent = profileData.fullname;
+        if(fullnameInput) fullnameInput.value=profileData.fullname;
         mockupCategory.textContent = profileData.category;
+        if(categoryInput) categoryInput.value=profileData.category;
         mockupCategory.style.display = profileData.category ? 'block' : 'none';
-
+        if(bioInput) bioInput.value=profileData.bio;
         if (profileData.avatar) {
             setAvatarImage(profileData.avatar);
         } else {
             clearAvatar();
         }
-
         formatBio();
-
         mockupWebsite.textContent = profileData.website || '';
+        if(websiteInput) websiteInput.value=profileData.website;
         mockupWebsite.style.display = profileData.website ? 'inline-block' : 'none';
-
         setTheme(profileData.theme);
         renderHighlights();
         renderGrid();
     }
 
-    // === Persistence ===
     function saveState() {
         try {
             localStorage.setItem('toolcanvas_ig_preview_v3', JSON.stringify(profileData));
@@ -581,5 +644,26 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (e) {
             console.warn('Load failed:', e);
         }
+    }
+
+    function initFaq(){
+        const items=document.querySelectorAll('#faq-accordion .faq-item');
+        items.forEach(item=>{
+            const btn=item.querySelector('.faq-question');
+            const ans=item.querySelector('.faq-answer');
+            if(!btn||!ans) return;
+            btn.addEventListener('click', ()=>{
+                const isOpen=item.classList.contains('open');
+                if(isOpen){
+                    item.classList.remove('open');
+                    btn.setAttribute('aria-expanded','false');
+                    ans.style.maxHeight='0';
+                }else{
+                    item.classList.add('open');
+                    btn.setAttribute('aria-expanded','true');
+                    ans.style.maxHeight=ans.scrollHeight+'px';
+                }
+            });
+        });
     }
 });

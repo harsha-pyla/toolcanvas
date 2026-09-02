@@ -59,8 +59,16 @@ document.addEventListener("DOMContentLoaded", () => {
     let isRecording = false;
     let recordTimer = null;
 
-    // --- Drag and Drop Interface ---
-    dropZone.addEventListener("click", () => videoInput.click());
+    // --- Drag and Drop Interface — robust ---
+    dropZone.addEventListener("click", () => {
+        videoInput.click();
+    });
+    dropZone.addEventListener("keydown", (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            videoInput.click();
+        }
+    });
 
     dropZone.addEventListener("dragover", (e) => {
         e.preventDefault();
@@ -83,13 +91,17 @@ document.addEventListener("DOMContentLoaded", () => {
     videoInput.addEventListener("change", (e) => {
         if (e.target.files.length > 0) {
             handleVideoLoad(e.target.files[0]);
+            e.target.value = '';
         }
     });
 
-    // Handle Loaded Video
+    // Handle Loaded Video — accept by type or extension
     function handleVideoLoad(file) {
-        if (!file.type.startsWith("video/")) {
-            alert("Incompatible File Type: Please select a valid video file.");
+        const isVideoByType = file.type && file.type.startsWith("video/");
+        const isVideoByExt = /\.(mp4|webm|ogg|mov|avi|mkv|m4v|3gp|flv|wmv|mpg|mpeg)$/i.test(file.name);
+        if (!isVideoByType && !isVideoByExt) {
+            if (window.showToast) window.showToast("Please select a valid video file (MP4, WebM, MOV, etc.)");
+            else alert("Incompatible File Type: Please select a valid video file.");
             return;
         }
 
@@ -358,15 +370,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    function setPlayRangeLabel(text) {
+        const span = btnPlayRange.querySelector("span");
+        if (span) span.textContent = text;
+        else btnPlayRange.textContent = text;
+    }
+
     function startRangePlayback() {
         isPlayingRange = true;
         btnPlayRange.classList.add("btn-primary");
         btnPlayRange.classList.remove("btn-secondary");
-        btnPlayRange.querySelector("span").textContent = "Pause Range Playback";
+        setPlayRangeLabel("Pause Range Playback");
         
         // Seek to start and play
         videoPreview.currentTime = startTime;
-        videoPreview.play();
+        const p = videoPreview.play();
+        if (p && p.catch) p.catch(() => {});
 
         // Timer monitor
         rangePlayTimer = setInterval(() => {
@@ -379,87 +398,87 @@ document.addEventListener("DOMContentLoaded", () => {
     function stopRangePlayback() {
         isPlayingRange = false;
         clearInterval(rangePlayTimer);
-        videoPreview.pause();
-        videoPreview.currentTime = startTime;
+        try { videoPreview.pause(); } catch(e) {}
+        try { videoPreview.currentTime = startTime; } catch(e) {}
         
         btnPlayRange.classList.remove("btn-primary");
         btnPlayRange.classList.add("btn-secondary");
-        btnPlayRange.querySelector("span").textContent = "Play Selected Range";
+        setPlayRangeLabel("Play Selected Range");
     }
 
     // --- Silent MediaRecorder Trimming Engine ---
-    btnTrim.addEventListener("click", () => {
+    btnTrim.addEventListener("click", async () => {
         if (isRecording) return;
-        
+
         stopRangePlayback();
 
-        // Init Web Audio if needed (must be done on user action click)
-        if (!audioCtx) {
+        try {
+            // Init Web Audio if needed (must be done on user action click)
+            if (!audioCtx) {
+                try {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    sourceNode = audioCtx.createMediaElementSource(videoPreview);
+                    destNode = audioCtx.createMediaStreamDestination();
+                    gainNode = audioCtx.createGain();
+
+                    // routing structure:
+                    // Source Node -> Monitor Gain (0) -> Audio Destination (Speakers)
+                    // Source Node -> Recording Destination (MediaStream Destination)
+                    sourceNode.connect(destNode);
+                    sourceNode.connect(gainNode);
+                    gainNode.connect(audioCtx.destination);
+                } catch (err) {
+                    console.warn("Web Audio Routing Error:", err);
+                }
+            }
+
+            // Mute speaker monitor gain node
+            if (gainNode) {
+                gainNode.gain.setValueAtTime(0, audioCtx.currentTime); // Silent monitor!
+            }
+
+            // Capture video streams
+            let stream;
             try {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                sourceNode = audioCtx.createMediaElementSource(videoPreview);
-                destNode = audioCtx.createMediaStreamDestination();
-                gainNode = audioCtx.createGain();
-
-                // routing structure:
-                // Source Node -> Monitor Gain (0) -> Audio Destination (Speakers)
-                // Source Node -> Recording Destination (MediaStream Destination)
-                sourceNode.connect(destNode);
-                sourceNode.connect(gainNode);
-                gainNode.connect(audioCtx.destination);
+                if (videoPreview.captureStream) {
+                    stream = videoPreview.captureStream(30); // 30 FPS
+                } else if (videoPreview.mozCaptureStream) {
+                    stream = videoPreview.mozCaptureStream(30);
+                } else {
+                    throw new Error("Stream Capture not supported by browser");
+                }
             } catch (err) {
-                console.warn("Web Audio Routing Error:", err);
+                alert("Trimming Error: Your browser does not support local canvas video capture streams.");
+                resetProgressState();
+                return;
             }
-        }
 
-        // Mute speaker monitor gain node
-        if (gainNode) {
-            gainNode.gain.setValueAtTime(0, audioCtx.currentTime); // Silent monitor!
-        }
+            // If we have a Web Audio stream node, add the audio track to our capture stream
+            if (destNode) {
+                const audioTracks = destNode.stream.getAudioTracks();
+                if (audioTracks.length > 0) {
+                    // Remove existing audio tracks from video capture stream first
+                    const defaultAudioTracks = stream.getAudioTracks();
+                    defaultAudioTracks.forEach(t => stream.removeTrack(t));
 
-        // Capture video streams
-        let stream;
-        try {
-            if (videoPreview.captureStream) {
-                stream = videoPreview.captureStream(30); // 30 FPS
-            } else if (videoPreview.mozCaptureStream) {
-                stream = videoPreview.mozCaptureStream(30);
-            } else {
-                throw new Error("Stream Capture not supported by browser");
+                    // Add routed clean track
+                    stream.addTrack(audioTracks[0]);
+                }
             }
-        } catch (err) {
-            alert("Trimming Error: Your browser does not support local canvas video capture streams.");
-            resetProgressState();
-            return;
-        }
 
-        // If we have a Web Audio stream node, add the audio track to our capture stream
-        if (destNode) {
-            const audioTracks = destNode.stream.getAudioTracks();
-            if (audioTracks.length > 0) {
-                // Remove existing audio tracks from video capture stream first
-                const defaultAudioTracks = stream.getAudioTracks();
-                defaultAudioTracks.forEach(t => stream.removeTrack(t));
-
-                // Add routed clean track
-                stream.addTrack(audioTracks[0]);
+            // Detect supported codecs
+            let options = { mimeType: "video/webm;codecs=vp9,opus" };
+            if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+                options = { mimeType: "video/webm;codecs=vp8,opus" };
             }
-        }
+            if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+                options = { mimeType: "video/webm" };
+            }
 
-        // Detect supported codecs
-        let options = { mimeType: "video/webm;codecs=vp9,opus" };
-        if (!MediaRecorder.isTypeSupported(options.mimeType)) {
-            options = { mimeType: "video/webm;codecs=vp8,opus" };
-        }
-        if (!MediaRecorder.isTypeSupported(options.mimeType)) {
-            options = { mimeType: "video/webm" };
-        }
-
-        // Setup Media Recorder
-        try {
+            // Setup Media Recorder
             recordedChunks = [];
             mediaRecorder = new MediaRecorder(stream, options);
-            
+
             mediaRecorder.ondataavailable = (e) => {
                 if (e.data && e.data.size > 0) {
                     recordedChunks.push(e.data);
@@ -470,48 +489,58 @@ document.addEventListener("DOMContentLoaded", () => {
                 compileAndDownload();
             };
 
-        } catch (err) {
-            alert("Recorder Error: Failed to initialize browser media writer node.");
-            resetProgressState();
-            return;
-        }
+            // Disable interaction elements
+            isRecording = true;
+            btnTrim.classList.add("disabled");
+            btnReset.style.pointerEvents = "none";
+            progressContainer.style.display = "block";
+            updateProgress("Preparing video streams...", 0);
 
-        // Disable interaction elements
-        isRecording = true;
-        btnTrim.classList.add("disabled");
-        btnReset.style.pointerEvents = "none";
-        progressContainer.style.display = "block";
-        updateProgress("Preparing video streams...", 0);
+            // Seek video to start point
+            videoPreview.currentTime = startTime;
 
-        // Seek video to start point
-        videoPreview.currentTime = startTime;
+            // Start recording once seek completes
+            let startCalled = false;
+            const startRecordProcess = () => {
+                if (startCalled) return;
+                startCalled = true;
+                videoPreview.removeEventListener("seeked", startRecordProcess);
 
-        // Start recording once seek completes
-        const startRecordProcess = () => {
-            videoPreview.removeEventListener("seeked", startRecordProcess);
-            
-            // Start video playback and recording
-            videoPreview.play();
-            mediaRecorder.start();
-            updateProgress("Trimming range...", 0);
+                // Start video playback and recording
+                videoPreview.play();
+                mediaRecorder.start();
+                updateProgress("Trimming range...", 0);
 
-            const totalDuration = endTime - startTime;
+                const totalDuration = endTime - startTime;
 
-            recordTimer = setInterval(() => {
-                const elapsed = videoPreview.currentTime - startTime;
-                let percent = Math.floor((elapsed / totalDuration) * 100);
-                percent = Math.max(0, Math.min(100, percent));
+                recordTimer = setInterval(() => {
+                    const elapsed = videoPreview.currentTime - startTime;
+                    let percent = Math.floor((elapsed / totalDuration) * 100);
+                    percent = Math.max(0, Math.min(100, percent));
 
-                updateProgress("Slicing timeline frames...", percent);
+                    updateProgress("Slicing timeline frames...", percent);
 
-                if (videoPreview.currentTime >= endTime || videoPreview.ended) {
-                    stopRecordingProcess();
+                    if (videoPreview.currentTime >= endTime || videoPreview.ended) {
+                        stopRecordingProcess();
+                    }
+                }, 50);
+            };
+
+            // Bind seek callback
+            videoPreview.addEventListener("seeked", startRecordProcess);
+
+            // Fallback: if seeked doesn't fire within 1s, call startRecordProcess anyway
+            setTimeout(() => {
+                if (isRecording && !startCalled) {
+                    startRecordProcess();
                 }
-            }, 50);
-        };
+            }, 1000);
 
-        // Bind seek callback
-        videoPreview.addEventListener("seeked", startRecordProcess);
+        } catch (err) {
+            console.error("Trimming failed:", err);
+            alert("An error occurred during trimming. Please try again.");
+            resetProgressState();
+        }
     });
 
     function stopRecordingProcess() {
@@ -557,44 +586,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- Progress UI Helpers ---
     function updateProgress(status, percent) {
-        progressStatus.textContent = status;
-        progressPercentage.textContent = `${percent}%`;
-        progressBar.style.width = `${percent}%`;
+        if (progressStatus) progressStatus.textContent = status;
+        if (progressPercentage) progressPercentage.textContent = `${percent}%`;
+        if (progressBar) progressBar.style.width = `${percent}%`;
     }
 
     function resetProgressState() {
         isRecording = false;
-        btnTrim.classList.remove("disabled");
-        btnReset.style.pointerEvents = "auto";
-        progressContainer.style.display = "none";
+        if (btnTrim) btnTrim.classList.remove("disabled");
+        if (btnReset) {
+            btnReset.style.pointerEvents = "auto";
+            btnReset.disabled = false;
+            btnReset.classList.remove("disabled");
+        }
+        if (progressContainer) progressContainer.style.display = "none";
         updateProgress("Preparing file...", 0);
     }
 
     // --- Reset Workspace ---
-    btnReset.addEventListener("click", () => {
+    btnReset.addEventListener("click", (e) => {
+        e.preventDefault();
         resetWorkspace();
     });
 
     function resetWorkspace() {
-        stopRangePlayback();
+        try { stopRangePlayback(); } catch(e) { console.warn(e); }
         clearInterval(recordTimer);
+        clearInterval(rangePlayTimer);
         
         if (mediaRecorder && mediaRecorder.state !== "inactive") {
-            mediaRecorder.stop();
+            try { mediaRecorder.stop(); } catch(e) {}
         }
 
-        // Clean video previews
-        if (videoPreview.src) {
-            URL.revokeObjectURL(videoPreview.src);
-            videoPreview.src = "";
-            videoPreview.load();
-        }
+        // Clean video previews — detach error handler first to avoid false "Failed to load" alert
+        videoPreview.onerror = null;
+        videoPreview.onloadedmetadata = null;
+        try {
+            if (videoPreview.src && videoPreview.src.startsWith("blob:")) {
+                URL.revokeObjectURL(videoPreview.src);
+            }
+        } catch(e) {}
+        try { videoPreview.pause(); } catch(e) {}
+        videoPreview.removeAttribute("src");
+        try { videoPreview.load(); } catch(e) {}
+        // keep src empty without re-triggering error
 
         selectedFile = null;
         duration = 0;
         startTime = 0;
         endTime = 0;
-        videoInput.value = "";
+        if (videoInput) videoInput.value = "";
 
         // Reset progress UI
         resetProgressState();

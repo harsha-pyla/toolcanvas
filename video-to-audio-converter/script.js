@@ -13,6 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const metaMimetype = document.getElementById("meta-mimetype");
     const metaDuration = document.getElementById("meta-duration");
 
+    // Preview Display
+    const previewVideo = document.getElementById("preview-video");
+    const previewFilename = document.getElementById("preview-filename");
+    const previewDurationBadge = document.getElementById("preview-duration-badge");
+
     // Progress Bar Elements
     const progressContainer = document.getElementById("progress-container");
     const progressStatus = document.getElementById("progress-status");
@@ -29,9 +34,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let selectedFile = null;
     let tempVideoEl = null;
+    let previewObjectURL = null;
 
-    // Drag and Drop Files loader
-    dropZone.addEventListener("click", () => videoInput.click());
+    // Drag and Drop Files loader — robust
+    dropZone.addEventListener("click", () => {
+        videoInput.click();
+    });
+
+    dropZone.addEventListener("keydown", (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            videoInput.click();
+        }
+    });
 
     dropZone.addEventListener("dragover", (e) => {
         e.preventDefault();
@@ -54,49 +69,130 @@ document.addEventListener("DOMContentLoaded", () => {
     videoInput.addEventListener("change", (e) => {
         if (e.target.files.length > 0) {
             handleVideoLoad(e.target.files[0]);
+            e.target.value = '';
         }
     });
 
     // Handle Video file load
     function handleVideoLoad(file) {
-        if (!file.type.startsWith("video/")) {
-            alert("Incompatible File Type: Please select a valid video file.");
+        console.log("handleVideoLoad called for:", file.name, file.type, file.size);
+
+        // Accept video MIME types OR supported video extensions.
+        const isVideoByType = file.type && file.type.startsWith("video/");
+        const isVideoByExt = /\.(mp4|webm|ogg|mov|avi|mkv|m4v|3gp|flv|wmv|mpg|mpeg)$/i.test(file.name);
+
+        if (!isVideoByType && !isVideoByExt) {
+            if (window.showToast) {
+                window.showToast("Please select a valid video file.");
+            } else {
+                alert("Please select a valid video file.");
+            }
             return;
         }
 
+        // Save selected video immediately.
         selectedFile = file;
 
-        // Clear workspace
+        // Clear previous state.
         clearWorkspaceState();
 
-        // General file properties (ready instantly)
+        // Show file information immediately.
         metaFilename.textContent = file.name;
         metaFilesize.textContent = formatBytes(file.size);
-        metaMimetype.textContent = file.type || "Unknown";
-        metaDuration.textContent = "Loading...";
+        metaMimetype.textContent = file.type || getMimeTypeFromExtension(file.name);
+        metaDuration.textContent = "Reading...";
+        if (previewFilename) previewFilename.textContent = file.name;
+        if (previewDurationBadge) previewDurationBadge.textContent = "—";
 
-        // Extract duration using temporary hidden video element
-        tempVideoEl = document.createElement("video");
-        tempVideoEl.src = URL.createObjectURL(file);
-        
-        tempVideoEl.onloadedmetadata = () => {
-            metaDuration.textContent = formatDuration(tempVideoEl.duration);
-            URL.revokeObjectURL(tempVideoEl.src);
+        // IMPORTANT:
+        // Open the workspace immediately.
+        // Do NOT wait for video metadata.
+        dropZone.style.display = "none";
+        converterWorkspace.style.display = "block";
+
+        // Show actual video preview on left side
+        try {
+            if (previewVideo) {
+                if (previewObjectURL) {
+                    URL.revokeObjectURL(previewObjectURL);
+                    previewObjectURL = null;
+                }
+                previewObjectURL = URL.createObjectURL(file);
+                previewVideo.src = previewObjectURL;
+                previewVideo.load();
+            }
+        } catch (e) {
+            console.warn("Preview video failed:", e);
+        }
+
+        // Try to read duration separately.
+        // Failure here must NOT prevent importing the video.
+        try {
+            const objectURL = URL.createObjectURL(file);
+
+            const video = document.createElement("video");
+            tempVideoEl = video;
+
+            video.preload = "metadata";
+            video.muted = true;
+            video.playsInline = true;
+            video.src = objectURL;
+
+            const cleanup = () => {
+                URL.revokeObjectURL(objectURL);
+
+                video.removeAttribute("src");
+                video.load();
+
+                if (tempVideoEl === video) {
+                    tempVideoEl = null;
+                }
+            };
+
+            video.addEventListener("loadedmetadata", () => {
+                const d = formatDuration(video.duration);
+                metaDuration.textContent = d;
+                if (previewDurationBadge) previewDurationBadge.textContent = d;
+                cleanup();
+            }, { once: true });
+
+            video.addEventListener("error", () => {
+                console.warn("Could not read video metadata.");
+                metaDuration.textContent = "Unknown";
+                if (previewDurationBadge) previewDurationBadge.textContent = "--:--";
+                cleanup();
+            }, { once: true });
+
+            video.load();
+
+        } catch (err) {
+            console.error("Video metadata error:", err);
+            metaDuration.textContent = "Unknown";
+            if (previewDurationBadge) previewDurationBadge.textContent = "--:--";
             tempVideoEl = null;
+        }
+    }
 
-            dropZone.style.display = "none";
-            converterWorkspace.style.display = "block";
+    // MIME fallback for browsers that return an empty file.type.
+    function getMimeTypeFromExtension(filename) {
+        const ext = filename.split(".").pop().toLowerCase();
+
+        const mimeMap = {
+            mp4: "video/mp4",
+            webm: "video/webm",
+            ogg: "video/ogg",
+            mov: "video/quicktime",
+            avi: "video/x-msvideo",
+            mkv: "video/x-matroska",
+            m4v: "video/x-m4v",
+            "3gp": "video/3gpp",
+            flv: "video/x-flv",
+            wmv: "video/x-ms-wmv",
+            mpg: "video/mpeg",
+            mpeg: "video/mpeg"
         };
 
-        tempVideoEl.onerror = () => {
-            // Fallback if metadata read fails
-            metaDuration.textContent = "Unknown (Compatibility Mode)";
-            URL.revokeObjectURL(tempVideoEl.src);
-            tempVideoEl = null;
-
-            dropZone.style.display = "none";
-            converterWorkspace.style.display = "block";
-        };
+        return mimeMap[ext] || "video/*";
     }
 
     // Helper: Format bytes to human readable sizes
@@ -319,9 +415,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Progress Bar updater
     function updateProgress(status, percent) {
-        progressStatus.textContent = status;
-        progressPercentage.textContent = `${percent}%`;
-        progressBar.style.width = `${percent}%`;
+        if (progressStatus) {
+            progressStatus.textContent = status;
+        }
+
+        if (progressPercentage) {
+            progressPercentage.textContent = `${percent}%`;
+        }
+
+        if (progressBar) {
+            progressBar.style.width = `${percent}%`;
+        }
     }
 
     // Reset Progress Bar
@@ -345,8 +449,18 @@ document.addEventListener("DOMContentLoaded", () => {
     function clearWorkspaceState() {
         resetProgressState();
         if (tempVideoEl) {
-            URL.revokeObjectURL(tempVideoEl.src);
+            try { URL.revokeObjectURL(tempVideoEl.src); } catch(e) {}
             tempVideoEl = null;
         }
+        if (previewObjectURL) {
+            try { URL.revokeObjectURL(previewObjectURL); } catch(e) {}
+            previewObjectURL = null;
+        }
+        if (previewVideo) {
+            previewVideo.removeAttribute("src");
+            try { previewVideo.load(); } catch(e) {}
+        }
+        if (previewFilename) previewFilename.textContent = "";
+        if (previewDurationBadge) previewDurationBadge.textContent = "--:--";
     }
 });
