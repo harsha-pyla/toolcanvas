@@ -82,6 +82,20 @@
 .profile-info-row{display:flex;gap:16px;margin-top:12px}
 .info-left{flex:1;min-width:0}
 .info-right{min-width:150px;display:flex;flex-direction:column;gap:8px}
+@media (max-width:767px) {
+  .tool-section { padding:16px 0; }
+  .tool-header h1 { font-size:28px; line-height:34px; }
+  .tool-header .tool-intro { font-size:15px; line-height:24px; }
+  .working-panel { border-radius:4px; }
+  .form-column, .preview-column { padding:12px; min-width:0; }
+  .preview-frame { padding:8px; }
+  .linkedin-mockup { width:100%; gap:10px; }
+  .info-right { min-width:0; width:100%; }
+  .mockup-cover, .cover-banner-container { height:auto; min-height:90px; }
+  .mockup-cover img, .cover-banner-container img { width:100%; height:auto; object-fit:cover; }
+  .form-group input, .form-group textarea, .form-group select { font-size:16px; }
+  .toggle-btn, .btn-primary, .btn-secondary { min-height:44px; }
+}
 .name-container{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .linkedin-fullname{font-size:18px;line-height:24px;font-weight:600;margin:0}
 .linkedin-pronouns{font-size:13px;color:var(--ink-muted)}

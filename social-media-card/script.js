@@ -36,7 +36,84 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let state = {};
     let qrCodeInstance = null;
+    let lastShortUrl = '';
     const isPublicView = document.documentElement.classList.contains('public-view-active');
+
+    // ---- Supabase Short Link Helpers (no long URLs) ----
+    let supabaseClient = null;
+    let supabaseConfigPromise = null;
+    function getSupabaseConfig() {
+        if (!supabaseConfigPromise) {
+            supabaseConfigPromise = fetch('/api/supabase-config')
+                .then(r => { if (!r.ok) throw new Error('no vercel config'); return r.json(); })
+                .then(d => {
+                    if (!d.supabaseUrl || !d.supabaseKey) throw new Error('missing creds');
+                    return d;
+                })
+                .catch(() => fetch('../js/local-config.json')
+                    .then(r => { if (!r.ok) throw new Error('no local config'); return r.json(); })
+                    .catch(() => ({
+                        supabaseUrl: 'https://xldublyrjqnlbyfwjpwd.supabase.co',
+                        supabaseKey: 'sb_publishable_yjD30uSZL1QRD2_t3_JCTg_lqMExOhT'
+                    }))
+                );
+        }
+        return supabaseConfigPromise;
+    }
+    function loadSupabase(cb) {
+        if (window.supabase) {
+            if (supabaseClient) { if (cb) cb(supabaseClient); return; }
+            getSupabaseConfig().then(cfg => {
+                if (!supabaseClient && window.supabase) supabaseClient = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseKey);
+                if (cb) cb(supabaseClient);
+            });
+            return;
+        }
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+        s.onload = () => {
+            getSupabaseConfig().then(cfg => {
+                if (window.supabase && !supabaseClient) supabaseClient = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseKey);
+                if (cb) cb(supabaseClient);
+            });
+        };
+        document.head.appendChild(s);
+    }
+    function generateShortId(len) {
+        len = len || 7;
+        const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        const arr = new Uint32Array(len);
+        window.crypto.getRandomValues(arr);
+        let id = '';
+        for (let i = 0; i < len; i++) id += chars[arr[i] % chars.length];
+        return id;
+    }
+    function packState(st) {
+        try {
+            const slim = {
+                n: st.name || '', t: st.title || '', co: st.company || '',
+                em: st.email || '', ph: st.phone || '', w: st.website || '',
+                lo: st.location || '', th: st.theme || 'minimalist',
+                col: st.customColor || '', ty: st.typography || 'sans',
+                or: st.orientation || 'horizontal', l: st.links || []
+            };
+            return btoa(unescape(encodeURIComponent(JSON.stringify(slim))))
+                .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+        } catch (e) { return ''; }
+    }
+    function unpackState(packed) {
+        let b64 = packed.replace(/-/g, '+').replace(/_/g, '/');
+        while (b64.length % 4) b64 += '=';
+        const slim = JSON.parse(decodeURIComponent(escape(atob(b64))));
+        return {
+            name: slim.n || '', title: slim.t || '', company: slim.co || '',
+            avatar: '', email: slim.em || '', phone: slim.ph || '',
+            website: slim.w || '', location: slim.lo || '',
+            theme: slim.th || 'minimalist', customColor: slim.col || '#3F6B4F',
+            typography: slim.ty || 'sans', orientation: slim.or || 'horizontal',
+            links: Array.isArray(slim.l) ? slim.l : []
+        };
+    }
 
     if (isPublicView) {
         parseUrlParams();
@@ -60,6 +137,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function parseUrlParams() {
         const params = new URLSearchParams(window.location.search);
+        const shortId = params.get('s') || params.get('share') || params.get('id');
+        if (shortId) {
+            // Short link (?s=XXXXXXX) — load from Supabase
+            loadSupabase(async (supabase) => {
+                try {
+                    if (!supabase) throw new Error('no supabase');
+                    const { data, error } = await supabase.from('social_card_shares').select('data').eq('id', shortId).maybeSingle();
+                    if (error) throw error;
+                    if (!data || !data.data) throw new Error('not found');
+                    state = unpackState(data.data);
+                    lastShortUrl = window.location.origin + window.location.pathname + '?s=' + shortId;
+                    renderCardPreview();
+                    initQr();
+                    updateQrCode();
+                    return;
+                } catch (e) {
+                    console.warn('Short link load failed, trying legacy params:', e);
+                }
+                // Fall through to legacy param parsing
+                parseLegacyParams(params);
+                renderCardPreview();
+                initQr();
+                updateQrCode();
+            });
+            state = JSON.parse(JSON.stringify(DEFAULT_DATA));
+            return;
+        }
+        parseLegacyParams(params);
+    }
+
+    function parseLegacyParams(params) {
+        params = params || new URLSearchParams(window.location.search);
         state = {
             name: params.get('n') || '',
             title: params.get('t') || '',
@@ -159,6 +268,8 @@ document.addEventListener('DOMContentLoaded', () => {
             targetUrl = webUrl;
         } else if (state.email && state.email.trim()) {
             targetUrl = 'mailto:' + state.email.trim();
+        } else if (lastShortUrl) {
+            targetUrl = lastShortUrl;
         } else {
             targetUrl = getShareUrl();
         }
@@ -381,12 +492,50 @@ document.addEventListener('DOMContentLoaded', () => {
         const btnCopyLink = document.getElementById('btn-copy-link');
         if (btnCopyLink) {
             btnCopyLink.addEventListener('click', () => {
-                const shareUrl = getShareUrl();
-                navigator.clipboard.writeText(shareUrl).then(() => {
-                    const originalText = btnCopyLink.innerHTML;
-                    btnCopyLink.innerHTML = '<span>Copied Share Link!</span>'; btnCopyLink.disabled = true;
-                    setTimeout(() => { btnCopyLink.innerHTML = originalText; btnCopyLink.disabled = false; }, 2000);
-                }).catch(err => { prompt('Copy your visiting card link below:', shareUrl); });
+                const originalText = btnCopyLink.innerHTML;
+                btnCopyLink.innerHTML = '<span>Creating short link...</span>'; btnCopyLink.disabled = true;
+                const packed = packState(state);
+                if (!packed) {
+                    const fallback = getShareUrl();
+                    finishCopy(fallback);
+                    return;
+                }
+                const shortId = generateShortId(7);
+                loadSupabase(async (supabase) => {
+                    try {
+                        if (!supabase) throw new Error('Supabase not available');
+                        const { error } = await supabase.from('social_card_shares').insert([{ id: shortId, data: packed }]);
+                        if (error) throw error;
+                        const shortUrl = window.location.origin + window.location.pathname + '?s=' + shortId;
+                        lastShortUrl = shortUrl;
+                        try { window.history.replaceState({}, '', shortUrl); } catch (_) {}
+                        updateQrCode();
+                        finishCopy(shortUrl);
+                        if (window.showToast) window.showToast('Short link copied!');
+                    } catch (err) {
+                        console.warn('Short link failed, using long link:', err && err.message ? err.message : err);
+                        const fallback = getShareUrl();
+                        finishCopy(fallback);
+                        if (err && err.message && err.message.toLowerCase().includes('social_card_shares')) {
+                            if (window.showToast) window.showToast('Short links need table social_card_shares — long link copied');
+                        } else if (window.showToast) {
+                            window.showToast('Short link unavailable — long link copied');
+                        }
+                    }
+                });
+
+                function finishCopy(url) {
+                    const done = () => {
+                        btnCopyLink.innerHTML = '<span>Copied Share Link!</span>';
+                        setTimeout(() => { btnCopyLink.innerHTML = originalText; btnCopyLink.disabled = false; }, 2000);
+                    };
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(url).then(done).catch(() => { prompt('Copy your visiting card link below:', url); btnCopyLink.innerHTML = originalText; btnCopyLink.disabled = false; });
+                    } else {
+                        prompt('Copy your visiting card link below:', url);
+                        btnCopyLink.innerHTML = originalText; btnCopyLink.disabled = false;
+                    }
+                }
             });
         }
         const btnReset = document.getElementById('btn-reset');

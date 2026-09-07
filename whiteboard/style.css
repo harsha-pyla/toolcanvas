@@ -189,7 +189,20 @@ body.whiteboard-maximized-active{ overflow:hidden !important; }
 .toolbar-divider{ width:1px; height:24px; background:var(--line); flex-shrink:0; }
 
 @media (max-width:768px){
-  .floating-toolbar{ bottom:12px; }
+  .floating-toolbar{
+    bottom:12px;
+    left:8px; right:8px; transform:none;
+    max-width:none; width:auto;
+    flex-wrap:nowrap; justify-content:flex-start;
+    overflow-x:auto; scrollbar-width:none;
+    padding:6px; gap:6px;
+  }
+  .floating-toolbar::-webkit-scrollbar { display:none; }
+  .toolbar-group { flex-shrink:0; }
+  .toolbar-divider { flex-shrink:0; }
+  .icon-btn { width:44px; height:44px; }
+  #size-slider { width:64px; }
+  .size-value { display:none; }
   .whiteboard-header{ top:8px; left:8px; right:8px; }
   .whiteboard-header .site-logo{ display:none; }
 }

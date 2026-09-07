@@ -97,8 +97,10 @@
           <h1 class="display-l hero-animate" data-animate="1">Precise tools that run where your files are.</h1>
           <p class="body-l hero-animate" data-animate="2">A small, precise toolbox — converters, resizers, generators — that runs in your browser. No upload, no signup. Your files never leave your device.</p>
           <div class="hero-search hero-animate" data-animate="3">
-            <span class="hero-search__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-            <input id="hero-search" type="search" placeholder="Find a tool — e.g. resize an image" aria-label="Find a tool">
+            <div class="hero-search__row">
+              <span class="hero-search__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <input id="hero-search" type="search" placeholder="Find a tool — e.g. resize an image" aria-label="Find a tool">
+            </div>
             <select id="hero-category" aria-label="Filter by category">
               <option value="all">All tools</option>
               <option value="random">Random</option>
@@ -390,6 +392,19 @@
     const btn24 = document.getElementById('clock-24h');
     if(!countrySel || !timeEl) return;
     let is24 = false;
+    try {
+      const savedTz = localStorage.getItem('tc-clock-tz');
+      const savedFmt = localStorage.getItem('tc-clock-24');
+      if (savedTz && Array.from(countrySel.options).some(o => o.value === savedTz)) {
+        countrySel.value = savedTz;
+      } else {
+        const browserTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        if (browserTz && Array.from(countrySel.options).some(o => o.value === browserTz)) {
+          countrySel.value = browserTz;
+        }
+      }
+      if (savedFmt === '1') is24 = true;
+    } catch (_) {}
     function update(){
       const tz = countrySel.value;
       const now = new Date();
@@ -403,9 +418,14 @@
         timeEl.textContent = now.toLocaleTimeString();
       }
     }
-    countrySel.addEventListener('change', update);
-    btn12.addEventListener('click', ()=>{ is24=false; btn12.classList.add('active'); btn12.setAttribute('aria-pressed','true'); btn24.classList.remove('active'); btn24.setAttribute('aria-pressed','false'); update(); });
-    btn24.addEventListener('click', ()=>{ is24=true; btn24.classList.add('active'); btn24.setAttribute('aria-pressed','true'); btn12.classList.remove('active'); btn12.setAttribute('aria-pressed','false'); update(); });
+    function syncFormatBtns(){
+      btn12.classList.toggle('active', !is24); btn12.setAttribute('aria-pressed', String(!is24));
+      btn24.classList.toggle('active', is24); btn24.setAttribute('aria-pressed', String(is24));
+    }
+    countrySel.addEventListener('change', ()=>{ try { localStorage.setItem('tc-clock-tz', countrySel.value); } catch (_) {} update(); });
+    btn12.addEventListener('click', ()=>{ is24=false; try { localStorage.setItem('tc-clock-24', '0'); } catch (_) {} syncFormatBtns(); update(); });
+    btn24.addEventListener('click', ()=>{ is24=true; try { localStorage.setItem('tc-clock-24', '1'); } catch (_) {} syncFormatBtns(); update(); });
+    syncFormatBtns();
     update();
     setInterval(update, 1000);
   })();

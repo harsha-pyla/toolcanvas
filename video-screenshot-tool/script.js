@@ -80,22 +80,33 @@ document.addEventListener("DOMContentLoaded", () => {
     videoInput.addEventListener("change", (e) => {
         if (e.target.files.length > 0) {
             loadVideo(e.target.files[0]);
+            e.target.value = "";
         }
     });
 
     // Initialize Video State
     function loadVideo(file) {
-        if (!file.type.startsWith("video/")) {
-            alert("Incompatible File Type: Please select a valid video file.");
+        const isVideoByType = file.type && file.type.startsWith("video/");
+        const isVideoByExt = /\.(mp4|webm|ogg|mov|avi|mkv|m4v|3gp|flv|wmv|mpg|mpeg)$/i.test(file.name);
+        if (!isVideoByType && !isVideoByExt) {
+            if (window.showToast) window.showToast("Please select a valid video file (MP4, WebM, MOV, etc.)");
+            else alert("Incompatible File Type: Please select a valid video file.");
             return;
         }
 
         currentVideoFile = file;
-        
-        // Reset previous sessions
+
+        // Reset previous sessions (frees old object URL + frames)
         resetWorkspace();
 
+        // Show workspace immediately so upload feels fast
+        dropZone.style.display = "none";
+        capturerWorkspace.style.display = "block";
+        updateTimerDisplay(0, NaN);
+        timestampDisplay.textContent = "Loading video...";
+
         objectUrl = URL.createObjectURL(file);
+        mainVideo.preload = "auto";
         mainVideo.src = objectUrl;
         mainVideo.load();
 
@@ -107,9 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
             timeSeeker.step = 0.001; // millisecond scrubbing
 
             updateTimerDisplay(0, mainVideo.duration);
-
-            dropZone.style.display = "none";
-            capturerWorkspace.style.display = "block";
         };
 
         mainVideo.ontimeupdate = () => {
@@ -381,11 +389,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Reset workspace completely when exiting page or unloading
     function resetWorkspace() {
-        mainVideo.pause();
-        mainVideo.src = "";
+        try { mainVideo.pause(); } catch (_) {}
+        if (objectUrl) {
+            try { URL.revokeObjectURL(objectUrl); } catch (_) {}
+            objectUrl = null;
+        }
+        mainVideo.removeAttribute("src");
+        mainVideo.load();
         isVideoPlaying = false;
         btnPlay.textContent = "Play";
         capturedFrames = [];
+        videoInput.value = "";
         renderSnapshotsGrid();
     }
 });
