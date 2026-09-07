@@ -90,7 +90,13 @@
   .form-column, .preview-column { padding:12px; min-width:0; }
   .preview-frame { padding:8px; }
   .linkedin-mockup { width:100%; gap:10px; }
+  .profile-info-row { flex-direction:column; gap:12px; }
+  .info-left { min-width:0; width:100%; }
   .info-right { min-width:0; width:100%; }
+  .linkedin-fullname, .linkedin-headline, .linkedin-location,
+  .connections-container, .mutual-connections-text, .talks-hashtags { overflow-wrap:break-word; word-break:normal; }
+  .quick-link-item { min-width:0; }
+  .quick-link-text { min-width:0; overflow-wrap:break-word; }
   .mockup-cover, .cover-banner-container { height:auto; min-height:90px; }
   .mockup-cover img, .cover-banner-container img { width:100%; height:auto; object-fit:cover; }
   .form-group input, .form-group textarea, .form-group select { font-size:16px; }

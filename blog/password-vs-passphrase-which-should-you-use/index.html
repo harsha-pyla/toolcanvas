@@ -100,11 +100,11 @@
             </div>
           </div>
         </div>
-        <div class="trending" aria-label="Most popular">
+                <div class="trending" aria-label="Most popular">
           <a href="image-to-jpg/" class="trending-btn">Image to JPG</a>
-          <a href="image-resizer/" class="trending-btn">Image resizer</a>
           <a href="password-generator/" class="trending-btn">Password generator</a>
           <a href="whiteboard/" class="trending-btn">Whiteboard</a>
+          <a href="blackboard/" class="trending-btn">Blackboard</a>
         </div>
       </nav>
       <nav class="site-nav right-nav" aria-label="Secondary">
@@ -123,6 +123,13 @@
         <div class="blog-wrap">
           <h1>Password vs Passphrase: Which Should You Actually Use</h1>
           <p class="blog-meta">Random Tools • 5 min read • Updated 29 Aug 2026 • Security</p>
+          <figure class="blog-cover-art edge-green" aria-hidden="true">
+            <span class="cover-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 10a4 4 0 1 0-4 4c.5 0 1-.1 1.4-.3L13 15h2v2h2v2h3v-3l-8-6Z"/><path d="M9 9h.01"/></svg></span>
+            <span class="cover-text">
+              <span class="cover-kicker">Random Tools • Security</span>
+              <span class="cover-label">Random strings vs memorable phrases</span>
+            </span>
+          </figure>
           <p class="tool-intro" style="color:#334155; font-size:15px; line-height:1.6; margin-bottom:16px;">Random strings are strong but hard to remember. Passphrases are long but memorable. Both can be secure — what matters is <strong>entropy and where you use them</strong>. Here’s the plain trade-off and how to generate each privately.</p>
 
           <div class="blog-cover">
@@ -198,6 +205,18 @@
           <div class="faq-item"><h3 class="faq-question">Are my passwords sent to a server?</h3><p class="faq-answer">No. As on the tool page, all generation uses your device’s CSPRNG. Works offline after load. Nothing is logged.</p></div>
           <div class="faq-item"><h3 class="faq-question">Should I add numbers/symbols to a passphrase?</h3><p class="faq-answer">You can, but length matters more than symbols. Adding a 5th word beats adding <span class="mono">!</span>. If a site requires symbols, use a random password instead.</p></div>
 
+          
+          <section class="related-guides">
+            <h2>Related guides</h2>
+            <div class="related-grid">
+            <a class="related-card " href="/blog/how-long-should-a-password-be-in-2026/">
+              <span class="related-kicker">Random Tools • Length</span>
+              <h3>How Long Should a Password Be in 2026?</h3>
+              <p>12 vs 16 vs 20 characters and 6 words — bits, crack times and NIST 2026.</p>
+              <span class="related-link">Read guide</span>
+            </a>
+            </div>
+          </section>
           <hr class="ruler">
           <p style="font-size:13px; color:#64748b;">Part of the <a href="/#random-tools">Random Tools</a> cluster. Tool page already covers entropy — this post adds the practical “which to use” choice. Also see <a href="/blog/how-to-compress-images-without-losing-quality/">How to Compress Images</a>.</p>
         </div>

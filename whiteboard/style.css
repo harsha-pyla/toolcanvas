@@ -190,9 +190,13 @@ body.whiteboard-maximized-active{ overflow:hidden !important; }
 
 @media (max-width:768px){
   .floating-toolbar{
-    bottom:12px;
+    position:fixed;
+    bottom:calc(12px + env(safe-area-inset-bottom, 0px));
     left:8px; right:8px; transform:none;
     max-width:none; width:auto;
+    min-height:56px;
+    visibility:visible; opacity:1;
+    z-index:100000;
     flex-wrap:nowrap; justify-content:flex-start;
     overflow-x:auto; scrollbar-width:none;
     padding:6px; gap:6px;
