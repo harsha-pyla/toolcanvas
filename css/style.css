@@ -782,21 +782,30 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--ink); }
 .blog-wrap .faq-question { font-size:16px; line-height:24px; font-weight:500; color:var(--ink); margin:0 0 6px 0; }
 .blog-wrap .faq-answer { font-size:15px; line-height:24px; color:var(--ink-muted); margin:0; }
 
-/* Related guides */
-.related-guides { margin-top:32px; padding-top:24px; border-top:1px solid var(--line); }
-.related-guides h2 { font-size:22px; line-height:30px; }
+/* Related guides + related tools */
+.related-guides, .related-tools { margin-top:32px; padding-top:24px; border-top:1px solid var(--line); }
+.related-tools { padding-bottom:40px; }
+.related-tools h2 { margin-top:0; }
+.related-tools > .container > .related-kicker { margin-bottom:8px; }
+.related-guides h2, .related-tools h2 { font-size:22px; line-height:30px; }
 .related-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin-top:16px; }
 .related-card { display:flex; flex-direction:column; gap:6px; background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--accent-green); border-radius:4px; padding:14px; text-decoration:none; position:relative; transition:border-color 160ms ease-out; }
 .related-card.edge-copper { border-left-color:var(--accent-copper); }
-.related-card:hover { border-color:var(--accent-green); text-decoration:none; }
-.related-card .related-kicker { font-family:var(--font-mono); font-size:11px; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink-muted); }
+.related-card:hover { border-color:var(--ink); text-decoration:none; }
+.related-card:hover { border-left-color:var(--accent-green); }
+.related-card.edge-copper:hover { border-left-color:var(--accent-copper); }
+.related-card:hover .related-link { text-decoration:underline; }
+.related-kicker { display:block; font-family:var(--font-mono); font-size:11px; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink-muted); }
 .related-card h3 { margin:0; font-size:15px; line-height:22px; font-weight:600; color:var(--ink); }
 .related-card p { margin:0; font-size:13px; line-height:20px; color:var(--ink-muted); }
-.related-card .related-link { font-size:13px; font-weight:500; color:var(--accent-green); }
+.related-card .related-link { margin-top:auto; padding-top:10px; font-size:13px; font-weight:500; color:var(--accent-green); }
 @media (max-width:767px) {
   .blog-cover-art { padding:16px; gap:14px; }
   .cover-icon-wrap { width:52px; height:52px; }
   .tool-links { grid-template-columns:1fr; }
+  .related-grid { grid-template-columns:1fr; gap:12px; }
+  .related-card { padding:16px; }
+  .related-tools { padding-bottom:28px; }
 }
 
 /* ---------- Tool Pages — Instrument-Panel ---------- */

@@ -8,27 +8,27 @@
     },
     {
       "source": "/about.html",
-      "destination": "/about",
+      "destination": "/about/",
       "permanent": true
     },
     {
       "source": "/contact.html",
-      "destination": "/contact",
+      "destination": "/contact/",
       "permanent": true
     },
     {
       "source": "/privacy-policy.html",
-      "destination": "/privacy-policy",
+      "destination": "/privacy-policy/",
       "permanent": true
     },
     {
       "source": "/terms.html",
-      "destination": "/terms",
+      "destination": "/terms/",
       "permanent": true
     },
     {
       "source": "/privacy",
-      "destination": "/privacy-policy",
+      "destination": "/privacy-policy/",
       "permanent": true
     },
     {
@@ -203,36 +203,18 @@
     },
     {
       "source": "/careers",
-      "destination": "/about",
+      "destination": "/about/",
       "permanent": true
     },
     {
       "source": "/careers/",
-      "destination": "/about",
+      "destination": "/about/",
       "permanent": true
     },
     {
       "source": "/tools/:path*",
       "destination": "/",
       "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/about",
-      "destination": "/about.html"
-    },
-    {
-      "source": "/contact",
-      "destination": "/contact.html"
-    },
-    {
-      "source": "/privacy-policy",
-      "destination": "/privacy-policy.html"
-    },
-    {
-      "source": "/terms",
-      "destination": "/terms.html"
     }
   ],
   "headers": [
