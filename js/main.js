@@ -249,8 +249,8 @@ function initContactForm() {
           alert('Oops! Something went wrong while sending your message. Please try again.');
         }
       } else {
-        // Success Transition: Fade out the form inputs
-        contactForm.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        // Success Transition: Fade out the form inputs — 2026 polished easing
+        contactForm.style.transition = 'opacity 400ms var(--ease-out), transform 400ms var(--ease-out)';
         contactForm.style.opacity = '0';
         contactForm.style.transform = 'translateY(-10px)';
 
@@ -279,7 +279,7 @@ function initContactForm() {
           // Smoothly fade out and remove the note text below the form
           const note = document.querySelector('.form-note');
           if (note) {
-            note.style.transition = 'opacity 0.4s ease';
+            note.style.transition = 'opacity 400ms var(--ease-out)';
             note.style.opacity = '0';
             setTimeout(() => note.remove(), 400);
           }
