@@ -31,10 +31,7 @@ let supabaseConfigPromise = null;
 
 function getSupabaseConfig() {
   if (!supabaseConfigPromise) {
-    // Determine the base path to fetch the local fallback (in case we are in subdirectories)
-    const depth = window.location.pathname.split('/').filter(Boolean).length;
-    const pathPrefix = window.location.pathname.endsWith('index.html') ? '../'.repeat(depth - 1) : '../'.repeat(depth);
-    const localConfigPath = (pathPrefix || '') + 'js/local-config.json';
+    const localConfigPath = '/js/local-config.json';
 
     supabaseConfigPromise = fetch('/api/supabase-config')
       .then(res => {

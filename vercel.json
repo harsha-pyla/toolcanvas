@@ -1,31 +1,7 @@
 {
   "cleanUrls": true,
+  "trailingSlash": true,
   "redirects": [
-    {
-      "source": "/index.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/about.html",
-      "destination": "/about/",
-      "permanent": true
-    },
-    {
-      "source": "/contact.html",
-      "destination": "/contact/",
-      "permanent": true
-    },
-    {
-      "source": "/privacy-policy.html",
-      "destination": "/privacy-policy/",
-      "permanent": true
-    },
-    {
-      "source": "/terms.html",
-      "destination": "/terms/",
-      "permanent": true
-    },
     {
       "source": "/privacy",
       "destination": "/privacy-policy/",
@@ -37,17 +13,7 @@
       "permanent": true
     },
     {
-      "source": "/tools/jpg-to-png/",
-      "destination": "/jpg-to-png/",
-      "permanent": true
-    },
-    {
       "source": "/tools/png-to-jpg",
-      "destination": "/image-to-jpg/",
-      "permanent": true
-    },
-    {
-      "source": "/tools/png-to-jpg/",
       "destination": "/image-to-jpg/",
       "permanent": true
     },
@@ -57,17 +23,7 @@
       "permanent": true
     },
     {
-      "source": "/tools/img-resize/",
-      "destination": "/image-resizer/",
-      "permanent": true
-    },
-    {
       "source": "/tools/img-crop",
-      "destination": "/image-resizer/",
-      "permanent": true
-    },
-    {
-      "source": "/tools/img-crop/",
       "destination": "/image-resizer/",
       "permanent": true
     },
@@ -77,17 +33,7 @@
       "permanent": true
     },
     {
-      "source": "/tools/img-rotate/",
-      "destination": "/image-resizer/",
-      "permanent": true
-    },
-    {
       "source": "/tools/img-blur",
-      "destination": "/image-resizer/",
-      "permanent": true
-    },
-    {
-      "source": "/tools/img-blur/",
       "destination": "/image-resizer/",
       "permanent": true
     },
@@ -97,17 +43,7 @@
       "permanent": true
     },
     {
-      "source": "/tools/img-compress/",
-      "destination": "/image-resizer/",
-      "permanent": true
-    },
-    {
       "source": "/tools/password-generator",
-      "destination": "/password-generator/",
-      "permanent": true
-    },
-    {
-      "source": "/tools/password-generator/",
       "destination": "/password-generator/",
       "permanent": true
     },
@@ -117,17 +53,7 @@
       "permanent": true
     },
     {
-      "source": "/tools/pass-gen/",
-      "destination": "/password-generator/",
-      "permanent": true
-    },
-    {
       "source": "/tools/qr-gen",
-      "destination": "/social-media-card/",
-      "permanent": true
-    },
-    {
-      "source": "/tools/qr-gen/",
       "destination": "/social-media-card/",
       "permanent": true
     },
@@ -137,17 +63,7 @@
       "permanent": true
     },
     {
-      "source": "/tools/qr-code-generator/",
-      "destination": "/social-media-card/",
-      "permanent": true
-    },
-    {
       "source": "/link-in-bio",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/link-in-bio/",
       "destination": "/",
       "permanent": true
     },
@@ -157,17 +73,7 @@
       "permanent": true
     },
     {
-      "source": "/image-to-pdf/",
-      "destination": "/",
-      "permanent": true
-    },
-    {
       "source": "/signature-generator",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/signature-generator/",
       "destination": "/",
       "permanent": true
     },
@@ -177,17 +83,7 @@
       "permanent": true
     },
     {
-      "source": "/experience-templates/",
-      "destination": "/",
-      "permanent": true
-    },
-    {
       "source": "/fresher-templates",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/fresher-templates/",
       "destination": "/",
       "permanent": true
     },
@@ -197,17 +93,7 @@
       "permanent": true
     },
     {
-      "source": "/explore/",
-      "destination": "/",
-      "permanent": true
-    },
-    {
       "source": "/careers",
-      "destination": "/about/",
-      "permanent": true
-    },
-    {
-      "source": "/careers/",
       "destination": "/about/",
       "permanent": true
     },
