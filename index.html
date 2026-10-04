@@ -1,64 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- HEAD-COMMON:START -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolCanvas — Coming Soon</title>
+  <meta name="description" content="ToolCanvas is getting a completely new look and set of tools. Coming soon.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #14161A;
+      --paper: #FCFCFB;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Source+Serif+4:opsz,wght@8..60,400..700&display=swap" rel="stylesheet">
+    body {
+      font-family: 'Schibsted Grotesk', system-ui, -apple-system, sans-serif;
+      background-color: var(--paper);
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
 
-<link rel="stylesheet" href="/css/tokens.css">
-<link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/css/components.css">
-<link rel="stylesheet" href="/css/worksheet.css">
-  <!-- HEAD-COMMON:END -->
-  <title>ToolCanvas</title>
-  <meta name="description" content="Free money calculators for US freelancers.">
-  <link rel="canonical" href="https://toolcanvas.online/">
-  <meta name="robots" content="noindex, follow">
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: #555;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+    }
+  </style>
 </head>
 <body>
-  <!-- HEADER:START -->
-<header class="site-header">
-  <a href="/" class="logo">ToolCanvas</a>
-  <nav class="nav">
-    <a href="#">Calculators</a>
-    <a href="#">Guides</a>
-    <a href="#">About</a>
-  </nav>
-</header>
-  <!-- HEADER:END -->
+  <div class="logo">ToolCanvas</div>
   
   <main>
-    <h1>ToolCanvas</h1>
-    <p>We are building free money calculators for US freelancers and self-employed people.</p>
-    <p>Contact: [TODO: my email]</p>
+    <h1>Coming Soon</h1>
+    <p>We are currently rebuilding ToolCanvas from the ground up to provide accurate, reliable, and privacy-first tools for freelancers.</p>
   </main>
-
-  <!-- FOOTER:START -->
-<footer class="site-footer">
-  <div class="ds-footer-col">
-    <h4>Calculators</h4>
-    <ul>
-      <li><a href="#">Self-Employment Tax</a></li>
-      <li><a href="#">Quarterly Estimates</a></li>
-    </ul>
-  </div>
-  <div class="ds-footer-col">
-    <h4>ToolCanvas</h4>
-    <ul>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="#">Privacy Policy</a></li>
-      <li><a href="#">Terms of Use</a></li>
-    </ul>
-    <div class="ui-text" style="color:var(--text-muted); margin-top:1rem; border-top:var(--hairline); padding-top:1rem;">
-      Built by [TODO: my real name] in [TODO: city].
-    </div>
-  </div>
-</footer>
-  <!-- FOOTER:END -->
 </body>
 </html>
