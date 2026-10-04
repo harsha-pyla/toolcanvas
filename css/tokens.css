@@ -1,0 +1,86 @@
+:root {
+  /* Colors - Light Theme Default */
+  --ink: #14161A;
+  --paper: #FCFCFB;
+  --surface: #F3F3F0;
+  --marker: #FFE14D;
+
+  /* Neutral scale derived from Ink hue */
+  --gray-900: #14161A;
+  --gray-700: #3d4047;
+  --gray-500: #6a6d75;
+  --gray-300: #a4a7af;
+  --gray-100: #e4e6ec;
+
+  /* Status / Signed Amounts */
+  --positive: #17603A;
+  --negative: #A3271B;
+  
+  /* Semantic Variables */
+  --bg-page: var(--paper);
+  --bg-stub: var(--surface);
+  --text-primary: var(--ink);
+  --text-muted: var(--gray-700);
+  --hairline-color: var(--gray-300);
+  --hairline: 1px solid var(--hairline-color);
+  --rule-strong: 2px solid var(--ink);
+  --rule-double: 3px double var(--ink);
+
+  /* Typography */
+  --font-heading: 'Schibsted Grotesk', sans-serif;
+  --font-ui: 'Schibsted Grotesk', sans-serif;
+  --font-body: 'Source Serif 4', serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Fluid Type Scale */
+  --text-display: clamp(2.5rem, 5vw, 4.5rem);
+  --text-h1: clamp(2rem, 4vw, 3rem);
+  --text-h2: clamp(1.5rem, 3vw, 2.25rem);
+  --text-h3: clamp(1.25rem, 2vw, 1.5rem);
+  --text-body: clamp(1.125rem, 1.2vw, 1.25rem);
+  --text-small: 0.875rem;
+  --text-mono-data: clamp(0.875rem, 1vw, 1rem);
+
+  /* Spacing Scale (8px) */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 2.5rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  --space-12: 6rem;
+
+  /* Radii */
+  --radius-block: 0px;
+  --radius-control: 3px;
+
+  /* Motion */
+  --motion-duration: 150ms;
+  --motion-easing: ease-out;
+  --motion-hover: all var(--motion-duration) var(--motion-easing);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #FCFCFB;
+    --paper: #14161A;
+    --surface: #1f2127;
+    --marker: #FFE14D;
+
+    --gray-900: #FCFCFB;
+    --gray-700: #a4a7af;
+    --gray-500: #6a6d75;
+    --gray-300: #3d4047;
+    --gray-100: #2a2c33;
+
+    --positive: #4ade80;
+    --negative: #f87171;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration: 0ms;
+  }
+}

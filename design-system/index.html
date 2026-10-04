@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System — Worksheet</title>
+  
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://toolcanvas.online/design-system/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Source+Serif+4:opsz,wght@8..60,400..700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/worksheet.css">
+
+  <style>
+    .ds-section {
+      margin-bottom: var(--space-8);
+      padding-bottom: var(--space-8);
+      border-bottom: var(--hairline);
+    }
+    .swatch {
+      width: 100%;
+      height: 64px;
+      border: 1px solid var(--gray-300);
+      margin-bottom: var(--space-1);
+    }
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .swatch-label {
+      font-size: var(--text-small);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="site-header" style="margin-bottom: var(--space-6);">
+    <a href="/" class="logo">ToolCanvas</a>
+    <nav class="nav">
+      <a href="#">Calculators</a>
+      <a href="#">Guides</a>
+      <a href="#">About</a>
+    </nav>
+  </div>
+
+  <main style="max-width: 1200px; margin: 0 auto; padding: 0 var(--space-4);">
+    <div class="display">Design System</div>
+    
+    <div class="ds-section">
+      <h2>Colors</h2>
+      <div class="color-grid">
+        <div><div class="swatch" style="background: var(--ink);"></div><div class="swatch-label">--ink</div></div>
+        <div><div class="swatch" style="background: var(--paper);"></div><div class="swatch-label">--paper</div></div>
+        <div><div class="swatch" style="background: var(--surface);"></div><div class="swatch-label">--surface</div></div>
+        <div><div class="swatch" style="background: var(--marker);"></div><div class="swatch-label">--marker</div></div>
+      </div>
+      <h3>Neutrals</h3>
+      <div class="color-grid">
+        <div><div class="swatch" style="background: var(--gray-900);"></div><div class="swatch-label">--gray-900</div></div>
+        <div><div class="swatch" style="background: var(--gray-700);"></div><div class="swatch-label">--gray-700</div></div>
+        <div><div class="swatch" style="background: var(--gray-500);"></div><div class="swatch-label">--gray-500</div></div>
+        <div><div class="swatch" style="background: var(--gray-300);"></div><div class="swatch-label">--gray-300</div></div>
+        <div><div class="swatch" style="background: var(--gray-100);"></div><div class="swatch-label">--gray-100</div></div>
+      </div>
+      <h3>Status</h3>
+      <div class="color-grid">
+        <div><div class="swatch" style="background: var(--positive);"></div><div class="swatch-label">--positive</div></div>
+        <div><div class="swatch" style="background: var(--negative);"></div><div class="swatch-label">--negative</div></div>
+      </div>
+    </div>
+
+    <div class="ds-section">
+      <h2>Typography</h2>
+      <div class="display">Display (Schibsted Grotesk)</div>
+      <h1>Heading 1 (Schibsted Grotesk)</h1>
+      <h2>Heading 2</h2>
+      <h3>Heading 3</h3>
+      <p>Body text is Source Serif 4. It should feel like a printed guide or tax documentation. We use a narrow measure (max 68ch) and generous line height for readability. <a href="#">This is an inline link</a> with an underline.</p>
+      <p class="ui-text">UI Text is Schibsted Grotesk. Used for labels, buttons, and short text.</p>
+      <p class="mono-num">IBM Plex Mono: $12,345.67</p>
+    </div>
+
+    <div class="ds-section">
+      <h2>10. Breadcrumb</h2>
+      <div class="breadcrumb">
+        <a href="#">Home</a> / <a href="#">Calculators</a> / Self-Employment Tax
+      </div>
+    </div>
+
+    <div class="ds-section">
+      <h2>7. Buttons</h2>
+      <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+        <button class="btn btn-primary">Calculate Total</button>
+        <button class="btn btn-secondary">Clear form</button>
+        <button class="btn btn-text">Read guide</button>
+      </div>
+    </div>
+
+    <div class="ds-section">
+      <h2>9. Callout</h2>
+      <div class="callout">
+        <strong>Watch out</strong>
+        This estimate does not include state or local taxes, which vary wildly by your zip code.
+      </div>
+    </div>
+
+    <div class="ds-section">
+      <h2>3 & 4. Worksheet Form & Results Stub</h2>
+      <div class="worksheet-layout">
+        
+        <div class="worksheet-form-col">
+          <div class="worksheet-intro">
+            <h2>Calculate your tax</h2>
+            <p>Enter your expected self-employment income.</p>
+          </div>
+          
+          <div class="ws-line">
+            <div class="ws-label-wrap">
+              <span class="ws-line-num">1</span>
+              <label class="ws-label" for="income">Net profit from schedule C</label>
+            </div>
+            <div class="ws-hint">Your gross income minus business expenses</div>
+            <div class="ws-input-wrap">
+              <span class="ws-input-prefix">$</span>
+              <input type="text" id="income" class="ws-input has-prefix" value="85,000.00">
+            </div>
+          </div>
+
+          <div class="ws-line">
+            <div class="ws-label-wrap">
+              <span class="ws-line-num">2</span>
+              <label class="ws-label" for="state">State of residence</label>
+            </div>
+            <div class="ws-input-wrap">
+              <select id="state" class="ws-select">
+                <option>California</option>
+                <option>Texas</option>
+                <option>New York</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="ws-line" style="border-color: var(--negative);">
+            <div class="ws-label-wrap">
+              <span class="ws-line-num">3</span>
+              <label class="ws-label">Filing status</label>
+            </div>
+            <div class="ws-radio-list">
+              <label class="ws-radio-label"><input type="radio" name="status" checked> Single</label>
+              <label class="ws-radio-label"><input type="radio" name="status"> Married Filing Jointly</label>
+            </div>
+            <div class="ws-error">Please confirm your filing status.</div>
+          </div>
+
+        </div>
+
+        <div class="worksheet-stub-col">
+          <h3 style="margin-bottom: 1rem;">Summary</h3>
+          
+          <div class="stub-row">
+            <span class="stub-label">Gross Income</span>
+            <span class="stub-value">$85,000</span>
+          </div>
+          <div class="stub-row">
+            <span class="stub-label">Deductions</span>
+            <span class="stub-value val-neg">-$12,400</span>
+          </div>
+          
+          <div class="stub-row stub-subtotal">
+            <span class="stub-label">Taxable</span>
+            <span class="stub-value">$72,600</span>
+          </div>
+          
+          <div class="stub-row stub-total">
+            <span class="stub-label">Total Tax Due</span>
+            <span class="stub-value"><span class="highlight-marker">$11,107</span></span>
+          </div>
+          <span class="source-line">Source: IRS Form 1040-ES - verified Oct 2026</span>
+
+          <div class="disclaimer-block">
+            <strong>Not tax advice.</strong> Estimates only. Consult a licensed CPA for filing.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="ds-section">
+      <h2>8. Data Table & Definition List</h2>
+      <table class="table-data">
+        <thead>
+          <tr>
+            <th>Tax Bracket</th>
+            <th class="num-col">Marginal Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Up to $11,600</td>
+            <td class="num-col">10%</td>
+          </tr>
+          <tr>
+            <td>$11,601 to $47,150</td>
+            <td class="num-col">12%</td>
+          </tr>
+          <tr>
+            <td>$47,151 to $100,525</td>
+            <td class="num-col">22%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <dl class="term-list">
+        <dt>Marginal Tax Rate</dt>
+        <dd>The rate applied to your highest dollar of income, not your entire income.</dd>
+        <dt>Effective Tax Rate</dt>
+        <dd>The actual percentage of your total income paid in taxes.</dd>
+      </dl>
+    </div>
+
+    <div class="ds-section">
+      <h2>11. Article Layout</h2>
+      <div class="article-layout">
+        <div class="article-main">
+          <h2>How self-employment tax works</h2>
+          <p>When you work as a W-2 employee, your employer pays half of your payroll taxes (Medicare and Social Security) and withholds your half from your paycheck. When you are self-employed, you are both the employer and the employee, so you pay both halves.</p>
+          <p>This is called the Self-Employment Tax, and it totals 15.3% on your net earnings. It consists of two parts:</p>
+          <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+            <li>12.4% for Social Security</li>
+            <li>2.9% for Medicare</li>
+          </ul>
+        </div>
+        <div class="article-toc">
+          <strong>In this guide</strong>
+          <ul>
+            <li><a href="#">The 15.3% rule</a></li>
+            <li><a href="#">What counts as net earnings</a></li>
+            <li><a href="#">How to pay quarterly</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-section">
+      <h2>12. Homepage Index Layout</h2>
+      <div class="hp-hero">
+        <div class="display">Calculators for Freelancers</div>
+        <p>Free, fast, and mathematically exact. No marketing fluff.</p>
+      </div>
+      <table class="index-table">
+        <thead>
+          <tr>
+            <th>Calculator</th>
+            <th>For who</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong><a href="#">Self-Employment Tax Calculator</a></strong><br><span class="ui-text" style="color:var(--text-muted); font-size:var(--text-small);">Calculate your 15.3% FICA burden</span></td>
+            <td>1099 Contractors, Sole Props</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#">Quarterly Estimated Tax</a></strong><br><span class="ui-text" style="color:var(--text-muted); font-size:var(--text-small);">Avoid IRS underpayment penalties</span></td>
+            <td>Freelancers filing Form 1040-ES</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="ds-footer-col">
+      <h4>Calculators</h4>
+      <ul>
+        <li><a href="#">Self-Employment Tax</a></li>
+        <li><a href="#">Quarterly Estimates</a></li>
+      </ul>
+    </div>
+    <div class="ds-footer-col">
+      <h4>ToolCanvas</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+      <div class="ui-text" style="color:var(--text-muted); margin-top:1rem; border-top:var(--hairline); padding-top:1rem;">
+        Built by [TODO: my real name] in [TODO: city].
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
