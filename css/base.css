@@ -97,6 +97,12 @@ a:hover, a:focus {
   outline-offset: 2px;
 }
 
+/* Controls */
+input[type="radio"], input[type="checkbox"] {
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+
 /* Skip link */
 .skip-link {
   position: absolute;
