@@ -1,23 +1,6 @@
 {
   "cleanUrls": true,
   "trailingSlash": true,
-  "redirects": [
-    {
-      "source": "/privacy",
-      "destination": "/privacy-policy/",
-      "permanent": true
-    },
-    {
-      "source": "/tools/img-resize",
-      "destination": "/image-resizer/",
-      "permanent": true
-    },
-    {
-      "source": "/tools/img-crop",
-      "destination": "/image-resizer/",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -33,19 +16,6 @@
         {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
-        }
-      ]
-    },
-    {
-      "source": "/sitemap.xml",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/xml"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, stale-while-revalidate=86400"
         }
       ]
     }
