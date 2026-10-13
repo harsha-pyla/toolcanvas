@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — ToolCanvas</title>
+  <meta name="description"
+    content="ToolCanvas privacy policy. Learn about our strict 100% client-side privacy architecture, zero data storage, and user rights.">
+  <link rel="canonical" href="https://toolcanvas.online/privacy/">
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolcanvas.online/privacy/">
+  <meta property="og:site_name" content="ToolCanvas">
+  <meta property="og:title" content="Privacy Policy — ToolCanvas">
+  <meta property="og:description"
+    content="ToolCanvas privacy policy. Learn about our strict 100% client-side privacy architecture, zero data storage, and user rights.">
+  <meta property="og:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Privacy Policy — ToolCanvas">
+  <meta name="twitter:description"
+    content="ToolCanvas privacy policy. Learn about our strict 100% client-side privacy architecture, zero data storage, and user rights.">
+  <meta name="twitter:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy Policy",
+    "url": "https://toolcanvas.online/privacy/",
+    "description": "ToolCanvas Privacy Policy explaining local-only execution and zero server retention."
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/toolcanvas-icon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/theme.css">
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('toolcanvas_theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) { }
+    })();
+  </script>
+</head>
+
+<body data-tool="privacy">
+
+  <!-- =========================================================
+       SITE HEADER
+       ========================================================= -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="/" class="brand-logo" aria-label="ToolCanvas Home">
+          <svg class="brand-logo-icon" width="32" height="32" viewBox="0 0 100 100" fill="none"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="100" height="100" rx="22" fill="#254FFA" />
+            <path
+              d="M 22 38 A 16 16 0 0 1 38 22 H 54.5 A 3 3 0 0 1 57.5 25 V 39 A 3 3 0 0 1 54.5 42 H 33.5 A 3.5 3.5 0 0 0 30 45.5 V 48.5 A 3.5 3.5 0 0 0 33.5 52 H 39.5 A 3 3 0 0 1 42.5 55 V 75 A 3 3 0 0 1 39.5 78 H 38 A 16 16 0 0 1 22 62 V 38 Z"
+              fill="#FFFFFF" />
+            <path
+              d="M 61.5 24 A 2.5 2.5 0 0 1 64 21.5 L 82 43 A 2.5 2.5 0 0 1 80.5 45.5 H 67 A 5.5 5.5 0 0 1 61.5 40 V 24 Z"
+              fill="#FF5530" />
+            <path
+              d="M 59.5 53 H 76 A 3 3 0 0 1 79 56 V 62 A 16 16 0 0 1 63 78 H 59.5 A 3 3 0 0 1 56.5 75 V 56 A 3 3 0 0 1 59.5 53 Z"
+              fill="#FFFFFF" />
+          </svg>
+          <div class="brand-text-name">Tool<span>Canvas</span></div>
+        </a>
+
+        <nav class="header-tools-nav" aria-label="Main tools navigation">
+          <a href="/case-converter/" class="header-tool-link">Case Converter</a>
+          <a href="/word-counter/" class="header-tool-link">Word Counter</a>
+          <a href="/duplicate-line-remover/" class="header-tool-link">Duplicate Remover</a>
+          <a href="/text-cleaner/" class="header-tool-link">Text Cleaner</a>
+          <a href="/text-compare/" class="header-tool-link">Text Compare</a>
+        </nav>
+      </div>
+
+      <div class="header-right">
+        <button type="button" class="theme-toggle-capsule" id="theme-toggle-btn" aria-label="Toggle dark/light mode"
+          title="Toggle theme" role="switch" aria-checked="false">
+          <svg class="theme-icon sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <span class="theme-switch-track" aria-hidden="true">
+            <span class="theme-switch-knob"></span>
+          </span>
+          <svg class="theme-icon moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <div class="search-wrap">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="tool-search-input" class="search-input" placeholder="Search tools..."
+            aria-label="Search tools" autocomplete="off">
+          <div id="search-results-dropdown" class="search-dropdown" role="listbox"></div>
+        </div>
+
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-menu" id="mobile-nav-menu">
+    <a href="/case-converter/" class="mobile-nav-link">Case Converter</a>
+    <a href="/word-counter/" class="mobile-nav-link">Word Counter</a>
+    <a href="/duplicate-line-remover/" class="mobile-nav-link">Duplicate Remover</a>
+    <a href="/text-cleaner/" class="mobile-nav-link">Text Cleaner</a>
+    <a href="/text-compare/" class="mobile-nav-link">Text Compare</a>
+    <a href="/about/" class="mobile-nav-link">About</a>
+    <a href="/blog/" class="mobile-nav-link">Blog</a>
+    <a href="/privacy/" class="mobile-nav-link active">Privacy Policy</a>
+    <a href="/terms/" class="mobile-nav-link">Terms of Service</a>
+  </div>
+
+  <!-- =========================================================
+       MAIN CONTENT (Authentic Legal Document Layout)
+       ========================================================= -->
+  <main class="page-container" role="main">
+    <div class="legal-page-wrap">
+      <div class="legal-content">
+
+        <h1 class="legal-title">Privacy Policy</h1>
+        <p class="legal-lead">
+          At ToolCanvas (<a href="/" class="legal-link">https://toolcanvas.online/</a>), we believe online text
+          utilities should be powerful, effortless, and fundamentally respectful of your personal privacy. This Privacy
+          Policy details how we handle information, what we do (and do not) collect, and the measures we take to keep
+          your experience secure and private.
+        </p>
+
+        <h2 class="legal-heading">1. Our Core Privacy Principles</h2>
+        <p class="legal-p">
+          ToolCanvas is designed from the ground up as a privacy-conscious utility platform. We do not require account
+          registration, we do not require your email address or personal credentials to use our tools, and we do not
+          create personal tracking profiles about you.
+        </p>
+
+        <h2 class="legal-heading">2. Your Text Inputs and Tool Processing</h2>
+        <p class="legal-p">
+          Our online tools—including the Case Converter, Word &amp; Character Counter, Duplicate Line Remover, Text
+          Cleaner, and Text Compare—are built for direct, in-session utility.
+        </p>
+        <p class="legal-p">
+          When you enter, paste, edit, or analyze text in any ToolCanvas tool:
+        </p>
+        <ul class="legal-list">
+          <li><strong>Zero Text Retention:</strong> We do not store, copy, record, or retain the content you input or
+            the results produced.</li>
+          <li><strong>No Server Uploads:</strong> Your input text is never saved to our web servers, external databases,
+            or third-party storage services.</li>
+          <li><strong>Session Privacy:</strong> Once you clear your input, navigate away, or close your browser tab,
+            your text data is gone from your session. We have no access to it, and no history is preserved on our
+            systems.</li>
+        </ul>
+
+        <h2 class="legal-heading">3. Diagnostic and Network Log Data</h2>
+        <p class="legal-p">
+          Like almost all modern websites, our hosting servers automatically log standard network communication requests
+          when you access pages on ToolCanvas. This diagnostic information is strictly non-identifying and includes:
+        </p>
+        <ul class="legal-list">
+          <li>Your Internet Protocol (IP) address (used for server routing, DDoS mitigation, and approximate geographic
+            location)</li>
+          <li>Browser type, software version, and operating system</li>
+          <li>Date, time stamp, and duration of page requests</li>
+          <li>Referring web addresses and page navigation paths</li>
+        </ul>
+        <p class="legal-p">
+          We use this data exclusively to keep our infrastructure secure, prevent malicious automated attacks, diagnose
+          server faults, and monitor general traffic patterns. We never combine network log entries with personal
+          identity records.
+        </p>
+
+        <h2 class="legal-heading">4. Cookies and Site Preferences</h2>
+        <p class="legal-p">
+          ToolCanvas uses cookies and browser storage solely to deliver essential functionality and enhance your
+          browsing experience.
+        </p>
+        <p class="legal-p">
+          Specifically, we use storage to remember your chosen visual theme (Dark Mode or Light Mode) so your preference
+          remains consistent across pages and repeat visits. We do not use first-party cookies to track you across
+          external websites.
+        </p>
+        <p class="legal-p">
+          You are free to configure your web browser to block or clear cookies at any time. If you disable cookies, all
+          ToolCanvas text utilities will continue to function normally, though visual preferences will reset to default
+          when you return.
+        </p>
+
+        <h2 class="legal-heading">5. Advertising Partners and Google AdSense</h2>
+        <p class="legal-p">
+          To maintain ToolCanvas as a completely free service without paid subscriptions, we partner with third-party
+          advertising providers, including Google AdSense, to display non-intrusive advertisements on our site.
+        </p>
+        <p class="legal-p">
+          Third-party ad vendors, including Google, use cookies to serve ads based on prior visits to our website or
+          other sites on the Internet. Google’s use of advertising cookies enables it and its partners to serve relevant
+          advertisements to users based on browsing activity.
+        </p>
+        <p class="legal-p">
+          <strong>Managing Ad Preferences:</strong> You may opt out of personalized advertising at any time by visiting
+          <a href="https://adssettings.google.com/" class="legal-link" target="_blank" rel="noopener noreferrer">Google
+            Ads Settings</a>. Alternatively, you can opt out of a third-party vendor's use of cookies for personalized
+          advertising through the <a href="https://www.aboutads.info/choices/" class="legal-link" target="_blank"
+            rel="noopener noreferrer">Digital Advertising Alliance Consumer Choice Tool</a> or the <a
+            href="https://optout.networkadvertising.org/" class="legal-link" target="_blank"
+            rel="noopener noreferrer">Network Advertising Initiative</a>.
+        </p>
+
+        <h2 class="legal-heading">6. European Privacy Rights (GDPR &amp; UK GDPR)</h2>
+        <p class="legal-p">
+          If you are accessing ToolCanvas from within the European Economic Area (EEA), the United Kingdom, or
+          Switzerland, you enjoy specific legal rights under the General Data Protection Regulation (GDPR).
+        </p>
+        <p class="legal-p">
+          Where required, our website provides a certified Consent Management Platform (CMP) allowing you to freely
+          grant, refuse, or customize consent for non-essential cookies and personalized ad processing. You may reopen
+          and update your privacy choices at any time.
+        </p>
+        <p class="legal-p">
+          Under GDPR, you also hold rights to access, rectify, or request deletion of any personal data we may hold, to
+          restrict or object to certain processing activities, and to submit complaints to your local data protection
+          authority.
+        </p>
+
+        <h2 class="legal-heading">7. California and US State Privacy Disclosures (CCPA &amp; CPRA)</h2>
+        <p class="legal-p">
+          Under the California Consumer Privacy Act (CCPA) and California Privacy Rights Act (CPRA), California
+          residents have rights regarding their personal information:
+        </p>
+        <ul class="legal-list">
+          <li><strong>No Sale of Personal Data:</strong> ToolCanvas does not sell personal information or share personal
+            data with third-party data brokers.</li>
+          <li><strong>Right to Know and Delete:</strong> You have the right to request disclosure of what personal
+            information is collected and request its deletion.</li>
+          <li><strong>Non-Discrimination:</strong> We do not discriminate against any user for exercising their privacy
+            rights.</li>
+        </ul>
+
+        <h2 class="legal-heading">8. Security and Data Protection</h2>
+        <p class="legal-p">
+          We take appropriate physical, administrative, and technological precautions to safeguard our hosting
+          infrastructure and protect information from loss, theft, and unauthorized access or modification. However,
+          because no internet transmission or electronic storage method can guarantee 100% absolute security, we
+          encourage users to practice responsible digital hygiene.
+        </p>
+
+        <h2 class="legal-heading">9. Links to External Websites</h2>
+        <p class="legal-p">
+          ToolCanvas may contain informative links to external websites, articles, or resources. We do not operate or
+          control third-party websites, and we are not responsible for their respective privacy practices, terms, or
+          content. We encourage you to inspect the privacy notices of any external site you visit.
+        </p>
+
+        <h2 class="legal-heading">10. Children’s Online Privacy</h2>
+        <p class="legal-p">
+          ToolCanvas does not knowingly collect or solicit any personal information from children under the age of 13.
+          If you believe that a minor has provided personal details through our website, please notify us immediately so
+          we can promptly take appropriate corrective action.
+        </p>
+
+        <h2 class="legal-heading">11. Updates and Policy Revisions</h2>
+        <p class="legal-p">
+          We may update this Privacy Policy from time to time to reflect operational improvements, tool enhancements, or
+          evolving legal requirements. Whenever revisions occur, the updated policy will be posted on this page with the
+          revised effective date shown below.
+        </p>
+
+        <h2 class="legal-heading">12. Contacting Us About Privacy</h2>
+        <p class="legal-p">
+          If you have questions, feedback, or inquiries regarding this Privacy Policy or our data handling practices,
+          please contact us via our <a href="/about/" class="legal-link">About &amp; Contact</a> page.
+        </p>
+
+        <p class="legal-p" style="margin-top: 32px; font-weight: 600; color: var(--text-main);">
+          Effective Date: October 12, 2026<br>
+          Last Updated: October 12, 2026
+        </p>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-simple-content">
+        <div class="footer-line-copy">
+          Copyright &copy; 2026 ToolCanvas | Last Updated (Oct 2026)
+        </div>
+        <div class="footer-line-links">
+          <a href="/privacy/" class="footer-simple-link">Privacy Policy</a>
+          <span class="footer-sep">|</span>
+          <a href="/terms/" class="footer-simple-link">Terms of Service</a>
+          <span class="footer-sep">|</span>
+          <a href="/about/" class="footer-simple-link">About</a>
+          <span class="footer-sep">|</span>
+          <a href="/blog/" class="footer-simple-link">Blog</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/common.js"></script>
+</body>
+
+</html>

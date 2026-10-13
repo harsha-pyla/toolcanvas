@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog &amp; Guides — ToolCanvas</title>
+  <meta name="description" content="Read articles, guides, and practical tutorials on text formatting conventions, title capitalization rules, and client-side privacy.">
+  <link rel="canonical" href="https://toolcanvas.online/blog/">
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolcanvas.online/blog/">
+  <meta property="og:site_name" content="ToolCanvas">
+  <meta property="og:title" content="Blog &amp; Guides — ToolCanvas">
+  <meta property="og:description" content="Read articles, guides, and practical tutorials on text formatting conventions, title capitalization rules, and client-side privacy.">
+  <meta property="og:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Blog &amp; Guides — ToolCanvas">
+  <meta name="twitter:description" content="Read articles, guides, and practical tutorials on text formatting conventions, title capitalization rules, and client-side privacy.">
+  <meta name="twitter:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "ToolCanvas Blog",
+    "url": "https://toolcanvas.online/blog/",
+    "description": "Guides, tutorials, and practical insights on text editing and web utilities."
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/toolcanvas-icon.svg">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/theme.css">
+  <script>
+    (function() {
+      try {
+        const saved = localStorage.getItem('toolcanvas_theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body data-tool="blog">
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="/" class="brand-logo" aria-label="ToolCanvas Home">
+          <svg class="brand-logo-icon" width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="100" height="100" rx="22" fill="#254FFA"/>
+            <path d="M 22 38 A 16 16 0 0 1 38 22 H 54.5 A 3 3 0 0 1 57.5 25 V 39 A 3 3 0 0 1 54.5 42 H 33.5 A 3.5 3.5 0 0 0 30 45.5 V 48.5 A 3.5 3.5 0 0 0 33.5 52 H 39.5 A 3 3 0 0 1 42.5 55 V 75 A 3 3 0 0 1 39.5 78 H 38 A 16 16 0 0 1 22 62 V 38 Z" fill="#FFFFFF"/>
+            <path d="M 61.5 24 A 2.5 2.5 0 0 1 64 21.5 L 82 43 A 2.5 2.5 0 0 1 80.5 45.5 H 67 A 5.5 5.5 0 0 1 61.5 40 V 24 Z" fill="#FF5530"/>
+            <path d="M 59.5 53 H 76 A 3 3 0 0 1 79 56 V 62 A 16 16 0 0 1 63 78 H 59.5 A 3 3 0 0 1 56.5 75 V 56 A 3 3 0 0 1 59.5 53 Z" fill="#FFFFFF"/>
+          </svg>
+          <div class="brand-text-name">Tool<span>Canvas</span></div>
+        </a>
+
+        <nav class="header-tools-nav" aria-label="Main tools navigation">
+          <a href="/case-converter/" class="header-tool-link">Case Converter</a>
+          <a href="/word-counter/" class="header-tool-link">Word Counter</a>
+          <a href="/duplicate-line-remover/" class="header-tool-link">Duplicate Remover</a>
+          <a href="/text-cleaner/" class="header-tool-link">Text Cleaner</a>
+          <a href="/text-compare/" class="header-tool-link">Text Compare</a>
+        </nav>
+      </div>
+
+      <div class="header-right">
+        <button type="button" class="theme-toggle-capsule" id="theme-toggle-btn" aria-label="Toggle dark/light mode" title="Toggle theme" role="switch" aria-checked="false">
+          <svg class="theme-icon sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <span class="theme-switch-track" aria-hidden="true">
+            <span class="theme-switch-knob"></span>
+          </span>
+          <svg class="theme-icon moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <div class="search-wrap">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="tool-search-input" class="search-input" placeholder="Search tools..." aria-label="Search tools" autocomplete="off">
+          <div id="search-results-dropdown" class="search-dropdown" role="listbox"></div>
+        </div>
+
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav-menu" id="mobile-nav-menu">
+    <a href="/case-converter/" class="mobile-nav-link">Case Converter</a>
+    <a href="/word-counter/" class="mobile-nav-link">Word Counter</a>
+    <a href="/duplicate-line-remover/" class="mobile-nav-link">Duplicate Remover</a>
+    <a href="/text-cleaner/" class="mobile-nav-link">Text Cleaner</a>
+    <a href="/text-compare/" class="mobile-nav-link">Text Compare</a>
+    <a href="/about/" class="mobile-nav-link">About</a>
+    <a href="/blog/" class="mobile-nav-link active">Blog</a>
+    <a href="/privacy/" class="mobile-nav-link">Privacy Policy</a>
+    <a href="/terms/" class="mobile-nav-link">Terms of Service</a>
+  </div>
+
+  <main class="page-container" role="main">
+    <div class="legal-page-wrap">
+      <div class="legal-content">
+        
+        <h1 class="legal-title">ToolCanvas Blog &amp; Guides</h1>
+        <p class="legal-lead">
+          Practical tutorials, step-by-step guides, and clear explanations to help you solve everyday text formatting, data cleaning, and writing challenges.
+        </p>
+
+        <h2 class="legal-heading">Latest Guides</h2>
+
+        <!-- Featured Guide: How to Convert Text to Title Case -->
+        <div style="margin: 24px 0; padding-bottom: 24px; border-bottom: 1px solid var(--border-subtle);">
+          <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">
+            October 12, 2026 &bull; How-to Guide &bull; Category: Case Conversion
+          </div>
+          <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 10px; line-height: 1.35;">
+            <a href="/blog/how-to-convert-text-to-title-case/" class="legal-link" style="color: var(--text-main); text-decoration: none;">
+              How to Convert Text to Title Case: Rules, Examples, and Step-by-Step Guide
+            </a>
+          </h2>
+          <p class="legal-p" style="margin-bottom: 12px;">
+            Learn which words to capitalize and which to keep lowercase in headlines, titles, and subheadings. Includes practical examples, edge cases (colons, phrasal verbs, hyphens), comparison of style guides (Chicago, APA, MLA, AP), and a free online tool to convert text instantly.
+          </p>
+          <a href="/blog/how-to-convert-text-to-title-case/" class="legal-link" style="font-weight: 600; font-size: 14.5px;">
+            Read the full guide &rarr;
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-simple-content">
+        <div class="footer-line-copy">
+          Copyright &copy; 2026 ToolCanvas | Last Updated (Oct 2026)
+        </div>
+        <div class="footer-line-links">
+          <a href="/privacy/" class="footer-simple-link">Privacy Policy</a>
+          <span class="footer-sep">|</span>
+          <a href="/terms/" class="footer-simple-link">Terms of Service</a>
+          <span class="footer-sep">|</span>
+          <a href="/about/" class="footer-simple-link">About</a>
+          <span class="footer-sep">|</span>
+          <a href="/blog/" class="footer-simple-link">Blog</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/common.js"></script>
+</body>
+</html>

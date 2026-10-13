@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Converter — Transform Text Casing Online </title>
+  <meta name="description"
+    content="Free, 100% private in-browser Case Converter. Instantly transform text between Sentence case, lower case, UPPER CASE, Title Case, Capitalized Case, alternating case, and inverse case.">
+  <link rel="canonical" href="https://toolcanvas.online/case-converter/">
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolcanvas.online/case-converter/">
+  <meta property="og:site_name" content="ToolCanvas">
+  <meta property="og:title" content="Case Converter — Transform Text Casing Online | ToolCanvas">
+  <meta property="og:description"
+    content="Free, 100% private in-browser Case Converter. Instantly transform text between Sentence case, lower case, UPPER CASE, Title Case, Capitalized Case, alternating case, and inverse case.">
+  <meta property="og:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Case Converter — Transform Text Casing Online | ToolCanvas">
+  <meta name="twitter:description"
+    content="Free, 100% private in-browser Case Converter. Instantly transform text between Sentence case, lower case, UPPER CASE, Title Case, Capitalized Case, alternating case, and inverse case.">
+  <meta name="twitter:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ToolCanvas Case Converter",
+    "url": "https://toolcanvas.online/case-converter/",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "description": "Free, 100% private in-browser Case Converter to transform text between Sentence case, lower case, UPPER CASE, Title Case, Capitalized Case, and more.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/toolcanvas-icon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/theme.css">
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('toolcanvas_theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) { }
+    })();
+  </script>
+</head>
+
+<body data-tool="case-converter">
+
+  <!-- =========================================================
+       SITE HEADER
+       ========================================================= -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- Left: Logo + 5 Tools Nav -->
+      <div class="header-left">
+        <a href="/" class="brand-logo" aria-label="ToolCanvas Home">
+          <svg class="brand-logo-icon" width="32" height="32" viewBox="0 0 100 100" fill="none"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="100" height="100" rx="22" fill="#254FFA" />
+            <path
+              d="M 22 38 A 16 16 0 0 1 38 22 H 54.5 A 3 3 0 0 1 57.5 25 V 39 A 3 3 0 0 1 54.5 42 H 33.5 A 3.5 3.5 0 0 0 30 45.5 V 48.5 A 3.5 3.5 0 0 0 33.5 52 H 39.5 A 3 3 0 0 1 42.5 55 V 75 A 3 3 0 0 1 39.5 78 H 38 A 16 16 0 0 1 22 62 V 38 Z"
+              fill="#FFFFFF" />
+            <path
+              d="M 61.5 24 A 2.5 2.5 0 0 1 64 21.5 L 82 43 A 2.5 2.5 0 0 1 80.5 45.5 H 67 A 5.5 5.5 0 0 1 61.5 40 V 24 Z"
+              fill="#FF5530" />
+            <path
+              d="M 59.5 53 H 76 A 3 3 0 0 1 79 56 V 62 A 16 16 0 0 1 63 78 H 59.5 A 3 3 0 0 1 56.5 75 V 56 A 3 3 0 0 1 59.5 53 Z"
+              fill="#FFFFFF" />
+          </svg>
+          <div class="brand-text-name">Tool<span>Canvas</span></div>
+        </a>
+
+        <nav class="header-tools-nav" aria-label="Main tools navigation">
+          <a href="/case-converter/" class="header-tool-link active">Case Converter</a>
+          <a href="/word-counter/" class="header-tool-link">Word Counter</a>
+          <a href="/duplicate-line-remover/" class="header-tool-link">Duplicate Remover</a>
+          <a href="/text-cleaner/" class="header-tool-link">Text Cleaner</a>
+          <a href="/text-compare/" class="header-tool-link">Text Compare</a>
+        </nav>
+      </div>
+
+      <!-- Right: Sliding Pill Theme Toggle + Search -->
+      <div class="header-right">
+
+        <!-- Capsule Theme Switch (Sun — Pill Slider — Moon) -->
+        <button type="button" class="theme-toggle-capsule" id="theme-toggle-btn" aria-label="Toggle dark/light mode"
+          title="Toggle theme" role="switch" aria-checked="false">
+          <svg class="theme-icon sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <span class="theme-switch-track" aria-hidden="true">
+            <span class="theme-switch-knob"></span>
+          </span>
+          <svg class="theme-icon moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Search Bar -->
+        <div class="search-wrap">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="tool-search-input" class="search-input" placeholder="Search tools..."
+            aria-label="Search tools" autocomplete="off">
+          <div id="search-results-dropdown" class="search-dropdown" role="listbox"></div>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-menu" id="mobile-nav-menu" aria-label="Mobile navigation">
+    <a href="/case-converter/" class="mobile-nav-link active">Case Converter</a>
+    <a href="/word-counter/" class="mobile-nav-link">Word Counter</a>
+    <a href="/duplicate-line-remover/" class="mobile-nav-link">Duplicate Line Remover</a>
+    <a href="/text-cleaner/" class="mobile-nav-link">Text Cleaner</a>
+    <a href="/text-compare/" class="mobile-nav-link">Text Compare</a>
+  </div>
+
+  <!-- =========================================================
+       MAIN CONTENT CONTAINER
+       ========================================================= -->
+  <main class="page-container" role="main">
+
+    <!-- Hero Headline (Centered ConvertCase Style) -->
+    <section class="hero-block">
+      <h1 class="hero-headline">Case Converter</h1>
+      <p class="hero-subtext">Accidentally left Caps Lock on, or need to format headlines and code variables? Enter your
+        text below to convert instantly between 11 casing styles.</p>
+    </section>
+
+    <!-- The Centered Workspace Box (1100px max width) -->
+    <div class="tool-workspace-wrap">
+
+      <div class="workspace-box">
+
+        <!-- Main Textarea -->
+        <textarea id="main-textarea" class="main-textarea" placeholder="Type or paste your content here..."
+          spellcheck="false" autofocus></textarea>
+
+        <!-- Inside Bottom Toolbar (ConvertCase 5 Square Icons + Counters) -->
+        <div class="box-bottom-bar">
+
+          <div class="toolbar-controls-group">
+            <button type="button" id="tool-btn-copy" class="tool-icon-btn" title="Copy to clipboard"
+              aria-label="Copy to clipboard">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+              </svg>
+            </button>
+
+            <button type="button" id="tool-btn-share" class="tool-icon-btn" title="Share text" aria-label="Share text">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3" />
+                <circle cx="6" cy="12" r="3" />
+                <circle cx="18" cy="19" r="3" />
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+              </svg>
+            </button>
+
+            <button type="button" id="tool-btn-download" class="tool-icon-btn" title="Download text as .txt file"
+              aria-label="Download text file">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </button>
+
+            <button type="button" id="tool-btn-clear" class="tool-icon-btn" title="Clear text editor"
+              aria-label="Clear text editor">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18" />
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="bar-right-group">
+            <div class="inline-counter-text tabular">
+              Character Count: <span id="bar-char-count">0</span> | Word Count: <span id="bar-word-count">0</span> |
+              Line Count: <span id="bar-line-count">0</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CASE CONVERTER BUTTONS (7 Core Text Casing Formats) -->
+      <div class="action-buttons-wrap">
+        <button type="button" class="action-btn-convert" data-case="sentence">
+          <span class="badge-init badge-sc">Sc</span> Sentence case
+        </button>
+        <button type="button" class="action-btn-convert" data-case="lower">
+          <span class="badge-init badge-lc">lc</span> lower case
+        </button>
+        <button type="button" class="action-btn-convert" data-case="upper">
+          <span class="badge-init badge-uc">UC</span> UPPER CASE
+        </button>
+        <button type="button" class="action-btn-convert" data-case="capitalized">
+          <span class="badge-init badge-cc">CC</span> Capitalized Case
+        </button>
+        <button type="button" class="action-btn-convert" data-case="alternating">
+          <span class="badge-init badge-ac">aC</span> aLtErNaTiNg cAsE
+        </button>
+        <button type="button" class="action-btn-convert" data-case="title">
+          <span class="badge-init badge-tc">TC</span> Title Case
+        </button>
+        <button type="button" class="action-btn-convert" data-case="inverse">
+          <span class="badge-init badge-ic">iC</span> InVeRsE CaSe
+        </button>
+      </div>
+
+      <div style="margin-top: 14px; font-size: 13.5px; color: var(--text-secondary);">
+        Need programming variable conventions? Use our dedicated <a href="/code-case-converter/" class="legal-link"
+          style="font-weight: 600;">Code Case Converter</a> for camelCase, PascalCase, kebab-case, and snake_case.
+      </div>
+
+    </div>
+
+    <!-- =========================================================
+         EDITORIAL DOCUMENTATION & USER GUIDE (Reference Boxed Layout)
+         AdSense-Compliant, Original, High-Value Architecture
+         ========================================================= -->
+    <section class="editorial-section" aria-label="Tool Guide and Documentation">
+
+      <!-- Top Overview Banner Box -->
+      <div class="editorial-banner-box">
+        <div>
+          <div class="editorial-banner-title">
+            <span class="editorial-banner-icon">CC</span>
+            Case Converter &mdash; Transform Text Casing Online
+          </div>
+          <p class="editorial-banner-text">
+            Instantly transform text between 7 core casing conventions: Sentence case, lower case, UPPER CASE,
+            Capitalized Case, aLtErNaTiNg cAsE, Title Case, and InVeRsE CaSe. Paste your text, choose your target
+            format, and get clean, formatted results instantly without losing paragraph structure or line breaks.
+          </p>
+        </div>
+        <div>
+          <p class="editorial-banner-text">
+            Handles everything from simple sentence normalization and accidental Caps Lock fixes to complex programming
+            identifier conversions and editorial headline formatting. All operations execute 100% locally in your web
+            browser with zero server round-trips and zero data logging.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2-Column Responsive Boxed Grid (Matching Reference Design) -->
+      <div class="editorial-grid">
+
+        <!-- LEFT COLUMN -->
+        <div class="editorial-col">
+
+          <!-- 1. Specific Instructions: How to Use -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">How to Use the Case Converter</h2>
+            <ol class="editorial-steps-list">
+              <li><strong>Enter or paste your text:</strong> Type directly into the main workspace above or paste text
+                from your clipboard, document, or IDE.</li>
+              <li><strong>Select your target casing style:</strong> Click any of the 7 solid style buttons below the
+                editor (such as <em>Sentence case</em>, <em>Title Case</em>, or <em>UPPER CASE</em>).</li>
+              <li><strong>Review the instant transformation:</strong> The editor converts your text immediately in place
+                while retaining line breaks and paragraph structure.</li>
+              <li><strong>Copy or export your result:</strong> Click the <strong>Copy icon</strong> in the bottom
+                toolbar to copy formatted text, or click the <strong>Download icon</strong> to save it as a
+                <code>.txt</code> file.</li>
+            </ol>
+          </div>
+
+          <!-- 2. How the Tool Works -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">How Does the Case Converter Work?</h2>
+            <p class="editorial-box-paragraph">
+              ToolCanvas executes string conversions using native browser JavaScript regular expressions and Unicode
+              string transformers. When you click a style button, the engine processes your text through specialized
+              tokenizer pipelines:
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>Sentence Case:</strong> Splits text along grammatical boundaries (periods, question marks, and
+              exclamation points followed by whitespace) and line starts, while preserving proper capitalization for the
+              pronoun <em>I</em>, contractions, and common abbreviations.
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>Title Case:</strong> Tokenizes words and applies recognized editorial title rules (The Chicago
+              Manual of Style and APA). Major nouns, verbs, and adjectives are capitalized, while minor prepositions,
+              articles, and coordinating conjunctions (<em>a, an, the, and, but, or, for, in, on, to</em>) remain in
+              lowercase unless they start the title, end the title, or immediately follow a colon or em-dash.
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>All-Caps &amp; Lowercase:</strong> Transforms entire bodies of text into clean upper or lowercase
+              without altering spacing, line breaks, or special characters.
+            </p>
+            <p class="editorial-box-paragraph">
+              Because all algorithms run locally in browser memory, conversions complete in sub-milliseconds without
+              server network requests.
+            </p>
+          </div>
+
+          <!-- 3. Practical Applications for Your Work -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Practical Applications for Your Work</h2>
+            <p class="editorial-box-paragraph">
+              Text processing needs vary across industries. Here is how ToolCanvas supports everyday workflows:
+            </p>
+
+            <span class="editorial-box-subheading">Data Management &amp; Analysis</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>Spreadsheet Cleansing:</strong> Convert messy customer names to Capitalized Case and email
+                lists to consistent lowercase.</li>
+              <li><strong>Database Migration:</strong> Standardize SQL column names into <code>snake_case</code> or
+                environment variables into <code>UPPER_CASE</code>.</li>
+              <li><strong>Product SKU Cataloging:</strong> Maintain uniform uppercase identifiers across e-commerce
+                product catalogs.</li>
+            </ul>
+
+            <span class="editorial-box-subheading">Digital Marketing &amp; Content Creation</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>SEO-Friendly URL Slugs:</strong> Convert blog and product titles into clean
+                <code>kebab-case</code> URLs for CMS routing.</li>
+              <li><strong>Headline Formatting:</strong> Automatically format article titles, subheadings, and email
+                subject lines to proper Title Case.</li>
+              <li><strong>Social Media Hashtags:</strong> Transform multi-word slogans into <code>camelCase</code> or
+                <code>PascalCase</code> for readable hashtags.</li>
+            </ul>
+
+            <span class="editorial-box-subheading">Technical &amp; Software Development</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>Variable Naming:</strong> Convert user requirements or database fields directly into
+                JavaScript <code>camelCase</code> or C# <code>PascalCase</code>.</li>
+              <li><strong>CSS &amp; REST Slugs:</strong> Generate clean CSS class names and RESTful endpoint routes with
+                <code>kebab-case</code>.</li>
+              <li><strong>Constants &amp; Enums:</strong> Rapidly transform lists of flags into screaming
+                <code>UPPER_CASE</code>.</li>
+            </ul>
+
+            <span class="editorial-box-subheading">Research, Editorial &amp; Education</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>Fixing Accidental Caps Lock:</strong> Instantly recover documents typed with accidental Caps
+                Lock on into clean Sentence case.</li>
+              <li><strong>Academic Citation Titles:</strong> Format bibliography titles to conform to APA, MLA, or
+                Chicago styling guidelines.</li>
+            </ul>
+          </div>
+
+          <!-- 4. Complete Casing Conventions Reference -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">The 7 Text Casing Styles Explained</h2>
+            <p class="editorial-box-paragraph">
+              Quick reference guide to the 7 core text conventions:
+            </p>
+            <ul class="editorial-bullet-list">
+              <li><strong>Sentence case:</strong> Capitalizes the initial letter of each sentence, paragraphs, and the
+                pronoun <em>I</em> while keeping remaining text lowercase. Ideal for essays, emails, and prose.</li>
+              <li><strong>lower case:</strong> Converts every letter into small characters. Essential for email rosters,
+                database queries, and URL paths.</li>
+              <li><strong>UPPER CASE:</strong> Transforms all letters into capital form. Used for acronyms, legal
+                notices, and urgent headers.</li>
+              <li><strong>Capitalized Case:</strong> Capitalizes the first letter of every single word without
+                exception. Used for formal certificates, tabular headings, and names.</li>
+              <li><strong>Title Case:</strong> Capitalizes primary words (nouns, verbs, adjectives) while keeping minor
+                prepositions and articles lowercase per Chicago/APA rules.</li>
+              <li><strong>aLtErNaTiNg cAsE:</strong> Alternates between lowercase and uppercase characters. Popular for
+                creative typography and emphasis.</li>
+              <li><strong>InVeRsE CaSe:</strong> Flips existing letter casings (uppercase becomes lowercase and vice
+                versa). Great for reversing accidental Caps Lock.</li>
+            </ul>
+          </div>
+
+          <!-- 5. Best Practices for Optimal Results -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Best Practices for Optimal Results</h2>
+            <ul class="editorial-bullet-list">
+              <li><strong>Review Acronyms in Title Case:</strong> Common acronyms entered in capital letters are
+                respected, but double-check domain-specific abbreviations.</li>
+              <li><strong>Preserve Line Breaks:</strong> Paragraph breaks and empty lines are preserved across all 7
+                conversions so your formatting stays intact.</li>
+              <li><strong>Developer Casing:</strong> To format code variables (camelCase, PascalCase, kebab-case,
+                snake_case), use our dedicated <a href="/code-case-converter/" class="legal-link">Code Case
+                  Converter</a>.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="editorial-col">
+
+          <!-- 6. Practical Real-World Examples -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Real-World Examples &amp; Results</h2>
+            <p class="editorial-box-paragraph">
+              Common transformation scenarios with tested inputs and outputs:
+            </p>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 1: Editorial Article Headline to Title Case</div>
+              <div class="editorial-example-row"><strong>Original:</strong> the chronicle of an ancient kingdom and its
+                rise to power</div>
+              <div class="editorial-example-row"><strong>Target Style:</strong> Title Case</div>
+              <div class="editorial-example-row"><strong>Result:</strong> <span class="editorial-example-code">The
+                  Chronicle of an Ancient Kingdom and Its Rise to Power</span></div>
+              <div class="editorial-example-row"><em>Note:</em> Conjunctions and prepositions (<em>of, an, and, its,
+                  to</em>) remain lowercase per AP/Chicago rules.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 2: Form Fields to Capitalized Case</div>
+              <div class="editorial-example-row"><strong>Original:</strong> alexander james smith</div>
+              <div class="editorial-example-row"><strong>Target Style:</strong> Capitalized Case</div>
+              <div class="editorial-example-row"><strong>Result:</strong> <span class="editorial-example-code">Alexander
+                  James Smith</span></div>
+              <div class="editorial-example-row"><em>Note:</em> Capitalizes the initial letter of every name.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 3: Inverting Accidental Caps Lock</div>
+              <div class="editorial-example-row"><strong>Original:</strong> tHIS IS AN ACCIDENTAL cAPS lOCK MISTAKE.
+              </div>
+              <div class="editorial-example-row"><strong>Target Style:</strong> InVeRsE CaSe</div>
+              <div class="editorial-example-row"><strong>Result:</strong> <span class="editorial-example-code">This is
+                  an accidental Caps Lock mistake.</span></div>
+              <div class="editorial-example-row"><em>Note:</em> Inverts letter cases to immediately restore the intended
+                text.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 4: Fixing Accidental Caps Lock Shouting (Sentence case)</div>
+              <div class="editorial-example-row"><strong>Original:</strong> THE SERVER ENCOUNTERED A TIMEOUT ERROR.
+                PLEASE RETRY IN FIVE MINUTES! DO NOT RESTART.</div>
+              <div class="editorial-example-row"><strong>Target Style:</strong> Sentence case</div>
+              <div class="editorial-example-row"><strong>Result:</strong> <span class="editorial-example-code">The
+                  server encountered a timeout error. Please retry in five minutes! Do not restart.</span></div>
+              <div class="editorial-example-row"><em>Note:</em> Preserves exclamation mark and period sentence
+                boundaries while removing shouting capital letters.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 5: International Accented Text &amp; Umlauts</div>
+              <div class="editorial-example-row"><strong>Original:</strong> Über den Dächern von Zürich &amp; Café Crème
+              </div>
+              <div class="editorial-example-row"><strong>Target Style:</strong> lower case</div>
+              <div class="editorial-example-row"><strong>Result:</strong> <span class="editorial-example-code">über den
+                  dächern von zürich &amp; café crème</span></div>
+              <div class="editorial-example-row"><em>Note:</em> Full Unicode support ensures diacritics and umlauts
+                (<em>Ü, ä, é, è</em>) are converted accurately without corruption.</div>
+            </div>
+          </div>
+
+          <!-- 7. Key Benefits -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">What Are the Benefits of Using ToolCanvas?</h2>
+            <ul class="editorial-bullet-list">
+              <li><strong>Precision:</strong> Engineered to follow recognized editorial style guides and programming
+                conventions with accurate edge-case handling.</li>
+              <li><strong>Zero Latency:</strong> All conversions execute natively in your local browser thread with
+                sub-millisecond response time.</li>
+              <li><strong>100% Client-Side Privacy:</strong> Your text never leaves your device. No cloud transmission,
+                no logging, and no analytics tracking on your content.</li>
+              <li><strong>11 Formats in One Workspace:</strong> Seamlessly switch between casing styles in a single
+                unified editor without jumping across separate pages.</li>
+              <li><strong>Free &amp; Unrestricted:</strong> Completely free for personal, educational, and commercial
+                work without registration, limits, or paywalls.</li>
+            </ul>
+          </div>
+
+          <!-- 8. Options, Edge Cases & Limitations -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Supported Options, Edge Cases &amp; Limitations</h2>
+            <p class="editorial-box-paragraph">
+              To ensure transparent and predictable results, consider these capabilities and boundaries:
+            </p>
+            <ul class="editorial-bullet-list">
+              <li><strong>Supported Input Formats:</strong> Plain text, source code snippets, CSV rows, multiline prose,
+                markdown files, and JSON payloads.</li>
+              <li><strong>Accents &amp; Special Symbols:</strong> Supports all UTF-8 Unicode characters including
+                accented letters (<em>á, é, í, ó, ú</em>), umlauts (<em>ä, ö, ü</em>), cedillas (<em>ç</em>), and Asian
+                or Cyrillic characters.</li>
+              <li><strong>Handling Numbers &amp; Punctuation:</strong> Numbers are fully preserved in all casing modes.
+                In code styles (camelCase, snake_case), punctuation characters are treated as word separators.</li>
+              <li><strong>Volume &amp; Size Limitations:</strong> ToolCanvas easily processes documents containing over
+                100,000 words. Because operations run in browser memory, extremely large files (50MB+) may depend on
+                your device's available RAM.</li>
+              <li><strong>Language Context:</strong> Title Case uses English grammatical articles and conjunctions.
+                Non-English titles follow standard capitalization rules.</li>
+            </ul>
+          </div>
+
+          <!-- 9. Stacked Individual FAQ Boxes (Matching Reference Image) -->
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Can I convert multiple lines or paragraphs at once?</div>
+            <p class="editorial-faq-a">
+              Yes. You can paste entire multi-page documents, articles, or spreadsheets with thousands of lines into the
+              editor. ToolCanvas processes all paragraphs simultaneously while preserving line breaks and indentations.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Will converting case affect my text formatting or line breaks?</div>
+            <p class="editorial-faq-a">
+              For prose styles (Sentence case, lower case, UPPER CASE, Title Case, Capitalized Case), your original line
+              breaks, tabs, and paragraph separations remain completely intact. For identifier styles (camelCase,
+              kebab-case, snake_case), words are consolidated into single code tokens.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Is there a limit to how much text I can process?</div>
+            <p class="editorial-faq-a">
+              There are no artificial usage caps or character quotas. Our browser-based algorithms comfortably handle
+              large documents exceeding 100,000 words in a few milliseconds without server timeouts.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Does the tool work with special characters, accents, and emojis?</div>
+            <p class="editorial-faq-a">
+              Yes. ToolCanvas utilizes full Unicode string transformations, preserving international diacritics,
+              accented vowels, and emojis without mangling or question-mark replacement errors.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">What is the difference between Title Case and Capitalized Case?</div>
+            <p class="editorial-faq-a">
+              Capitalized Case capitalizes the initial letter of every single word without exception. Title Case follows
+              professional editorial standards (such as AP and Chicago), leaving minor conjunctions and prepositions
+              (<em>in, of, the, and, to</em>) in lowercase unless they begin the title.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Are any of my documents or texts stored on your servers?</div>
+            <p class="editorial-faq-a">
+              No. ToolCanvas is built with a strict 100% client-side privacy guarantee. Every conversion executes
+              entirely inside your device's local JavaScript memory. Nothing is ever transmitted over the network or
+              saved to a database.
+            </p>
+          </div>
+
+          <!-- 10. Complementary Tools for Complete Text Processing -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Complementary Tools for Complete Text Processing</h2>
+            <p class="editorial-box-paragraph">
+              Casing conversion often pairs naturally with other text formatting needs. Explore our other free,
+              in-browser utilities:
+            </p>
+            <ul class="editorial-tools-list">
+              <li class="editorial-tool-item">
+                <a href="/word-counter/" class="editorial-tool-link">Word &amp; Character Counter</a> &mdash; Real-time
+                analysis of words, characters (with and without spaces), sentence structures, paragraphs, and reading
+                time duration.
+              </li>
+              <li class="editorial-tool-item">
+                <a href="/duplicate-line-remover/" class="editorial-tool-link">Duplicate Line Remover</a> &mdash;
+                Instantly eliminate repeated lines from lists, deduplicate email rosters, and sort text alphabetically.
+              </li>
+              <li class="editorial-tool-item">
+                <a href="/text-cleaner/" class="editorial-tool-link">Text Cleaner &amp; Formatter</a> &mdash; Strip HTML
+                tags, remove redundant spaces, filter emojis, and normalize compiler-breaking curly quotes.
+              </li>
+              <li class="editorial-tool-item">
+                <a href="/text-compare/" class="editorial-tool-link">Text Compare &amp; Diff Checker</a> &mdash;
+                Side-by-Side visual diff comparison with synchronized scrolling to inspect additions and deletions
+                across drafts.
+              </li>
+            </ul>
+            <span class="editorial-timestamp">Last reviewed: Oct 2026 | ToolCanvas Utility Standards</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER (Clean Multi-Column Directory)
+       ========================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-simple-content">
+        <div class="footer-line-copy">
+          Copyright &copy; 2026 ToolCanvas | Last Updated (Oct 2026)
+        </div>
+        <div class="footer-line-links">
+          <a href="/privacy/" class="footer-simple-link">Privacy Policy</a>
+          <span class="footer-sep">|</span>
+          <a href="/terms/" class="footer-simple-link">Terms of Service</a>
+          <span class="footer-sep">|</span>
+          <a href="/about/" class="footer-simple-link">About</a>
+          <span class="footer-sep">|</span>
+          <a href="/blog/" class="footer-simple-link">Blog</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./script.js"></script>
+</body>
+
+</html>

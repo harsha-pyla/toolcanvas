@@ -1,0 +1,10 @@
+@import "/css/theme.css";
+
+/* Tool Specific overrides for Case Converter */
+.action-buttons-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}

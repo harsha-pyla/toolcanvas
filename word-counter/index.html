@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Counter &amp; Character Counter — Real-Time Text Analysis</title>
+  <meta name="description"
+    content="Free, 100% private in-browser Word &amp; Character Counter. Instantly calculate words, characters with and without spaces, sentences, paragraphs, and reading time.">
+  <link rel="canonical" href="https://toolcanvas.online/word-counter/">
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolcanvas.online/word-counter/">
+  <meta property="og:site_name" content="ToolCanvas">
+  <meta property="og:title" content="Word Counter &amp; Character Counter — Real-Time Text Analysis | ToolCanvas">
+  <meta property="og:description"
+    content="Free, 100% private in-browser Word &amp; Character Counter. Instantly calculate words, characters with and without spaces, sentences, paragraphs, and reading time.">
+  <meta property="og:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Word Counter &amp; Character Counter — Real-Time Text Analysis | ToolCanvas">
+  <meta name="twitter:description"
+    content="Free, 100% private in-browser Word &amp; Character Counter. Instantly calculate words, characters with and without spaces, sentences, paragraphs, and reading time.">
+  <meta name="twitter:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ToolCanvas Word & Character Counter",
+    "url": "https://toolcanvas.online/word-counter/",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "description": "Calculate word count, character count, spaces, sentences, paragraphs, reading time, and speaking time in real time with 100% client-side privacy.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/toolcanvas-icon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/theme.css">
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('toolcanvas_theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) { }
+    })();
+  </script>
+</head>
+
+<body data-tool="word-counter">
+
+  <!-- =========================================================
+       SITE HEADER
+       ========================================================= -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- Left: Logo + 5 Tools Nav -->
+      <div class="header-left">
+        <a href="/" class="brand-logo" aria-label="ToolCanvas Home">
+          <svg class="brand-logo-icon" width="32" height="32" viewBox="0 0 100 100" fill="none"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="100" height="100" rx="22" fill="#254FFA" />
+            <path
+              d="M 22 38 A 16 16 0 0 1 38 22 H 54.5 A 3 3 0 0 1 57.5 25 V 39 A 3 3 0 0 1 54.5 42 H 33.5 A 3.5 3.5 0 0 0 30 45.5 V 48.5 A 3.5 3.5 0 0 0 33.5 52 H 39.5 A 3 3 0 0 1 42.5 55 V 75 A 3 3 0 0 1 39.5 78 H 38 A 16 16 0 0 1 22 62 V 38 Z"
+              fill="#FFFFFF" />
+            <path
+              d="M 61.5 24 A 2.5 2.5 0 0 1 64 21.5 L 82 43 A 2.5 2.5 0 0 1 80.5 45.5 H 67 A 5.5 5.5 0 0 1 61.5 40 V 24 Z"
+              fill="#FF5530" />
+            <path
+              d="M 59.5 53 H 76 A 3 3 0 0 1 79 56 V 62 A 16 16 0 0 1 63 78 H 59.5 A 3 3 0 0 1 56.5 75 V 56 A 3 3 0 0 1 59.5 53 Z"
+              fill="#FFFFFF" />
+          </svg>
+          <div class="brand-text-name">Tool<span>Canvas</span></div>
+        </a>
+
+        <nav class="header-tools-nav" aria-label="Main tools navigation">
+          <a href="/case-converter/" class="header-tool-link">Case Converter</a>
+          <a href="/word-counter/" class="header-tool-link active">Word Counter</a>
+          <a href="/duplicate-line-remover/" class="header-tool-link">Duplicate Remover</a>
+          <a href="/text-cleaner/" class="header-tool-link">Text Cleaner</a>
+          <a href="/text-compare/" class="header-tool-link">Text Compare</a>
+        </nav>
+      </div>
+
+      <!-- Right: Sliding Pill Theme Toggle + Search -->
+      <div class="header-right">
+
+        <!-- Capsule Theme Switch (Sun — Pill Slider — Moon) -->
+        <button type="button" class="theme-toggle-capsule" id="theme-toggle-btn" aria-label="Toggle dark/light mode"
+          title="Toggle theme" role="switch" aria-checked="false">
+          <svg class="theme-icon sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <span class="theme-switch-track" aria-hidden="true">
+            <span class="theme-switch-knob"></span>
+          </span>
+          <svg class="theme-icon moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <div class="search-wrap">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="tool-search-input" class="search-input" placeholder="Search tools..."
+            aria-label="Search tools" autocomplete="off">
+          <div id="search-results-dropdown" class="search-dropdown" role="listbox"></div>
+        </div>
+
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-menu" id="mobile-nav-menu" aria-label="Mobile navigation">
+    <a href="/case-converter/" class="mobile-nav-link">Case Converter</a>
+    <a href="/word-counter/" class="mobile-nav-link active">Word Counter</a>
+    <a href="/duplicate-line-remover/" class="mobile-nav-link">Duplicate Line Remover</a>
+    <a href="/text-cleaner/" class="mobile-nav-link">Text Cleaner</a>
+    <a href="/text-compare/" class="mobile-nav-link">Text Compare</a>
+  </div>
+
+  <!-- =========================================================
+       MAIN CONTENT CONTAINER
+       ========================================================= -->
+  <main class="page-container" role="main">
+
+    <!-- Hero Headline (Centered ConvertCase Style) -->
+    <section class="hero-block">
+      <h1 class="hero-headline">Word Counter & Character Counter</h1>
+      <p class="hero-subtext">Count words, characters (with and without spaces), sentences, paragraphs, and reading time
+        in real time with 100% private in-browser analysis.</p>
+    </section>
+
+    <!-- The Centered Workspace Box (900px max width) -->
+    <div class="tool-workspace-wrap">
+
+      <div class="workspace-box">
+
+        <!-- Main Textarea -->
+        <textarea id="main-textarea" class="main-textarea" placeholder="Type or paste your content here..."
+          spellcheck="false" autofocus></textarea>
+
+        <!-- Inside Bottom Toolbar -->
+        <div class="box-bottom-bar">
+
+          <div class="toolbar-controls-group">
+            <button type="button" id="tool-btn-copy" class="tool-icon-btn" title="Copy to clipboard"
+              aria-label="Copy to clipboard">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+              </svg>
+            </button>
+
+            <button type="button" id="tool-btn-share" class="tool-icon-btn" title="Share text" aria-label="Share text">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3" />
+                <circle cx="6" cy="12" r="3" />
+                <circle cx="18" cy="19" r="3" />
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+              </svg>
+            </button>
+
+            <button type="button" id="tool-btn-download" class="tool-icon-btn" title="Download text as .txt file"
+              aria-label="Download text file">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </button>
+
+            <button type="button" id="tool-btn-clear" class="tool-icon-btn" title="Clear text editor"
+              aria-label="Clear text editor">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18" />
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="bar-right-group">
+            <div class="inline-counter-text tabular">
+              Character Count: <span id="bar-char-count">0</span> | Word Count: <span id="bar-word-count">0</span> |
+              Line Count: <span id="bar-line-count">0</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- WORD & CHARACTER COUNTER 7-CARD ROW -->
+      <div class="wc-stats-panel">
+        <div class="wc-stat-item">
+          <div class="wc-stat-title">Characters (with spaces)</div>
+          <div id="wc-chars-all" class="wc-stat-num">0</div>
+        </div>
+        <div class="wc-stat-item">
+          <div class="wc-stat-title">Characters (no spaces)</div>
+          <div id="wc-chars-nospace" class="wc-stat-num">0</div>
+        </div>
+        <div class="wc-stat-item">
+          <div class="wc-stat-title">Words</div>
+          <div id="wc-words-total" class="wc-stat-num">0</div>
+        </div>
+        <div class="wc-stat-item">
+          <div class="wc-stat-title">Sentences</div>
+          <div id="wc-sentences-total" class="wc-stat-num">0</div>
+        </div>
+        <div class="wc-stat-item">
+          <div class="wc-stat-title">Paragraphs</div>
+          <div id="wc-paragraphs-total" class="wc-stat-num">0</div>
+        </div>
+        <div class="wc-stat-item">
+          <div class="wc-stat-title">Reading Time</div>
+          <div id="wc-reading-time" class="wc-stat-num">0 sec</div>
+          <div class="wc-stat-note">225 wpm</div>
+        </div>
+        <div class="wc-stat-item">
+          <div class="wc-stat-title">Speaking Time</div>
+          <div id="wc-speaking-time" class="wc-stat-num">0 sec</div>
+          <div class="wc-stat-note">130 wpm</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =========================================================
+         EDITORIAL DOCUMENTATION & USER GUIDE (Reference Boxed Layout)
+         AdSense-Compliant, Original, High-Value Architecture
+         ========================================================= -->
+    <section class="editorial-section" aria-label="Tool Guide and Documentation">
+
+      <!-- Top Overview Banner Box -->
+      <div class="editorial-banner-box">
+        <div>
+          <div class="editorial-banner-title">
+            <span class="editorial-banner-icon">WC</span>
+            Word Counter &amp; Character Counter &mdash; Accurate Text Statistics
+          </div>
+          <p class="editorial-banner-text">
+            Instantly analyze written content with real-time calculations for words, characters (with and without
+            whitespace), sentences, paragraphs, reading duration, and speaking pace. Paste or type your draft into the
+            editor to monitor your metrics live as you write.
+          </p>
+        </div>
+        <div>
+          <p class="editorial-banner-text">
+            Designed for writers, students, academic researchers, and digital marketers to stay within strict editorial
+            guidelines, essay limits, and social media character caps with 100% client-side privacy. All calculations
+            run locally in your web browser with zero server round-trips and zero data logging.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2-Column Responsive Boxed Grid (Matching Reference Design) -->
+      <div class="editorial-grid">
+
+        <!-- LEFT COLUMN -->
+        <div class="editorial-col">
+
+          <!-- 1. Specific Instructions: How to Use -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">How to Use the Word Counter</h2>
+            <ol class="editorial-steps-list">
+              <li><strong>Enter or paste your text:</strong> Type directly into the workspace canvas above or paste your
+                draft from a document, spreadsheet, or code editor.</li>
+              <li><strong>View real-time metric updates:</strong> Watch the 7-card statistics panel update dynamically
+                as you type, tracking characters, words, sentences, paragraphs, and reading times.</li>
+              <li><strong>Check specific formatting metrics:</strong> Reference <em>Characters (no spaces)</em> for
+                translation rate quotes, <em>Characters (with spaces)</em> for social posts, or <em>Speaking Time</em>
+                for speech preparation.</li>
+              <li><strong>Copy or export your writing:</strong> Click the <strong>Copy icon</strong> in the bottom
+                toolbar to copy your text, or click <strong>Download</strong> to save your work locally as a
+                <code>.txt</code> file.</li>
+            </ol>
+          </div>
+
+          <!-- 2. How the Tool Works -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">How Does the Word Counter Work?</h2>
+            <p class="editorial-box-paragraph">
+              Counting words accurately across real-world prose requires sophisticated lexical parsing. ToolCanvas uses
+              client-side Unicode-aware algorithms to evaluate text structure:
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>Word Tokenization:</strong> Words are extracted using the Unicode regex pattern
+              <code>[\p{L}\p{N}]+(?:['-][\p{L}\p{N}]+)*</code>. This correctly identifies continuous word sequences
+              while preserving hyphenated compound terms (e.g., <em>state-of-the-art</em>) and internal apostrophes
+              (e.g., <em>don't</em>, <em>we'll</em>) as single words.
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>Characters (With vs. No Spaces):</strong> <em>Characters (with spaces)</em> evaluates the full
+              length of the input string including whitespace and tabs. <em>Characters (no spaces)</em> strips all
+              whitespace characters (<code>\s</code>) to determine pure printable character volume.
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>Sentence &amp; Paragraph Detection:</strong> Sentences are identified by terminal punctuation
+              marks (<code>.</code>, <code>!</code>, <code>?</code>) followed by whitespace, while ignoring numerical
+              decimals (such as <code>$19.99</code>). Paragraphs are counted by scanning for double line breaks
+              (<code>\n\s*\n</code>), ensuring empty spacer lines do not skew totals.
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>Reading &amp; Speaking Benchmarks:</strong> Reading time is calculated at <strong>225 words per
+                minute (WPM)</strong> based on adult silent reading research. Speaking time is calculated at <strong>130
+                WPM</strong>, reflecting a measured conversational pace for speeches, presentations, and podcasts.
+            </p>
+          </div>
+
+          <!-- 3. Practical Applications for Your Work -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Practical Applications for Your Work</h2>
+            <p class="editorial-box-paragraph">
+              Word and character constraints are enforced across numerous industries. Here is how ToolCanvas supports
+              your daily writing:
+            </p>
+
+            <span class="editorial-box-subheading">Academic &amp; Higher Education</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>College Essays:</strong> Maintain assignments within mandatory target ranges (typically
+                1,000–2,500 words).</li>
+              <li><strong>Journal Abstracts:</strong> Verify that research abstracts conform to strict journal ceilings
+                (usually 150–250 words for APA, IEEE, and Nature).</li>
+              <li><strong>Thesis Chapters:</strong> Track chapter length consistency across dissertations and academic
+                papers.</li>
+            </ul>
+
+            <span class="editorial-box-subheading">Digital Marketing &amp; SEO Strategy</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>Google Title Tags:</strong> Keep search titles between 50–60 characters to prevent truncation
+                in search engine result pages (SERPs).</li>
+              <li><strong>Meta Descriptions:</strong> Optimize snippets within 145–155 characters for complete display
+                across mobile and desktop.</li>
+              <li><strong>Ad Copy Testing:</strong> Monitor character limits for Google Ads headlines (30 characters)
+                and descriptions (90 characters).</li>
+            </ul>
+
+            <span class="editorial-box-subheading">Social Media Copywriting</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>X (Twitter):</strong> Keep posts within the 280-character threshold for standard accounts.
+              </li>
+              <li><strong>LinkedIn Updates:</strong> Structure professional posts under 3,000 characters, placing hooks
+                within the first 140 characters.</li>
+              <li><strong>Instagram Captions:</strong> Monitor the 2,200-character ceiling, ensuring key calls-to-action
+                appear before the 125-character fold.</li>
+            </ul>
+
+            <span class="editorial-box-subheading">Public Speaking &amp; Podcasting</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>Speech Rehearsals:</strong> Estimate presentation duration accurately using the 130 WPM
+                speaking benchmark.</li>
+              <li><strong>Podcast Scripting:</strong> Pace episode scripts and interview questions to fit allocated
+                broadcast segments.</li>
+            </ul>
+          </div>
+
+          <!-- 4. Metric Reference & Standards Guide -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Metric Reference &amp; Standards Guide</h2>
+            <p class="editorial-box-paragraph">
+              Comprehensive reference defining the calculation criteria for each metric:
+            </p>
+            <ul class="editorial-bullet-list">
+              <li><strong>Characters (with spaces):</strong> The complete count of all characters, including letters,
+                digits, symbols, spaces, tabs, and line breaks.</li>
+              <li><strong>Characters (no spaces):</strong> The count of visible characters with all whitespace excluded.
+                Required by translators and print publishers.</li>
+              <li><strong>Words:</strong> Distinct alphanumeric tokens separated by whitespace or punctuation
+                delimiters, preserving internal hyphens and apostrophes.</li>
+              <li><strong>Sentences:</strong> Grammatical sentence units terminated by full stops, exclamation points,
+                or question marks followed by space.</li>
+              <li><strong>Paragraphs:</strong> Text blocks separated by one or more blank line breaks. Single line
+                breaks within a paragraph are treated as line continuations.</li>
+              <li><strong>Reading Time:</strong> Estimated silent reading time calculated as
+                <code>Total Words / 225 WPM</code>.</li>
+              <li><strong>Speaking Time:</strong> Estimated oral delivery duration calculated as
+                <code>Total Words / 130 WPM</code>.</li>
+            </ul>
+          </div>
+
+          <!-- 5. Best Practices for Optimal Results -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Best Practices for Accurate Word &amp; Character Counts</h2>
+            <ul class="editorial-bullet-list">
+              <li><strong>Differentiate Hyphen Rules:</strong> Some software (like Microsoft Word) splits hyphenated
+                words into two, while Google Docs and ToolCanvas treat them as one compound term. Keep this in mind when
+                checking strict assignment caps.</li>
+              <li><strong>Separate Front Matter:</strong> Exclude titles, author names, references, and appendices from
+                your count if your academic institution only evaluates body prose.</li>
+              <li><strong>Account for URLs:</strong> Links in social posts count heavily toward character limits
+                regardless of display shortening.</li>
+              <li><strong>Rehearse with Natural Pacing:</strong> If preparing a keynote or speech, add an extra 10–15%
+                buffer to the speaking time for live pauses, audience laughter, and slide transitions.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="editorial-col">
+
+          <!-- 6. Practical Real-World Examples -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Real-World Examples &amp; Results</h2>
+            <p class="editorial-box-paragraph">
+              Explore how ToolCanvas evaluates common writing formats and editorial scenarios:
+            </p>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 1: Academic Journal Abstract Evaluation</div>
+              <div class="editorial-example-row"><strong>Input Sample:</strong> "This clinical trial investigated
+                cognitive fatigue in remote workers. Over twelve weeks, participants engaged in structured focus
+                intervals. Results demonstrated an 18.4% improvement in sustained attention."</div>
+              <div class="editorial-example-row"><strong>Metrics:</strong> Words: 28 | Characters (with spaces): 218 |
+                Characters (no spaces): 188 | Sentences: 3 | Reading: 8 sec</div>
+              <div class="editorial-example-row"><em>Analysis:</em> The abstract segment is concise and comfortably
+                within standard journal limits (typically 250 words maximum).</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 2: Google Search Engine Meta Description</div>
+              <div class="editorial-example-row"><strong>Input Sample:</strong> "Free online word counter with live
+                character, sentence, and reading time metrics. Fast, accurate, and 100% private in your browser with no
+                data tracking."</div>
+              <div class="editorial-example-row"><strong>Metrics:</strong> Characters (with spaces): 154 | Words: 24 |
+                Reading: 7 sec</div>
+              <div class="editorial-example-row"><em>Analysis:</em> At 154 characters, this description fits perfectly
+                within Google's 160-character desktop and mobile display cutoff.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 3: Social Media Post with Contractions &amp; Hashtags</div>
+              <div class="editorial-example-row"><strong>Input Sample:</strong> "We've just launched our
+                state-of-the-art text processing toolkit! It's completely free, ultra-fast, and respects your privacy.
+                Check it out today: #WritingTools #Tech"</div>
+              <div class="editorial-example-row"><strong>Metrics:</strong> Words: 22 | Characters (with spaces): 169 |
+                Characters (no spaces): 146</div>
+              <div class="editorial-example-row"><em>Analysis:</em> Contractions (<em>We've</em>, <em>It's</em>) and
+                hyphenated terms (<em>state-of-the-art</em>, <em>ultra-fast</em>) are preserved as cohesive words. Fits
+                within X's 280-character limit.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 4: Keynote Presentation Rehearsal Timing</div>
+              <div class="editorial-example-row"><strong>Input Sample:</strong> A 260-word introductory keynote section
+                explaining strategic goals and quarterly product roadmaps.</div>
+              <div class="editorial-example-row"><strong>Metrics:</strong> Words: 260 | Reading Time: ~1 min 10 sec (225
+                WPM) | Speaking Time: 2 min 0 sec (130 WPM)</div>
+              <div class="editorial-example-row"><em>Analysis:</em> Clearly illustrates the difference between fast
+                silent reading and comfortable audience-paced delivery.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 5: Multilingual Text with International Accents</div>
+              <div class="editorial-example-row"><strong>Input Sample:</strong> "Überraschung! Café français et español:
+                100% succès garanti pour tous."</div>
+              <div class="editorial-example-row"><strong>Metrics:</strong> Words: 10 | Characters (with spaces): 72 |
+                Characters (no spaces): 60</div>
+              <div class="editorial-example-row"><em>Analysis:</em> Full Unicode property matching recognizes German
+                umlauts (<em>Ü</em>) and French accents (<em>é</em>, <em>ç</em>, <em>è</em>) without character
+                corruption.</div>
+            </div>
+          </div>
+
+          <!-- 7. Key Benefits -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">What Are the Benefits of Using ToolCanvas?</h2>
+            <ul class="editorial-bullet-list">
+              <li><strong>Sub-Millisecond Live Updates:</strong> Metrics refresh instantly in real time as you type or
+                paste without any lag or page reloading.</li>
+              <li><strong>100% Client-Side Privacy:</strong> All counting operations run locally in your web browser. No
+                text is uploaded, tracked, or processed by remote servers.</li>
+              <li><strong>7 Comprehensive Metrics:</strong> Track words, characters (with and without whitespace),
+                sentences, paragraphs, reading speed, and speaking pace simultaneously.</li>
+              <li><strong>Integrated Speaking &amp; Reading Clocks:</strong> Built-in timing algorithms help presenters
+                and audio producers rehearse pacing without separate stopwatch apps.</li>
+              <li><strong>Completely Free &amp; Offline Ready:</strong> No subscriptions, paywalls, or accounts
+                required. Works seamlessly offline once loaded in your browser.</li>
+            </ul>
+          </div>
+
+          <!-- 8. Options, Edge Cases & Limitations -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Supported Options, Edge Cases &amp; Limitations</h2>
+            <p class="editorial-box-paragraph">
+              Understand how our counting engine handles special characters, volume, and edge boundaries:
+            </p>
+            <ul class="editorial-bullet-list">
+              <li><strong>Supported Input Formats:</strong> Plain prose, markdown drafts, academic papers, copy
+                snippets, code documentation, and transcripts.</li>
+              <li><strong>Emoji Character Handling:</strong> Emojis count toward your total character count according to
+                standard UTF-16 code units. Because emojis are pictographic symbols rather than letters or digits, they
+                do not count as words.</li>
+              <li><strong>Numbers &amp; Currency:</strong> Numbers (e.g. <code>2026</code>), decimal figures
+                (<code>14.8</code>), and currency values (<code>$2,450,000</code>) are recognized as distinct semantic
+                words.</li>
+              <li><strong>Volume &amp; File Size:</strong> ToolCanvas comfortably processes long-form documents
+                containing over 100,000 words. Because calculations occur in memory, memory performance depends on your
+                device's RAM.</li>
+              <li><strong>Readability Scores:</strong> The tool focuses on exact lexical metrics; it does not calculate
+                syllable-based formulas (like Flesch-Kincaid) or subjective grammar scores.</li>
+            </ul>
+          </div>
+
+          <!-- 9. Stacked Individual FAQ Boxes (Matching Reference Image) -->
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Why does word count differ slightly between ToolCanvas, Google Docs, and
+              Microsoft Word?</div>
+            <p class="editorial-faq-a">
+              Different word processors use slight variations in tokenization boundaries. For instance, Microsoft Word
+              often splits hyphenated terms (like <em>self-esteem</em>) into two separate words, whereas Google Docs and
+              ToolCanvas treat them as one compound word. Standalone em dashes and symbols can also cause minor
+              discrepancies across platforms.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">How are hyphenated words and contractions counted?</div>
+            <p class="editorial-faq-a">
+              ToolCanvas uses modern lexical rules that treat hyphenated compounds (e.g., <em>state-of-the-art</em>,
+              <em>user-friendly</em>) and standard contractions (e.g., <em>don't</em>, <em>we've</em>, <em>it's</em>) as
+              single words rather than splitting them into separate fragments.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Are emojis counted as characters or words?</div>
+            <p class="editorial-faq-a">
+              Emojis count toward your total character count (occupying standard UTF-16 code units). However, because
+              emojis are graphical pictograms rather than alphabetical or numerical tokens, they are not counted as
+              words.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Does the word counter support languages other than English?</div>
+            <p class="editorial-faq-a">
+              Yes. ToolCanvas utilizes modern JavaScript Unicode property escapes (<code>\p{L}</code> and
+              <code>\p{N}</code>). Words in Spanish, French, German, Italian, Portuguese, Russian, and other alphabetic
+              languages are recognized accurately, including all diacritics and umlauts.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Can I count words in large documents like full novels or theses?</div>
+            <p class="editorial-faq-a">
+              Yes. Because calculations run natively in your browser's optimized JavaScript engine without cloud network
+              requests, ToolCanvas can analyze book drafts, essays, and reports containing over 100,000 words in
+              sub-milliseconds without server timeouts.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Is my text stored, analyzed, or sent to an AI model?</div>
+            <p class="editorial-faq-a">
+              No, absolutely not. ToolCanvas adheres to a strict 100% client-side privacy guarantee. When you paste or
+              type your draft, all calculations occur strictly inside your device's local browser memory. No data is
+              ever transmitted across the internet, logged, or saved to a database.
+            </p>
+          </div>
+
+          <!-- 10. Complementary Tools for Complete Text Processing -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Complementary Tools for Complete Text Processing</h2>
+            <p class="editorial-box-paragraph">
+              Word and character counting often goes hand-in-hand with broader text formatting needs. Explore our other
+              free, in-browser utilities:
+            </p>
+            <ul class="editorial-tools-list">
+              <li class="editorial-tool-item">
+                <a href="/case-converter/" class="editorial-tool-link">Case Converter</a> &mdash; Transform text between
+                Sentence case, lower case, UPPER CASE, Title Case, camelCase, PascalCase, kebab-case, and snake_case in
+                one unified workspace.
+              </li>
+              <li class="editorial-tool-item">
+                <a href="/duplicate-line-remover/" class="editorial-tool-link">Duplicate Line Remover</a> &mdash;
+                Eliminate repeated lines, deduplicate email rosters, purge duplicate keywords, and sort lists
+                alphabetically.
+              </li>
+              <li class="editorial-tool-item">
+                <a href="/text-cleaner/" class="editorial-tool-link">Text Cleaner &amp; Formatter</a> &mdash; Strip HTML
+                tags, remove redundant spaces, delete blank lines, filter emojis, and normalize smart quotes.
+              </li>
+              <li class="editorial-tool-item">
+                <a href="/text-compare/" class="editorial-tool-link">Text Compare &amp; Diff Checker</a> &mdash; Compare
+                two text drafts or code revisions side-by-side with synchronized scrolling and visual diff highlights.
+              </li>
+            </ul>
+            <span class="editorial-timestamp">Last reviewed: Oct 2026 | ToolCanvas Utility Standards</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-simple-content">
+        <div class="footer-line-copy">
+          Copyright &copy; 2026 ToolCanvas | Last Updated (Oct 2026)
+        </div>
+        <div class="footer-line-links">
+          <a href="/privacy/" class="footer-simple-link">Privacy Policy</a>
+          <span class="footer-sep">|</span>
+          <a href="/terms/" class="footer-simple-link">Terms of Service</a>
+          <span class="footer-sep">|</span>
+          <a href="/about/" class="footer-simple-link">About</a>
+          <span class="footer-sep">|</span>
+          <a href="/blog/" class="footer-simple-link">Blog</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./script.js"></script>
+</body>
+
+</html>

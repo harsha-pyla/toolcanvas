@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Case Converter — camelCase, PascalCase, kebab-case &amp; snake_case </title>
+  <meta name="description"
+    content="Free, 100% private in-browser Code Case Converter. Instantly transform programming identifiers and multi-line variable lists between camelCase, PascalCase, kebab-case, and snake_case.">
+  <link rel="canonical" href="https://toolcanvas.online/code-case-converter/">
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolcanvas.online/code-case-converter/">
+  <meta property="og:site_name" content="ToolCanvas">
+  <meta property="og:title"
+    content="Code Case Converter — camelCase, PascalCase, kebab-case &amp; snake_case | ToolCanvas">
+  <meta property="og:description"
+    content="Free, 100% private in-browser Code Case Converter. Instantly transform programming identifiers and multi-line variable lists between camelCase, PascalCase, kebab-case, and snake_case.">
+  <meta property="og:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title"
+    content="Code Case Converter — camelCase, PascalCase, kebab-case &amp; snake_case | ToolCanvas">
+  <meta name="twitter:description"
+    content="Free, 100% private in-browser Code Case Converter. Instantly transform programming identifiers and multi-line variable lists between camelCase, PascalCase, kebab-case, and snake_case.">
+  <meta name="twitter:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ToolCanvas Code Case Converter",
+    "url": "https://toolcanvas.online/code-case-converter/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "description": "Transform variables, database columns, API parameters, and CSS identifiers between camelCase, PascalCase, kebab-case, and snake_case with multi-line batch support.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/toolcanvas-icon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/theme.css">
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('toolcanvas_theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) { }
+    })();
+  </script>
+</head>
+
+<body data-tool="code-case-converter">
+
+  <!-- =========================================================
+       SITE HEADER
+       ========================================================= -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- Left: Logo + 5 Tools Nav -->
+      <div class="header-left">
+        <a href="/" class="brand-logo" aria-label="ToolCanvas Home">
+          <svg class="brand-logo-icon" width="32" height="32" viewBox="0 0 100 100" fill="none"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="100" height="100" rx="22" fill="#254FFA" />
+            <path
+              d="M 22 38 A 16 16 0 0 1 38 22 H 54.5 A 3 3 0 0 1 57.5 25 V 39 A 3 3 0 0 1 54.5 42 H 33.5 A 3.5 3.5 0 0 0 30 45.5 V 48.5 A 3.5 3.5 0 0 0 33.5 52 H 39.5 A 3 3 0 0 1 42.5 55 V 75 A 3 3 0 0 1 39.5 78 H 38 A 16 16 0 0 1 22 62 V 38 Z"
+              fill="#FFFFFF" />
+            <path
+              d="M 61.5 24 A 2.5 2.5 0 0 1 64 21.5 L 82 43 A 2.5 2.5 0 0 1 80.5 45.5 H 67 A 5.5 5.5 0 0 1 61.5 40 V 24 Z"
+              fill="#FF5530" />
+            <path
+              d="M 59.5 53 H 76 A 3 3 0 0 1 79 56 V 62 A 16 16 0 0 1 63 78 H 59.5 A 3 3 0 0 1 56.5 75 V 56 A 3 3 0 0 1 59.5 53 Z"
+              fill="#FFFFFF" />
+          </svg>
+          <div class="brand-text-name">Tool<span>Canvas</span></div>
+        </a>
+
+        <nav class="header-tools-nav" aria-label="Main tools navigation">
+          <a href="/case-converter/" class="header-tool-link">Case Converter</a>
+          <a href="/word-counter/" class="header-tool-link">Word Counter</a>
+          <a href="/duplicate-line-remover/" class="header-tool-link">Duplicate Remover</a>
+          <a href="/text-cleaner/" class="header-tool-link">Text Cleaner</a>
+          <a href="/text-compare/" class="header-tool-link">Text Compare</a>
+        </nav>
+      </div>
+
+      <!-- Right: Sliding Pill Theme Toggle + Search -->
+      <div class="header-right">
+
+        <!-- Capsule Theme Switch -->
+        <button type="button" class="theme-toggle-capsule" id="theme-toggle-btn" aria-label="Toggle dark/light mode"
+          title="Toggle theme" role="switch" aria-checked="false">
+          <svg class="theme-icon sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <span class="theme-switch-track" aria-hidden="true">
+            <span class="theme-switch-knob"></span>
+          </span>
+          <svg class="theme-icon moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Search Bar -->
+        <div class="search-wrap">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="tool-search-input" class="search-input" placeholder="Search tools..."
+            aria-label="Search tools" autocomplete="off">
+          <div id="search-results-dropdown" class="search-dropdown" role="listbox"></div>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-menu" id="mobile-nav-menu" aria-label="Mobile navigation">
+    <a href="/case-converter/" class="mobile-nav-link">Case Converter</a>
+    <a href="/word-counter/" class="mobile-nav-link">Word Counter</a>
+    <a href="/duplicate-line-remover/" class="mobile-nav-link">Duplicate Line Remover</a>
+    <a href="/text-cleaner/" class="mobile-nav-link">Text Cleaner</a>
+    <a href="/text-compare/" class="mobile-nav-link">Text Compare</a>
+  </div>
+
+  <!-- =========================================================
+       MAIN CONTENT CONTAINER
+       ========================================================= -->
+  <main class="page-container" role="main">
+
+    <!-- Hero Headline -->
+    <section class="hero-block">
+      <h1 class="hero-headline">Code Case Converter</h1>
+      <p class="hero-subtext">Convert variables, database columns, API parameters, and CSS identifiers between
+        camelCase, PascalCase, kebab-case, and snake_case with multi-line batch support.</p>
+    </section>
+
+    <!-- The Centered Workspace Box -->
+    <div class="tool-workspace-wrap">
+
+      <div class="workspace-box">
+
+        <!-- Main Textarea -->
+        <textarea id="main-textarea" class="main-textarea"
+          placeholder="Enter variable names, function identifiers, or paste multi-line column lists..."
+          spellcheck="false" autofocus></textarea>
+
+        <!-- Inside Bottom Toolbar -->
+        <div class="box-bottom-bar">
+
+          <div class="toolbar-controls-group">
+            <button type="button" id="tool-btn-copy" class="tool-icon-btn" title="Copy to clipboard"
+              aria-label="Copy to clipboard">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+              </svg>
+            </button>
+
+            <button type="button" id="tool-btn-share" class="tool-icon-btn" title="Share text" aria-label="Share text">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3" />
+                <circle cx="6" cy="12" r="3" />
+                <circle cx="18" cy="19" r="3" />
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+              </svg>
+            </button>
+
+            <button type="button" id="tool-btn-download" class="tool-icon-btn" title="Download text as .txt file"
+              aria-label="Download text file">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </button>
+
+            <button type="button" id="tool-btn-clear" class="tool-icon-btn" title="Clear text editor"
+              aria-label="Clear text editor">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18" />
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="bar-right-group">
+            <div class="inline-counter-text tabular">
+              Character Count: <span id="bar-char-count">0</span> | Word Count: <span id="bar-word-count">0</span> |
+              Line Count: <span id="bar-line-count">0</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 4 PROGRAMMING IDENTIFIER CASE BUTTONS -->
+      <div class="action-buttons-wrap">
+        <button type="button" class="action-btn-convert" data-case="camel">
+          <span class="badge-init badge-camel">cC</span> camelCase
+        </button>
+        <button type="button" class="action-btn-convert" data-case="pascal">
+          <span class="badge-init badge-pascal">PC</span> PascalCase
+        </button>
+        <button type="button" class="action-btn-convert" data-case="kebab">
+          <span class="badge-init badge-kebab">kc</span> kebab-case
+        </button>
+        <button type="button" class="action-btn-convert" data-case="snake">
+          <span class="badge-init badge-snake">sc</span> snake_case
+        </button>
+      </div>
+
+      <div style="margin-top: 14px; font-size: 13.5px; color: var(--text-secondary);">
+        Need general prose casing? Use our standard <a href="/case-converter/" class="legal-link"
+          style="font-weight: 600;">Case Converter</a> for Sentence case, Title Case, UPPER CASE, and Capitalized Case.
+      </div>
+
+    </div>
+
+    <!-- =========================================================
+         EDITORIAL DOCUMENTATION & DEVELOPER GUIDE
+         AdSense-Compliant, Original, High-Value Architecture
+         ========================================================= -->
+    <section class="editorial-section" aria-label="Developer Guide and Documentation">
+
+      <!-- Top Overview Banner Box -->
+      <div class="editorial-banner-box">
+        <div>
+          <div class="editorial-banner-title">
+            <span class="editorial-banner-icon">cC</span>
+            Code Case Converter &mdash; Clean Developer Identifier Transformation
+          </div>
+          <p class="editorial-banner-text">
+            Modern software engineering requires switching between multiple naming conventions. Python uses snake_case,
+            JavaScript leans on camelCase, C# and React expect PascalCase, and CSS and RESTful endpoints require
+            kebab-case. ToolCanvas provides instant, precision conversion between all four conventions with full support
+            for multi-line lists.
+          </p>
+        </div>
+        <div>
+          <p class="editorial-banner-text">
+            Each line in your input is tokenized and transformed independently. Paste a list of 50 database column names
+            or a TypeScript interface, click your desired casing convention, and receive a cleanly converted batch with
+            all newlines intact. All transformations occur 100% in your browser without transmitting your proprietary
+            code or database schemas across the internet.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2-Column Responsive Boxed Grid -->
+      <div class="editorial-grid">
+
+        <!-- LEFT COLUMN -->
+        <div class="editorial-col">
+
+          <!-- 1. Specific Instructions: How to Use -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">How to Use the Code Case Converter</h2>
+            <ol class="editorial-steps-list">
+              <li><strong>Input your code identifiers or text:</strong> Paste single identifiers (e.g.
+                <code>user_account_balance</code>), space-separated words (e.g. <code>get user profile</code>), or an
+                entire multi-line list of database fields into the editor.</li>
+              <li><strong>Select your target programming convention:</strong> Click any of the four developer case
+                buttons: <code>camelCase</code>, <code>PascalCase</code>, <code>kebab-case</code>, or
+                <code>snake_case</code>.</li>
+              <li><strong>Verify the result:</strong> The editor converts every line independently, preserving your line
+                count and indentation while transforming delimiters and letter casings.</li>
+              <li><strong>Copy or download:</strong> Click the <strong>Copy icon</strong> in the bottom toolbar to place
+                the result on your clipboard, or click <strong>Download</strong> to save the converted list as a text
+                file.</li>
+            </ol>
+          </div>
+
+          <!-- 2. How the Tokenizer Works -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">How Does the Identifier Tokenizer Work?</h2>
+            <p class="editorial-box-paragraph">
+              Converting programming identifiers is far more nuanced than simple string replacement. Different coding
+              styles separate words using uppercase transitions, underscores, hyphens, dots, or spaces. ToolCanvas
+              utilizes a specialized regex word-boundary tokenizer:
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>CamelCase Transition Detection:</strong> Detects boundary points between lowercase characters and
+              subsequent capital letters (e.g. <code>fooBar</code> splits into <code>foo</code> and <code>Bar</code>).
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>Acronym Boundary Handling:</strong> Correctly isolates acronym sequences followed by a capitalized
+              word (e.g. <code>XMLHTTPRequest</code> splits into <code>XML</code>, <code>HTTP</code>, and
+              <code>Request</code> instead of corrupting the acronym).
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>Universal Delimiter Parsing:</strong> Strips hyphens, underscores, dots, and whitespace, isolating
+              the underlying semantic words before reassembling them into your chosen target convention.
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>Line-by-Line Independence:</strong> By treating each line as a distinct identifier, you can
+              convert lists of 500 database attributes in one click without them collapsing into a single run-on token.
+            </p>
+          </div>
+
+          <!-- 3. Language Conventions Reference -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Programming Language Naming Standards</h2>
+            <p class="editorial-box-paragraph">
+              Standard casing conventions by programming language and software framework:
+            </p>
+
+            <span class="editorial-box-subheading">JavaScript &amp; TypeScript</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>camelCase:</strong> Variable names, object properties, and function definitions (e.g.
+                <code>getUserProfile</code>, <code>totalAmount</code>).</li>
+              <li><strong>PascalCase:</strong> Classes, interfaces, type aliases, and React components (e.g.
+                <code>UserProfileCard</code>, <code>PaymentResponse</code>).</li>
+              <li><strong>kebab-case:</strong> npm package names and CSS class selectors.</li>
+            </ul>
+
+            <span class="editorial-box-subheading">Python &amp; Data Science</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>snake_case:</strong> Function names, methods, variables, and module filenames per PEP 8 (e.g.
+                <code>calculate_tax</code>, <code>order_id</code>).</li>
+              <li><strong>PascalCase:</strong> Class names and exception types (e.g. <code>DatabaseConnection</code>).
+              </li>
+            </ul>
+
+            <span class="editorial-box-subheading">C# &amp; .NET</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>PascalCase:</strong> Methods, public properties, classes, namespaces, and enums (e.g.
+                <code>CalculateTotal</code>, <code>CustomerAddress</code>).</li>
+              <li><strong>camelCase:</strong> Private fields (often with underscore prefix) and method parameters.</li>
+            </ul>
+
+            <span class="editorial-box-subheading">Web Standards &amp; DevOps</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>kebab-case:</strong> CSS classes, HTML data attributes (<code>data-user-id</code>), REST API
+                endpoints (<code>/api/v1/user-settings</code>), and Kubernetes resource names.</li>
+              <li><strong>snake_case:</strong> SQL column names and PostgreSQL database tables.</li>
+            </ul>
+          </div>
+
+          <!-- 4. The 4 Developer Cases Explained -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">The 4 Code Casing Styles Explained</h2>
+            <ul class="editorial-bullet-list">
+              <li><strong>camelCase:</strong> The first word begins with a lowercase letter, and every subsequent word
+                starts with an uppercase letter. No spaces, hyphens, or underscores are used (e.g. <code>userId</code>,
+                <code>paymentMethodType</code>).</li>
+              <li><strong>PascalCase:</strong> Every word begins with an uppercase letter, including the very first
+                word. No delimiters are used (e.g. <code>UserId</code>, <code>PaymentMethodType</code>). Also known as
+                UpperCamelCase.</li>
+              <li><strong>kebab-case:</strong> All words are written in lowercase and joined by single hyphens (e.g.
+                <code>user-id</code>, <code>payment-method-type</code>). Also known as dash-case or spinal-case.</li>
+              <li><strong>snake_case:</strong> All words are written in lowercase and joined by single underscores (e.g.
+                <code>user_id</code>, <code>payment_method_type</code>). Also known as underscore_case.</li>
+            </ul>
+          </div>
+
+          <!-- 5. Best Practices -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Best Practices for Code Identifiers</h2>
+            <ul class="editorial-bullet-list">
+              <li><strong>Batch SQL Columns:</strong> When creating TypeScript types from SQL schemas, paste the column
+                list directly into the editor and click <code>camelCase</code> for instant property names.</li>
+              <li><strong>Avoid Double Delimiters:</strong> The tokenizer strips redundant underscores or hyphens (such
+                as <code>user__profile</code> or <code>order--id</code>), producing clean single-delimiter outputs.</li>
+              <li><strong>Numbers in Variable Names:</strong> Numbers attached to words (e.g. <code>utf8Encoding</code>
+                or <code>sha256Hash</code>) are preserved without unwanted separation.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="editorial-col">
+
+          <!-- 6. Real-World Examples -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Real-World Transformation Examples</h2>
+            <p class="editorial-box-paragraph">
+              Common engineering scenarios tested across the converter:
+            </p>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 1: SQL Column to JavaScript Property</div>
+              <div class="editorial-example-row"><strong>Original:</strong> user_account_id</div>
+              <div class="editorial-example-row"><strong>Target:</strong> camelCase</div>
+              <div class="editorial-example-row"><strong>Result:</strong> <span
+                  class="editorial-example-code">userAccountId</span></div>
+              <div class="editorial-example-row"><em>Note:</em> Strips underscores and capitalizes following word
+                tokens.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 2: Multi-Word Text to React Component</div>
+              <div class="editorial-example-row"><strong>Original:</strong> customer billing details panel</div>
+              <div class="editorial-example-row"><strong>Target:</strong> PascalCase</div>
+              <div class="editorial-example-row"><strong>Result:</strong> <span
+                  class="editorial-example-code">CustomerBillingDetailsPanel</span></div>
+              <div class="editorial-example-row"><em>Note:</em> Every word token starts with a capital letter with
+                spaces removed.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 3: camelCase Property to RESTful URL Slug</div>
+              <div class="editorial-example-row"><strong>Original:</strong> getUserOrderHistory</div>
+              <div class="editorial-example-row"><strong>Target:</strong> kebab-case</div>
+              <div class="editorial-example-row"><strong>Result:</strong> <span
+                  class="editorial-example-code">get-user-order-history</span></div>
+              <div class="editorial-example-row"><em>Note:</em> Detects capital letter boundaries and converts them into
+                hyphens.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 4: REST Endpoint to Python Method</div>
+              <div class="editorial-example-row"><strong>Original:</strong> fetch-latest-analytics-report</div>
+              <div class="editorial-example-row"><strong>Target:</strong> snake_case</div>
+              <div class="editorial-example-row"><strong>Result:</strong> <span
+                  class="editorial-example-code">fetch_latest_analytics_report</span></div>
+              <div class="editorial-example-row"><em>Note:</em> Replaces hyphens with Python-standard underscores.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 5: Multi-Line Database Schema Batch</div>
+              <div class="editorial-example-row"><strong>Original (3
+                  lines):</strong><br>created_at<br>billing_address_line_1<br>is_active_subscription</div>
+              <div class="editorial-example-row"><strong>Target:</strong> camelCase</div>
+              <div class="editorial-example-row"><strong>Result:</strong> <span
+                  class="editorial-example-code">createdAt<br>billingAddressLine1<br>isActiveSubscription</span></div>
+              <div class="editorial-example-row"><em>Note:</em> Converts every line independently while preserving list
+                structure.</div>
+            </div>
+          </div>
+
+          <!-- 7. Key Benefits -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Why Developers Choose ToolCanvas</h2>
+            <ul class="editorial-bullet-list">
+              <li><strong>100% Client-Side Privacy:</strong> Zero cloud transmission. Proprietary company schemas, API
+                models, and sensitive database column names never leave your workstation.</li>
+              <li><strong>Zero Latency:</strong> Runs directly inside your browser's V8 JavaScript engine for instant
+                sub-millisecond conversions.</li>
+              <li><strong>Independent Multi-Line Processing:</strong> Formats hundreds of lines in one click without
+                merging them into a single string.</li>
+              <li><strong>Clean Acronym Handling:</strong> Intelligently tokenizes uppercase abbreviations without
+                corrupting multi-word sequences.</li>
+            </ul>
+          </div>
+
+          <!-- 8. Edge Cases & Formats -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Supported Formats &amp; Edge Cases</h2>
+            <ul class="editorial-bullet-list">
+              <li><strong>Supported Delimiters:</strong> Spaces, tabs, underscores, hyphens, periods, and forward
+                slashes.</li>
+              <li><strong>Mixed Casing Inputs:</strong> Handles SCREAMING_SNAKE_CASE, kebab-case, PascalCase, or
+                ordinary English sentences.</li>
+              <li><strong>Numbers &amp; Digits:</strong> Numbers in identifiers (e.g. <code>http2Client</code>,
+                <code>v1ApiRoute</code>) are preserved safely.</li>
+            </ul>
+          </div>
+
+          <!-- 9. FAQs -->
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Can I convert an entire list of database columns at once?</div>
+            <p class="editorial-faq-a">
+              Yes. Paste your entire schema list into the editor. ToolCanvas processes each line independently, allowing
+              you to convert 500 column names into camelCase or snake_case in under a millisecond without losing your
+              list formatting.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">How does the tool handle acronyms like API, HTTP, or URL?</div>
+            <p class="editorial-faq-a">
+              Our tokenizer recognizes acronym sequences followed by a lowercase word (such as <code>HTTPRequest</code>)
+              and splits them properly into distinct tokens (<code>Http</code> and <code>Request</code>) rather than
+              treating the whole block as an unparseable word.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Is my proprietary source code or schema data logged?</div>
+            <p class="editorial-faq-a">
+              No. ToolCanvas operates under a strict client-side privacy architecture. All string processing occurs
+              entirely in your browser's local memory. No text is sent to our servers, logged to disk, or shared with
+              third parties.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">What is the difference between camelCase and PascalCase?</div>
+            <p class="editorial-faq-a">
+              In camelCase, the first letter of the first word is lowercase (e.g. <code>userId</code>). In PascalCase
+              (also known as UpperCamelCase), the first letter of the first word is capitalized (e.g.
+              <code>UserId</code>).
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Why does CSS use kebab-case instead of camelCase?</div>
+            <p class="editorial-faq-a">
+              CSS is historically case-insensitive in HTML and uses hyphens (e.g. <code>font-size</code>,
+              <code>border-radius</code>) to improve human readability. In JavaScript, CSS properties are accessed via
+              camelCase (e.g. <code>style.fontSize</code>) because hyphens are interpreted as subtraction operators.
+            </p>
+          </div>
+
+          <!-- 10. Complementary Tools -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Complementary Developer Utilities</h2>
+            <p class="editorial-box-paragraph">
+              Explore our other free developer and text editing tools:
+            </p>
+            <ul class="editorial-tools-list">
+              <li class="editorial-tool-item">
+                <a href="/case-converter/" class="editorial-tool-link">Case Converter</a> &mdash; Convert general prose
+                between Sentence case, Title Case, UPPER CASE, and Capitalized Case.
+              </li>
+              <li class="editorial-tool-item">
+                <a href="/duplicate-line-remover/" class="editorial-tool-link">Duplicate Line Remover</a> &mdash;
+                Deduplicate database IDs, email rosters, or list exports.
+              </li>
+              <li class="editorial-tool-item">
+                <a href="/text-cleaner/" class="editorial-tool-link">Text Cleaner</a> &mdash; Strip HTML tags, remove
+                invisible control characters, and clean messy strings.
+              </li>
+              <li class="editorial-tool-item">
+                <a href="/text-compare/" class="editorial-tool-link">Text Compare &amp; Diff Checker</a> &mdash;
+                Side-by-side visual diff tool to verify code revisions and document changes.
+              </li>
+            </ul>
+            <span class="editorial-timestamp">Last reviewed: Oct 2026 | ToolCanvas Engineering Standards</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-simple-content">
+        <div class="footer-line-copy">
+          Copyright &copy; 2026 ToolCanvas | Last Updated (Oct 2026)
+        </div>
+        <div class="footer-line-links">
+          <a href="/privacy/" class="footer-simple-link">Privacy Policy</a>
+          <span class="footer-sep">|</span>
+          <a href="/terms/" class="footer-simple-link">Terms of Service</a>
+          <span class="footer-sep">|</span>
+          <a href="/about/" class="footer-simple-link">About</a>
+          <span class="footer-sep">|</span>
+          <a href="/blog/" class="footer-simple-link">Blog</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./script.js"></script>
+</body>
+
+</html>

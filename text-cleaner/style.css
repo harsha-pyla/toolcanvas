@@ -1,0 +1,16 @@
+@import "/css/theme.css";
+
+/* Text Cleaner Specific Styles */
+.options-bar-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 20px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  margin-top: 14px;
+  font-size: 15px;
+  font-weight: 500;
+}

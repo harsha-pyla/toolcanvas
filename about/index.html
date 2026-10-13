@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About ToolCanvas — Fast, Private Online Utilities</title>
+  <meta name="description"
+    content="Learn about ToolCanvas: our mission to provide lightning-fast, 100% private in-browser text and developer utilities with zero server transmission.">
+  <link rel="canonical" href="https://toolcanvas.online/about/">
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolcanvas.online/about/">
+  <meta property="og:site_name" content="ToolCanvas">
+  <meta property="og:title" content="About ToolCanvas — Fast, Private Online Utilities">
+  <meta property="og:description"
+    content="Learn about ToolCanvas: our mission to provide lightning-fast, 100% private in-browser text and developer utilities with zero server transmission.">
+  <meta property="og:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="About ToolCanvas — Fast, Private Online Utilities">
+  <meta name="twitter:description"
+    content="Learn about ToolCanvas: our mission to provide lightning-fast, 100% private in-browser text and developer utilities with zero server transmission.">
+  <meta name="twitter:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About ToolCanvas",
+    "url": "https://toolcanvas.online/about/",
+    "description": "Information about ToolCanvas, our design philosophy, and our 100% client-side privacy architecture."
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/toolcanvas-icon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/theme.css">
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('toolcanvas_theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) { }
+    })();
+  </script>
+</head>
+
+<body data-tool="about">
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="/" class="brand-logo" aria-label="ToolCanvas Home">
+          <svg class="brand-logo-icon" width="32" height="32" viewBox="0 0 100 100" fill="none"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="100" height="100" rx="22" fill="#254FFA" />
+            <path
+              d="M 22 38 A 16 16 0 0 1 38 22 H 54.5 A 3 3 0 0 1 57.5 25 V 39 A 3 3 0 0 1 54.5 42 H 33.5 A 3.5 3.5 0 0 0 30 45.5 V 48.5 A 3.5 3.5 0 0 0 33.5 52 H 39.5 A 3 3 0 0 1 42.5 55 V 75 A 3 3 0 0 1 39.5 78 H 38 A 16 16 0 0 1 22 62 V 38 Z"
+              fill="#FFFFFF" />
+            <path
+              d="M 61.5 24 A 2.5 2.5 0 0 1 64 21.5 L 82 43 A 2.5 2.5 0 0 1 80.5 45.5 H 67 A 5.5 5.5 0 0 1 61.5 40 V 24 Z"
+              fill="#FF5530" />
+            <path
+              d="M 59.5 53 H 76 A 3 3 0 0 1 79 56 V 62 A 16 16 0 0 1 63 78 H 59.5 A 3 3 0 0 1 56.5 75 V 56 A 3 3 0 0 1 59.5 53 Z"
+              fill="#FFFFFF" />
+          </svg>
+          <div class="brand-text-name">Tool<span>Canvas</span></div>
+        </a>
+
+        <nav class="header-tools-nav" aria-label="Main tools navigation">
+          <a href="/case-converter/" class="header-tool-link">Case Converter</a>
+          <a href="/word-counter/" class="header-tool-link">Word Counter</a>
+          <a href="/duplicate-line-remover/" class="header-tool-link">Duplicate Remover</a>
+          <a href="/text-cleaner/" class="header-tool-link">Text Cleaner</a>
+          <a href="/text-compare/" class="header-tool-link">Text Compare</a>
+        </nav>
+      </div>
+
+      <div class="header-right">
+        <button type="button" class="theme-toggle-capsule" id="theme-toggle-btn" aria-label="Toggle dark/light mode"
+          title="Toggle theme" role="switch" aria-checked="false">
+          <svg class="theme-icon sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <span class="theme-switch-track" aria-hidden="true">
+            <span class="theme-switch-knob"></span>
+          </span>
+          <svg class="theme-icon moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <div class="search-wrap">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="tool-search-input" class="search-input" placeholder="Search tools..."
+            aria-label="Search tools" autocomplete="off">
+          <div id="search-results-dropdown" class="search-dropdown" role="listbox"></div>
+        </div>
+
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav-menu" id="mobile-nav-menu">
+    <a href="/case-converter/" class="mobile-nav-link">Case Converter</a>
+    <a href="/word-counter/" class="mobile-nav-link">Word Counter</a>
+    <a href="/duplicate-line-remover/" class="mobile-nav-link">Duplicate Remover</a>
+    <a href="/text-cleaner/" class="mobile-nav-link">Text Cleaner</a>
+    <a href="/text-compare/" class="mobile-nav-link">Text Compare</a>
+    <a href="/about/" class="mobile-nav-link active">About</a>
+    <a href="/blog/" class="mobile-nav-link">Blog</a>
+    <a href="/privacy/" class="mobile-nav-link">Privacy Policy</a>
+    <a href="/terms/" class="mobile-nav-link">Terms of Service</a>
+  </div>
+
+  <main class="page-container" role="main">
+    <div class="legal-page-wrap">
+      <div class="legal-content">
+
+        <h1 class="legal-title">About ToolCanvas</h1>
+        <p class="legal-lead">
+          ToolCanvas (<a href="/" class="legal-link">https://toolcanvas.online/</a>) is a free, straightforward
+          collection of text utilities designed to make formatting, counting, and cleaning text fast and simple.
+        </p>
+
+        <h2 class="legal-heading">Why ToolCanvas was built</h2>
+        <p class="legal-p">
+          If you write articles, work with spreadsheets, write code, or edit text daily, you constantly run into small
+          but repetitive text tasks. You might need to change a headline from uppercase to Title Case, strip duplicate
+          rows from an email list, clean up messy whitespace and extra line breaks from a copied PDF, count words for an
+          essay, or compare two versions of a draft to see what changed.
+        </p>
+        <p class="legal-p">
+          Many websites that offer these tools are slow to load, covered in popup ads, or try to push paid subscriptions
+          for simple text operations. ToolCanvas was built to be a fast, clean alternative: a website that opens
+          instantly, lets you paste your text, gives you the result right away, and lets you get back to your work.
+        </p>
+
+        <h2 class="legal-heading">Privacy and how your text is handled</h2>
+        <p class="legal-p">
+          Your text is private. When you use any tool on ToolCanvas, all calculations and text formatting happen
+          directly in your web browser. We do not store, log, or upload the text you enter to our servers.
+        </p>
+        <p class="legal-p">
+          Once you clear your text or close your browser tab, that data is gone from your session. You do not need to
+          create an account, log in, or give us your email address to use any of our tools.
+        </p>
+
+        <h2 class="legal-heading">Our tools</h2>
+        <p class="legal-p">
+          ToolCanvas currently includes five focused utilities:
+        </p>
+        <ul class="legal-list">
+          <li>
+            <strong><a href="/case-converter/" class="legal-link">Case Converter</a>:</strong> Converts text between 11
+            standard formats, including Sentence case, lower case, UPPER CASE, Title Case, Capitalized Case, alternating
+            case, camelCase, PascalCase, kebab-case, and snake_case.
+          </li>
+          <li>
+            <strong><a href="/word-counter/" class="legal-link">Word &amp; Character Counter</a>:</strong> Gives you
+            real-time counts for words, characters (with and without spaces), sentences, paragraphs, and estimates
+            reading and speaking time as you type.
+          </li>
+          <li>
+            <strong><a href="/duplicate-line-remover/" class="legal-link">Duplicate Line Remover</a>:</strong> Cleans up
+            lists and data exports by removing repeated lines, with options to ignore case, trim spaces, and sort
+            alphabetically.
+          </li>
+          <li>
+            <strong><a href="/text-cleaner/" class="legal-link">Text Cleaner</a>:</strong> Strips unwanted spaces, blank
+            lines, tabs, and HTML tags, or normalizes line endings and quotes.
+          </li>
+          <li>
+            <strong><a href="/text-compare/" class="legal-link">Text Compare</a>:</strong> Lets you paste two pieces of
+            text side by side to see additions, deletions, and differences highlighted clearly.
+          </li>
+        </ul>
+
+        <h2 class="legal-heading">How the website is funded</h2>
+        <p class="legal-p">
+          ToolCanvas is completely free to use. To cover server hosting and maintenance costs, we display standard
+          online advertising through partners such as Google AdSense. We do not sell user data or put essential tools
+          behind paywalls.
+        </p>
+
+        <h2 class="legal-heading">Contact and feedback</h2>
+        <p class="legal-p">
+          We want ToolCanvas to be as useful and reliable as possible. If you run into a bug, notice something that
+          could work better, or have an idea for a tool that would save you time, we would love to hear from you.
+        </p>
+        <p class="legal-p">
+          You can reach us directly at <a href="mailto:harsha1029p@gmail.com"
+            class="legal-link">harsha1029p@gmail.com</a>.
+        </p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-simple-content">
+        <div class="footer-line-copy">
+          Copyright &copy; 2026 ToolCanvas | Last Updated (Oct 2026)
+        </div>
+        <div class="footer-line-links">
+          <a href="/privacy/" class="footer-simple-link">Privacy Policy</a>
+          <span class="footer-sep">|</span>
+          <a href="/terms/" class="footer-simple-link">Terms of Service</a>
+          <span class="footer-sep">|</span>
+          <a href="/about/" class="footer-simple-link">About</a>
+          <span class="footer-sep">|</span>
+          <a href="/blog/" class="footer-simple-link">Blog</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/common.js"></script>
+</body>
+
+</html>

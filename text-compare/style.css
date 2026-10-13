@@ -1,0 +1,122 @@
+@import "/css/theme.css";
+
+/* =========================================================
+   TWO SEPARATE STANDALONE BOXES FOR TEXT COMPARE
+   (Separated side-by-side boxes with linked resizing)
+   ========================================================= */
+.compare-dual-boxes-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.compare-box {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  background-color: var(--bg-inset);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+  height: 380px;
+  resize: vertical;
+  position: relative;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease;
+}
+
+.compare-box:focus-within {
+  border-color: var(--border-hover);
+}
+
+.pane-label-bar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  background-color: var(--bg-surface-hover);
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  user-select: none;
+}
+
+.pane-badge-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background-color: var(--bg-surface);
+  color: var(--accent-teal);
+  letter-spacing: 0.05em;
+}
+
+.label-action-btn {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-teal);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.12s;
+}
+
+.label-action-btn:hover {
+  color: var(--accent-teal-hover);
+  text-decoration: underline;
+}
+
+.compare-textarea {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 220px;
+  height: 100%;
+  padding: 20px 22px;
+  border: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--text-main);
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.compare-textarea::placeholder {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.compare-box .box-bottom-bar {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+.diff-view-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  margin-top: 14px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 14.5px;
+}
+
+@media (max-width: 768px) {
+  .compare-dual-boxes-wrap {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

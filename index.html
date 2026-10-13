@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolCanvas – Free Online Tools for Everyday Tasks</title>
+  <meta name="description" content="Use free online tools to clean and convert text, calculate values, compare content, and simplify everyday tasks. Fast, easy-to-use tools right in your browser.">
+  <link rel="canonical" href="https://toolcanvas.online/">
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolcanvas.online/">
+  <meta property="og:site_name" content="ToolCanvas">
+  <meta property="og:title" content="ToolCanvas – Free Online Tools for Everyday Tasks">
+  <meta property="og:description" content="Use free online tools to clean and convert text, calculate values, compare content, and simplify everyday tasks. Fast, easy-to-use tools right in your browser.">
+  <meta property="og:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ToolCanvas – Free Online Tools for Everyday Tasks">
+  <meta name="twitter:description" content="Use free online tools to clean and convert text, calculate values, compare content, and simplify everyday tasks. Fast, easy-to-use tools right in your browser.">
+  <meta name="twitter:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ToolCanvas",
+    "url": "https://toolcanvas.online/",
+    "description": "Use free online tools to clean and convert text, calculate values, compare content, and simplify everyday tasks. Fast, easy-to-use tools right in your browser."
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/toolcanvas-icon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/theme.css">
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('toolcanvas_theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) { }
+    })();
+  </script>
+</head>
+
+<body data-tool="home">
+
+  <!-- =========================================================
+       SITE HEADER
+       ========================================================= -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- Left: Logo + 5 Tools Nav -->
+      <div class="header-left">
+        <a href="/" class="brand-logo" aria-label="ToolCanvas Home">
+          <svg class="brand-logo-icon" width="32" height="32" viewBox="0 0 100 100" fill="none"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="100" height="100" rx="22" fill="#254FFA" />
+            <path
+              d="M 22 38 A 16 16 0 0 1 38 22 H 54.5 A 3 3 0 0 1 57.5 25 V 39 A 3 3 0 0 1 54.5 42 H 33.5 A 3.5 3.5 0 0 0 30 45.5 V 48.5 A 3.5 3.5 0 0 0 33.5 52 H 39.5 A 3 3 0 0 1 42.5 55 V 75 A 3 3 0 0 1 39.5 78 H 38 A 16 16 0 0 1 22 62 V 38 Z"
+              fill="#FFFFFF" />
+            <path
+              d="M 61.5 24 A 2.5 2.5 0 0 1 64 21.5 L 82 43 A 2.5 2.5 0 0 1 80.5 45.5 H 67 A 5.5 5.5 0 0 1 61.5 40 V 24 Z"
+              fill="#FF5530" />
+            <path
+              d="M 59.5 53 H 76 A 3 3 0 0 1 79 56 V 62 A 16 16 0 0 1 63 78 H 59.5 A 3 3 0 0 1 56.5 75 V 56 A 3 3 0 0 1 59.5 53 Z"
+              fill="#FFFFFF" />
+          </svg>
+          <div class="brand-text-name">Tool<span>Canvas</span></div>
+        </a>
+
+        <nav class="header-tools-nav" aria-label="Main tools navigation">
+          <a href="/case-converter/" class="header-tool-link">Case Converter</a>
+          <a href="/word-counter/" class="header-tool-link">Word Counter</a>
+          <a href="/duplicate-line-remover/" class="header-tool-link">Duplicate Remover</a>
+          <a href="/text-cleaner/" class="header-tool-link">Text Cleaner</a>
+          <a href="/text-compare/" class="header-tool-link">Text Compare</a>
+        </nav>
+      </div>
+
+      <!-- Right: Sliding Pill Theme Toggle + Search -->
+      <div class="header-right">
+
+        <!-- Capsule Theme Switch (Sun — Pill Slider — Moon) -->
+        <button type="button" class="theme-toggle-capsule" id="theme-toggle-btn" aria-label="Toggle dark/light mode"
+          title="Toggle theme" role="switch" aria-checked="false">
+          <svg class="theme-icon sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <span class="theme-switch-track" aria-hidden="true">
+            <span class="theme-switch-knob"></span>
+          </span>
+          <svg class="theme-icon moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Search Bar -->
+        <div class="search-wrap">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="tool-search-input" class="search-input" placeholder="Search tools..."
+            aria-label="Search tools" autocomplete="off">
+          <div id="search-results-dropdown" class="search-dropdown" role="listbox"></div>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-menu" id="mobile-nav-menu" aria-label="Mobile navigation">
+    <a href="/case-converter/" class="mobile-nav-link">Case Converter</a>
+    <a href="/word-counter/" class="mobile-nav-link">Word Counter</a>
+    <a href="/duplicate-line-remover/" class="mobile-nav-link">Duplicate Line Remover</a>
+    <a href="/text-cleaner/" class="mobile-nav-link">Text Cleaner</a>
+    <a href="/text-compare/" class="mobile-nav-link">Text Compare</a>
+  </div>
+
+  <!-- =========================================================
+       MAIN CONTENT CONTAINER
+       ========================================================= -->
+  <main class="page-container" role="main">
+
+    <!-- Hero Headline (5 In-Browser Utilities) -->
+    <section class="hero-block">
+      <h1 class="hero-headline">Your Essential Online Toolkit</h1>
+      <p class="hero-subtext">Five fast, 100% private in-browser utilities to convert case styles, count words, remove
+        duplicate lines, clean text, and compare diffs.</p>
+    </section>
+
+    <!-- All Tools Grid Directory -->
+    <section class="tools-preview-section" aria-label="All Tools Directory">
+      <div class="tools-preview-grid">
+
+        <!-- 1. Case Converter -->
+        <div class="tool-preview-card">
+          <div class="card-head">
+            <span class="badge-init badge-cc">CC</span>
+            <a href="/case-converter/" class="card-title">Case Converter</a>
+          </div>
+          <p class="card-desc">
+            Instantly transform text between 7 core casing conventions: Sentence case, lower case, UPPER CASE, Title Case,
+            Capitalized Case, aLtErNaTiNg cAsE, and InVeRsE CaSe with full paragraph and line-break preservation.
+          </p>
+          <div class="preview-output-box" title="Click to copy example">
+            Sentence case • lower case • UPPER CASE • Title Case • Capitalized Case
+          </div>
+        </div>
+
+        <!-- 2. Code Case Converter -->
+        <div class="tool-preview-card">
+          <div class="card-head">
+            <span class="badge-init badge-camel">cC</span>
+            <a href="/code-case-converter/" class="card-title">Code Case Converter</a>
+          </div>
+          <p class="card-desc">
+            Transform programming identifiers and multi-line database column lists between camelCase, PascalCase, kebab-case,
+            and snake_case with intelligent boundary tokenization and 100% local browser execution.
+          </p>
+          <div class="preview-output-box" title="Click to copy example">
+            userAccountId • UserAccountId • user-account-id • user_account_id
+          </div>
+        </div>
+
+        <!-- 3. Word & Character Counter -->
+        <div class="tool-preview-card">
+          <div class="card-head">
+            <span class="badge-init badge-wc">WC</span>
+            <a href="/word-counter/" class="card-title">Word & Character Counter</a>
+          </div>
+          <p class="card-desc">
+            Real-time word, character (with and without spaces), sentence, and paragraph counter with estimated reading
+            time and speaking duration benchmarks.
+          </p>
+          <div class="preview-output-box" title="Click to copy example">
+            Words: 42 | Characters: 268 | Reading Time: ~15 sec
+          </div>
+        </div>
+
+        <!-- 4. Duplicate Line Remover -->
+        <div class="tool-preview-card">
+          <div class="card-head">
+            <span class="badge-init badge-dl">DL</span>
+            <a href="/duplicate-line-remover/" class="card-title">Duplicate Line Remover</a>
+          </div>
+          <p class="card-desc">
+            Quickly clean lists, deduplicate email rosters, purge repeated keywords, and sort entries alphabetically
+            with customizable whitespace trimming and case sensitivity.
+          </p>
+          <div class="preview-output-box" title="Click to copy example">
+            apple, banana, cherry (3 duplicate lines removed)
+          </div>
+        </div>
+
+        <!-- 5. Text Cleaner -->
+        <div class="tool-preview-card">
+          <div class="card-head">
+            <span class="badge-init badge-tc">TC</span>
+            <a href="/text-cleaner/" class="card-title">Text Cleaner & Formatter</a>
+          </div>
+          <p class="card-desc">
+            Strip HTML tags, collapse excessive whitespace, remove blank line breaks, filter out emojis, and normalize
+            compiler-breaking curly quotes into clean ASCII plain text.
+          </p>
+          <div class="preview-output-box" title="Click to copy example">
+            Clean plain text with all tags and extra spaces removed.
+          </div>
+        </div>
+
+        <!-- 6. Text Compare (Diff Checker) -->
+        <div class="tool-preview-card">
+          <div class="card-head">
+            <span class="badge-init badge-df">DF</span>
+            <a href="/text-compare/" class="card-title">Text Compare & Diff Checker</a>
+          </div>
+          <p class="card-desc">
+            Compare two documents, agreements, or code snippets side-by-side with synchronized scrolling to highlight
+            line additions, deletions, and inline modifications.
+          </p>
+          <div class="preview-output-box" title="Click to copy example">
+            + Added revision line / - Original removed line
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER (Simple Clean Two-Line Footer)
+       ========================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-simple-content">
+        <div class="footer-line-copy">
+          Copyright &copy; 2026 ToolCanvas | Created by PHV
+        </div>
+        <div class="footer-line-links">
+          <a href="/privacy/" class="footer-simple-link">Privacy Policy</a>
+          <span class="footer-sep">|</span>
+          <a href="/terms/" class="footer-simple-link">Terms of Service</a>
+          <span class="footer-sep">|</span>
+          <a href="/about/" class="footer-simple-link">About</a>
+          <span class="footer-sep">|</span>
+          <a href="/blog/" class="footer-simple-link">Blog</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/home.js"></script>
+</body>
+
+</html>

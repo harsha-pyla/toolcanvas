@@ -1,0 +1,9 @@
+@import "/css/theme.css";
+
+/* Word Counter 7-Card Statistics Row */
+.wc-stats-panel {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}

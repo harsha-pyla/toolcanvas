@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duplicate Line Remover — Clean, Deduplicate &amp; Sort Lists </title>
+  <meta name="description"
+    content="Free, 100% private in-browser Duplicate Line Remover. Instantly eliminate duplicate lines, deduplicate lists, trim whitespace, and sort entries alphabetically.">
+  <link rel="canonical" href="https://toolcanvas.online/duplicate-line-remover/">
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolcanvas.online/duplicate-line-remover/">
+  <meta property="og:site_name" content="ToolCanvas">
+  <meta property="og:title" content="Duplicate Line Remover — Clean, Deduplicate &amp; Sort Lists | ToolCanvas">
+  <meta property="og:description"
+    content="Free, 100% private in-browser Duplicate Line Remover. Instantly eliminate duplicate lines, deduplicate lists, trim whitespace, and sort entries alphabetically.">
+  <meta property="og:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Duplicate Line Remover — Clean, Deduplicate &amp; Sort Lists | ToolCanvas">
+  <meta name="twitter:description"
+    content="Free, 100% private in-browser Duplicate Line Remover. Instantly eliminate duplicate lines, deduplicate lists, trim whitespace, and sort entries alphabetically.">
+  <meta name="twitter:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ToolCanvas Duplicate Line Remover",
+    "url": "https://toolcanvas.online/duplicate-line-remover/",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "description": "Clean lists, remove duplicate lines, trim whitespace, filter empty lines, and sort entries alphabetically in your browser.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/toolcanvas-icon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/theme.css">
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('toolcanvas_theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) { }
+    })();
+  </script>
+</head>
+
+<body data-tool="duplicate-remover">
+
+  <!-- =========================================================
+       SITE HEADER
+       ========================================================= -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- Left: Logo + 5 Tools Nav -->
+      <div class="header-left">
+        <a href="/" class="brand-logo" aria-label="ToolCanvas Home">
+          <svg class="brand-logo-icon" width="32" height="32" viewBox="0 0 100 100" fill="none"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="100" height="100" rx="22" fill="#254FFA" />
+            <path
+              d="M 22 38 A 16 16 0 0 1 38 22 H 54.5 A 3 3 0 0 1 57.5 25 V 39 A 3 3 0 0 1 54.5 42 H 33.5 A 3.5 3.5 0 0 0 30 45.5 V 48.5 A 3.5 3.5 0 0 0 33.5 52 H 39.5 A 3 3 0 0 1 42.5 55 V 75 A 3 3 0 0 1 39.5 78 H 38 A 16 16 0 0 1 22 62 V 38 Z"
+              fill="#FFFFFF" />
+            <path
+              d="M 61.5 24 A 2.5 2.5 0 0 1 64 21.5 L 82 43 A 2.5 2.5 0 0 1 80.5 45.5 H 67 A 5.5 5.5 0 0 1 61.5 40 V 24 Z"
+              fill="#FF5530" />
+            <path
+              d="M 59.5 53 H 76 A 3 3 0 0 1 79 56 V 62 A 16 16 0 0 1 63 78 H 59.5 A 3 3 0 0 1 56.5 75 V 56 A 3 3 0 0 1 59.5 53 Z"
+              fill="#FFFFFF" />
+          </svg>
+          <div class="brand-text-name">Tool<span>Canvas</span></div>
+        </a>
+
+        <nav class="header-tools-nav" aria-label="Main tools navigation">
+          <a href="/case-converter/" class="header-tool-link">Case Converter</a>
+          <a href="/word-counter/" class="header-tool-link">Word Counter</a>
+          <a href="/duplicate-line-remover/" class="header-tool-link active">Duplicate Remover</a>
+          <a href="/text-cleaner/" class="header-tool-link">Text Cleaner</a>
+          <a href="/text-compare/" class="header-tool-link">Text Compare</a>
+        </nav>
+      </div>
+
+      <!-- Right: Sliding Pill Theme Toggle + Search -->
+      <div class="header-right">
+
+        <!-- Capsule Theme Switch (Sun — Pill Slider — Moon) -->
+        <button type="button" class="theme-toggle-capsule" id="theme-toggle-btn" aria-label="Toggle dark/light mode"
+          title="Toggle theme" role="switch" aria-checked="false">
+          <svg class="theme-icon sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <span class="theme-switch-track" aria-hidden="true">
+            <span class="theme-switch-knob"></span>
+          </span>
+          <svg class="theme-icon moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <div class="search-wrap">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="tool-search-input" class="search-input" placeholder="Search tools..."
+            aria-label="Search tools" autocomplete="off">
+          <div id="search-results-dropdown" class="search-dropdown" role="listbox"></div>
+        </div>
+
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-menu" id="mobile-nav-menu" aria-label="Mobile navigation">
+    <a href="/case-converter/" class="mobile-nav-link">Case Converter</a>
+    <a href="/word-counter/" class="mobile-nav-link">Word Counter</a>
+    <a href="/duplicate-line-remover/" class="mobile-nav-link active">Duplicate Line Remover</a>
+    <a href="/text-cleaner/" class="mobile-nav-link">Text Cleaner</a>
+    <a href="/text-compare/" class="mobile-nav-link">Text Compare</a>
+  </div>
+
+  <!-- =========================================================
+       MAIN CONTENT CONTAINER
+       ========================================================= -->
+  <main class="page-container" role="main">
+
+    <!-- Hero Headline (Centered ConvertCase Style) -->
+    <section class="hero-block">
+      <h1 class="hero-headline">Duplicate Line Remover</h1>
+      <p class="hero-subtext">Paste your text or list below to instantly remove duplicate entries, trim whitespace, and
+        sort records with 100% in-browser privacy.</p>
+    </section>
+
+    <!-- The Centered Workspace Box (900px max width) -->
+    <div class="tool-workspace-wrap">
+
+      <div class="workspace-box">
+
+        <!-- Main Textarea -->
+        <textarea id="main-textarea" class="main-textarea" placeholder="Type or paste your content here..."
+          spellcheck="false" autofocus></textarea>
+
+        <!-- Inside Bottom Toolbar -->
+        <div class="box-bottom-bar">
+
+          <div class="toolbar-controls-group">
+            <button type="button" id="tool-btn-copy" class="tool-icon-btn" title="Copy to clipboard"
+              aria-label="Copy to clipboard">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+              </svg>
+            </button>
+
+            <button type="button" id="tool-btn-share" class="tool-icon-btn" title="Share text" aria-label="Share text">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3" />
+                <circle cx="6" cy="12" r="3" />
+                <circle cx="18" cy="19" r="3" />
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+              </svg>
+            </button>
+
+            <button type="button" id="tool-btn-download" class="tool-icon-btn" title="Download text as .txt file"
+              aria-label="Download text file">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </button>
+
+            <button type="button" id="tool-btn-clear" class="tool-icon-btn" title="Clear text editor"
+              aria-label="Clear text editor">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18" />
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="bar-right-group">
+            <div class="inline-counter-text tabular">
+              Character Count: <span id="bar-char-count">0</span> | Word Count: <span id="bar-word-count">0</span> |
+              Line Count: <span id="bar-line-count">0</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- DUPLICATE LINE REMOVER CONTROLS -->
+      <div class="options-bar-inline">
+        <label class="inline-checkbox-label">
+          <input type="checkbox" id="dup-case"> Case sensitive
+        </label>
+        <label class="inline-checkbox-label">
+          <input type="checkbox" id="dup-trim" checked> Trim whitespace
+        </label>
+        <label class="inline-checkbox-label">
+          <input type="checkbox" id="dup-empty" checked> Remove empty lines
+        </label>
+        <div style="display: flex; align-items: center; gap: 8px; margin-left: auto;">
+          <label for="dup-sort" style="color: var(--text-secondary); font-size: 14.5px; font-weight: 500;">Sort:</label>
+          <select id="dup-sort"
+            style="height: 36px; padding: 0 10px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--bg-surface); color: var(--text-main); font-size: 14px;">
+            <option value="original">Preserve Original Order</option>
+            <option value="asc">Alphabetical (A - Z)</option>
+            <option value="desc">Alphabetical (Z - A)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="action-buttons-wrap">
+        <button type="button" id="btn-run-dup" class="action-btn-convert btn-primary-action">
+          Remove Duplicates Now
+        </button>
+        <span id="dup-feedback" style="font-size: 14.5px; color: var(--text-secondary); margin-left: 10px;"></span>
+      </div>
+
+    </div>
+
+    <!-- =========================================================
+         EDITORIAL DOCUMENTATION & USER GUIDE (Reference Boxed Layout)
+         AdSense-Compliant, Original, High-Value Architecture
+         ========================================================= -->
+    <section class="editorial-section" aria-label="Tool Guide and Documentation">
+
+      <!-- Top Overview Banner Box -->
+      <div class="editorial-banner-box">
+        <div>
+          <div class="editorial-banner-title">
+            <span class="editorial-banner-icon">DL</span>
+            Duplicate Line Remover &mdash; Clean, Deduplicate &amp; Sort Lists
+          </div>
+          <p class="editorial-banner-text">
+            Instantly cleanse lists, deduplicate email rosters, and purge redundant text lines with customizable
+            whitespace trimming, case-sensitivity matching, and alphabetical sorting. Paste your data into the editor to
+            extract unique lines in milliseconds.
+          </p>
+        </div>
+        <div>
+          <p class="editorial-banner-text">
+            Designed for data analysts, software developers, email marketers, and researchers to clean up raw
+            spreadsheets, database exports, and keyword lists with 100% client-side privacy. All deduplication executes
+            locally in your browser with zero server uploads and zero data logging.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2-Column Responsive Boxed Grid (Matching Reference Design) -->
+      <div class="editorial-grid">
+
+        <!-- LEFT COLUMN -->
+        <div class="editorial-col">
+
+          <!-- 1. Specific Instructions: How to Use -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">How to Use the Duplicate Line Remover</h2>
+            <ol class="editorial-steps-list">
+              <li><strong>Paste or enter your list:</strong> Paste your raw records, spreadsheet columns, or text lines
+                directly into the main workspace canvas above.</li>
+              <li><strong>Configure matching preferences:</strong> Select whether you want <em>Case sensitive</em>
+                comparison, <em>Trim whitespace</em> to catch hidden spaces, and <em>Remove empty lines</em>.</li>
+              <li><strong>Choose your desired ordering:</strong> Leave as <em>Preserve Original Order</em> to keep your
+                input's sequence, or choose <em>Alphabetical (A - Z)</em> or <em>(Z - A)</em> to sort unique lines.</li>
+              <li><strong>Execute deduplication:</strong> Click the <strong>Remove Duplicates Now</strong> button. The
+                tool replaces duplicate lines instantly and reports the exact number of pruned rows.</li>
+              <li><strong>Copy or export results:</strong> Click the <strong>Copy icon</strong> to copy your clean
+                unique list to your clipboard, or click <strong>Download</strong> to save it as
+                <code>deduplicated-lines.txt</code>.</li>
+            </ol>
+          </div>
+
+          <!-- 2. How the Tool Works -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">How Does the Duplicate Line Remover Work?</h2>
+            <p class="editorial-box-paragraph">
+              Deduplicating large datasets efficiently requires optimized memory structures. ToolCanvas uses an
+              in-browser hash-set lookup algorithm that runs with linear <code>O(N)</code> time complexity:
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>Hash-Set Tracking:</strong> When you run deduplication, each line is evaluated against a
+              JavaScript <code>Set</code>. If a line’s comparison key has not been seen before, it is added to the set
+              and pushed to the output list. If it has already been registered, it is discarded immediately.
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>First-Occurrence Order Retention:</strong> By default, ToolCanvas maintains chronological
+              integrity. The first time a record appears, its original line position is preserved; only subsequent
+              repetitions are eliminated without scrambling surrounding data.
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>Case Sensitivity Control:</strong> In standard mode (case-insensitive), ToolCanvas generates
+              lookup keys by normalizing lines to lowercase. This ensures <code>"user@domain.com"</code> and
+              <code>"USER@DOMAIN.COM"</code> are recognized as duplicates while keeping the original formatting of the
+              first occurrence.
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>Whitespace Trimming Logic:</strong> Spreadsheet copy-pasting often introduces invisible spaces
+              before or after a line. Enabling <em>Trim whitespace</em> strips peripheral padding
+              (<code>line.trim()</code>) before comparison, preventing hidden duplicate oversights.
+            </p>
+          </div>
+
+          <!-- 3. Practical Applications for Your Work -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Practical Applications for Your Work</h2>
+            <p class="editorial-box-paragraph">
+              Eliminating duplicate records is essential across many business and technical workflows:
+            </p>
+
+            <span class="editorial-box-subheading">Email Marketing &amp; CRM List Hygiene</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>Newsletter Subscribers:</strong> Deduplicate merged subscriber lists from Mailchimp, HubSpot,
+                or Klaviyo to prevent double-emailing contacts.</li>
+              <li><strong>CRM Contacts:</strong> Consolidate lead lists from trade shows and web forms before importing
+                into Salesforce or CRM databases.</li>
+            </ul>
+
+            <span class="editorial-box-subheading">SEO &amp; Search Advertising</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>Keyword Research Deduplication:</strong> Clean up merged exports from Ahrefs, SEMrush, and
+                Google Keyword Planner, sorting unique keywords alphabetically.</li>
+              <li><strong>Negative Keyword Lists:</strong> Standardize PPC negative keyword rosters across multiple
+                Google Ads campaigns.</li>
+            </ul>
+
+            <span class="editorial-box-subheading">Data Management &amp; Analytics</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>CSV &amp; Database Exports:</strong> Cleanse raw database query outputs, ID rosters, and
+                product catalog SKUs.</li>
+              <li><strong>Spreadsheet Reconciliation:</strong> Combine columns from multiple Excel workbooks and extract
+                unique entries effortlessly.</li>
+            </ul>
+
+            <span class="editorial-box-subheading">Software Development &amp; Sysadmin</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>Server Access Logs:</strong> Extract unique client IP addresses from Nginx or Apache access
+                logs to identify active visitors.</li>
+              <li><strong>Package Dependencies:</strong> Clean redundant package imports, environment variables, or
+                firewall IP blocklists.</li>
+            </ul>
+          </div>
+
+          <!-- 4. Deduplication Configuration Reference & Rules -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Deduplication Options Reference &amp; Rules</h2>
+            <p class="editorial-box-paragraph">
+              Understanding the behavioral rules of each configurable setting:
+            </p>
+            <ul class="editorial-bullet-list">
+              <li><strong>Trim Whitespace (Default: Checked):</strong> Strips leading and trailing spaces and tab
+                characters prior to comparison. Recommended for email rosters and CSV records.</li>
+              <li><strong>Case Sensitive (Default: Unchecked):</strong> When checked, treats capitalized and lowercase
+                text as distinct entries (e.g. <code>"Token"</code> vs <code>"token"</code>). When unchecked, treats
+                them as identical duplicates.</li>
+              <li><strong>Remove Empty Lines (Default: Checked):</strong> Purges blank rows and empty line breaks from
+                the output, leaving a clean, continuous list.</li>
+              <li><strong>Preserve Original Order:</strong> Keeps unique lines in the exact sequence they first appeared
+                in your input document.</li>
+              <li><strong>Alphabetical (A - Z):</strong> Sorts your deduplicated list ascendingly using international
+                Unicode locale sorting.</li>
+              <li><strong>Alphabetical (Z - A):</strong> Sorts unique items descendingly from Z to A.</li>
+            </ul>
+          </div>
+
+          <!-- 5. Best Practices for Optimal Deduplication -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Best Practices for Optimal Results</h2>
+            <ul class="editorial-bullet-list">
+              <li><strong>Enable Whitespace Trimming for Emails:</strong> Trailing spaces are invisible to the eye but
+                break standard matching. Always keep trimming enabled when processing mailing lists.</li>
+              <li><strong>Use Case-Sensitive for Code:</strong> When deduplicating programming constants, variable
+                identifiers, or Linux paths, check <em>Case sensitive</em> to avoid accidental deletion of distinct
+                tokens.</li>
+              <li><strong>Backup Large Source Files:</strong> While ToolCanvas runs entirely in memory and never
+                modifies your original local file, keep a copy of your source data for safety.</li>
+              <li><strong>Combine with Text Cleaner:</strong> If your list contains HTML tags or weird quote characters,
+                run your text through our Text Cleaner before deduplicating.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="editorial-col">
+
+          <!-- 6. Practical Real-World Examples -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Real-World Examples &amp; Results</h2>
+            <p class="editorial-box-paragraph">
+              Review common deduplication scenarios with tested inputs and outputs:
+            </p>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 1: Email Subscriber List Cleaning (Whitespace &amp; Casing)
+              </div>
+              <div class="editorial-example-row"><strong>Input:</strong><br>
+                alex.turner@example.com<br>
+                &nbsp;&nbsp;alex.turner@example.com&nbsp;&nbsp;<br>
+                ALEX.TURNER@EXAMPLE.COM<br>
+                sarah.connor@example.com</div>
+              <div class="editorial-example-row"><strong>Settings:</strong> Trim Whitespace: On | Case Sensitive: Off |
+                Sort: Original</div>
+              <div class="editorial-example-row"><strong>Result:</strong> <span
+                  class="editorial-example-code">alex.turner@example.com<br>sarah.connor@example.com</span></div>
+              <div class="editorial-example-row"><em>Note:</em> Normalizes invisible spaces and casing to keep only 2
+                unique contacts, pruning 2 duplicates.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 2: SEO Keyword List with Alphabetical Sorting (A - Z)</div>
+              <div class="editorial-example-row"><strong>Input:</strong><br>
+                online word counter<br>
+                case converter<br>
+                text compare<br>
+                case converter<br>
+                online word counter</div>
+              <div class="editorial-example-row"><strong>Settings:</strong> Sort: Alphabetical (A - Z)</div>
+              <div class="editorial-example-row"><strong>Result:</strong> <span class="editorial-example-code">case
+                  converter<br>online word counter<br>text compare</span></div>
+              <div class="editorial-example-row"><em>Note:</em> Deduplicates search keywords and arranges them in
+                alphabetical order for seamless Google Ads import.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 3: Server Access Logs &amp; Unique IP Extraction</div>
+              <div class="editorial-example-row"><strong>Input:</strong><br>
+                192.168.1.105<br>
+                10.0.0.1<br>
+                192.168.1.105<br>
+                172.16.0.4</div>
+              <div class="editorial-example-row"><strong>Settings:</strong> Sort: Preserve Original Order</div>
+              <div class="editorial-example-row"><strong>Result:</strong> <span
+                  class="editorial-example-code">192.168.1.105<br>10.0.0.1<br>172.16.0.4</span></div>
+              <div class="editorial-example-row"><em>Note:</em> Extracts unique client IP addresses while preserving the
+                chronological sequence of access logs.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 4: Case-Sensitive Programming Constants</div>
+              <div class="editorial-example-row"><strong>Input:</strong><br>
+                AUTH_TOKEN<br>
+                auth_token<br>
+                AUTH_TOKEN</div>
+              <div class="editorial-example-row"><strong>Settings:</strong> Case Sensitive: On</div>
+              <div class="editorial-example-row"><strong>Result:</strong> <span
+                  class="editorial-example-code">AUTH_TOKEN<br>auth_token</span></div>
+              <div class="editorial-example-row"><em>Note:</em> Recognizes that uppercase and lowercase identifiers
+                represent distinct constants in programming languages.</div>
+            </div>
+          </div>
+
+          <!-- 7. Key Benefits -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">What Are the Benefits of Using ToolCanvas?</h2>
+            <ul class="editorial-bullet-list">
+              <li><strong>High-Speed Linear O(N) Processing:</strong> Evaluates tens of thousands of rows in sub-seconds
+                using native JavaScript hash-set indexing.</li>
+              <li><strong>100% Client-Side Privacy:</strong> Your customer rosters and proprietary datasets never leave
+                your device or touch external servers.</li>
+              <li><strong>Granular Control:</strong> Tailor deduplication with case-sensitivity toggles, whitespace
+                trimming, and alphabetical sorting modes.</li>
+              <li><strong>Instant Pruning Counter:</strong> Displays the exact count of removed duplicates directly
+                below the action controls.</li>
+              <li><strong>Free &amp; Offline Functional:</strong> No usage quotas, paywalls, or accounts. Works
+                completely offline once loaded in your browser.</li>
+            </ul>
+          </div>
+
+          <!-- 8. Options, Edge Cases & Limitations -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Supported Options, Edge Cases &amp; Limitations</h2>
+            <p class="editorial-box-paragraph">
+              Understand the technical boundaries and edge case handling of the deduplication engine:
+            </p>
+            <ul class="editorial-bullet-list">
+              <li><strong>Supported Input Types:</strong> Plain text rosters, CSV columns, URLs, IP addresses, database
+                keys, and programming code blocks.</li>
+              <li><strong>Whitespace Variations:</strong> Handles spaces, tab characters (<code>\t</code>), and mixed
+                CRLF/LF line breaks seamlessly.</li>
+              <li><strong>Volume &amp; File Size:</strong> Tested to smoothly deduplicate lists exceeding 50,000 lines
+                in less than 500 milliseconds. Memory scaling is determined by your browser's allocated RAM.</li>
+              <li><strong>Exact vs Fuzzy Matching:</strong> ToolCanvas executes exact character string matching. It does
+                not perform fuzzy phonetic matching (such as matching "John Doe" with "Jon Doe").</li>
+            </ul>
+          </div>
+
+          <!-- 9. Stacked Individual FAQ Boxes (Matching Reference Image) -->
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Does deduplication alter the original order of my records?</div>
+            <p class="editorial-faq-a">
+              No. When the sort dropdown is set to <em>Preserve Original Order</em> (the default), ToolCanvas preserves
+              the first occurrence of each unique entry in the exact sequence it appeared in your input text.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">How does whitespace trimming catch hidden duplicates?</div>
+            <p class="editorial-faq-a">
+              Accidental spaces at the start or end of a line (often created during spreadsheet copy-pasting) prevent
+              standard search tools from finding duplicates (e.g., <code>"apple "</code> vs <code>"apple"</code>). When
+              whitespace trimming is enabled, ToolCanvas strips these peripheral spaces prior to comparison, catching
+              all hidden duplicates.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Is it safe to paste confidential customer lists or proprietary data?</div>
+            <p class="editorial-faq-a">
+              Yes, 100%. ToolCanvas operates completely within your local web browser using client-side JavaScript. Your
+              records never travel across the internet, are never sent to external servers, and are never logged or
+              stored in any database.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">What is the maximum number of lines I can process?</div>
+            <p class="editorial-faq-a">
+              Because our algorithm uses JavaScript's native <code>Set</code> with linear <code>O(N)</code> time
+              complexity, ToolCanvas easily processes large lists containing 50,000 to 100,000 lines in less than half a
+              second without browser freezes or server timeouts.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Can I sort my unique results alphabetically?</div>
+            <p class="editorial-faq-a">
+              Yes. Use the <strong>Sort</strong> dropdown to choose either <em>Alphabetical (A - Z)</em> or
+              <em>Alphabetical (Z - A)</em>. ToolCanvas utilizes Unicode locale-aware sorting to correctly order foreign
+              characters, numbers, and Latin letters.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">What is the difference between Case Sensitive and Case Insensitive
+              deduplication?</div>
+            <p class="editorial-faq-a">
+              When <em>Case sensitive</em> is unchecked, <code>"Contact@Domain.com"</code> and
+              <code>"contact@domain.com"</code> are considered identical duplicates (the first is kept). When checked,
+              capitalized and lowercase variants are treated as distinct independent entries.
+            </p>
+          </div>
+
+          <!-- 10. Complementary Tools for Complete Text Processing -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Complementary Tools for Complete Text Processing</h2>
+            <p class="editorial-box-paragraph">
+              List deduplication pairs naturally with other data cleaning and formatting workflows. Explore our other
+              free in-browser utilities:
+            </p>
+            <ul class="editorial-tools-list">
+              <li class="editorial-tool-item">
+                <a href="/case-converter/" class="editorial-tool-link">Case Converter</a> &mdash; Standardize list
+                casing into Sentence case, lower case, UPPER CASE, Title Case, or code identifiers like camelCase and
+                snake_case.
+              </li>
+              <li class="editorial-tool-item">
+                <a href="/word-counter/" class="editorial-tool-link">Word &amp; Character Counter</a> &mdash; Track
+                total word, character, and line counts across your cleaned datasets with live metric updates.
+              </li>
+              <li class="editorial-tool-item">
+                <a href="/text-cleaner/" class="editorial-tool-link">Text Cleaner &amp; Formatter</a> &mdash; Strip
+                unwanted HTML tags, normalize multiple spaces, eliminate empty rows, and convert curly quotes into clean
+                plain text.
+              </li>
+              <li class="editorial-tool-item">
+                <a href="/text-compare/" class="editorial-tool-link">Text Compare &amp; Diff Checker</a> &mdash; Compare
+                your original raw list against the deduplicated list side-by-side to visually inspect pruned lines.
+              </li>
+            </ul>
+            <span class="editorial-timestamp">Last reviewed: Oct 2026 | ToolCanvas Utility Standards</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-simple-content">
+        <div class="footer-line-copy">
+          Copyright &copy; 2026 ToolCanvas | Last Updated (Oct 2026)
+        </div>
+        <div class="footer-line-links">
+          <a href="/privacy/" class="footer-simple-link">Privacy Policy</a>
+          <span class="footer-sep">|</span>
+          <a href="/terms/" class="footer-simple-link">Terms of Service</a>
+          <span class="footer-sep">|</span>
+          <a href="/about/" class="footer-simple-link">About</a>
+          <span class="footer-sep">|</span>
+          <a href="/blog/" class="footer-simple-link">Blog</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./script.js"></script>
+</body>
+
+</html>

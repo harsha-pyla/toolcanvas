@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Compare &amp; Diff Checker — Side-by-Side Difference Viewer |</title>
+  <meta name="description"
+    content="Free, 100% private in-browser Text Compare and Diff Checker. Compare two documents or code snippets side-by-side with synchronized scrolling to highlight additions, deletions, and line edits.">
+  <link rel="canonical" href="https://toolcanvas.online/text-compare/">
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolcanvas.online/text-compare/">
+  <meta property="og:site_name" content="ToolCanvas">
+  <meta property="og:title" content="Text Compare &amp; Diff Checker — Side-by-Side Difference Viewer | ToolCanvas">
+  <meta property="og:description"
+    content="Free, 100% private in-browser Text Compare and Diff Checker. Compare two documents or code snippets side-by-side with synchronized scrolling to highlight additions, deletions, and line edits.">
+  <meta property="og:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Text Compare &amp; Diff Checker — Side-by-Side Difference Viewer | ToolCanvas">
+  <meta name="twitter:description"
+    content="Free, 100% private in-browser Text Compare and Diff Checker. Compare two documents or code snippets side-by-side with synchronized scrolling to highlight additions, deletions, and line edits.">
+  <meta name="twitter:image" content="https://toolcanvas.online/assets/toolcanvas-logo.svg">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ToolCanvas Text Compare & Diff Checker",
+    "url": "https://toolcanvas.online/text-compare/",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "description": "Compare two documents, agreements, or code snippets side-by-side with synchronized scrolling to highlight additions, deletions, and inline modifications.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0"
+    }
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/toolcanvas-icon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/theme.css">
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('toolcanvas_theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) { }
+    })();
+  </script>
+</head>
+
+<body data-tool="text-compare">
+
+  <!-- =========================================================
+       SITE HEADER
+       ========================================================= -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- Left: Logo + 5 Tools Nav -->
+      <div class="header-left">
+        <a href="/" class="brand-logo" aria-label="ToolCanvas Home">
+          <svg class="brand-logo-icon" width="32" height="32" viewBox="0 0 100 100" fill="none"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="100" height="100" rx="22" fill="#254FFA" />
+            <path
+              d="M 22 38 A 16 16 0 0 1 38 22 H 54.5 A 3 3 0 0 1 57.5 25 V 39 A 3 3 0 0 1 54.5 42 H 33.5 A 3.5 3.5 0 0 0 30 45.5 V 48.5 A 3.5 3.5 0 0 0 33.5 52 H 39.5 A 3 3 0 0 1 42.5 55 V 75 A 3 3 0 0 1 39.5 78 H 38 A 16 16 0 0 1 22 62 V 38 Z"
+              fill="#FFFFFF" />
+            <path
+              d="M 61.5 24 A 2.5 2.5 0 0 1 64 21.5 L 82 43 A 2.5 2.5 0 0 1 80.5 45.5 H 67 A 5.5 5.5 0 0 1 61.5 40 V 24 Z"
+              fill="#FF5530" />
+            <path
+              d="M 59.5 53 H 76 A 3 3 0 0 1 79 56 V 62 A 16 16 0 0 1 63 78 H 59.5 A 3 3 0 0 1 56.5 75 V 56 A 3 3 0 0 1 59.5 53 Z"
+              fill="#FFFFFF" />
+          </svg>
+          <div class="brand-text-name">Tool<span>Canvas</span></div>
+        </a>
+
+        <nav class="header-tools-nav" aria-label="Main tools navigation">
+          <a href="/case-converter/" class="header-tool-link">Case Converter</a>
+          <a href="/word-counter/" class="header-tool-link">Word Counter</a>
+          <a href="/duplicate-line-remover/" class="header-tool-link">Duplicate Remover</a>
+          <a href="/text-cleaner/" class="header-tool-link">Text Cleaner</a>
+          <a href="/text-compare/" class="header-tool-link active">Text Compare</a>
+        </nav>
+      </div>
+
+      <!-- Right: Sliding Pill Theme Toggle + Search -->
+      <div class="header-right">
+
+        <!-- Capsule Theme Switch (Sun — Pill Slider — Moon) -->
+        <button type="button" class="theme-toggle-capsule" id="theme-toggle-btn" aria-label="Toggle dark/light mode"
+          title="Toggle theme" role="switch" aria-checked="false">
+          <svg class="theme-icon sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <span class="theme-switch-track" aria-hidden="true">
+            <span class="theme-switch-knob"></span>
+          </span>
+          <svg class="theme-icon moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <div class="search-wrap">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="tool-search-input" class="search-input" placeholder="Search tools..."
+            aria-label="Search tools" autocomplete="off">
+          <div id="search-results-dropdown" class="search-dropdown" role="listbox"></div>
+        </div>
+
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-menu" id="mobile-nav-menu" aria-label="Mobile navigation">
+    <a href="/case-converter/" class="mobile-nav-link">Case Converter</a>
+    <a href="/word-counter/" class="mobile-nav-link">Word Counter</a>
+    <a href="/duplicate-line-remover/" class="mobile-nav-link">Duplicate Line Remover</a>
+    <a href="/text-cleaner/" class="mobile-nav-link">Text Cleaner</a>
+    <a href="/text-compare/" class="mobile-nav-link active">Text Compare</a>
+  </div>
+
+  <!-- =========================================================
+       MAIN CONTENT CONTAINER
+       ========================================================= -->
+  <main class="page-container" role="main">
+
+    <!-- Hero Headline (Centered ConvertCase Style) -->
+    <section class="hero-block">
+      <h1 class="hero-headline">Text Compare &amp; Diff Checker</h1>
+      <p class="hero-subtext">Compare two text passages or source files side-by-side to highlight additions, deletions,
+        and modifications with 100% in-browser privacy.</p>
+    </section>
+
+    <!-- The Centered Workspace Box (900px max width) -->
+    <div class="tool-workspace-wrap">
+
+      <!-- TWO SEPARATE STANDALONE BOXES (SIDE-BY-SIDE WITH LINKED RESIZE) -->
+      <div class="compare-dual-boxes-wrap">
+
+        <!-- Box 1: Original Text -->
+        <div class="workspace-box compare-box" id="box-original">
+          <div class="pane-label-bar">
+            <span>Original Text</span>
+            <button type="button" id="btn-orig-sample" class="label-action-btn" title="Load sample original text">Sample
+              Text</button>
+          </div>
+          <textarea id="compare-original" class="compare-textarea" placeholder="Paste original text here..."
+            spellcheck="false" autofocus></textarea>
+          <div class="box-bottom-bar">
+            <div class="toolbar-controls-group">
+              <button type="button" id="btn-orig-copy" class="tool-icon-btn" title="Copy original text"
+                aria-label="Copy original text">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                </svg>
+              </button>
+              <button type="button" id="btn-orig-clear" class="tool-icon-btn" title="Clear original text"
+                aria-label="Clear original text">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 6h18" />
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                </svg>
+              </button>
+            </div>
+            <div class="bar-right-group">
+              <div class="inline-counter-text tabular">
+                Character Count: <span id="orig-char-count">0</span> | Word Count: <span id="orig-word-count">0</span> |
+                Line Count: <span id="orig-line-count">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Box 2: Modified Text -->
+        <div class="workspace-box compare-box" id="box-modified">
+          <div class="pane-label-bar">
+            <span>Modified Text</span>
+            <span class="pane-badge-tag">EXAMPLE</span>
+          </div>
+          <textarea id="compare-modified" class="compare-textarea" placeholder="Paste modified text here..."
+            spellcheck="false"></textarea>
+          <div class="box-bottom-bar">
+            <div class="toolbar-controls-group">
+              <button type="button" id="btn-mod-copy" class="tool-icon-btn" title="Copy modified text"
+                aria-label="Copy modified text">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                </svg>
+              </button>
+              <button type="button" id="btn-mod-share" class="tool-icon-btn" title="Share modified text"
+                aria-label="Share modified text">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="5" r="3" />
+                  <circle cx="6" cy="12" r="3" />
+                  <circle cx="18" cy="19" r="3" />
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                </svg>
+              </button>
+              <button type="button" id="btn-mod-download" class="tool-icon-btn" title="Download modified text"
+                aria-label="Download modified text">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+              </button>
+              <button type="button" id="btn-mod-clear" class="tool-icon-btn" title="Clear modified text"
+                aria-label="Clear modified text">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 6h18" />
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                </svg>
+              </button>
+            </div>
+            <div class="bar-right-group">
+              <div class="inline-counter-text tabular">
+                Character Count: <span id="mod-char-count">0</span> | Word Count: <span id="mod-word-count">0</span> |
+                Line Count: <span id="mod-line-count">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TEXT COMPARE ACTION CONTROLS & DIFF VIEW -->
+      <div class="action-buttons-wrap">
+        <button type="button" id="btn-run-compare" class="action-btn-convert btn-primary-action">
+          Compare Text Now
+        </button>
+        <button type="button" id="btn-swap-compare" class="action-btn-convert">
+          Swap Sides
+        </button>
+        <button type="button" id="btn-clear-both" class="action-btn-convert">
+          Clear Both
+        </button>
+        <span id="diff-metrics-text" style="font-size: 14.5px; color: var(--text-secondary); margin-left: 10px;"></span>
+      </div>
+
+      <div id="diff-output-box" class="diff-view-box" style="display: none;"></div>
+
+    </div>
+
+    <!-- =========================================================
+         EDITORIAL DOCUMENTATION & USER GUIDE (Reference Boxed Layout)
+         AdSense-Compliant, Original, High-Value Architecture
+         ========================================================= -->
+    <section class="editorial-section" aria-label="Tool Guide and Documentation">
+
+      <!-- Top Overview Banner Box -->
+      <div class="editorial-banner-box">
+        <div>
+          <div class="editorial-banner-title">
+            <span class="editorial-banner-icon">DF</span>
+            Text Compare &amp; Diff Checker &mdash; Side-by-Side Difference Viewer
+          </div>
+          <p class="editorial-banner-text">
+            Compare two documents, legal contracts, or code files side-by-side to instantly illuminate line additions,
+            deletions, and editorial modifications with synchronized scrolling. Paste your source drafts to inspect
+            highlighted differences in real time.
+          </p>
+        </div>
+        <div>
+          <p class="editorial-banner-text">
+            Built for software developers, attorneys, editors, and data analysts to review document versions, audit
+            configuration files, and redline agreements with 100% client-side privacy. All comparison matrices calculate
+            locally in your browser memory with zero cloud uploads and zero data logging.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2-Column Responsive Boxed Grid (Matching Reference Design) -->
+      <div class="editorial-grid">
+
+        <!-- LEFT COLUMN -->
+        <div class="editorial-col">
+
+          <!-- 1. Specific Instructions: How to Use -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">How to Use the Text Compare &amp; Diff Checker</h2>
+            <ol class="editorial-steps-list">
+              <li><strong>Paste your original text:</strong> Enter the baseline draft, older code revision, or original
+                contract into the <em>Original Text</em> box on the left.</li>
+              <li><strong>Paste your modified version:</strong> Enter the updated copy, revised clause, or new code
+                branch into the <em>Modified Text</em> box on the right.</li>
+              <li><strong>Calculate differences:</strong> Click the <strong>Compare Text Now</strong> button to generate
+                the unified visual diff report.</li>
+              <li><strong>Inspect color-coded edits:</strong> Review additions highlighted in vibrant green
+                (<code>+</code>) and removals flagged in high-contrast red (<code>-</code>). Neutral lines confirm
+                unchanged content.</li>
+              <li><strong>Use utility actions:</strong> Click <strong>Swap Sides</strong> to reverse comparison
+                perspective, use linked scrolling to navigate parallel texts, or click <strong>Download</strong> to
+                export the modified version as a text file.</li>
+            </ol>
+          </div>
+
+          <!-- 2. How the Tool Works -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">How Does the Text Compare Tool Work?</h2>
+            <p class="editorial-box-paragraph">
+              Detecting differences accurately requires finding the mathematical Shortest Edit Script (SES) between two
+              sequences. ToolCanvas utilizes the classic Longest Common Subsequence (LCS) algorithm:
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>The Longest Common Subsequence (LCS) Model:</strong> The engine divides both documents into
+              discrete lines and constructs an evaluation matrix. By discovering the longest subset of lines that exist
+              in both versions in the exact same order, ToolCanvas establishes a common architectural backbone.
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>Pinpointed Additions &amp; Deletions:</strong> Any line appearing in the modified version but
+              absent in the common backbone is flagged as an <em>Addition</em> (green). Lines found in the original
+              draft but missing in the revised version are categorized as <em>Deletions</em> (red).
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>Synchronized Dual-Viewport Scrolling:</strong> Navigating long documents side-by-side requires
+              perfectly locked viewports. ToolCanvas listens to proportional scroll events on both text areas and
+              mirrors the scroll percentage instantly, ensuring corresponding lines stay aligned as you navigate.
+            </p>
+            <p class="editorial-box-paragraph">
+              <strong>100% In-Browser Privacy for Sensitive Files:</strong> Legal NDAs, proprietary software code, and
+              financial audits must never be uploaded to remote third-party cloud servers. ToolCanvas calculates all
+              diffs directly in your device RAM—zero bytes ever leave your browser.
+            </p>
+          </div>
+
+          <!-- 3. Practical Applications for Your Work -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Practical Applications for Your Work</h2>
+            <p class="editorial-box-paragraph">
+              Side-by-side text comparison is indispensable across diverse professional domains:
+            </p>
+
+            <span class="editorial-box-subheading">Legal Contracts &amp; Agreement Redlining</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>Clause Auditing:</strong> Instantly detect sneaky liability shifts, warranty exclusions, or
+                payment term extensions (e.g. Net 30 changing to Net 60) between contract drafts.</li>
+              <li><strong>Non-Disclosure Agreements:</strong> Verify that standard NDA counter-proposals haven't altered
+                confidentiality scopes or dispute jurisdictions.</li>
+            </ul>
+
+            <span class="editorial-box-subheading">Software Development &amp; DevOps</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>Configuration Auditing:</strong> Compare <code>.env</code> environment files, JSON schemas,
+                Dockerfiles, and YAML configurations before staging deployments.</li>
+              <li><strong>Code Review &amp; Patch Verification:</strong> Check code modifications line by line without
+                needing to open a terminal or command-line Git repository.</li>
+            </ul>
+
+            <span class="editorial-box-subheading">Content Publishing &amp; Editorial Proofreading</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>Editorial Revisions:</strong> Review prose alterations, copyediting adjustments, and tone
+                refinements made by external contributors.</li>
+              <li><strong>Localization Verification:</strong> Cross-check translated copy rosters against base source
+                text to confirm no translation paragraphs were missed.</li>
+            </ul>
+
+            <span class="editorial-box-subheading">Data Engineering &amp; Database Management</span>
+            <ul class="editorial-bullet-list">
+              <li><strong>SQL Migration Scripts:</strong> Inspect schema changes, column definitions, and index
+                alterations before running migrations on production databases.</li>
+              <li><strong>CSV Header Alignment:</strong> Verify that spreadsheet column headers match across quarterly
+                data warehouse exports.</li>
+            </ul>
+          </div>
+
+          <!-- 4. Diff Analysis Indicators Reference & Rules -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Diff Analysis Indicators Reference &amp; Rules</h2>
+            <p class="editorial-box-paragraph">
+              Reference guide explaining each visual marker and control in the diff workspace:
+            </p>
+            <ul class="editorial-bullet-list">
+              <li><strong>Addition (<code>+</code> Green Badge):</strong> Indicates content that exists in the modified
+                version but was absent in the original baseline.</li>
+              <li><strong>Deletion (<code>-</code> Red Badge):</strong> Indicates lines that existed in the original
+                document but were excised or replaced in the revision.</li>
+              <li><strong>Unchanged (Neutral Baseline):</strong> Lines with matching character sequences in both
+                versions, providing contextual reference for surrounding changes.</li>
+              <li><strong>Swap Sides Button:</strong> Immediately exchanges the contents of Box 1 and Box 2, reversing
+                the diff perspective to audit rollback impacts.</li>
+              <li><strong>Dual Stats Counters:</strong> Real-time independent metrics displaying character count, word
+                count, and line count for each box separately.</li>
+            </ul>
+          </div>
+
+          <!-- 5. Best Practices for Accurate Document Diffing -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Best Practices for Accurate Document Diffing</h2>
+            <ul class="editorial-bullet-list">
+              <li><strong>Pre-Clean Whitespace for Document Revisions:</strong> If comparing prose from word processors,
+                run text through our Text Cleaner first to eliminate rogue trailing spaces that cause false diff flags.
+              </li>
+              <li><strong>Preserve Indentation for Code:</strong> When comparing Python or YAML scripts, ensure leading
+                tab or space indentation is preserved since whitespace is syntactically significant.</li>
+              <li><strong>Sort Unordered Lists Before Diffing:</strong> If comparing keyword lists or ID rosters, sort
+                both lists alphabetically first using Duplicate Line Remover so order differences don't mask matching
+                items.</li>
+              <li><strong>Verify Rollback Safety with Swap Sides:</strong> Click <em>Swap Sides</em> to inspect the
+                inverse diff script, ensuring that unintended deletions can be safely restored.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="editorial-col">
+
+          <!-- 6. Practical Real-World Examples -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Real-World Examples &amp; Results</h2>
+            <p class="editorial-box-paragraph">
+              Review common document comparison scenarios with tested inputs and outputs:
+            </p>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 1: Legal Agreement Redline (Payment Terms &amp; Conditions)
+              </div>
+              <div class="editorial-example-row"><strong>Original:</strong><br>
+                Payment shall be remitted within 30 days of invoice receipt.</div>
+              <div class="editorial-example-row"><strong>Modified:</strong><br>
+                Payment shall be remitted within 60 days of invoice receipt upon written approval.</div>
+              <div class="editorial-example-row"><strong>Diff Result:</strong><br>
+                <span class="editorial-example-code diff-del-text">- Payment shall be remitted within 30 days of invoice
+                  receipt.</span><br>
+                <span class="editorial-example-code diff-add-text">+ Payment shall be remitted within 60 days of invoice
+                  receipt upon written approval.</span>
+              </div>
+              <div class="editorial-example-row"><em>Note:</em> Instantly isolates the 30-to-60 day payment extension
+                and newly added approval condition.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 2: Server Environment Configuration Audit (.env)</div>
+              <div class="editorial-example-row"><strong>Original:</strong><br>
+                PORT=8080<br>DEBUG=true<br>DB_HOST=localhost</div>
+              <div class="editorial-example-row"><strong>Modified:</strong><br>
+                PORT=443<br>DEBUG=false<br>DB_HOST=db.internal.aws<br>SSL_ENABLED=true</div>
+              <div class="editorial-example-row"><strong>Diff Result:</strong><br>
+                <span class="editorial-example-code diff-del-text">- PORT=8080</span><br>
+                <span class="editorial-example-code diff-add-text">+ PORT=443</span><br>
+                <span class="editorial-example-code diff-del-text">- DEBUG=true</span><br>
+                <span class="editorial-example-code diff-add-text">+ DEBUG=false</span><br>
+                <span class="editorial-example-code diff-del-text">- DB_HOST=localhost</span><br>
+                <span class="editorial-example-code diff-add-text">+ DB_HOST=db.internal.aws</span><br>
+                <span class="editorial-example-code diff-add-text">+ SSL_ENABLED=true</span>
+              </div>
+              <div class="editorial-example-row"><em>Note:</em> Pinpoints modified ports, disabled debug flags, and
+                newly introduced SSL configuration parameters.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 3: Editorial Proofreading &amp; Marketing Copy Polish</div>
+              <div class="editorial-example-row"><strong>Original:</strong><br>
+                Our product delivers fast results with simple setup.</div>
+              <div class="editorial-example-row"><strong>Modified:</strong><br>
+                Our platform delivers instantaneous results with effortless zero-click setup.</div>
+              <div class="editorial-example-row"><strong>Diff Result:</strong><br>
+                <span class="editorial-example-code diff-del-text">- Our product delivers fast results with simple
+                  setup.</span><br>
+                <span class="editorial-example-code diff-add-text">+ Our platform delivers instantaneous results with
+                  effortless zero-click setup.</span>
+              </div>
+              <div class="editorial-example-row"><em>Note:</em> Gives editors full visibility into vocabulary refinement
+                and marketing messaging upgrades.</div>
+            </div>
+
+            <div class="editorial-example-card">
+              <div class="editorial-example-title">Example 4: Database SQL Migration Comparison</div>
+              <div class="editorial-example-row"><strong>Original:</strong><br>
+                ALTER TABLE users ADD COLUMN phone VARCHAR(20);</div>
+              <div class="editorial-example-row"><strong>Modified:</strong><br>
+                ALTER TABLE users ADD COLUMN phone VARCHAR(20) NOT NULL DEFAULT '';</div>
+              <div class="editorial-example-row"><strong>Diff Result:</strong><br>
+                <span class="editorial-example-code diff-del-text">- ALTER TABLE users ADD COLUMN phone
+                  VARCHAR(20);</span><br>
+                <span class="editorial-example-code diff-add-text">+ ALTER TABLE users ADD COLUMN phone VARCHAR(20) NOT
+                  NULL DEFAULT '';</span>
+              </div>
+              <div class="editorial-example-row"><em>Note:</em> Catches subtle constraint modifications (NOT NULL
+                DEFAULT '') preventing database deployment errors.</div>
+            </div>
+          </div>
+
+          <!-- 7. Key Benefits -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">What Are the Benefits of Using ToolCanvas?</h2>
+            <ul class="editorial-bullet-list">
+              <li><strong>Accurate LCS Matrix Engine:</strong> Computes the mathematically optimal minimal edit script,
+                avoiding misplaced line highlights.</li>
+              <li><strong>100% Client-Side Privacy:</strong> Sensitive business contracts, code branches, and internal
+                memos never touch external servers.</li>
+              <li><strong>Synchronized Parallel Scrolling:</strong> Proportional scroll-linking keeps long
+                multi-paragraph documents aligned as you read.</li>
+              <li><strong>Dual Independent Metrics:</strong> Real-time word, character, and line count displays for both
+                original and modified inputs.</li>
+              <li><strong>Free &amp; Offline Functional:</strong> No registration, watermarks, or usage limits. Works
+                completely offline once loaded in your browser.</li>
+            </ul>
+          </div>
+
+          <!-- 8. Options, Edge Cases & Limitations -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Supported Options, Edge Cases &amp; Limitations</h2>
+            <p class="editorial-box-paragraph">
+              Understand the operational boundaries and technical rules of the diff engine:
+            </p>
+            <ul class="editorial-bullet-list">
+              <li><strong>Supported Input Types:</strong> Plain text, Markdown notes, programming code (JavaScript,
+                Python, C++, Go, PHP), configuration files (JSON, YAML, .env), SQL scripts, and legal contracts.</li>
+              <li><strong>Whitespace Sensitivity:</strong> Character comparison treats spaces and tabs as distinct
+                characters, ensuring code indentation is faithfully respected.</li>
+              <li><strong>Line-by-Line Granularity:</strong> Differences are evaluated at the line level, highlighting
+                full inserted or removed rows for clear visual scanning.</li>
+              <li><strong>Scalability Bounds:</strong> Comfortably evaluates files up to several tens of thousands of
+                lines. Performance is governed by your local browser JavaScript engine.</li>
+            </ul>
+          </div>
+
+          <!-- 9. Stacked Individual FAQ Boxes (Matching Reference Image) -->
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">How does the Longest Common Subsequence (LCS) algorithm identify differences?
+            </div>
+            <p class="editorial-faq-a">
+              LCS uses dynamic programming to identify the longest sequence of lines present in both documents in the
+              exact same relative order. By treating this common sequence as an unchanged anchor, the algorithm
+              calculates the minimum additions and deletions needed to transform the original into the revised version,
+              preventing misaligned comparisons.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Can I compare source code files like JavaScript, Python, CSS, JSON, and YAML?
+            </div>
+            <p class="editorial-faq-a">
+              Yes. The diff engine treats input as raw text and processes it line by line. It functions seamlessly for
+              programming source code, environment files, markup formats, and database schemas.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Is it safe to paste confidential legal contracts, NDAs, or proprietary source
+              code?</div>
+            <p class="editorial-faq-a">
+              Yes, 100%. ToolCanvas computes diff matrices entirely within your device's web browser using client-side
+              JavaScript. No documents, proprietary code, or text fragments are ever transmitted across the internet,
+              logged, or saved to a remote server.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">How does synchronized scrolling work between the original and modified panes?
+            </div>
+            <p class="editorial-faq-a">
+              ToolCanvas attaches event listeners to both input viewports and proportionally mirrors the vertical and
+              horizontal scroll position to the adjacent box. This ensures corresponding lines stay visually aligned as
+              you inspect multi-page documents.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">What is the maximum document size or line count I can compare?</div>
+            <p class="editorial-faq-a">
+              Because calculations execute locally in your computer's RAM, ToolCanvas smoothly processes documents
+              containing thousands of lines in fractions of a second without server timeouts or connection limits.
+            </p>
+          </div>
+
+          <div class="editorial-faq-card">
+            <div class="editorial-faq-q">Why is comparing two files with a diff checker better than manual visual
+              review?</div>
+            <p class="editorial-faq-a">
+              Human eyes easily miss subtle changes like single-digit payment adjustments, deleted punctuation, modified
+              variable names, or extra whitespace. A diff checker eliminates human error by systematically verifying
+              every single line against mathematical matching rules.
+            </p>
+          </div>
+
+          <!-- 10. Complementary Tools for Complete Text Processing -->
+          <div class="editorial-box">
+            <h2 class="editorial-box-heading">Complementary Tools for Complete Text Processing</h2>
+            <p class="editorial-box-paragraph">
+              Document comparison is frequently part of wider text preparation and editing workflows. Explore our other
+              free in-browser utilities:
+            </p>
+            <ul class="editorial-tools-list">
+              <li class="editorial-tool-item">
+                <a href="/case-converter/" class="editorial-tool-link">Case Converter</a> &mdash; Standardize title
+                formatting, sentence casing, or code variables across your modified text.
+              </li>
+              <li class="editorial-tool-item">
+                <a href="/word-counter/" class="editorial-tool-link">Word &amp; Character Counter</a> &mdash; Track
+                total word, character, and sentence count differences between original and revised drafts.
+              </li>
+              <li class="editorial-tool-item">
+                <a href="/duplicate-line-remover/" class="editorial-tool-link">Duplicate Line Remover</a> &mdash;
+                Deduplicate data lists, email rosters, or keyword exports before comparing versions.
+              </li>
+              <li class="editorial-tool-item">
+                <a href="/text-cleaner/" class="editorial-tool-link">Text Cleaner &amp; Formatter</a> &mdash; Strip HTML
+                tags, collapse irregular spaces, and convert smart quotes before performing diff comparisons.
+              </li>
+            </ul>
+            <span class="editorial-timestamp">Last reviewed: Oct 2026 | ToolCanvas Utility Standards</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-simple-content">
+        <div class="footer-line-copy">
+          Copyright &copy; 2026 ToolCanvas | Last Updated (Oct 2026)
+        </div>
+        <div class="footer-line-links">
+          <a href="/privacy/" class="footer-simple-link">Privacy Policy</a>
+          <span class="footer-sep">|</span>
+          <a href="/terms/" class="footer-simple-link">Terms of Service</a>
+          <span class="footer-sep">|</span>
+          <a href="/about/" class="footer-simple-link">About</a>
+          <span class="footer-sep">|</span>
+          <a href="/blog/" class="footer-simple-link">Blog</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./script.js"></script>
+</body>
+
+</html>
